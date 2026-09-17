@@ -1,0 +1,57 @@
+%%{init: {'theme':'base','themeVariables': {'primaryColor':'#fffefd','primaryBorderColor':'#0f3460','primaryTextColor':'#0f3460','lineColor':'#7b91ad','secondaryColor':'#edf2f7','tertiaryColor':'#f7fafc'}}}%%
+erDiagram
+    direction LR
+
+    USER ||..o{ ORDER : realiza
+    RESTAURANT ||..o{ PRODUCT : ofrece
+    RESTAURANT ||..o{ ORDER : recibe
+    ORDER ||--|{ ORDER_ITEM : contiene
+    PRODUCT ||..o{ ORDER_ITEM : integra
+
+    USER {
+        uuid user_id PK
+        varchar name
+        varchar email UK
+        varchar password_hash
+        timestamptz registered_at
+    }
+
+    RESTAURANT {
+        uuid restaurant_id PK
+        varchar name
+        enum packaging_type
+        enum available_delivery_method
+        enum status
+        varchar sustainability_indicator
+    }
+
+    PRODUCT {
+        uuid product_id PK
+        uuid restaurant_id FK
+        varchar name
+        numeric(10,2) price
+    }
+
+    ORDER {
+        uuid order_id PK
+        uuid user_id FK
+        uuid restaurant_id FK
+        timestamptz ordered_at
+        numeric(10,2) total_amount
+        numeric(6,2) distance_km
+        enum delivery_method
+        enum packaging_type
+        enum order_status
+        numeric(6,3) co2_saved_kg
+        int plastic_items_avoided
+        numeric delivery_latitude
+    }
+
+    ORDER_ITEM {
+        uuid order_item_id PK
+        uuid order_id FK
+        uuid product_id FK
+        int quantity
+        numeric(10,2) unit_price
+        numeric(10,2) subtotal
+    }
