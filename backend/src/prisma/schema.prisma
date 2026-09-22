@@ -8,12 +8,10 @@ datasource db {
 
 enum PackagingType {
   BIODEGRADABLE
-  COMPOSTABLE
-  REUSABLE
 }
 
 enum DeliveryMethod {
-  BICYCLE
+  BIKE
   ELECTRIC_VEHICLE
 }
 
@@ -26,63 +24,67 @@ enum OrderStatus {
   PENDING
   CONFIRMED
   PREPARING
-  IN_DELIVERY
-  DELIVERED
+  DELIVERING
+  COMPLETED
   CANCELLED
 }
 
 model User {
-  userId       String   @id @default(uuid()) @map("user_id") @db.Uuid
+  id           String   @id @default(uuid()) @db.Uuid
   name         String
   email        String   @unique
   passwordHash String   @map("password_hash")
-  registeredAt DateTime @default(now()) @db.Timestamptz(6) @map("registered_at")
-  orders       Order[]
+  registeredAt DateTime @default(now()) @map("registered_at") @db.Timestamptz(6)
+
+  orders Order[]
 
   @@map("users")
 }
 
 model Restaurant {
-  restaurantId            String           @id @default(uuid()) @map("restaurant_id") @db.Uuid
+  id                      String           @id @default(uuid()) @db.Uuid
   name                    String
   packagingType           PackagingType    @map("packaging_type")
-  availableDeliveryMethod DeliveryMethod    @map("available_delivery_method")
+  availableDeliveryMethod DeliveryMethod   @map("available_delivery_method")
   status                  RestaurantStatus
   sustainabilityIndicator String           @map("sustainability_indicator")
-  products                Product[]
-  orders                  Order[]
+
+  products Product[]
+  orders   Order[]
 
   @@map("restaurants")
 }
 
 model Product {
-  productId    String      @id @default(uuid()) @map("product_id") @db.Uuid
-  restaurantId String      @map("restaurant_id") @db.Uuid
+  id           String  @id @default(uuid()) @db.Uuid
+  restaurantId String  @map("restaurant_id") @db.Uuid
   name         String
-  price        Decimal     @db.Decimal(10, 2)
-  restaurant   Restaurant  @relation(fields: [restaurantId], references: [restaurantId])
-  orderItems   OrderItem[]
+  price        Decimal @db.Decimal(10, 2)
+
+  restaurant Restaurant  @relation(fields: [restaurantId], references: [id])
+  orderItems OrderItem[]
 
   @@index([restaurantId])
   @@map("products")
 }
 
 model Order {
-  orderId             String         @id @default(uuid()) @map("order_id") @db.Uuid
+  id                  String         @id @default(uuid()) @db.Uuid
   userId              String         @map("user_id") @db.Uuid
   restaurantId        String         @map("restaurant_id") @db.Uuid
-  orderedAt           DateTime       @default(now()) @db.Timestamptz(6) @map("ordered_at")
-  totalAmount         Decimal        @db.Decimal(10, 2) @map("total_amount")
-  distanceKm          Decimal        @db.Decimal(6, 2) @map("distance_km")
+  orderedAt           DateTime       @default(now()) @map("ordered_at") @db.Timestamptz(6)
+  totalAmount         Decimal        @map("total_amount") @db.Decimal(10, 2)
+  distanceKm          Decimal        @map("distance_km") @db.Decimal(6, 2)
   deliveryMethod      DeliveryMethod @map("delivery_method")
   packagingType       PackagingType  @map("packaging_type")
   orderStatus         OrderStatus    @map("order_status")
-  co2SavedKg          Decimal        @db.Decimal(6, 3) @map("co2_saved_kg")
+  co2SavedKg          Decimal        @map("co2_saved_kg") @db.Decimal(6, 3)
   plasticItemsAvoided Int            @map("plastic_items_avoided")
   deliveryLatitude    Decimal        @map("delivery_latitude")
-  user                User           @relation(fields: [userId], references: [userId])
-  restaurant          Restaurant     @relation(fields: [restaurantId], references: [restaurantId])
-  items               OrderItem[]
+
+  user       User        @relation(fields: [userId], references: [id])
+  restaurant Restaurant  @relation(fields: [restaurantId], references: [id])
+  orderItems OrderItem[]
 
   @@index([userId])
   @@index([restaurantId])
@@ -90,14 +92,15 @@ model Order {
 }
 
 model OrderItem {
-  orderItemId String  @id @default(uuid()) @map("order_item_id") @db.Uuid
-  orderId     String  @map("order_id") @db.Uuid
-  productId   String  @map("product_id") @db.Uuid
-  quantity    Int
-  unitPrice   Decimal @db.Decimal(10, 2) @map("unit_price")
-  subtotal    Decimal @db.Decimal(10, 2)
-  order       Order   @relation(fields: [orderId], references: [orderId])
-  product     Product @relation(fields: [productId], references: [productId])
+  id        String  @id @default(uuid()) @db.Uuid
+  orderId   String  @map("order_id") @db.Uuid
+  productId String  @map("product_id") @db.Uuid
+  quantity  Int
+  unitPrice Decimal @map("unit_price") @db.Decimal(10, 2)
+  subtotal  Decimal @db.Decimal(10, 2)
+
+  order   Order   @relation(fields: [orderId], references: [id])
+  product Product @relation(fields: [productId], references: [id])
 
   @@index([orderId])
   @@index([productId])
