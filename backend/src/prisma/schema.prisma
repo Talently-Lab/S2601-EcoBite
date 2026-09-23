@@ -30,7 +30,7 @@ enum OrderStatus {
 }
 
 model User {
-  id           String   @id @default(uuid()) @db.Uuid
+  id           String   @id @default(uuid()) @map("user_id") @db.Uuid
   name         String
   email        String   @unique
   passwordHash String   @map("password_hash")
@@ -42,7 +42,7 @@ model User {
 }
 
 model Restaurant {
-  id                      String           @id @default(uuid()) @db.Uuid
+  id                      String           @id @default(uuid()) @map("restaurant_id") @db.Uuid
   name                    String
   packagingType           PackagingType    @map("packaging_type")
   availableDeliveryMethod DeliveryMethod   @map("available_delivery_method")
@@ -56,7 +56,7 @@ model Restaurant {
 }
 
 model Product {
-  id           String  @id @default(uuid()) @db.Uuid
+  id           String  @id @default(uuid()) @map("product_id") @db.Uuid
   restaurantId String  @map("restaurant_id") @db.Uuid
   name         String
   price        Decimal @db.Decimal(10, 2)
@@ -69,7 +69,7 @@ model Product {
 }
 
 model Order {
-  id                  String         @id @default(uuid()) @db.Uuid
+  id                  String         @id @default(uuid()) @map("order_id") @db.Uuid
   userId              String         @map("user_id") @db.Uuid
   restaurantId        String         @map("restaurant_id") @db.Uuid
   orderedAt           DateTime       @default(now()) @map("ordered_at") @db.Timestamptz(6)
@@ -92,7 +92,7 @@ model Order {
 }
 
 model OrderItem {
-  id        String  @id @default(uuid()) @db.Uuid
+  id        String  @id @default(uuid()) @map("order_item_id") @db.Uuid
   orderId   String  @map("order_id") @db.Uuid
   productId String  @map("product_id") @db.Uuid
   quantity  Int
