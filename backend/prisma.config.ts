@@ -1,4 +1,3 @@
-// NOTE: Configures Prisma schema loading, migrations, and seed execution.
 import 'dotenv/config';
 import { defineConfig, env } from 'prisma/config';
 
@@ -9,6 +8,5 @@ export default defineConfig({
   },
   migrations: {
     path: './src/prisma/migrations',
-    seed: 'npx tsx src/prisma/seed.ts',
   },
 });

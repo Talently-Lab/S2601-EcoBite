@@ -6,241 +6,103 @@ datasource db {
   provider = "postgresql"
 }
 
-enum Role {
-  ADMIN
-  SUPERVISOR
-  INSTALLER
+enum PackagingType {
+  BIODEGRADABLE
 }
 
-enum OrderType {
-  INSTALLATION
-  RELOCATION
-  REPAIR
-  UNINSTALL
-  UPGRADE
+enum DeliveryMethod {
+  BIKE
+  ELECTRIC_VEHICLE
+}
+
+enum RestaurantStatus {
+  ACTIVE
+  INACTIVE
 }
 
 enum OrderStatus {
   PENDING
-  IN_PROGRESS
+  CONFIRMED
+  PREPARING
+  DELIVERING
   COMPLETED
   CANCELLED
 }
 
-enum MovementType {
-  IN
-  OUT
-  ADJUST
-}
-
-enum NotificationType {
-  ORDER_ASSIGNED
-  ORDER_UPDATED
-  LOW_STOCK
-  GENERAL
-}
-
-enum RefreshSessionStatus {
-  ACTIVE
-  REPLACED
-  REVOKED
-}
-
 model User {
-  id              String           @id @default(uuid())
-  name            String
-  email           String           @unique
-  password        String
-  phone           String?
-  role            Role             @default(INSTALLER)
-  active          Boolean          @default(true)
-  lastLoginAt     DateTime?
-  orders          Order[]
-  notes           OrderNote[]
-  stockMovements  StockMovement[]
-  notifications   Notification[]
-  refreshSessions RefreshSession[]
-  createdAt       DateTime         @default(now())
-  updatedAt       DateTime         @updatedAt
+  id           String   @id @default(uuid()) @map("user_id") @db.Uuid
+  name         String
+  email        String   @unique
+  passwordHash String   @map("password_hash")
+  registeredAt DateTime @default(now()) @map("registered_at") @db.Timestamptz(6)
+
+  orders Order[]
 
   @@map("users")
 }
 
-model RefreshSession {
-  id        String               @id @default(uuid())
-  user      User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId    String
-  tokenHash String               @unique
-  familyId  String
-  status    RefreshSessionStatus @default(ACTIVE)
-  expiresAt DateTime
-  createdAt DateTime             @default(now())
+model Restaurant {
+  id                      String           @id @default(uuid()) @map("restaurant_id") @db.Uuid
+  name                    String
+  packagingType           PackagingType    @map("packaging_type")
+  availableDeliveryMethod DeliveryMethod   @map("available_delivery_method")
+  status                  RestaurantStatus
+  sustainabilityIndicator String           @map("sustainability_indicator")
 
-  @@index([userId, familyId])
-  @@index([familyId])
-  @@map("refresh_sessions")
+  products Product[]
+  orders   Order[]
+
+  @@map("restaurants")
 }
 
-model Customer {
-  id        String   @id @default(uuid())
-  name      String
-  email     String?
-  phone     String?
-  address   String?
-  city      String?
-  province  String?
-  zipCode   String?
-  lat       Float?
-  lng       Float?
-  orders    Order[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+model Product {
+  id           String  @id @default(uuid()) @map("product_id") @db.Uuid
+  restaurantId String  @map("restaurant_id") @db.Uuid
+  name         String
+  price        Decimal @db.Decimal(10, 2)
 
-  @@map("customers")
+  restaurant Restaurant  @relation(fields: [restaurantId], references: [id])
+  orderItems OrderItem[]
+
+  @@index([restaurantId])
+  @@map("products")
 }
 
 model Order {
-  id          String           @id @default(uuid())
-  title       String
-  description String?
-  type        OrderType
-  status      OrderStatus      @default(PENDING)
-  address     String?
-  city        String?
-  province    String?
-  zipCode     String?
-  lat         Float?
-  lng         Float?
-  scheduledAt DateTime?
-  installer   User?            @relation(fields: [installerId], references: [id])
-  installerId String?
-  customer    Customer?        @relation(fields: [customerId], references: [id])
-  customerId  String?
-  equipment   OrderEquipment[]
-  notes       OrderNote[]
-  createdAt   DateTime         @default(now())
-  updatedAt   DateTime         @updatedAt
+  id                  String         @id @default(uuid()) @map("order_id") @db.Uuid
+  userId              String         @map("user_id") @db.Uuid
+  restaurantId        String         @map("restaurant_id") @db.Uuid
+  orderedAt           DateTime       @default(now()) @map("ordered_at") @db.Timestamptz(6)
+  totalAmount         Decimal        @map("total_amount") @db.Decimal(10, 2)
+  distanceKm          Decimal        @map("distance_km") @db.Decimal(6, 2)
+  deliveryMethod      DeliveryMethod @map("delivery_method")
+  packagingType       PackagingType  @map("packaging_type")
+  orderStatus         OrderStatus    @map("order_status")
+  co2SavedKg          Decimal        @map("co2_saved_kg") @db.Decimal(6, 3)
+  plasticItemsAvoided Int            @map("plastic_items_avoided")
+  deliveryLatitude    Decimal        @map("delivery_latitude")
 
+  user       User        @relation(fields: [userId], references: [id])
+  restaurant Restaurant  @relation(fields: [restaurantId], references: [id])
+  orderItems OrderItem[]
+
+  @@index([userId])
+  @@index([restaurantId])
   @@map("orders")
 }
 
-model EquipmentCategory {
-  id        String      @id @default(uuid())
-  name      String      @unique
-  active    Boolean     @default(true)
-  equipment Equipment[]
-  createdAt DateTime    @default(now())
-  updatedAt DateTime    @updatedAt
+model OrderItem {
+  id        String  @id @default(uuid()) @map("order_item_id") @db.Uuid
+  orderId   String  @map("order_id") @db.Uuid
+  productId String  @map("product_id") @db.Uuid
+  quantity  Int
+  unitPrice Decimal @map("unit_price") @db.Decimal(10, 2)
+  subtotal  Decimal @db.Decimal(10, 2)
 
-  @@map("equipment_categories")
-}
+  order   Order   @relation(fields: [orderId], references: [id])
+  product Product @relation(fields: [productId], references: [id])
 
-model Unit {
-  id           String      @id @default(uuid())
-  name         String      @unique
-  abbreviation String?
-  active       Boolean     @default(true)
-  equipment    Equipment[]
-  createdAt    DateTime    @default(now())
-  updatedAt    DateTime    @updatedAt
-
-  @@map("units")
-}
-
-model Equipment {
-  id         String            @id @default(uuid())
-  name       String
-  category   EquipmentCategory @relation(fields: [categoryId], references: [id])
-  categoryId String
-  unit       Unit              @relation(fields: [unitId], references: [id])
-  unitId     String
-  stock      WarehouseStock[]
-  orders     OrderEquipment[]
-  movements  StockMovement[]
-  createdAt  DateTime          @default(now())
-  updatedAt  DateTime          @updatedAt
-
-  @@map("equipment")
-}
-
-model OrderEquipment {
-  order       Order     @relation(fields: [orderId], references: [id])
-  orderId     String
-  equipment   Equipment @relation(fields: [equipmentId], references: [id])
-  equipmentId String
-  warehouse   Warehouse @relation(fields: [warehouseId], references: [id])
-  warehouseId String
-  quantity    Int
-
-  @@id([orderId, equipmentId])
-  @@map("order_equipment")
-}
-
-model Warehouse {
-  id             String           @id @default(uuid())
-  name           String
-  address        String?
-  city           String?
-  province       String?
-  active         Boolean          @default(true)
-  stock          WarehouseStock[]
-  movements      StockMovement[]
-  orderEquipment OrderEquipment[]
-  createdAt      DateTime         @default(now())
-  updatedAt      DateTime         @updatedAt
-
-  @@map("warehouses")
-}
-
-model WarehouseStock {
-  warehouse   Warehouse @relation(fields: [warehouseId], references: [id])
-  warehouseId String
-  equipment   Equipment @relation(fields: [equipmentId], references: [id])
-  equipmentId String
-  stock       Int       @default(0)
-  minStock    Int       @default(0)
-
-  @@id([warehouseId, equipmentId])
-  @@map("warehouse_stock")
-}
-
-model StockMovement {
-  id          String       @id @default(uuid())
-  equipment   Equipment    @relation(fields: [equipmentId], references: [id])
-  equipmentId String
-  warehouse   Warehouse    @relation(fields: [warehouseId], references: [id])
-  warehouseId String
-  user        User         @relation(fields: [userId], references: [id])
-  userId      String
-  type        MovementType
-  quantity    Int
-  note        String?
-  createdAt   DateTime     @default(now())
-
-  @@map("stock_movements")
-}
-
-model OrderNote {
-  id        String   @id @default(uuid())
-  order     Order    @relation(fields: [orderId], references: [id])
-  orderId   String
-  user      User     @relation(fields: [userId], references: [id])
-  userId    String
-  content   String
-  createdAt DateTime @default(now())
-
-  @@map("order_notes")
-}
-
-model Notification {
-  id        String           @id @default(uuid())
-  user      User             @relation(fields: [userId], references: [id])
-  userId    String
-  type      NotificationType @default(GENERAL)
-  title     String
-  message   String
-  read      Boolean          @default(false)
-  createdAt DateTime         @default(now())
-
-  @@map("notifications")
+  @@index([orderId])
+  @@index([productId])
+  @@map("order_items")
 }

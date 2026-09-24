@@ -26,7 +26,6 @@ backend/
 │   └── main.ts              # Punto de entrada de la aplicación
 ├── prisma/
 │   ├── schema.prisma        # Esquema de la base de datos
-│   └── seed.ts              # Datos iniciales para desarrollo/testing
 ├── .env.example             # Variables de entorno (plantilla)
 ├── package.json
 └── README.md                # Este archivo
@@ -54,12 +53,6 @@ Editar `.env` con los valores correspondientes al entorno local.
 
 ```bash
 npx prisma migrate dev
-```
-
-Si se dispone de datos iniciales:
-
-```bash
-npx prisma db seed
 ```
 
 ### 4. Iniciar servidor (desarrollo)
