@@ -1,0 +1,27 @@
+.cart-item img,
+.cart-item-remove {
+    border-radius: var(--radius-sm);
+    background: var(--color-surface-muted);
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--space-4) var(--space-1);
+
+    & img {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+.cart-item-remove {
+    display: grid;
+    place-items: center;
+    padding: var(--space-2);
+    height: 32px;
+    width: 32px;
+    border: 0;
+    color: var(--color-primary);
+    cursor: pointer;
+}

@@ -1,0 +1,9 @@
+.addresses {
+    display: flex;
+    align-items: center;
+    font-size: var(--font-size-sm);
+
+    & button {
+        padding: 0 var(--space-2);
+    }
+}

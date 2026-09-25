@@ -1,0 +1,36 @@
+.profile-item-icon,
+.profile-item svg {
+    inline-size: 20px;
+    block-size: 20px;
+}
+
+.profile-item {
+    display: grid;
+    grid-template-columns: 20px minmax(0, 1fr) var(--touch-target);
+    align-items: center;
+    gap: var(--space-3);
+    border: 0;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--color-text);
+    cursor: pointer;
+    padding: 0;
+}
+
+.profile-item-icon {
+    display: grid;
+    place-items: center;
+    color: var(--color-primary);
+}
+
+.profile-item > .button--icon {
+    inline-size: var(--touch-target);
+    min-block-size: var(--touch-target);
+    padding: 0;
+}
+
+@media (hover: hover) {
+    .profile-item:hover {
+        background: var(--color-surface-muted);
+    }
+}

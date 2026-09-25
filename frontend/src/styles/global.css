@@ -1,3 +1,59 @@
-body {
-  margin: 0;
+@import './core/Button.css';
+@import './forms/Input.css';
+@import './shared/ItemHeader.css';
+@import './layouts/base.css';
+@import './layouts/Navbar.css';
+@import './layouts/pages.css';
+@import './pages/Home.css';
+@import './pages/Login.css';
+@import './pages/Profile.css';
+@import './pages/CartItem.css';
+@import './pages/Restaurants.css';
+@import './shared/GreenBadge.css';
+@import './pages/ProfileItem.css';
+@font-face {
+    font-family: 'BricolageGrotesque';
+    src: url(../assets/fonts/Bricolage_Grotesque/BricolageGrotesque-VariableFont_opsz\,wdth\,wght.ttf);
+}
+
+:root {
+    --color-primary: #0e2926;
+    --color-secondary: #c5ef7f;
+    --color-background: #fff;
+    --color-accent: #bcf8d6;
+    --color-text: #17231d;
+    --color-surface: #eaf4ef;
+    --color-surface-muted: #dbe7dd;
+    --color-text-muted: #52645c;
+    --color-border: #cedbd3;
+    --color-danger: #a32a32;
+    --color-focus: #246a51;
+    --font-family: 'BricolageGrotesque', sans-serif;
+    --font-size-sm: 12px;
+    --font-size-md: 16px;
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.5rem;
+    --space-6: 2rem;
+    --space-7: 2.5rem;
+    --radius-sm: 0.5rem;
+    --radius-md: 1rem;
+    --radius-lg: 1.5rem;
+    --radius-pill: 999px;
+    --control-height: 3rem;
+    --touch-target: 2.75rem;
+    --page-gutter: 1.25rem;
+    --content-width: 75rem;
+    --navbar-height: 5rem;
+    --shadow-navigation: 0 -1px 0 var(--color-border);
+    --transition-control: 160ms ease;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
 }

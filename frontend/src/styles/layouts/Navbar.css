@@ -1,0 +1,66 @@
+.navbar,
+.nav-item {
+    display: flex;
+}
+
+.navbar {
+    position: fixed;
+    z-index: 10;
+    inset-block-end: 0;
+    inset-inline: 0;
+    align-items: stretch;
+    min-block-size: calc(var(--navbar-height) + env(safe-area-inset-bottom, 0px));
+    padding: var(--space-2) max(var(--space-2), env(safe-area-inset-right, 0px)) calc(var(--space-2) + env(safe-area-inset-bottom, 0px)) max(var(--space-2), env(safe-area-inset-left, 0px));
+    background: var(--color-surface);
+    box-shadow: var(--shadow-navigation);
+}
+
+.nav-item {
+    flex: 1 1 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-1);
+    min-inline-size: 0;
+    min-block-size: var(--touch-target);
+    padding-inline: var(--space-1);
+    border-radius: var(--radius-sm);
+    color: var(--color-text-muted);
+    text-align: center;
+    text-decoration: none;
+}
+
+.nav-item-icon {
+    display: grid;
+    place-items: center;
+    inline-size: 2.5rem;
+    min-block-size: 1.75rem;
+    border-radius: var(--radius-pill);
+    font-size: 1.25rem;
+    transition: background-color var(--transition-control);
+}
+
+.nav-item-label {
+    max-inline-size: 100%;
+    font-size: 0.6875rem;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+}
+
+@media (hover: hover) {
+    .nav-item:hover .nav-item-icon {
+        background: var(--color-accent);
+    }
+}
+
+@media (min-width: 48rem) {
+    .navbar {
+        inset-inline: max(0px, calc((100% - var(--content-width)) / 2));
+        border-start-start-radius: var(--radius-lg);
+        border-start-end-radius: var(--radius-lg);
+    }
+
+    .nav-item-label {
+        font-size: var(--font-size-sm);
+    }
+}

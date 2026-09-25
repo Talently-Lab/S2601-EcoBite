@@ -1,0 +1,22 @@
+main {
+    inline-size: 100%;
+    max-inline-size: var(--content-width);
+    min-block-size: 100vh;
+    min-block-size: 100dvh;
+    margin-inline: auto;
+    padding: var(--space-5) var(--page-gutter);
+}
+
+main:has(.navbar) {
+    padding-block-end: calc(var(--navbar-height) + var(--space-5) + env(safe-area-inset-bottom, 0px));
+}
+
+.page {
+    min-inline-size: 0;
+}
+
+@media (min-width: 48rem) {
+    :root {
+        --page-gutter: 2rem;
+    }
+}

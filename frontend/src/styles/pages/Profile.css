@@ -1,0 +1,16 @@
+.profile-photo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+.profile-page .item-header {
+    margin: var(--space-6) 0 var(--space-3) 0;
+}
+
+.profile-photo img {
+    block-size: 5rem;
+    border-radius: var(--radius-md);
+    background: var(--color-surface-muted);
+    object-fit: cover;
+}
