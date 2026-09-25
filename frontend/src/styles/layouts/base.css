@@ -1,0 +1,55 @@
+body, header {
+	display: flex;
+	align-items: center;
+}
+
+html {
+	color-scheme: light;
+	scroll-padding-block-end: calc(var(--navbar-height) + 1rem);
+}
+
+body {
+	flex-direction: column;
+	min-inline-size: 0;
+	background: var(--color-background);
+	color: var(--color-text);
+	font-family: var(--font-family);
+	font-size: var(--font-size-md);
+	line-height: 1.5;
+}
+
+header {
+	justify-content: center;
+	position: relative;
+    margin: var(--space-3) 0;
+
+    & h2 {
+        font-size: var(--font-size-sm);
+    }
+	& .button {
+		position: absolute;
+		left: 0;
+		padding: 0 var(--space-1);
+	}
+}
+
+:where(button, input, select, textarea) {
+	font: inherit;
+}
+
+:where(button, a, input, select, textarea):focus-visible {
+	outline: 2px solid var(--color-focus);
+	outline-offset: 2px;
+}
+
+:where(button, a) {
+	-webkit-tap-highlight-color: transparent;
+}
+
+:where(button):disabled {
+	cursor: not-allowed;
+}
+
+#root {
+	width: 100%;
+}

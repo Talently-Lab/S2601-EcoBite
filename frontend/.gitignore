@@ -14,6 +14,7 @@ dist-ssr
 
 # Editor directories and files
 .vscode/*
+frontend/src/assets/fonts/Bricolage_Grotesque
 !.vscode/extensions.json
 .idea
 .DS_Store

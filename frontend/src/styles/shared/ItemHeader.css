@@ -1,0 +1,28 @@
+.item-header:has(img) {
+    display: grid;
+    grid-template-columns: 78px minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    gap: var(--space-1) var(--space-3);
+    grid-template-areas:
+    "image title"
+    "image description";
+}
+
+.item-header img {
+    grid-area: image;
+    background: var(--color-surface-muted);
+    border-radius: 8px;
+    padding: 8px;
+}
+
+.item-header h3 {
+    grid-area: title;
+    font-size: var(--font-size-md);
+    font-weight: 700;
+}
+
+.item-header p {
+    grid-area: description;
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+}

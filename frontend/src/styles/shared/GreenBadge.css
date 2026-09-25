@@ -1,0 +1,30 @@
+.green-badge,
+.green-badge-content {
+    display: flex;
+    align-items: center;
+}
+
+.green-badge {
+    justify-content: space-between;
+    width: 100%;
+    min-height: 40px;
+    padding: 8px 16px;
+    border-radius: var(--radius-pill);
+    margin: var(--space-3) 0;
+    background: var(--color-secondary);
+    color: var(--color-primary);
+    font-size: var(--font-size-md);
+    font-weight: 700;
+    gap: 12px;
+}
+
+.green-badge-content {
+    min-width: 0;
+    gap: 12px;
+}
+
+.green-badge-icon svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+}

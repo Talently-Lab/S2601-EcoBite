@@ -1,0 +1,9 @@
+.restaurant-link {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+
+    &:hover {
+        background: var(--color-surface-muted);;
+    }
+}
