@@ -25,7 +25,7 @@
     min-block-size: var(--touch-target);
     padding-inline: var(--space-1);
     border-radius: var(--radius-sm);
-    color: var(--color-text-muted);
+    color: var(--color-muted);
     text-align: center;
     text-decoration: none;
 }

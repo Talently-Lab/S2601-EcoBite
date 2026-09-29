@@ -4,6 +4,10 @@
     block-size: 20px;
 }
 
+.profile-item, .profile-item-icon {
+    display: grid;
+}
+
 .profile-item {
     display: grid;
     grid-template-columns: 20px minmax(0, 1fr) var(--touch-target);
@@ -18,7 +22,6 @@
 }
 
 .profile-item-icon {
-    display: grid;
     place-items: center;
     color: var(--color-primary);
 }
@@ -31,6 +34,6 @@
 
 @media (hover: hover) {
     .profile-item:hover {
-        background: var(--color-surface-muted);
+        background: var(--color-surface);
     }
 }

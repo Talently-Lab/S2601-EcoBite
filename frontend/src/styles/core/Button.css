@@ -18,6 +18,7 @@
 .button--primary {
     background: var(--color-primary);
     color: var(--color-surface);
+    width: 100%;
 }
 
 .button--icon {
@@ -26,12 +27,13 @@
 }
 
 .button:disabled {
-    background: var(--color-surface-muted);
-    color: var(--color-text-muted);
+    background: var(--color-surface);
+    color: var(--color-muted);
 }
 
 .button--primary:hover:enabled {
-    background: #20473e;
+    background: var(--color-accent);
+    color: var(--color-primary);
 }
 
 .button--icon:hover:enabled {

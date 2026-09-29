@@ -1,6 +1,6 @@
 input::placeholder,
 input:disabled {
-	color: var(--color-text-muted);
+	color: var(--color-muted);
 }
 
 input {
@@ -23,7 +23,7 @@ input[aria-invalid='true'] {
 }
 
 input:disabled {
-	background: var(--color-surface-muted);
+	background: var(--color-surface);
 	cursor: not-allowed;
 }
 

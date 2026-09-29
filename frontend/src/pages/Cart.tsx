@@ -1,3 +1,4 @@
+import { Button } from '../components/core/Button';
 import { Header } from '../components/layouts/Header';
 import { CartItem } from '../components/pages/CartItem';
 import { GreenBadge } from '../components/shared/GreenBadge';
@@ -9,16 +10,24 @@ export function Cart() {
     const cartItems = [
         { name: 'Sashimi', description: '5 sashimis de salmón', img: '' },
         { name: 'Niguiris', description: '5 sashimis de salmón', img: '' },
-        { name: 'Tonkatsu', description: 'Arrox frito, mila de cerdo', img: '' }
+        { name: 'Tonkatsu', description: 'Arroz frito, mila de cerdo', img: '' }
     ];
 
     return (
         <div className="page cart-page">
             <Header title="Tu carrito" />
-            {cartItems.map((item) => (
-                <CartItem key={item.name} {...item} />
-            ))}
-            <GreenBadge icon={<TbLeaf />} text="CO2 ahorrado" amount={amount} />
+            {cartItems.length ? (
+            <>
+                {cartItems.map((item) => (
+                    <CartItem key={item.name} {...item} />
+                ))}
+                <GreenBadge icon={<TbLeaf />} text="CO2 ahorrado" amount={amount} />
+            </>
+            ) :
+            (
+                <div className='empty-cart'>El carrito está vacío</div>
+            )}
+            <Button>Ir a pagar</Button>
         </div>
     );
 }

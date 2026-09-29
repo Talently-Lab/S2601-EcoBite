@@ -2,13 +2,14 @@
 .green-badge-content {
     display: flex;
     align-items: center;
+    gap: 12px;
 }
 
 .green-badge {
     justify-content: space-between;
     width: 100%;
     min-height: 40px;
-    padding: 8px 16px;
+    padding:  var(--space-3) var(--space-4);
     border-radius: var(--radius-pill);
     margin: var(--space-3) 0;
     background: var(--color-secondary);
@@ -18,13 +19,27 @@
     gap: 12px;
 }
 
-.green-badge-content {
-    min-width: 0;
-    gap: 12px;
-}
-
 .green-badge-icon svg {
     display: block;
     width: 20px;
     height: 20px;
+}
+
+.green-badge--tag {
+    font-size: var(--font-size-xs);
+    width: fit-content;
+    min-height: 18px;
+    height: 18px;
+    margin: 0;
+    padding: 2px 6px;
+    line-height: 1.2;
+
+    & svg {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+.green-badge--tag .green-badge-content {
+    gap: 4px;
 }

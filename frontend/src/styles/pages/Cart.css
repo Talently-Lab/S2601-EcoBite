@@ -1,7 +1,7 @@
 .cart-item img,
 .cart-item-remove {
     border-radius: var(--radius-sm);
-    background: var(--color-surface-muted);
+    background: var(--color-surface);
 }
 
 .cart-item {
@@ -24,4 +24,11 @@
     border: 0;
     color: var(--color-primary);
     cursor: pointer;
+}
+
+.empty-cart {
+    text-align: center;
+    color:  var(--color-primary);;
+    font-weight: 700;
+    margin-top: var(--space-6);
 }

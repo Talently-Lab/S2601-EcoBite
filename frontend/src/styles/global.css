@@ -7,7 +7,7 @@
 @import './pages/Home.css';
 @import './pages/Login.css';
 @import './pages/Profile.css';
-@import './pages/CartItem.css';
+@import './pages/Cart.css';
 @import './pages/Restaurants.css';
 @import './shared/GreenBadge.css';
 @import './pages/ProfileItem.css';
@@ -18,17 +18,17 @@
 
 :root {
     --color-primary: #0e2926;
-    --color-secondary: #c5ef7f;
+    --color-secondary: #bcf8d6;
     --color-background: #fff;
-    --color-accent: #bcf8d6;
+    --color-accent: #c5ef7f;
     --color-text: #17231d;
     --color-surface: #eaf4ef;
-    --color-surface-muted: #dbe7dd;
-    --color-text-muted: #52645c;
+    --color-muted: #6C9382;
     --color-border: #cedbd3;
     --color-danger: #a32a32;
     --color-focus: #246a51;
     --font-family: 'BricolageGrotesque', sans-serif;
+    --font-size-xs: 10px;
     --font-size-sm: 12px;
     --font-size-md: 16px;
     --space-1: 0.25rem;
