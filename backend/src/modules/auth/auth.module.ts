@@ -27,6 +27,6 @@ import { UserService } from './auth-user.service';
   ],
   controllers: [AuthController],
   providers: [AuthService, JwtStrategy, UserService],
-  exports: [AuthService],
+  exports: [AuthService, UserService],
 })
 export class AuthModule {}
