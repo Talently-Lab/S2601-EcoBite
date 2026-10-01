@@ -12,7 +12,8 @@ enum PackagingType {
 
 enum DeliveryMethod {
   BIKE
-  ELECTRIC_VEHICLE
+  MOTORCYCLE
+  CAR
 }
 
 enum RestaurantStatus {
@@ -78,9 +79,9 @@ model Order {
   deliveryMethod      DeliveryMethod @map("delivery_method")
   packagingType       PackagingType  @map("packaging_type")
   orderStatus         OrderStatus    @map("order_status")
-  co2SavedKg          Decimal        @map("co2_saved_kg") @db.Decimal(6, 3)
+  co2SavedG           Int            @map("co2_saved_g")
   plasticItemsAvoided Int            @map("plastic_items_avoided")
-  deliveryLatitude    Decimal        @map("delivery_latitude")
+  deliveryLatitude    Decimal?       @map("delivery_latitude")
 
   user       User        @relation(fields: [userId], references: [id])
   restaurant Restaurant  @relation(fields: [restaurantId], references: [id])
