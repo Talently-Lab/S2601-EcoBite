@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Routes, Route, Navigate, Outlet, useNavigate } from 'react-router';
 import { Navbar } from './components/layouts/Navbar';
+import { Header } from './components/layouts/Header';
 import { Login } from './pages/Login';
 import { Restaurants } from './pages/Restaurants';
 import { Cart } from './pages/Cart';
@@ -9,23 +10,27 @@ import { Profile } from './pages/Profile';
 import { Home } from './pages/Home';
 
 export default function App() {
-	const [loggedin, setLoggedin] = useState(false);
+	const [user, setUser] = useState(null);
 	const navigate = useNavigate();
 
-	const handleLogin = () => {
-		setLoggedin(true);
+	const handleLogin = (authenticatedUser) => {
+		setUser(authenticatedUser);
 		navigate('/', { replace: true });
 	};
 
+	const handleLogout = () => {
+		setUser(null);
+		navigate('/login', { replace: true });
+	};
+
 	return (
-		<main>
 			<Routes>
 				<Route path="/login" element={
-					loggedin ? <Navigate to="/" replace /> : <Login onLogin={handleLogin} />
+					user ? <Navigate to="/" replace /> : <main><Login onLogin={handleLogin} /></main>
 				} />
 				<Route element={
-					loggedin
-						? <><Outlet /><Navbar/></>
+					user
+						? <><Header user={user} onLogout={handleLogout} /><main><Outlet /><Navbar/></main></>
 						: <Navigate to="/login" replace />
 				}>
 					<Route path="/" element={<Home />} />
@@ -35,6 +40,5 @@ export default function App() {
 					<Route path="/profile" element={<Profile />} />
 				</Route>
 			</Routes>
-		</main>
 	);
 }

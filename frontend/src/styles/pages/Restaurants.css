@@ -4,7 +4,7 @@
     gap: var(--space-4);
 }
 
-.restaurant-page > header {
+.restaurant-page > .page-title, .restaurant-page > p {
     grid-column: 1 / -1;
 }
 

@@ -15,6 +15,15 @@ main:has(.navbar) {
     min-inline-size: 0;
 }
 
+.site-header + main {
+    min-block-size: calc(100dvh - var(--header-height));
+}
+
+.page-title {
+    margin-block-end: var(--space-5);
+    font-size: 1.5rem;
+}
+
 @media (min-width: 48rem) {
     :root {
         --page-gutter: 2rem;

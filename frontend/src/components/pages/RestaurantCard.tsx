@@ -1,16 +1,8 @@
 import { ItemHeader } from "../shared/ItemHeader";
 import { GreenBadge } from "../shared/GreenBadge";
+import type { RestaurantProps } from '../../types/types';
 
-type RestaurantCardProps = {
-    restaurant: {
-        name: string;
-        description: string;
-        img?: string;
-        tags?: { icon: React.ReactNode, text: string }[]
-    };
-};
-
-export function RestaurantCard({ restaurant }: RestaurantCardProps) {
+export function RestaurantCard({ restaurant }: { restaurant: RestaurantProps }) {
     return (
         <article className="restaurant-card">
             <ItemHeader

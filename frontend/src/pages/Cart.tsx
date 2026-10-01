@@ -1,5 +1,4 @@
 import { Button } from '../components/core/Button';
-import { Header } from '../components/layouts/Header';
 import { CartItem } from '../components/pages/CartItem';
 import { GreenBadge } from '../components/shared/GreenBadge';
 import { TbLeaf } from "react-icons/tb";
@@ -15,7 +14,7 @@ export function Cart() {
 
     return (
         <div className="page cart-page">
-            <Header title="Tu carrito" />
+            <h1 className="page-title">Tu carrito</h1>
             {cartItems.length ? (
             <>
                 {cartItems.map((item) => (

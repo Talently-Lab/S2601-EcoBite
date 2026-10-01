@@ -1,14 +1,11 @@
-body, header {
-	display: flex;
-	align-items: center;
-}
-
 html {
 	color-scheme: light;
 	scroll-padding-block-end: calc(var(--navbar-height) + 1rem);
 }
 
 body {
+	display: flex;
+	align-items: center;
 	flex-direction: column;
 	min-inline-size: 0;
 	background: var(--color-background);
@@ -16,21 +13,6 @@ body {
 	font-family: var(--font-family);
 	font-size: var(--font-size-md);
 	line-height: 1.5;
-}
-
-header {
-	justify-content: center;
-	position: relative;
-    margin: var(--space-3) 0;
-
-    & h2 {
-        font-size: var(--font-size-sm);
-    }
-	& .button {
-		position: absolute;
-		left: 0;
-		padding: 0 var(--space-1);
-	}
 }
 
 :where(button, input, select, textarea) {

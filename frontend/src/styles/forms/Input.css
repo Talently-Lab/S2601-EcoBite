@@ -19,7 +19,7 @@ input::placeholder {
 }
 
 input[aria-invalid='true'] {
-	border-color: var(--color-danger);
+	border-color: var(--color-error);
 }
 
 input:disabled {
