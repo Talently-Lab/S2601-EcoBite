@@ -40,7 +40,7 @@ main:has(.login-page), .login-password-toggle, .login-requirements {
 }
 
 .login-field, .login-requirements li, .login-error {
-    gap: var(--space-2);
+    gap: var(--space-1);
 }
 
 .login-field input, .login-submit {
@@ -71,17 +71,9 @@ main:has(.login-page) {
 }
 
 .login-hero {
-    gap: var(--space-6);
-    padding: var(--space-6) var(--space-5) var(--space-7);
+    gap: calc(var(--space-2) * 2);
+    padding: calc(var(--space-2) * 2) var(--space-3) var(--space-4);
     color: var(--color-surface);
-}
-
-.login-brand {
-    color: var(--color-secondary);
-    font-size: 1.75rem;
-    font-weight: 800;
-    font-style: italic;
-    line-height: 1.2;
 }
 
 .login-intro h1 {
@@ -97,17 +89,17 @@ main:has(.login-page) {
 
 .login-intro p {
     max-inline-size: 34ch;
-    margin-block-start: var(--space-4);
+    margin-block-start: var(--space-2);
     font-size: 1.125rem;
     line-height: 1.25;
 }
 
 .login-content {
-    padding: var(--space-7) var(--space-5) var(--space-7);
+    padding: var(--space-4) var(--space-3) var(--space-4);
 }
 
 .login-panel {
-    gap: var(--space-7);
+    gap: var(--space-4);
     inline-size: 100%;
     max-inline-size: 26rem;
     margin-inline: auto;
@@ -119,7 +111,7 @@ main:has(.login-page) {
 
 .login-switch .login-switch-option {
     min-inline-size: 0;
-    padding: var(--space-2);
+    padding: var(--space-1);
     border-radius: calc(var(--radius-sm) - 3px);
     background: transparent;
 }
@@ -135,7 +127,7 @@ main:has(.login-page) {
 }
 
 .login-form {
-    gap: var(--space-5);
+    gap: var(--space-3);
 }
 
 .login-field label {
@@ -174,7 +166,7 @@ main:has(.login-page) {
 .login-password-toggle {
     position: absolute;
     inset-block: 0;
-    inset-inline-end: var(--space-1);
+    inset-inline-end: calc(var(--space-1) / 2);
     inline-size: var(--touch-target);
 }
 
@@ -189,7 +181,7 @@ main:has(.login-page) {
 }
 
 .login-submit {
-    margin-block-start: var(--space-3);
+    margin-block-start: calc(var(--space-3) / 2);
     border-radius: var(--radius-md);
 }
 
@@ -204,7 +196,7 @@ main:has(.login-page) {
 
     .login-hero {
         align-content: center;
-        gap: var(--space-7);
+        gap: var(--space-4);
         padding: clamp(2.5rem, 6vw, 7rem);
     }
 
@@ -214,6 +206,6 @@ main:has(.login-page) {
 
     .login-content {
         align-items: center;
-        padding: var(--space-7);
+        padding: var(--space-4);
     }
 }

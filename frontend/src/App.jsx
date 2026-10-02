@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Routes, Route, Navigate, Outlet, useNavigate } from 'react-router';
-import { Navbar } from './components/layouts/Navbar';
 import { Header } from './components/layouts/Header';
+import { Footer } from './components/layouts/Footer';
 import { Login } from './pages/Login';
 import { Restaurants } from './pages/Restaurants';
 import { Cart } from './pages/Cart';
@@ -30,7 +30,13 @@ export default function App() {
 				} />
 				<Route element={
 					user
-						? <><Header user={user} onLogout={handleLogout} /><main><Outlet /><Navbar/></main></>
+						? <>
+                                <Header user={user} onLogout={handleLogout} />
+                                <main>
+                                    <Outlet />
+                                </main>
+                                <Footer />
+                            </>
 						: <Navigate to="/login" replace />
 				}>
 					<Route path="/" element={<Home />} />

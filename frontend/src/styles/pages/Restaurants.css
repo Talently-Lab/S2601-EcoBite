@@ -1,7 +1,7 @@
 .restaurant-page {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    gap: var(--space-4);
+    gap: var(--space-2);
 }
 
 .restaurant-page > .page-title, .restaurant-page > p {
@@ -50,8 +50,8 @@
 @media (min-width: 48rem) {
     .restaurant-page {
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        column-gap: var(--space-4);
-        row-gap: var(--space-5);
+        column-gap: var(--space-2);
+        row-gap: var(--space-3);
     }
 
     .restaurant-card .item-header--vertical img {

@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: 78px minmax(0, 1fr);
     grid-template-rows: auto 1fr;
-    gap: var(--space-1) var(--space-3);
+    gap: calc(var(--space-1) / 2) calc(var(--space-3) / 2);
     grid-template-areas:
     "image title"
     "image description";
@@ -31,7 +31,7 @@
 .item-header--vertical:has(img) {
     display: flex;
     flex-direction: column;
-    margin-bottom: var(--space-3);
+    margin-bottom: calc(var(--space-3) / 2);
     gap: 0;
 
     & img {
@@ -39,6 +39,6 @@
     }
 
     & h3 {
-        margin-top: var(--space-2);
+        margin-top: var(--space-1);
     }
 }

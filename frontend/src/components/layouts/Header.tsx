@@ -1,21 +1,16 @@
 import { useRef, useState } from 'react';
-import { Link, NavLink } from 'react-router';
+import { Link } from 'react-router';
 import { LuMenu, LuShoppingCart, LuX } from 'react-icons/lu';
 import { TbLeaf } from 'react-icons/tb';
 import { Button } from '../core/Button';
+import { Navbar } from './Navbar';
 import type { AuthUser } from '../../services/authService';
+import logo from '../../assets/icons/logo.svg';
 
 type HeaderProps = {
     user: AuthUser;
     onLogout: () => void;
 };
-
-const links = [
-    { to: '/', label: 'Inicio' },
-    { to: '/restaurants', label: 'Restaurantes' },
-    { to: '/impact', label: 'Tu impacto' },
-    { to: '/cart', label: 'Tu carrito' },
-];
 
 export function Header({ user, onLogout }: HeaderProps) {
     const menuRef = useRef<HTMLDialogElement>(null);
@@ -29,7 +24,7 @@ export function Header({ user, onLogout }: HeaderProps) {
     return (
         <header className="site-header">
             <div className="site-header-bar">
-                <Link to="/" className="site-brand" aria-label="EcoBite, inicio"><span>EcoBite</span></Link>
+                <Link to="/" className="site-brand" aria-label="EcoBite, inicio"><img src={logo} alt="EcoBite" /></Link>
                 <div className="site-header-actions">
                     <Link to="/cart" className="site-header-cart" aria-label="Ir al carrito">
                         <LuShoppingCart aria-hidden="true" />
@@ -53,7 +48,7 @@ export function Header({ user, onLogout }: HeaderProps) {
                 }}>
                 <div className="header-drawer-content">
                     <div className="header-drawer-top">
-                        <Link to="/" className="site-brand" onClick={closeMenu} aria-label="EcoBite, inicio"><span>EcoBite</span></Link>
+                        <Link to="/" className="site-brand" onClick={closeMenu} aria-label="EcoBite, inicio"><img src={logo} alt="EcoBite" /></Link>
                         <Button type="button" variant="icon" className="site-header-control" aria-label="Cerrar menú"
                             autoFocus onClick={closeMenu}><LuX aria-hidden="true" /></Button>
                     </div>
@@ -67,24 +62,15 @@ export function Header({ user, onLogout }: HeaderProps) {
                             </span>
                         </Link>
 
-                        <nav aria-label="Navegación principal" className="header-menu-nav">
-                            {links.map((link) => (
-                                <NavLink key={link.to} to={link.to} end className="header-menu-link" onClick={closeMenu}>
-                                    {link.label}
-                                </NavLink>
-                            ))}
-                            <button type="button" className="header-menu-link" disabled>
-                                Historial de pedidos <small>Próximamente</small>
-                            </button>
-                        </nav>
+                        <Navbar onNavigate={closeMenu} />
 
                         <nav aria-label="Ayuda" className="header-menu-help">
                             <h2>Ayuda</h2>
                             <button type="button" className="header-help-link" disabled>
-                                Cómo calculamos el impacto <small>Próximamente</small>
+                                Cómo calculamos el impacto
                             </button>
                             <button type="button" className="header-help-link" disabled>
-                                Contacto <small>Próximamente</small>
+                                Contacto
                             </button>
                         </nav>
 

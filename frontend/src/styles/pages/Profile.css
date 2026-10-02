@@ -1,11 +1,11 @@
 .profile-photo {
     display: flex;
     align-items: center;
-    gap: var(--space-4);
+    gap: var(--space-2);
 }
 
 .profile-page .item-header {
-    margin: var(--space-6) 0 var(--space-3) 0;
+    margin: calc(var(--space-2) * 2) 0 calc(var(--space-3) / 2) 0;
 }
 
 .profile-photo img {

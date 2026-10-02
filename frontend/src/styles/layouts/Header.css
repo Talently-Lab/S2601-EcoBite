@@ -58,24 +58,23 @@
 }
 
 .site-header-actions, .header-menu-help {
-    gap: var(--space-2);
+    gap: var(--space-1);
 }
 
-.header-menu-link, .header-help-link, .header-menu-link small, .header-help-link small, .header-account-name {
+.header-menu-link, .header-help-link, .header-account-name {
     display: block;
 }
 
-.header-menu-link, .header-help-link {
-    padding: var(--space-3) 0;
+.header-menu-link {
+    padding: calc(var(--space-3) / 2) 0;
+}
+
+.header-help-link {
+    padding: calc(var(--space-1) / 2) 0;
 }
 
 .header-menu-link, .header-help-link, .site-header-leaf, .header-logout {
     font-size: 0.875rem;
-}
-
-.header-menu-link small, .header-help-link small {
-    color: var(--color-muted);
-    font-size: 0.6875rem;
 }
 
 .site-header-leaf, .header-avatar {
@@ -107,13 +106,15 @@
 
 .site-header-cart {
     position: relative;
+    border-radius: var(--radius-sm);
     font-size: 1.5rem;
+    transition: background-color var(--transition-control), color var(--transition-control);
 }
 
 .site-header-leaf {
     position: absolute;
-    inset-block-start: var(--space-1);
-    inset-inline-end: var(--space-1);
+    inset-block-start: calc(var(--space-1) / 2);
+    inset-inline-end: calc(var(--space-1) / 2);
     background: var(--color-accent);
     color: var(--color-focus);
 }
@@ -145,13 +146,13 @@ body:has(.header-drawer[open]) {
 
 .header-drawer-body {
     flex: 1;
-    gap: var(--space-6);
-    padding: var(--space-4) var(--space-7) max(var(--space-2), env(safe-area-inset-bottom));
+    gap: calc(var(--space-2) * 2);
+    padding: var(--space-2) var(--space-4) max(var(--space-1), env(safe-area-inset-bottom));
 }
 
 .header-account {
-    gap: var(--space-3);
-    padding: var(--space-4) var(--space-5);
+    gap: calc(var(--space-3) / 2);
+    padding: var(--space-2) var(--space-3);
     border-radius: var(--radius-md);
 }
 
@@ -179,7 +180,7 @@ body:has(.header-drawer[open]) {
 }
 
 .header-menu-help {
-    margin-block-start: var(--space-7);
+    margin-block-start: var(--space-4);
 }
 
 .header-menu-help h2 {
@@ -193,13 +194,15 @@ body:has(.header-drawer[open]) {
     color: var(--color-error);
 }
 
-@media (hover: hover) {
-    .site-header-cart:hover, .header-account:hover, .header-menu-link[href]:hover {
-        background: var(--color-secondary);
-    }
+.site-header-cart:hover {
+    background: var(--color-accent);
+}
 
-    .header-logout:hover:enabled {
-        background: var(--color-surface);
-        color: var(--color-error);
-    }
+.header-account:hover, .header-menu-link[href]:hover {
+    background: var(--color-secondary);
+}
+
+.header-logout:hover:enabled {
+    background: var(--color-surface);
+    color: var(--color-error);
 }

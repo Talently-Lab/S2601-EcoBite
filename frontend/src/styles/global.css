@@ -4,6 +4,7 @@
 @import './layouts/base.css';
 @import './layouts/Navbar.css';
 @import './layouts/Header.css';
+@import './layouts/Footer.css';
 @import './layouts/pages.css';
 @import './pages/Home.css';
 @import './pages/Login.css';
@@ -32,13 +33,12 @@
     --font-size-xs: 10px;
     --font-size-sm: 12px;
     --font-size-md: 16px;
-    --space-1: 0.25rem;
-    --space-2: 0.5rem;
-    --space-3: 0.75rem;
-    --space-4: 1rem;
-    --space-5: 1.5rem;
-    --space-6: 2rem;
-    --space-7: 2.5rem;
+    --space-1: 8px;
+    --space-2: 16px;
+    --space-3: 24px;
+    --space-4: 40px;
+    --space-5: 80px;
+    --space-6: 120px;
     --radius-sm: 0.5rem;
     --radius-md: 1rem;
     --radius-lg: 1.5rem;

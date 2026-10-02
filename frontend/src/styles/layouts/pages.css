@@ -4,11 +4,7 @@ main {
     min-block-size: 100vh;
     min-block-size: 100dvh;
     margin-inline: auto;
-    padding: var(--space-5) var(--page-gutter);
-}
-
-main:has(.navbar) {
-    padding-block-end: calc(var(--navbar-height) + var(--space-5) + env(safe-area-inset-bottom, 0px));
+    padding: var(--space-3) var(--page-gutter);
 }
 
 .page {
@@ -20,7 +16,7 @@ main:has(.navbar) {
 }
 
 .page-title {
-    margin-block-end: var(--space-5);
+    margin-block-end: var(--space-3);
     font-size: 1.5rem;
 }
 

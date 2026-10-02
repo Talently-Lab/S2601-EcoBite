@@ -47,13 +47,13 @@ export function Login({ onLogin }: LoginProps) {
     return (
         <section className="page login-page" aria-labelledby="login-title">
             <div className="login-hero">
-                <span className="login-brand">EcoBite</span>
+                <span className="brand-logo" role="img" aria-label="EcoBite" />
                 <div className="login-intro">
                     <h1 id="login-title">
                         {isSignUp ? 'Creá tu cuenta' : <>Pedí rico.<br /><span>Elegí mejor.</span></>}
                     </h1>
                     <p>{isSignUp
-                        ? 'Pedí como siempre y mirá el impacto de cada pedido.'
+                        ? ''
                         : 'Descubrí restaurantes eco-friendly cerca tuyo. Mirá el impacto real de cada pedido, sin complicarte.'}</p>
                 </div>
             </div>

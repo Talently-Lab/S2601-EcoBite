@@ -1,6 +1,6 @@
 html {
 	color-scheme: light;
-	scroll-padding-block-end: calc(var(--navbar-height) + 1rem);
+	scroll-padding-block-end: 1rem;
 }
 
 body {
@@ -34,4 +34,13 @@ body {
 
 #root {
 	width: 100%;
+}
+
+.brand-logo {
+    display: inline-block;
+    inline-size: 5.4375rem;
+    block-size: 1.125rem;
+    color: var(--color-secondary);
+    background-color: currentColor;
+    mask: url('../../assets/icons/logo.svg') center / contain no-repeat;
 }
