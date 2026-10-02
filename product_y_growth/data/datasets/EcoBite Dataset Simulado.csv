@@ -1,0 +1,1001 @@
+id_pedido,fecha,id_restaurante,nombre_restaurante,monto_total,metodo_pago,tiempo_entrega_min,distancia_km,tipo_transporte,tipo_envase,co2_ahorrado_kg
+58321,2026-06-04,REST-232,Pizzeria Las Cuartetas,23300,Mercado Pago,37,3.8,Bicicleta,Carton / Papel,0.177
+77737,2026-08-08,REST-107,Empanadas La Continental,23300,Tarjeta de Credito,62,8.2,Moto,Fibra de Cana,0.0
+35913,2026-08-09,REST-098,Empanadas Delicias,15300,Efectivo,23,5.9,Moto,Fibra de Cana,0.0
+87661,2026-07-12,REST-161,Heladeria Grido,36100,Mercado Pago,64,0.9,Bicicleta,Plastico PET/PP,0.0419
+77760,2026-07-12,REST-032,Cafeteria All Saints,33200,Tarjeta de Debito,20,7.2,Moto,Fibra de Cana,0.0
+62495,2026-07-15,REST-151,Heladeria Antiche,24300,Mercado Pago,35,4.0,Moto,Plastico PET/PP,0.0
+28015,2026-06-12,REST-188,Parrilla El Fogón,75000,Mercado Pago,41,6.6,Bicicleta,Fibra de Cana,0.3074
+74460,2026-06-05,REST-055,Cafeteria Poesia,23500,Mercado Pago,18,6.4,Moto,Telgopor (EPS),0.0
+15573,2026-08-11,REST-131,Hamburgueseria Fat Broder,26800,Tarjeta de Credito,47,2.3,Moto,Plastico PET/PP,0.0
+70046,2026-06-08,REST-261,Rotiseria La Familia,75500,Mercado Pago,48,7.7,Bicicleta,Polipapel,0.3587
+34826,2026-07-28,REST-020,Bodegon Manolo,28700,Mercado Pago,17,2.6,Bicicleta,Plastico PET/PP,0.1211
+21379,2026-07-24,REST-068,Dietetica Equilibrio,5800,Mercado Pago,52,6.9,Moto,Bioplastico PLA,0.0
+84610,2026-07-04,REST-013,Bodegon Federal,7200,Efectivo,28,5.4,Moto,Plastico PET/PP,0.0
+50040,2026-07-27,REST-292,Sushi Sushi Express,58800,Mercado Pago,25,5.5,Moto,Telgopor (EPS),0.0
+42441,2026-06-25,REST-261,Rotiseria La Familia,14600,Mercado Pago,49,8.2,Moto,Polipapel,0.0
+83363,2026-08-15,REST-277,Sushi Fuji,43700,Mercado Pago,60,6.8,Bicicleta,Bioplastico PLA,0.3167
+83315,2026-06-03,REST-053,Cafeteria Olimpo,20400,Mercado Pago,58,3.8,Bicicleta,Bioplastico PLA,0.177
+60614,2026-06-02,REST-213,Pizzeria Burgio,63100,Efectivo,30,0.7,Moto,Bioplastico PLA,0.0
+98928,2026-06-13,REST-252,Rotiseria El Cucharón,7800,Tarjeta de Credito,43,1.8,Moto,Fibra de Cana,0.0
+12935,2026-07-28,REST-148,Hamburgueseria Voraz,59600,Mercado Pago,44,4.5,Moto,Polipapel,0.0
+44713,2026-07-25,REST-039,Cafeteria El Gato,8500,Tarjeta de Credito,61,6.5,Moto,Fibra de Cana,0.0
+41300,2026-08-19,REST-067,Dietetica Energia,59400,Mercado Pago,19,1.6,Moto,Telgopor (EPS),0.0
+59838,2026-08-17,REST-040,Cafeteria Florida Garden,33500,Efectivo,47,0.7,Moto,Polipapel,0.0
+21922,2026-07-24,REST-093,Empanadas Caseras,11400,Mercado Pago,25,7.2,Moto,Telgopor (EPS),0.0
+60820,2026-06-02,REST-249,Rotiseria El Barrio,11900,Tarjeta de Credito,21,8.5,Bicicleta,Aluminio,0.3959
+96128,2026-06-18,REST-096,Empanadas Cumen,15800,Mercado Pago,43,2.7,Bicicleta,Polipapel,0.1258
+23970,2026-06-12,REST-266,Rotiseria Sabor de Hogar,8700,Mercado Pago,50,5.0,Bicicleta,Telgopor (EPS),0.2329
+22946,2026-08-06,REST-080,Dietetica Pura Vida,73500,Efectivo,41,5.7,Moto,Carton / Papel,0.0
+76724,2026-07-13,REST-185,Parrilla El Desnivel,13100,Mercado Pago,42,5.5,Moto,Bioplastico PLA,0.0
+85057,2026-08-15,REST-059,Cafeteria Usina Cafetera,76200,Tarjeta de Debito,31,6.4,Auto,Telgopor (EPS),0.0
+82865,2026-07-30,REST-124,Hamburgueseria Big Pons,56500,Mercado Pago,59,2.6,Moto,Fibra de Cana,0.0
+47278,2026-08-04,REST-293,Sushi Sushi House,73000,Mercado Pago,47,5.5,Moto,Carton / Papel,0.0
+87392,2026-08-22,REST-160,Heladeria Freddo,12300,Tarjeta de Credito,15,7.9,Bicicleta,Carton / Papel,0.368
+79769,2026-07-15,REST-024,Bodegon Plaza Astolfi,62500,Mercado Pago,28,6.7,Moto,Plastico PET/PP,0.0
+29752,2026-08-18,REST-012,Bodegon El Preferido,59500,Efectivo,58,4.5,Bicicleta,Plastico PET/PP,0.2096
+43754,2026-06-14,REST-272,Sushi Bonsai,66500,Tarjeta de Debito,15,0.8,Bicicleta,Plastico PET/PP,0.0373
+36142,2026-08-21,REST-070,Dietetica Flor,10400,Mercado Pago,65,6.4,Moto,Aluminio,0.0
+50825,2026-06-19,REST-298,Sushi Tokio,17800,Tarjeta de Credito,49,3.3,Bicicleta,Telgopor (EPS),0.1537
+44058,2026-08-12,REST-180,Heladeria Volta,7900,Mercado Pago,26,2.4,Bicicleta,Telgopor (EPS),0.1118
+56693,2026-06-17,REST-235,Pizzeria Nápoles,69300,Mercado Pago,28,2.0,Bicicleta,Bioplastico PLA,0.0932
+99627,2026-07-03,REST-283,Sushi Miyako,4800,Mercado Pago,42,4.4,Moto,Aluminio,0.0
+31196,2026-08-27,REST-185,Parrilla El Desnivel,72800,Tarjeta de Debito,51,1.1,Moto,Aluminio,0.0
+77110,2026-08-17,REST-121,Hamburgueseria Arredondo,24100,Tarjeta de Credito,51,5.5,Bicicleta,Telgopor (EPS),0.2562
+82056,2026-07-30,REST-165,Heladeria Luccianos,14700,Tarjeta de Credito,60,1.7,Bicicleta,Carton / Papel,0.0792
+13380,2026-07-05,REST-237,Pizzeria Roma,77500,Tarjeta de Debito,41,3.6,Bicicleta,Carton / Papel,0.1677
+50783,2026-07-16,REST-239,Pizzeria San Carlos,42600,Tarjeta de Debito,36,8.1,Moto,Carton / Papel,0.0
+26170,2026-06-10,REST-261,Rotiseria La Familia,76900,Mercado Pago,62,1.1,Moto,Plastico PET/PP,0.0
+96335,2026-08-16,REST-294,Sushi Sushi Master,57400,Tarjeta de Credito,28,3.4,Bicicleta,Polipapel,0.1584
+91591,2026-07-04,REST-212,Pizzeria Banchero,61500,Mercado Pago,64,1.1,Bicicleta,Telgopor (EPS),0.0512
+66423,2026-06-05,REST-046,Cafeteria Las Violetas,67000,Tarjeta de Credito,39,3.1,Bicicleta,Telgopor (EPS),0.1444
+85322,2026-07-31,REST-122,Hamburgueseria Bacon,48100,Efectivo,62,8.2,Moto,Bioplastico PLA,0.0
+47971,2026-07-20,REST-025,Bodegon Roma,54500,Tarjeta de Debito,43,5.1,Bicicleta,Polipapel,0.2376
+71566,2026-06-02,REST-034,Cafeteria Biela,31600,Tarjeta de Debito,20,4.3,Moto,Fibra de Cana,0.0
+76832,2026-06-04,REST-157,Heladeria Dolomiti,78500,Efectivo,15,8.1,Bicicleta,Polipapel,0.3773
+91771,2026-07-21,REST-122,Hamburgueseria Bacon,6900,Mercado Pago,64,7.4,Moto,Telgopor (EPS),0.0
+64073,2026-06-29,REST-097,Empanadas De la Abuela,11500,Mercado Pago,53,5.4,Moto,Fibra de Cana,0.0
+89016,2026-07-12,REST-158,Heladeria El Fundador,9900,Tarjeta de Credito,46,7.2,Bicicleta,Telgopor (EPS),0.3354
+12437,2026-06-30,REST-069,Dietetica Estrella,54300,Efectivo,63,3.1,Bicicleta,Polipapel,0.1444
+42229,2026-07-07,REST-294,Sushi Sushi Master,52600,Tarjeta de Credito,50,6.1,Moto,Plastico PET/PP,0.0
+37584,2026-07-16,REST-043,Cafeteria Havana,8400,Tarjeta de Credito,19,3.3,Bicicleta,Plastico PET/PP,0.1537
+97259,2026-07-09,REST-086,Dietetica Tomate Algo,18700,Tarjeta de Credito,25,3.3,Moto,Polipapel,0.0
+87105,2026-08-11,REST-009,Bodegon El Faro,32400,Tarjeta de Credito,34,6.4,Bicicleta,Aluminio,0.2981
+96420,2026-07-20,REST-187,Parrilla El Ferroviario,37500,Tarjeta de Credito,34,0.5,Bicicleta,Plastico PET/PP,0.0233
+72009,2026-08-10,REST-228,Pizzeria La Nueva,68700,Mercado Pago,34,6.0,Bicicleta,Aluminio,0.2795
+91773,2026-07-26,REST-128,Hamburgueseria Deniro,64500,Tarjeta de Debito,27,1.3,Moto,Fibra de Cana,0.0
+88786,2026-06-11,REST-280,Sushi Kobe,19300,Mercado Pago,27,3.1,Bicicleta,Fibra de Cana,0.1444
+50180,2026-06-18,REST-226,Pizzeria La Guitarrita,65300,Mercado Pago,51,7.6,Moto,Plastico PET/PP,0.0
+78677,2026-06-30,REST-224,Pizzeria Kentucky,60000,Tarjeta de Credito,18,5.9,Bicicleta,Bioplastico PLA,0.2748
+40902,2026-07-01,REST-279,Sushi Kenzo,67500,Mercado Pago,19,8.1,Moto,Bioplastico PLA,0.0
+16932,2026-06-11,REST-062,Dietetica Bio Natural,62600,Mercado Pago,17,7.8,Moto,Aluminio,0.0
+42376,2026-06-17,REST-064,Dietetica Cosecha,67300,Tarjeta de Credito,26,3.3,Moto,Polipapel,0.0
+38063,2026-06-16,REST-046,Cafeteria Las Violetas,28300,Mercado Pago,65,3.5,Bicicleta,Aluminio,0.163
+36529,2026-07-23,REST-020,Bodegon Manolo,26600,Tarjeta de Debito,38,5.2,Bicicleta,Polipapel,0.2422
+75351,2026-06-19,REST-081,Dietetica Raiz,72000,Tarjeta de Debito,20,2.5,Moto,Plastico PET/PP,0.0
+10402,2026-08-16,REST-093,Empanadas Caseras,52700,Efectivo,44,4.6,Bicicleta,Telgopor (EPS),0.2143
+93052,2026-06-13,REST-134,Hamburgueseria Heisenburger,75600,Mercado Pago,18,6.3,Bicicleta,Polipapel,0.2935
+42181,2026-08-16,REST-251,Rotiseria El Buen Sabor,65900,Mercado Pago,53,6.3,Moto,Bioplastico PLA,0.0
+91526,2026-08-18,REST-110,Empanadas Mi Gusto,8300,Efectivo,20,5.2,Bicicleta,Bioplastico PLA,0.2422
+88439,2026-06-08,REST-061,Dietetica Armonia,12300,Mercado Pago,45,2.2,Moto,Bioplastico PLA,0.0
+43869,2026-08-27,REST-121,Hamburgueseria Arredondo,16500,Tarjeta de Credito,37,5.1,Bicicleta,Plastico PET/PP,0.2376
+91219,2026-08-16,REST-271,Sushi Akira,65400,Tarjeta de Debito,47,1.6,Bicicleta,Aluminio,0.0745
+65261,2026-08-21,REST-131,Hamburgueseria Fat Broder,31000,Mercado Pago,33,6.7,Moto,Fibra de Cana,0.0
+60272,2026-06-20,REST-176,Heladeria Scannapieco,53500,Mercado Pago,40,3.2,Moto,Bioplastico PLA,0.0
+98778,2026-06-04,REST-183,Parrilla Don Ignacio,28300,Tarjeta de Credito,39,7.9,Moto,Bioplastico PLA,0.0
+47591,2026-06-25,REST-046,Cafeteria Las Violetas,45900,Efectivo,19,4.7,Moto,Plastico PET/PP,0.0
+46197,2026-06-13,REST-057,Cafeteria Tortoni,25600,Mercado Pago,19,7.7,Auto,Fibra de Cana,0.0
+64126,2026-08-30,REST-090,Dietetica Zen,61600,Tarjeta de Credito,24,5.5,Bicicleta,Carton / Papel,0.2562
+24466,2026-06-12,REST-281,Sushi Kyoto,16400,Efectivo,31,5.8,Moto,Polipapel,0.0
+74749,2026-06-20,REST-048,Cafeteria Le Ble,76600,Mercado Pago,62,7.7,Bicicleta,Carton / Papel,0.3587
+26462,2026-08-30,REST-098,Empanadas Delicias,45600,Efectivo,17,3.6,Moto,Polipapel,0.0
+78870,2026-08-16,REST-073,Dietetica Green Eat,66200,Tarjeta de Credito,56,2.4,Auto,Bioplastico PLA,0.0
+23526,2026-07-09,REST-180,Heladeria Volta,49600,Mercado Pago,25,5.9,Bicicleta,Plastico PET/PP,0.2748
+26436,2026-07-21,REST-029,Bodegon Spiagge di Napoli,77200,Mercado Pago,52,1.1,Moto,Telgopor (EPS),0.0
+81461,2026-07-28,REST-221,Pizzeria Guerrin,11300,Mercado Pago,65,3.0,Auto,Bioplastico PLA,0.0
+96886,2026-07-07,REST-092,Empanadas Al Horno,78500,Mercado Pago,25,4.6,Bicicleta,Fibra de Cana,0.2143
+22071,2026-06-08,REST-131,Hamburgueseria Fat Broder,7800,Mercado Pago,44,5.0,Bicicleta,Fibra de Cana,0.2329
+15747,2026-08-02,REST-201,Parrilla La Escondida,28200,Mercado Pago,40,7.1,Bicicleta,Polipapel,0.3307
+68594,2026-07-09,REST-160,Heladeria Freddo,47200,Tarjeta de Credito,50,6.3,Auto,Polipapel,0.0
+87341,2026-07-28,REST-250,Rotiseria El Buen Gusto,17900,Efectivo,24,2.9,Bicicleta,Plastico PET/PP,0.1351
+13584,2026-07-11,REST-242,Rotiseria Central,55000,Tarjeta de Credito,50,5.9,Moto,Plastico PET/PP,0.0
+40009,2026-08-14,REST-149,Hamburgueseria Weiss,70900,Tarjeta de Credito,32,2.1,Moto,Aluminio,0.0
+67910,2026-08-10,REST-140,Hamburgueseria Moe's,50000,Tarjeta de Credito,29,8.0,Bicicleta,Plastico PET/PP,0.3726
+59335,2026-08-13,REST-187,Parrilla El Ferroviario,13500,Mercado Pago,59,6.3,Moto,Polipapel,0.0
+54107,2026-07-04,REST-240,Pizzeria Solis,75000,Tarjeta de Debito,49,6.6,Bicicleta,Fibra de Cana,0.3074
+97240,2026-07-29,REST-094,Empanadas Costumbres,59500,Tarjeta de Credito,35,6.0,Moto,Fibra de Cana,0.0
+57415,2026-08-02,REST-096,Empanadas Cumen,36900,Mercado Pago,62,2.9,Moto,Carton / Papel,0.0
+75249,2026-07-05,REST-121,Hamburgueseria Arredondo,26100,Efectivo,29,3.2,Moto,Aluminio,0.0
+57361,2026-08-12,REST-199,Parrilla La Choza,24900,Mercado Pago,19,7.1,Auto,Aluminio,0.0
+88286,2026-06-12,REST-221,Pizzeria Guerrin,60400,Mercado Pago,46,0.8,Bicicleta,Polipapel,0.0373
+97703,2026-08-23,REST-236,Pizzeria Pirillo,77400,Tarjeta de Credito,16,3.5,Bicicleta,Fibra de Cana,0.163
+34222,2026-06-27,REST-277,Sushi Fuji,34200,Efectivo,61,7.1,Bicicleta,Telgopor (EPS),0.3307
+78794,2026-06-08,REST-040,Cafeteria Florida Garden,33100,Tarjeta de Debito,32,7.1,Moto,Bioplastico PLA,0.0
+59827,2026-08-25,REST-052,Cafeteria Ninina,47000,Mercado Pago,46,1.6,Moto,Plastico PET/PP,0.0
+15852,2026-07-14,REST-095,Empanadas Criollas,34300,Mercado Pago,53,2.0,Moto,Fibra de Cana,0.0
+15128,2026-06-11,REST-174,Heladeria San Remo,50600,Tarjeta de Credito,36,2.6,Moto,Bioplastico PLA,0.0
+86149,2026-07-10,REST-076,Dietetica Luna,50600,Mercado Pago,39,1.3,Bicicleta,Telgopor (EPS),0.0606
+31161,2026-07-02,REST-251,Rotiseria El Buen Sabor,25000,Mercado Pago,20,4.1,Moto,Polipapel,0.0
+40359,2026-06-20,REST-035,Cafeteria Britanico,16400,Tarjeta de Debito,51,5.1,Moto,Polipapel,0.0
+43241,2026-08-09,REST-109,Empanadas Mendocinas,8500,Tarjeta de Credito,16,1.7,Moto,Telgopor (EPS),0.0
+57548,2026-08-26,REST-118,Empanadas Tomasso,51600,Tarjeta de Debito,35,7.4,Moto,Polipapel,0.0
+38089,2026-08-14,REST-216,Pizzeria El Cedrón,63400,Mercado Pago,38,5.8,Bicicleta,Polipapel,0.2702
+52014,2026-07-13,REST-074,Dietetica Hoja,4400,Efectivo,53,6.2,Moto,Fibra de Cana,0.0
+17139,2026-08-16,REST-241,Rotiseria A Punto,58900,Tarjeta de Credito,36,6.1,Bicicleta,Aluminio,0.2841
+73591,2026-07-25,REST-060,Cafeteria Varela Varelita,24900,Mercado Pago,38,3.1,Moto,Polipapel,0.0
+55774,2026-07-25,REST-109,Empanadas Mendocinas,71400,Mercado Pago,55,2.0,Bicicleta,Plastico PET/PP,0.0932
+79930,2026-08-14,REST-262,Rotiseria La Olla,11900,Tarjeta de Credito,65,4.5,Bicicleta,Telgopor (EPS),0.2096
+94020,2026-07-25,REST-006,Bodegon Cerveceria Lopez,37600,Tarjeta de Credito,50,7.0,Bicicleta,Carton / Papel,0.3261
+11064,2026-08-07,REST-213,Pizzeria Burgio,71500,Mercado Pago,37,2.5,Moto,Polipapel,0.0
+31870,2026-08-08,REST-229,Pizzeria La Rey,21700,Mercado Pago,34,6.3,Bicicleta,Aluminio,0.2935
+64625,2026-07-19,REST-149,Hamburgueseria Weiss,71300,Mercado Pago,30,0.5,Moto,Bioplastico PLA,0.0
+12701,2026-07-08,REST-262,Rotiseria La Olla,40000,Mercado Pago,52,4.2,Moto,Plastico PET/PP,0.0
+81031,2026-08-25,REST-044,Cafeteria Homero,75400,Tarjeta de Credito,45,7.8,Bicicleta,Bioplastico PLA,0.3633
+91659,2026-06-05,REST-096,Empanadas Cumen,62900,Tarjeta de Credito,37,1.6,Bicicleta,Carton / Papel,0.0745
+97831,2026-08-22,REST-253,Rotiseria El Gato Negro,24300,Efectivo,30,7.3,Moto,Plastico PET/PP,0.0
+73588,2026-06-04,REST-097,Empanadas De la Abuela,78500,Tarjeta de Credito,47,4.1,Moto,Telgopor (EPS),0.0
+52474,2026-08-08,REST-206,Parrilla Los Platitos,26000,Tarjeta de Credito,25,6.9,Moto,Telgopor (EPS),0.0
+80070,2026-07-06,REST-036,Cafeteria Cabrales,7600,Mercado Pago,45,8.3,Bicicleta,Bioplastico PLA,0.3866
+74524,2026-07-19,REST-217,Pizzeria El Cuartito,62500,Mercado Pago,21,6.0,Moto,Telgopor (EPS),0.0
+67884,2026-06-02,REST-283,Sushi Miyako,31100,Tarjeta de Credito,22,2.5,Bicicleta,Carton / Papel,0.1165
+52592,2026-07-01,REST-277,Sushi Fuji,24700,Mercado Pago,35,0.6,Moto,Polipapel,0.0
+21793,2026-06-05,REST-074,Dietetica Hoja,16100,Mercado Pago,52,1.0,Moto,Aluminio,0.0
+49812,2026-07-24,REST-105,Empanadas La Americana,68600,Tarjeta de Credito,34,4.2,Moto,Fibra de Cana,0.0
+93636,2026-08-11,REST-250,Rotiseria El Buen Gusto,60400,Mercado Pago,39,1.3,Moto,Polipapel,0.0
+66184,2026-07-09,REST-233,Pizzeria Los Campeones,21200,Tarjeta de Credito,15,7.8,Moto,Bioplastico PLA,0.0
+75563,2026-07-01,REST-236,Pizzeria Pirillo,7200,Tarjeta de Credito,23,5.4,Moto,Fibra de Cana,0.0
+84299,2026-06-23,REST-152,Heladeria Arnaldo,26100,Efectivo,56,4.8,Bicicleta,Polipapel,0.2236
+11957,2026-08-19,REST-056,Cafeteria Tienda de Cafe,7000,Mercado Pago,51,7.6,Moto,Carton / Papel,0.0
+75385,2026-07-12,REST-029,Bodegon Spiagge di Napoli,22900,Efectivo,42,1.8,Bicicleta,Telgopor (EPS),0.0838
+70041,2026-06-01,REST-045,Cafeteria Ideal,76500,Tarjeta de Credito,19,1.4,Bicicleta,Fibra de Cana,0.0652
+58985,2026-06-11,REST-257,Rotiseria Gourmet Express,48100,Tarjeta de Credito,19,7.1,Bicicleta,Plastico PET/PP,0.3307
+62386,2026-08-21,REST-179,Heladeria Via Maggiore,74200,Efectivo,59,5.5,Moto,Carton / Papel,0.0
+77354,2026-06-15,REST-241,Rotiseria A Punto,38000,Mercado Pago,50,4.2,Moto,Aluminio,0.0
+81442,2026-07-29,REST-191,Parrilla El Ombú,12100,Tarjeta de Credito,16,3.9,Bicicleta,Telgopor (EPS),0.1817
+28373,2026-06-21,REST-206,Parrilla Los Platitos,11100,Mercado Pago,35,6.0,Moto,Polipapel,0.0
+44315,2026-07-12,REST-088,Dietetica Vida Sana,11000,Mercado Pago,43,3.7,Moto,Polipapel,0.0
+44671,2026-08-17,REST-098,Empanadas Delicias,20900,Tarjeta de Credito,17,1.9,Bicicleta,Plastico PET/PP,0.0885
+37065,2026-08-11,REST-124,Hamburgueseria Big Pons,51700,Mercado Pago,18,4.2,Bicicleta,Fibra de Cana,0.1956
+43712,2026-06-30,REST-163,Heladeria Jauja,5100,Tarjeta de Debito,27,5.7,Moto,Bioplastico PLA,0.0
+94314,2026-07-12,REST-210,Parrilla Roldán,26700,Mercado Pago,38,8.3,Moto,Carton / Papel,0.0
+57265,2026-06-11,REST-163,Heladeria Jauja,43100,Mercado Pago,63,7.0,Moto,Polipapel,0.0
+59789,2026-07-29,REST-103,Empanadas Gourmet,7200,Efectivo,24,6.4,Moto,Telgopor (EPS),0.0
+68163,2026-08-19,REST-002,Bodegon Bar de Cao,22800,Mercado Pago,42,2.6,Bicicleta,Telgopor (EPS),0.1211
+60472,2026-07-10,REST-195,Parrilla El Tano,68700,Mercado Pago,55,8.2,Auto,Bioplastico PLA,0.0
+73689,2026-08-04,REST-121,Hamburgueseria Arredondo,75300,Mercado Pago,48,2.3,Moto,Aluminio,0.0
+45764,2026-08-16,REST-274,Sushi Dashi,8700,Mercado Pago,55,7.1,Bicicleta,Telgopor (EPS),0.3307
+99487,2026-06-24,REST-172,Heladeria Ramon Ceria,60700,Mercado Pago,56,5.9,Bicicleta,Fibra de Cana,0.2748
+31807,2026-08-22,REST-012,Bodegon El Preferido,7100,Tarjeta de Debito,18,3.2,Bicicleta,Aluminio,0.1491
+26747,2026-08-10,REST-238,Pizzeria San Antonio,78700,Tarjeta de Credito,55,4.2,Moto,Plastico PET/PP,0.0
+69370,2026-08-08,REST-232,Pizzeria Las Cuartetas,73800,Mercado Pago,42,8.1,Moto,Aluminio,0.0
+87305,2026-06-20,REST-280,Sushi Kobe,12100,Efectivo,27,2.4,Bicicleta,Plastico PET/PP,0.1118
+42589,2026-06-27,REST-158,Heladeria El Fundador,35900,Tarjeta de Credito,45,5.9,Bicicleta,Aluminio,0.2748
+80058,2026-06-17,REST-191,Parrilla El Ombú,45400,Efectivo,44,7.9,Moto,Fibra de Cana,0.0
+41947,2026-07-24,REST-052,Cafeteria Ninina,42800,Mercado Pago,32,5.5,Bicicleta,Plastico PET/PP,0.2562
+99105,2026-06-07,REST-160,Heladeria Freddo,10900,Mercado Pago,53,7.8,Moto,Telgopor (EPS),0.0
+12234,2026-07-19,REST-203,Parrilla La Tradición,72900,Tarjeta de Debito,38,2.9,Moto,Fibra de Cana,0.0
+75290,2026-07-11,REST-282,Sushi Mika,14200,Mercado Pago,22,6.8,Moto,Polipapel,0.0
+24792,2026-07-19,REST-045,Cafeteria Ideal,7700,Mercado Pago,43,2.2,Moto,Plastico PET/PP,0.0
+70392,2026-08-03,REST-005,Bodegon Celta Bar,63800,Tarjeta de Credito,22,0.8,Moto,Carton / Papel,0.0
+57641,2026-06-15,REST-003,Bodegon Britanico,28600,Efectivo,52,2.2,Moto,Telgopor (EPS),0.0
+42745,2026-06-11,REST-143,Hamburgueseria Pony Line,36600,Mercado Pago,31,4.7,Bicicleta,Fibra de Cana,0.2189
+25430,2026-06-23,REST-056,Cafeteria Tienda de Cafe,47600,Mercado Pago,35,6.3,Bicicleta,Telgopor (EPS),0.2935
+61766,2026-07-08,REST-211,Pizzeria Angelin,57100,Tarjeta de Credito,55,4.4,Moto,Bioplastico PLA,0.0
+30620,2026-07-10,REST-149,Hamburgueseria Weiss,17500,Mercado Pago,25,3.8,Moto,Polipapel,0.0
+62755,2026-07-30,REST-142,Hamburgueseria Perez H,57100,Efectivo,49,6.2,Moto,Plastico PET/PP,0.0
+68346,2026-08-15,REST-166,Heladeria Milano,44600,Tarjeta de Credito,38,1.7,Bicicleta,Polipapel,0.0792
+92175,2026-06-26,REST-183,Parrilla Don Ignacio,11500,Mercado Pago,46,6.3,Moto,Aluminio,0.0
+92596,2026-07-08,REST-292,Sushi Sushi Express,74300,Mercado Pago,40,7.6,Bicicleta,Aluminio,0.354
+25901,2026-06-06,REST-181,Parrilla Cabaña Las Lilas,55500,Tarjeta de Credito,47,3.9,Moto,Bioplastico PLA,0.0
+98295,2026-08-29,REST-154,Heladeria Cadore,25200,Tarjeta de Credito,62,1.6,Moto,Fibra de Cana,0.0
+46820,2026-06-28,REST-223,Pizzeria Imperio,29500,Mercado Pago,22,0.7,Moto,Plastico PET/PP,0.0
+42980,2026-08-19,REST-195,Parrilla El Tano,49300,Mercado Pago,58,6.9,Moto,Fibra de Cana,0.0
+70561,2026-06-11,REST-104,Empanadas Kiosco,57200,Tarjeta de Credito,34,7.0,Bicicleta,Aluminio,0.3261
+79238,2026-08-21,REST-207,Parrilla Los Talas,65700,Tarjeta de Credito,44,7.4,Bicicleta,Fibra de Cana,0.3447
+74988,2026-07-23,REST-084,Dietetica Sol,62300,Efectivo,48,4.2,Moto,Carton / Papel,0.0
+78199,2026-07-04,REST-086,Dietetica Tomate Algo,25100,Tarjeta de Credito,33,4.2,Moto,Bioplastico PLA,0.0
+54506,2026-06-09,REST-013,Bodegon Federal,29100,Tarjeta de Credito,26,4.4,Moto,Bioplastico PLA,0.0
+84648,2026-06-16,REST-166,Heladeria Milano,45500,Tarjeta de Credito,23,6.4,Moto,Carton / Papel,0.0
+87863,2026-08-14,REST-166,Heladeria Milano,4400,Mercado Pago,48,7.1,Bicicleta,Carton / Papel,0.3307
+22910,2026-08-08,REST-245,Rotiseria Don Carlos,32100,Mercado Pago,65,7.4,Bicicleta,Carton / Papel,0.3447
+73533,2026-06-20,REST-222,Pizzeria Génova,31100,Tarjeta de Credito,35,5.1,Moto,Bioplastico PLA,0.0
+37592,2026-07-31,REST-142,Hamburgueseria Perez H,73700,Tarjeta de Debito,40,7.7,Bicicleta,Plastico PET/PP,0.3587
+38087,2026-07-13,REST-017,Bodegon Lezama,19900,Tarjeta de Credito,36,3.2,Bicicleta,Carton / Papel,0.1491
+76556,2026-06-27,REST-138,Hamburgueseria La Birra Bar,7700,Efectivo,18,2.8,Bicicleta,Fibra de Cana,0.1304
+31401,2026-07-13,REST-061,Dietetica Armonia,44900,Mercado Pago,42,1.5,Moto,Aluminio,0.0
+28776,2026-06-15,REST-029,Bodegon Spiagge di Napoli,35000,Efectivo,36,5.3,Moto,Carton / Papel,0.0
+75119,2026-06-06,REST-196,Parrilla La Brigada,79700,Mercado Pago,30,4.7,Bicicleta,Plastico PET/PP,0.2189
+39711,2026-07-15,REST-221,Pizzeria Guerrin,13700,Tarjeta de Debito,19,4.4,Moto,Fibra de Cana,0.0
+56695,2026-07-02,REST-227,Pizzeria La Mezzetta,29400,Mercado Pago,62,4.5,Bicicleta,Bioplastico PLA,0.2096
+84189,2026-07-30,REST-005,Bodegon Celta Bar,17900,Mercado Pago,54,2.8,Auto,Polipapel,0.0
+30583,2026-08-18,REST-274,Sushi Dashi,9900,Mercado Pago,45,1.9,Moto,Aluminio,0.0
+53165,2026-08-25,REST-084,Dietetica Sol,26700,Mercado Pago,60,1.0,Bicicleta,Fibra de Cana,0.0466
+91048,2026-08-09,REST-112,Empanadas Picantes,19500,Efectivo,17,0.8,Bicicleta,Telgopor (EPS),0.0373
+20777,2026-08-31,REST-271,Sushi Akira,72400,Mercado Pago,31,4.1,Moto,Fibra de Cana,0.0
+56147,2026-06-07,REST-181,Parrilla Cabaña Las Lilas,68800,Efectivo,25,6.3,Moto,Plastico PET/PP,0.0
+29850,2026-08-15,REST-073,Dietetica Green Eat,65400,Tarjeta de Debito,37,6.9,Bicicleta,Carton / Papel,0.3214
+63708,2026-06-11,REST-191,Parrilla El Ombú,75600,Tarjeta de Credito,28,7.2,Moto,Bioplastico PLA,0.0
+40837,2026-07-14,REST-233,Pizzeria Los Campeones,66900,Mercado Pago,36,2.6,Moto,Plastico PET/PP,0.0
+14196,2026-06-24,REST-187,Parrilla El Ferroviario,49500,Mercado Pago,42,4.0,Bicicleta,Plastico PET/PP,0.1863
+72254,2026-07-30,REST-242,Rotiseria Central,58100,Tarjeta de Credito,39,2.9,Moto,Bioplastico PLA,0.0
+82402,2026-07-14,REST-062,Dietetica Bio Natural,4100,Efectivo,20,2.1,Bicicleta,Carton / Papel,0.0978
+54645,2026-06-09,REST-229,Pizzeria La Rey,21400,Tarjeta de Credito,41,1.9,Moto,Plastico PET/PP,0.0
+72010,2026-08-27,REST-170,Heladeria Persicco,41500,Tarjeta de Credito,28,6.7,Bicicleta,Polipapel,0.3121
+55048,2026-08-19,REST-185,Parrilla El Desnivel,33500,Tarjeta de Credito,42,3.6,Moto,Carton / Papel,0.0
+66494,2026-06-16,REST-118,Empanadas Tomasso,47400,Tarjeta de Credito,46,5.8,Moto,Polipapel,0.0
+56947,2026-06-18,REST-090,Dietetica Zen,16900,Mercado Pago,43,4.6,Moto,Plastico PET/PP,0.0
+46720,2026-08-04,REST-169,Heladeria Occo,26300,Tarjeta de Credito,52,3.2,Moto,Carton / Papel,0.0
+74030,2026-07-09,REST-072,Dietetica Fruto,55000,Mercado Pago,43,1.9,Moto,Plastico PET/PP,0.0
+67561,2026-08-31,REST-150,Hamburgueseria Williams,50400,Tarjeta de Credito,52,3.0,Moto,Carton / Papel,0.0
+82422,2026-07-09,REST-176,Heladeria Scannapieco,48400,Tarjeta de Credito,31,2.5,Auto,Telgopor (EPS),0.0
+91491,2026-08-02,REST-236,Pizzeria Pirillo,67500,Tarjeta de Credito,18,6.1,Moto,Aluminio,0.0
+90108,2026-08-20,REST-232,Pizzeria Las Cuartetas,42100,Tarjeta de Credito,15,6.7,Moto,Telgopor (EPS),0.0
+78620,2026-06-29,REST-264,Rotiseria Los Amigos,39000,Mercado Pago,41,3.1,Moto,Bioplastico PLA,0.0
+28427,2026-08-15,REST-164,Heladeria La Sorbetiere,70900,Mercado Pago,18,4.8,Auto,Carton / Papel,0.0
+22417,2026-08-31,REST-150,Hamburgueseria Williams,42600,Tarjeta de Credito,43,7.4,Moto,Carton / Papel,0.0
+20785,2026-08-04,REST-066,Dietetica El Naranjo,78800,Mercado Pago,26,1.2,Moto,Polipapel,0.0
+93365,2026-07-03,REST-202,Parrilla La Estancia,55500,Mercado Pago,32,6.0,Moto,Carton / Papel,0.0
+27028,2026-07-21,REST-187,Parrilla El Ferroviario,55300,Mercado Pago,44,8.2,Bicicleta,Aluminio,0.382
+18794,2026-07-03,REST-264,Rotiseria Los Amigos,49400,Mercado Pago,57,4.5,Bicicleta,Aluminio,0.2096
+89642,2026-08-22,REST-103,Empanadas Gourmet,40800,Tarjeta de Credito,62,5.4,Bicicleta,Telgopor (EPS),0.2515
+84488,2026-06-26,REST-234,Pizzeria Los Inmortales,38300,Tarjeta de Credito,31,7.0,Bicicleta,Fibra de Cana,0.3261
+71352,2026-07-29,REST-292,Sushi Sushi Express,41000,Mercado Pago,42,1.9,Bicicleta,Aluminio,0.0885
+41957,2026-07-04,REST-098,Empanadas Delicias,44800,Tarjeta de Credito,49,3.4,Moto,Polipapel,0.0
+59730,2026-08-30,REST-160,Heladeria Freddo,62700,Efectivo,56,1.2,Moto,Fibra de Cana,0.0
+81492,2026-07-09,REST-111,Empanadas Morita,60900,Tarjeta de Debito,52,7.1,Moto,Polipapel,0.0
+43554,2026-08-30,REST-037,Cafeteria Cuervo,44200,Mercado Pago,18,8.4,Auto,Aluminio,0.0
+47246,2026-08-24,REST-189,Parrilla El Lazo,19300,Tarjeta de Credito,32,2.5,Moto,Bioplastico PLA,0.0
+68674,2026-08-22,REST-038,Cafeteria El Federal,11200,Tarjeta de Debito,36,0.5,Bicicleta,Plastico PET/PP,0.0233
+37326,2026-06-09,REST-218,Pizzeria El Fortin,33100,Tarjeta de Debito,62,1.4,Moto,Fibra de Cana,0.0
+98641,2026-06-24,REST-218,Pizzeria El Fortin,60400,Efectivo,28,7.7,Moto,Carton / Papel,0.0
+87649,2026-08-20,REST-184,Parrilla Don Julio,49200,Efectivo,39,8.1,Moto,Bioplastico PLA,0.0
+16901,2026-06-23,REST-039,Cafeteria El Gato,63300,Tarjeta de Credito,59,7.0,Bicicleta,Aluminio,0.3261
+19735,2026-08-13,REST-112,Empanadas Picantes,25300,Tarjeta de Credito,65,3.4,Moto,Telgopor (EPS),0.0
+16436,2026-08-25,REST-002,Bodegon Bar de Cao,19400,Mercado Pago,44,3.3,Moto,Aluminio,0.0
+86968,2026-07-21,REST-239,Pizzeria San Carlos,9400,Tarjeta de Credito,46,6.7,Moto,Carton / Papel,0.0
+13227,2026-06-25,REST-072,Dietetica Fruto,27200,Mercado Pago,38,4.6,Moto,Telgopor (EPS),0.0
+44050,2026-08-20,REST-066,Dietetica El Naranjo,55400,Efectivo,65,5.2,Bicicleta,Aluminio,0.2422
+18877,2026-07-16,REST-166,Heladeria Milano,35800,Tarjeta de Credito,16,1.4,Moto,Plastico PET/PP,0.0
+97565,2026-07-29,REST-188,Parrilla El Fogón,21800,Mercado Pago,36,6.0,Moto,Telgopor (EPS),0.0
+75811,2026-06-09,REST-046,Cafeteria Las Violetas,59400,Mercado Pago,37,8.1,Bicicleta,Aluminio,0.3773
+66033,2026-08-19,REST-252,Rotiseria El Cucharón,29600,Mercado Pago,16,4.0,Bicicleta,Telgopor (EPS),0.1863
+27099,2026-07-25,REST-001,Bodegon Bar Sur,54600,Mercado Pago,48,2.9,Bicicleta,Bioplastico PLA,0.1351
+11557,2026-07-12,REST-134,Hamburgueseria Heisenburger,44400,Tarjeta de Credito,19,5.0,Moto,Fibra de Cana,0.0
+63758,2026-07-19,REST-187,Parrilla El Ferroviario,27300,Tarjeta de Credito,32,4.6,Moto,Telgopor (EPS),0.0
+35867,2026-07-30,REST-131,Hamburgueseria Fat Broder,11600,Tarjeta de Credito,58,5.7,Moto,Polipapel,0.0
+48006,2026-08-05,REST-060,Cafeteria Varela Varelita,56600,Mercado Pago,31,3.3,Bicicleta,Aluminio,0.1537
+82724,2026-06-05,REST-113,Empanadas Porteñas,57400,Mercado Pago,37,1.1,Moto,Fibra de Cana,0.0
+72881,2026-06-06,REST-152,Heladeria Arnaldo,34600,Tarjeta de Credito,26,8.0,Moto,Fibra de Cana,0.0
+18105,2026-08-04,REST-256,Rotiseria El Rey,10500,Tarjeta de Credito,64,5.6,Moto,Carton / Papel,0.0
+52926,2026-07-23,REST-195,Parrilla El Tano,31700,Mercado Pago,45,2.3,Moto,Plastico PET/PP,0.0
+37859,2026-07-15,REST-145,Hamburgueseria The Burger Company,27200,Efectivo,40,5.6,Moto,Polipapel,0.0
+60878,2026-07-08,REST-122,Hamburgueseria Bacon,33900,Tarjeta de Credito,62,3.0,Bicicleta,Aluminio,0.1397
+78344,2026-06-30,REST-056,Cafeteria Tienda de Cafe,38000,Mercado Pago,27,5.5,Bicicleta,Fibra de Cana,0.2562
+59073,2026-07-24,REST-299,Sushi Wasabi,56600,Mercado Pago,54,7.6,Bicicleta,Carton / Papel,0.354
+37305,2026-08-24,REST-090,Dietetica Zen,10500,Tarjeta de Credito,28,0.9,Moto,Carton / Papel,0.0
+73425,2026-07-09,REST-282,Sushi Mika,33700,Tarjeta de Credito,52,3.1,Auto,Polipapel,0.0
+82706,2026-08-12,REST-050,Cafeteria Margot,22000,Mercado Pago,55,2.1,Bicicleta,Polipapel,0.0978
+39879,2026-06-06,REST-217,Pizzeria El Cuartito,56600,Tarjeta de Debito,62,2.4,Moto,Telgopor (EPS),0.0
+36351,2026-08-10,REST-290,Sushi Samurai,6300,Efectivo,44,8.0,Moto,Polipapel,0.0
+64647,2026-06-29,REST-044,Cafeteria Homero,18200,Tarjeta de Credito,63,3.5,Moto,Carton / Papel,0.0
+59582,2026-08-03,REST-210,Parrilla Roldán,59900,Mercado Pago,57,3.5,Bicicleta,Polipapel,0.163
+98294,2026-08-14,REST-235,Pizzeria Nápoles,34100,Tarjeta de Debito,36,3.0,Moto,Carton / Papel,0.0
+28349,2026-08-29,REST-234,Pizzeria Los Inmortales,76700,Mercado Pago,34,1.8,Moto,Telgopor (EPS),0.0
+32751,2026-06-29,REST-119,Empanadas Tradicionales,24000,Mercado Pago,33,1.6,Moto,Aluminio,0.0
+32342,2026-08-04,REST-210,Parrilla Roldán,62700,Mercado Pago,33,7.2,Bicicleta,Bioplastico PLA,0.3354
+60578,2026-07-04,REST-281,Sushi Kyoto,76300,Mercado Pago,57,5.9,Moto,Fibra de Cana,0.0
+26018,2026-06-26,REST-080,Dietetica Pura Vida,76900,Tarjeta de Credito,16,7.5,Bicicleta,Plastico PET/PP,0.3494
+70739,2026-07-06,REST-011,Bodegon El Obrero,65200,Efectivo,15,3.8,Bicicleta,Plastico PET/PP,0.177
+96266,2026-07-24,REST-010,Bodegon El Globo,37300,Tarjeta de Credito,26,0.6,Bicicleta,Bioplastico PLA,0.0279
+66039,2026-08-15,REST-088,Dietetica Vida Sana,8500,Tarjeta de Debito,59,7.1,Moto,Fibra de Cana,0.0
+86337,2026-08-25,REST-269,Rotiseria Tentaciones,77500,Mercado Pago,18,3.6,Moto,Aluminio,0.0
+97856,2026-06-13,REST-266,Rotiseria Sabor de Hogar,21700,Mercado Pago,20,4.5,Bicicleta,Aluminio,0.2096
+34131,2026-06-18,REST-187,Parrilla El Ferroviario,63100,Mercado Pago,36,1.9,Bicicleta,Fibra de Cana,0.0885
+58143,2026-07-05,REST-094,Empanadas Costumbres,73200,Mercado Pago,30,2.4,Moto,Fibra de Cana,0.0
+57140,2026-06-27,REST-198,Parrilla La Cabrera Norte,47300,Mercado Pago,33,0.9,Moto,Carton / Papel,0.0
+25424,2026-08-15,REST-034,Cafeteria Biela,29400,Mercado Pago,19,5.7,Moto,Bioplastico PLA,0.0
+23818,2026-06-15,REST-205,Parrilla Lo de Jesus,62200,Mercado Pago,45,2.7,Moto,Bioplastico PLA,0.0
+40149,2026-06-16,REST-035,Cafeteria Britanico,8500,Mercado Pago,53,6.7,Moto,Carton / Papel,0.0
+76331,2026-07-14,REST-024,Bodegon Plaza Astolfi,71900,Mercado Pago,39,4.0,Bicicleta,Carton / Papel,0.1863
+95560,2026-08-06,REST-093,Empanadas Caseras,59600,Mercado Pago,21,4.5,Bicicleta,Bioplastico PLA,0.2096
+10589,2026-08-15,REST-167,Heladeria Munchis,53700,Tarjeta de Credito,25,2.5,Bicicleta,Polipapel,0.1165
+54297,2026-08-01,REST-298,Sushi Tokio,29500,Tarjeta de Credito,29,5.9,Bicicleta,Bioplastico PLA,0.2748
+66490,2026-07-22,REST-039,Cafeteria El Gato,45100,Tarjeta de Credito,36,7.1,Moto,Telgopor (EPS),0.0
+30176,2026-07-17,REST-100,Empanadas El Noble,49900,Mercado Pago,15,4.2,Bicicleta,Aluminio,0.1956
+22043,2026-08-25,REST-150,Hamburgueseria Williams,33800,Mercado Pago,40,6.2,Bicicleta,Bioplastico PLA,0.2888
+56503,2026-08-09,REST-218,Pizzeria El Fortin,62200,Tarjeta de Credito,62,2.8,Bicicleta,Bioplastico PLA,0.1304
+65056,2026-08-22,REST-060,Cafeteria Varela Varelita,20600,Mercado Pago,39,4.9,Moto,Telgopor (EPS),0.0
+96533,2026-06-03,REST-083,Dietetica Semilla,24600,Tarjeta de Credito,26,8.3,Moto,Aluminio,0.0
+29751,2026-07-18,REST-098,Empanadas Delicias,64400,Tarjeta de Credito,43,0.7,Moto,Bioplastico PLA,0.0
+96376,2026-06-23,REST-285,Sushi Ninja,68900,Mercado Pago,58,7.7,Auto,Plastico PET/PP,0.0
+28307,2026-07-03,REST-156,Heladeria Daniel,60600,Tarjeta de Debito,42,6.6,Bicicleta,Polipapel,0.3074
+23783,2026-07-24,REST-027,Bodegon San Jose,44900,Tarjeta de Credito,62,1.7,Moto,Plastico PET/PP,0.0
+28748,2026-08-03,REST-012,Bodegon El Preferido,72000,Mercado Pago,25,4.5,Bicicleta,Polipapel,0.2096
+46994,2026-08-02,REST-197,Parrilla La Cabrera,8200,Mercado Pago,61,5.1,Moto,Bioplastico PLA,0.0
+47221,2026-08-09,REST-035,Cafeteria Britanico,65600,Mercado Pago,28,3.9,Bicicleta,Plastico PET/PP,0.1817
+44529,2026-08-09,REST-062,Dietetica Bio Natural,29700,Tarjeta de Credito,15,4.4,Moto,Polipapel,0.0
+13397,2026-08-31,REST-042,Cafeteria Gato Negro,72500,Tarjeta de Credito,21,1.0,Bicicleta,Plastico PET/PP,0.0466
+26942,2026-07-13,REST-141,Hamburgueseria Paris Burger,65800,Mercado Pago,33,7.9,Moto,Telgopor (EPS),0.0
+93154,2026-07-13,REST-227,Pizzeria La Mezzetta,38400,Mercado Pago,25,6.5,Auto,Fibra de Cana,0.0
+83878,2026-07-17,REST-245,Rotiseria Don Carlos,64600,Mercado Pago,54,2.5,Bicicleta,Polipapel,0.1165
+49968,2026-08-05,REST-071,Dietetica Fresh,40200,Mercado Pago,37,4.5,Moto,Plastico PET/PP,0.0
+55111,2026-06-29,REST-152,Heladeria Arnaldo,72200,Mercado Pago,23,6.2,Bicicleta,Telgopor (EPS),0.2888
+58287,2026-08-16,REST-147,Hamburgueseria Toro,13100,Mercado Pago,58,5.9,Moto,Polipapel,0.0
+18524,2026-08-23,REST-093,Empanadas Caseras,23200,Mercado Pago,17,1.6,Bicicleta,Polipapel,0.0745
+69220,2026-06-26,REST-180,Heladeria Volta,20200,Efectivo,44,1.1,Moto,Carton / Papel,0.0
+87110,2026-08-24,REST-199,Parrilla La Choza,36600,Mercado Pago,58,8.2,Bicicleta,Fibra de Cana,0.382
+79881,2026-07-15,REST-032,Cafeteria All Saints,14900,Tarjeta de Debito,32,0.9,Moto,Telgopor (EPS),0.0
+49589,2026-08-22,REST-253,Rotiseria El Gato Negro,63800,Mercado Pago,64,6.9,Bicicleta,Carton / Papel,0.3214
+74031,2026-07-11,REST-240,Pizzeria Solis,77000,Efectivo,35,6.0,Moto,Bioplastico PLA,0.0
+50152,2026-08-15,REST-217,Pizzeria El Cuartito,8000,Efectivo,25,6.0,Bicicleta,Plastico PET/PP,0.2795
+92076,2026-06-29,REST-046,Cafeteria Las Violetas,10400,Mercado Pago,61,4.6,Bicicleta,Plastico PET/PP,0.2143
+32558,2026-08-08,REST-180,Heladeria Volta,11400,Mercado Pago,26,5.4,Moto,Telgopor (EPS),0.0
+45114,2026-08-07,REST-156,Heladeria Daniel,61200,Mercado Pago,65,3.1,Bicicleta,Carton / Papel,0.1444
+29593,2026-08-23,REST-248,Rotiseria Doña Rosa,24200,Mercado Pago,28,3.1,Moto,Telgopor (EPS),0.0
+48770,2026-08-24,REST-298,Sushi Tokio,13800,Tarjeta de Debito,47,3.5,Moto,Bioplastico PLA,0.0
+73480,2026-07-25,REST-034,Cafeteria Biela,50600,Mercado Pago,59,2.0,Bicicleta,Carton / Papel,0.0932
+13156,2026-06-25,REST-096,Empanadas Cumen,33800,Tarjeta de Debito,46,6.0,Moto,Fibra de Cana,0.0
+51580,2026-07-20,REST-136,Hamburgueseria Kiddo,14900,Mercado Pago,27,8.0,Moto,Plastico PET/PP,0.0
+26271,2026-07-20,REST-038,Cafeteria El Federal,40500,Mercado Pago,63,7.2,Bicicleta,Telgopor (EPS),0.3354
+32070,2026-06-15,REST-205,Parrilla Lo de Jesus,9200,Tarjeta de Debito,65,6.7,Bicicleta,Carton / Papel,0.3121
+97936,2026-08-01,REST-171,Heladeria Podio,52900,Tarjeta de Credito,47,5.2,Bicicleta,Bioplastico PLA,0.2422
+45352,2026-07-06,REST-179,Heladeria Via Maggiore,32300,Mercado Pago,59,7.8,Bicicleta,Fibra de Cana,0.3633
+78653,2026-06-26,REST-015,Bodegon La Pipeta,26800,Efectivo,30,7.2,Bicicleta,Polipapel,0.3354
+71043,2026-06-24,REST-195,Parrilla El Tano,18600,Mercado Pago,54,1.4,Moto,Aluminio,0.0
+26078,2026-07-28,REST-286,Sushi Oishii,32800,Mercado Pago,56,3.5,Bicicleta,Fibra de Cana,0.163
+66034,2026-07-12,REST-050,Cafeteria Margot,74900,Mercado Pago,49,2.2,Bicicleta,Carton / Papel,0.1025
+20566,2026-08-02,REST-014,Bodegon Flor de Barracas,18300,Mercado Pago,37,5.0,Bicicleta,Carton / Papel,0.2329
+26229,2026-08-18,REST-275,Sushi Edo,27400,Mercado Pago,46,3.3,Bicicleta,Plastico PET/PP,0.1537
+13549,2026-07-04,REST-072,Dietetica Fruto,55900,Mercado Pago,40,7.1,Bicicleta,Fibra de Cana,0.3307
+87578,2026-06-28,REST-052,Cafeteria Ninina,73500,Mercado Pago,39,3.9,Bicicleta,Telgopor (EPS),0.1817
+56363,2026-07-06,REST-100,Empanadas El Noble,59300,Tarjeta de Credito,59,3.5,Moto,Plastico PET/PP,0.0
+81093,2026-07-12,REST-136,Hamburgueseria Kiddo,51900,Tarjeta de Credito,64,6.4,Moto,Telgopor (EPS),0.0
+47151,2026-08-08,REST-257,Rotiseria Gourmet Express,57100,Tarjeta de Credito,46,6.6,Bicicleta,Plastico PET/PP,0.3074
+35479,2026-08-27,REST-118,Empanadas Tomasso,31700,Mercado Pago,18,1.0,Moto,Fibra de Cana,0.0
+32219,2026-07-28,REST-186,Parrilla El Establo,57300,Tarjeta de Credito,37,2.2,Bicicleta,Carton / Papel,0.1025
+90894,2026-07-16,REST-198,Parrilla La Cabrera Norte,8300,Efectivo,33,6.3,Bicicleta,Carton / Papel,0.2935
+23929,2026-07-10,REST-094,Empanadas Costumbres,21900,Mercado Pago,25,5.1,Bicicleta,Aluminio,0.2376
+13575,2026-08-10,REST-165,Heladeria Luccianos,21200,Mercado Pago,57,5.5,Moto,Aluminio,0.0
+17677,2026-06-10,REST-077,Dietetica Natural Market,68700,Mercado Pago,60,5.7,Bicicleta,Polipapel,0.2655
+64686,2026-08-24,REST-266,Rotiseria Sabor de Hogar,63900,Mercado Pago,34,5.1,Moto,Polipapel,0.0
+96918,2026-07-13,REST-291,Sushi Sensei,4300,Mercado Pago,27,2.4,Moto,Plastico PET/PP,0.0
+35930,2026-08-31,REST-086,Dietetica Tomate Algo,60000,Mercado Pago,62,8.2,Bicicleta,Polipapel,0.382
+21879,2026-07-24,REST-022,Bodegon Norte,36700,Mercado Pago,37,7.0,Moto,Plastico PET/PP,0.0
+94888,2026-07-19,REST-080,Dietetica Pura Vida,39900,Mercado Pago,61,2.9,Bicicleta,Telgopor (EPS),0.1351
+39885,2026-07-30,REST-032,Cafeteria All Saints,12900,Mercado Pago,51,6.5,Moto,Plastico PET/PP,0.0
+71993,2026-08-20,REST-230,Pizzeria La Rumba,79200,Mercado Pago,26,4.7,Moto,Bioplastico PLA,0.0
+74205,2026-06-10,REST-013,Bodegon Federal,17900,Tarjeta de Credito,53,8.1,Moto,Fibra de Cana,0.0
+64343,2026-08-13,REST-175,Heladeria Saverio,28100,Mercado Pago,60,2.5,Bicicleta,Carton / Papel,0.1165
+30438,2026-07-21,REST-053,Cafeteria Olimpo,67500,Efectivo,55,1.7,Moto,Bioplastico PLA,0.0
+89273,2026-06-07,REST-040,Cafeteria Florida Garden,6500,Tarjeta de Debito,63,6.0,Bicicleta,Plastico PET/PP,0.2795
+50350,2026-07-07,REST-040,Cafeteria Florida Garden,15900,Tarjeta de Credito,61,4.3,Bicicleta,Carton / Papel,0.2003
+77073,2026-07-17,REST-271,Sushi Akira,59700,Tarjeta de Credito,18,4.5,Moto,Plastico PET/PP,0.0
+62708,2026-08-14,REST-161,Heladeria Grido,66900,Mercado Pago,63,3.6,Bicicleta,Telgopor (EPS),0.1677
+78935,2026-06-21,REST-287,Sushi Osaka,51800,Tarjeta de Credito,29,7.4,Bicicleta,Bioplastico PLA,0.3447
+51170,2026-07-11,REST-046,Cafeteria Las Violetas,47700,Mercado Pago,23,6.4,Moto,Fibra de Cana,0.0
+51079,2026-08-10,REST-206,Parrilla Los Platitos,22900,Mercado Pago,28,3.7,Bicicleta,Carton / Papel,0.1723
+16877,2026-08-08,REST-061,Dietetica Armonia,31700,Tarjeta de Credito,54,3.8,Bicicleta,Plastico PET/PP,0.177
+22683,2026-08-17,REST-252,Rotiseria El Cucharón,14500,Tarjeta de Debito,26,6.2,Auto,Telgopor (EPS),0.0
+56544,2026-08-16,REST-102,Empanadas Fritas,49400,Mercado Pago,52,1.9,Moto,Telgopor (EPS),0.0
+19471,2026-06-26,REST-128,Hamburgueseria Deniro,39500,Tarjeta de Debito,17,1.7,Moto,Fibra de Cana,0.0
+37013,2026-07-03,REST-272,Sushi Bonsai,15200,Mercado Pago,54,3.8,Moto,Aluminio,0.0
+39072,2026-07-23,REST-293,Sushi Sushi House,49600,Mercado Pago,62,2.7,Moto,Aluminio,0.0
+10079,2026-07-17,REST-259,Rotiseria La Cocina de Mama,12000,Tarjeta de Credito,26,2.9,Moto,Aluminio,0.0
+63231,2026-06-12,REST-227,Pizzeria La Mezzetta,8300,Tarjeta de Credito,17,2.1,Bicicleta,Bioplastico PLA,0.0978
+62013,2026-08-06,REST-205,Parrilla Lo de Jesus,34500,Mercado Pago,18,2.5,Moto,Polipapel,0.0
+14104,2026-06-14,REST-067,Dietetica Energia,10700,Tarjeta de Credito,33,5.1,Bicicleta,Aluminio,0.2376
+99374,2026-06-23,REST-115,Empanadas Salteñas,39800,Mercado Pago,48,4.7,Bicicleta,Carton / Papel,0.2189
+32965,2026-06-09,REST-186,Parrilla El Establo,29600,Tarjeta de Credito,17,1.5,Moto,Plastico PET/PP,0.0
+67425,2026-07-15,REST-281,Sushi Kyoto,8400,Tarjeta de Credito,47,4.3,Moto,Carton / Papel,0.0
+73658,2026-08-06,REST-119,Empanadas Tradicionales,79700,Efectivo,57,3.4,Bicicleta,Fibra de Cana,0.1584
+55142,2026-08-24,REST-202,Parrilla La Estancia,22500,Mercado Pago,60,3.4,Auto,Aluminio,0.0
+32554,2026-08-20,REST-212,Pizzeria Banchero,61500,Mercado Pago,43,6.8,Moto,Carton / Papel,0.0
+74394,2026-07-07,REST-211,Pizzeria Angelin,31600,Tarjeta de Credito,43,4.6,Bicicleta,Bioplastico PLA,0.2143
+37972,2026-06-02,REST-128,Hamburgueseria Deniro,4600,Tarjeta de Credito,47,1.6,Moto,Fibra de Cana,0.0
+24545,2026-08-24,REST-081,Dietetica Raiz,38300,Tarjeta de Credito,58,2.7,Moto,Aluminio,0.0
+79867,2026-08-03,REST-120,Empanadas Tucumanas,57400,Mercado Pago,37,3.7,Moto,Polipapel,0.0
+67576,2026-06-16,REST-262,Rotiseria La Olla,22000,Tarjeta de Credito,25,6.0,Bicicleta,Plastico PET/PP,0.2795
+95000,2026-07-06,REST-200,Parrilla La Dorita,42400,Mercado Pago,40,1.9,Moto,Polipapel,0.0
+39166,2026-07-02,REST-162,Heladeria Italia,49100,Tarjeta de Debito,22,3.2,Moto,Fibra de Cana,0.0
+48164,2026-06-05,REST-088,Dietetica Vida Sana,15900,Mercado Pago,18,5.3,Moto,Aluminio,0.0
+22114,2026-07-30,REST-166,Heladeria Milano,59300,Tarjeta de Credito,62,3.2,Bicicleta,Polipapel,0.1491
+63792,2026-08-02,REST-187,Parrilla El Ferroviario,64000,Efectivo,38,0.9,Bicicleta,Fibra de Cana,0.0419
+27226,2026-06-12,REST-061,Dietetica Armonia,62000,Efectivo,59,5.3,Moto,Aluminio,0.0
+57067,2026-06-14,REST-042,Cafeteria Gato Negro,35800,Tarjeta de Credito,63,0.7,Moto,Telgopor (EPS),0.0
+52984,2026-06-04,REST-126,Hamburgueseria Burgertify,10900,Mercado Pago,34,1.8,Moto,Bioplastico PLA,0.0
+18692,2026-06-01,REST-222,Pizzeria Génova,47200,Mercado Pago,29,4.7,Bicicleta,Aluminio,0.2189
+84618,2026-06-16,REST-264,Rotiseria Los Amigos,45200,Efectivo,25,2.8,Moto,Aluminio,0.0
+60401,2026-06-25,REST-106,Empanadas La Cocina,70500,Mercado Pago,16,6.4,Bicicleta,Fibra de Cana,0.2981
+11385,2026-06-18,REST-135,Hamburgueseria Kevin Bacon,50900,Mercado Pago,53,6.2,Moto,Polipapel,0.0
+99711,2026-07-10,REST-120,Empanadas Tucumanas,47100,Mercado Pago,55,4.9,Bicicleta,Plastico PET/PP,0.2282
+90706,2026-06-07,REST-180,Heladeria Volta,4500,Efectivo,15,6.8,Moto,Polipapel,0.0
+22990,2026-08-17,REST-195,Parrilla El Tano,30000,Mercado Pago,24,6.7,Bicicleta,Carton / Papel,0.3121
+20158,2026-07-20,REST-038,Cafeteria El Federal,70100,Tarjeta de Credito,16,6.5,Moto,Carton / Papel,0.0
+68563,2026-07-07,REST-287,Sushi Osaka,11600,Mercado Pago,30,0.7,Moto,Fibra de Cana,0.0
+93607,2026-06-04,REST-286,Sushi Oishii,34000,Mercado Pago,50,5.5,Bicicleta,Telgopor (EPS),0.2562
+40758,2026-07-27,REST-282,Sushi Mika,45400,Mercado Pago,33,8.2,Moto,Aluminio,0.0
+24828,2026-06-21,REST-150,Hamburgueseria Williams,64900,Mercado Pago,47,2.9,Bicicleta,Polipapel,0.1351
+36203,2026-08-13,REST-077,Dietetica Natural Market,12000,Tarjeta de Credito,25,6.5,Moto,Telgopor (EPS),0.0
+63904,2026-06-25,REST-284,Sushi Nihon,79700,Tarjeta de Credito,23,3.5,Moto,Polipapel,0.0
+88223,2026-06-21,REST-036,Cafeteria Cabrales,43800,Tarjeta de Debito,56,3.0,Bicicleta,Plastico PET/PP,0.1397
+94177,2026-07-19,REST-222,Pizzeria Génova,30000,Mercado Pago,34,3.0,Moto,Telgopor (EPS),0.0
+33914,2026-08-18,REST-016,Bodegon La Poesia,29400,Mercado Pago,32,4.0,Moto,Telgopor (EPS),0.0
+51339,2026-06-09,REST-299,Sushi Wasabi,18900,Mercado Pago,27,7.0,Moto,Fibra de Cana,0.0
+63218,2026-06-07,REST-118,Empanadas Tomasso,48700,Tarjeta de Credito,31,3.0,Bicicleta,Polipapel,0.1397
+43010,2026-06-19,REST-079,Dietetica NutriShop,6100,Mercado Pago,65,5.7,Bicicleta,Fibra de Cana,0.2655
+33969,2026-06-09,REST-094,Empanadas Costumbres,71200,Tarjeta de Debito,27,3.0,Moto,Fibra de Cana,0.0
+68603,2026-06-17,REST-118,Empanadas Tomasso,31900,Tarjeta de Debito,62,1.3,Moto,Fibra de Cana,0.0
+51948,2026-07-03,REST-284,Sushi Nihon,23500,Mercado Pago,26,4.7,Moto,Telgopor (EPS),0.0
+85838,2026-06-07,REST-126,Hamburgueseria Burgertify,51400,Mercado Pago,42,2.7,Moto,Plastico PET/PP,0.0
+62409,2026-07-12,REST-289,Sushi Sakura,24700,Tarjeta de Credito,53,8.1,Moto,Telgopor (EPS),0.0
+12254,2026-06-18,REST-193,Parrilla El Rancho,38500,Mercado Pago,58,2.3,Bicicleta,Polipapel,0.1071
+40901,2026-06-24,REST-275,Sushi Edo,13900,Mercado Pago,56,4.6,Moto,Aluminio,0.0
+65884,2026-08-08,REST-184,Parrilla Don Julio,69300,Tarjeta de Credito,43,6.9,Bicicleta,Polipapel,0.3214
+19099,2026-07-04,REST-029,Bodegon Spiagge di Napoli,8100,Mercado Pago,31,7.6,Moto,Telgopor (EPS),0.0
+38241,2026-07-03,REST-055,Cafeteria Poesia,50800,Mercado Pago,61,2.3,Bicicleta,Aluminio,0.1071
+66634,2026-08-20,REST-233,Pizzeria Los Campeones,30600,Efectivo,54,5.6,Moto,Carton / Papel,0.0
+99400,2026-06-08,REST-239,Pizzeria San Carlos,57100,Mercado Pago,40,3.5,Moto,Aluminio,0.0
+93952,2026-06-02,REST-177,Heladeria Tufic,39700,Tarjeta de Credito,55,3.3,Bicicleta,Fibra de Cana,0.1537
+15439,2026-06-20,REST-074,Dietetica Hoja,19400,Mercado Pago,28,0.8,Moto,Fibra de Cana,0.0
+99874,2026-08-10,REST-030,Bodegon Yiyo,75600,Tarjeta de Credito,23,6.4,Bicicleta,Polipapel,0.2981
+64038,2026-08-09,REST-187,Parrilla El Ferroviario,19500,Mercado Pago,22,5.0,Bicicleta,Aluminio,0.2329
+50892,2026-06-07,REST-166,Heladeria Milano,34000,Tarjeta de Debito,22,3.5,Moto,Fibra de Cana,0.0
+83389,2026-06-15,REST-284,Sushi Nihon,52500,Efectivo,35,6.9,Moto,Polipapel,0.0
+97841,2026-07-22,REST-274,Sushi Dashi,36700,Tarjeta de Credito,60,4.3,Moto,Polipapel,0.0
+80098,2026-08-26,REST-027,Bodegon San Jose,57000,Mercado Pago,37,2.4,Bicicleta,Plastico PET/PP,0.1118
+89956,2026-08-06,REST-136,Hamburgueseria Kiddo,12800,Tarjeta de Credito,38,7.1,Bicicleta,Telgopor (EPS),0.3307
+74747,2026-07-19,REST-297,Sushi Sushiman,4400,Mercado Pago,22,1.3,Moto,Carton / Papel,0.0
+35731,2026-07-17,REST-217,Pizzeria El Cuartito,40200,Mercado Pago,37,7.3,Bicicleta,Polipapel,0.34
+17561,2026-06-26,REST-115,Empanadas Salteñas,55000,Mercado Pago,26,4.9,Bicicleta,Fibra de Cana,0.2282
+36921,2026-07-28,REST-095,Empanadas Criollas,53500,Mercado Pago,53,3.2,Auto,Aluminio,0.0
+99474,2026-06-29,REST-007,Bodegon El Antojo,26600,Efectivo,28,5.9,Moto,Plastico PET/PP,0.0
+45532,2026-07-19,REST-205,Parrilla Lo de Jesus,59500,Tarjeta de Debito,31,7.7,Moto,Telgopor (EPS),0.0
+65791,2026-08-11,REST-107,Empanadas La Continental,35900,Mercado Pago,17,6.0,Moto,Plastico PET/PP,0.0
+41562,2026-08-30,REST-136,Hamburgueseria Kiddo,68700,Efectivo,60,5.0,Auto,Telgopor (EPS),0.0
+36032,2026-08-14,REST-181,Parrilla Cabaña Las Lilas,41400,Mercado Pago,15,3.1,Moto,Fibra de Cana,0.0
+43608,2026-07-22,REST-052,Cafeteria Ninina,77900,Tarjeta de Credito,19,6.5,Moto,Fibra de Cana,0.0
+40855,2026-06-07,REST-061,Dietetica Armonia,31500,Mercado Pago,21,6.9,Bicicleta,Polipapel,0.3214
+25858,2026-07-07,REST-217,Pizzeria El Cuartito,33500,Efectivo,26,1.0,Moto,Fibra de Cana,0.0
+84359,2026-07-24,REST-015,Bodegon La Pipeta,15100,Tarjeta de Debito,41,7.9,Moto,Aluminio,0.0
+39743,2026-07-17,REST-199,Parrilla La Choza,24100,Mercado Pago,43,2.2,Moto,Telgopor (EPS),0.0
+54048,2026-08-06,REST-209,Parrilla Peña,54300,Mercado Pago,49,0.6,Auto,Plastico PET/PP,0.0
+40285,2026-08-06,REST-009,Bodegon El Faro,71200,Efectivo,24,2.5,Moto,Aluminio,0.0
+34649,2026-08-25,REST-052,Cafeteria Ninina,23400,Tarjeta de Debito,40,3.1,Moto,Fibra de Cana,0.0
+70831,2026-08-24,REST-116,Empanadas Solo,42200,Mercado Pago,21,6.5,Bicicleta,Aluminio,0.3028
+56558,2026-06-01,REST-298,Sushi Tokio,48000,Mercado Pago,63,3.5,Bicicleta,Fibra de Cana,0.163
+97087,2026-08-07,REST-082,Dietetica Saludable,14100,Tarjeta de Credito,58,1.0,Bicicleta,Plastico PET/PP,0.0466
+31337,2026-06-11,REST-068,Dietetica Equilibrio,28200,Tarjeta de Credito,52,5.2,Moto,Aluminio,0.0
+55776,2026-06-03,REST-268,Rotiseria San Cayetano,78500,Mercado Pago,57,6.7,Moto,Plastico PET/PP,0.0
+40262,2026-06-21,REST-092,Empanadas Al Horno,40300,Efectivo,26,5.8,Bicicleta,Polipapel,0.2702
+51428,2026-06-27,REST-223,Pizzeria Imperio,21200,Tarjeta de Credito,34,4.2,Bicicleta,Aluminio,0.1956
+42008,2026-06-12,REST-133,Hamburgueseria Gula,59600,Mercado Pago,31,3.5,Moto,Bioplastico PLA,0.0
+13853,2026-07-12,REST-203,Parrilla La Tradición,58500,Tarjeta de Credito,56,7.6,Bicicleta,Polipapel,0.354
+26205,2026-06-10,REST-203,Parrilla La Tradición,55400,Mercado Pago,57,2.8,Bicicleta,Fibra de Cana,0.1304
+26703,2026-06-07,REST-136,Hamburgueseria Kiddo,46900,Mercado Pago,39,0.8,Moto,Telgopor (EPS),0.0
+29446,2026-07-31,REST-121,Hamburgueseria Arredondo,42600,Efectivo,25,5.6,Bicicleta,Carton / Papel,0.2608
+42531,2026-07-25,REST-165,Heladeria Luccianos,22900,Mercado Pago,50,7.5,Moto,Bioplastico PLA,0.0
+71222,2026-08-23,REST-060,Cafeteria Varela Varelita,24500,Mercado Pago,22,1.0,Bicicleta,Fibra de Cana,0.0466
+65689,2026-06-03,REST-071,Dietetica Fresh,47100,Mercado Pago,58,4.7,Moto,Carton / Papel,0.0
+74718,2026-08-04,REST-030,Bodegon Yiyo,21700,Tarjeta de Credito,64,8.0,Moto,Carton / Papel,0.0
+71277,2026-07-20,REST-105,Empanadas La Americana,72500,Efectivo,36,0.6,Bicicleta,Carton / Papel,0.0279
+13338,2026-08-13,REST-299,Sushi Wasabi,8600,Mercado Pago,57,7.1,Auto,Aluminio,0.0
+21812,2026-06-06,REST-278,Sushi Kansai,63800,Mercado Pago,55,6.6,Bicicleta,Plastico PET/PP,0.3074
+81215,2026-06-23,REST-187,Parrilla El Ferroviario,43800,Tarjeta de Debito,22,3.9,Bicicleta,Fibra de Cana,0.1817
+15723,2026-07-04,REST-140,Hamburgueseria Moe's,21900,Efectivo,61,5.5,Bicicleta,Carton / Papel,0.2562
+92379,2026-07-24,REST-156,Heladeria Daniel,78300,Tarjeta de Debito,55,7.5,Moto,Telgopor (EPS),0.0
+79704,2026-06-14,REST-192,Parrilla El Pobre Luis,53200,Tarjeta de Debito,65,5.0,Moto,Telgopor (EPS),0.0
+48491,2026-07-23,REST-080,Dietetica Pura Vida,28900,Efectivo,63,2.7,Auto,Fibra de Cana,0.0
+46218,2026-08-10,REST-211,Pizzeria Angelin,60400,Mercado Pago,44,5.9,Bicicleta,Polipapel,0.2748
+24937,2026-08-27,REST-228,Pizzeria La Nueva,7900,Tarjeta de Credito,37,7.6,Moto,Carton / Papel,0.0
+48358,2026-07-31,REST-033,Cafeteria Angelitos,26800,Efectivo,43,4.7,Moto,Fibra de Cana,0.0
+49939,2026-08-25,REST-085,Dietetica Tierra,73700,Mercado Pago,49,6.4,Bicicleta,Bioplastico PLA,0.2981
+38975,2026-07-20,REST-257,Rotiseria Gourmet Express,47400,Mercado Pago,58,4.7,Moto,Carton / Papel,0.0
+66876,2026-08-23,REST-128,Hamburgueseria Deniro,13300,Tarjeta de Credito,50,7.7,Bicicleta,Aluminio,0.3587
+80081,2026-08-02,REST-284,Sushi Nihon,73600,Mercado Pago,46,7.6,Bicicleta,Bioplastico PLA,0.354
+67919,2026-07-27,REST-073,Dietetica Green Eat,19000,Tarjeta de Credito,47,2.4,Bicicleta,Bioplastico PLA,0.1118
+22542,2026-07-12,REST-294,Sushi Sushi Master,36500,Mercado Pago,23,2.7,Moto,Carton / Papel,0.0
+23207,2026-07-21,REST-032,Cafeteria All Saints,62400,Mercado Pago,59,6.4,Moto,Bioplastico PLA,0.0
+53675,2026-08-20,REST-041,Cafeteria Full City,27300,Tarjeta de Credito,39,6.9,Moto,Plastico PET/PP,0.0
+41937,2026-08-13,REST-062,Dietetica Bio Natural,51600,Tarjeta de Credito,42,8.1,Moto,Bioplastico PLA,0.0
+93578,2026-06-05,REST-190,Parrilla El Matrero,67900,Mercado Pago,31,4.9,Moto,Carton / Papel,0.0
+59984,2026-07-24,REST-083,Dietetica Semilla,21200,Tarjeta de Credito,55,7.3,Moto,Bioplastico PLA,0.0
+84977,2026-08-23,REST-187,Parrilla El Ferroviario,76200,Mercado Pago,19,1.9,Moto,Fibra de Cana,0.0
+62675,2026-07-08,REST-291,Sushi Sensei,9900,Mercado Pago,44,0.8,Moto,Bioplastico PLA,0.0
+97746,2026-06-05,REST-069,Dietetica Estrella,13100,Mercado Pago,36,2.5,Bicicleta,Telgopor (EPS),0.1165
+58182,2026-08-28,REST-139,Hamburgueseria Mi Barrio,74700,Efectivo,30,5.4,Moto,Fibra de Cana,0.0
+29229,2026-08-17,REST-259,Rotiseria La Cocina de Mama,72100,Tarjeta de Debito,51,3.6,Moto,Fibra de Cana,0.0
+90093,2026-08-12,REST-045,Cafeteria Ideal,52000,Mercado Pago,37,5.7,Moto,Bioplastico PLA,0.0
+20384,2026-07-16,REST-095,Empanadas Criollas,34500,Tarjeta de Debito,58,2.0,Moto,Bioplastico PLA,0.0
+92629,2026-08-06,REST-163,Heladeria Jauja,23800,Tarjeta de Credito,15,3.4,Bicicleta,Bioplastico PLA,0.1584
+55806,2026-08-13,REST-176,Heladeria Scannapieco,14100,Mercado Pago,39,0.8,Bicicleta,Fibra de Cana,0.0373
+48821,2026-06-09,REST-183,Parrilla Don Ignacio,17600,Mercado Pago,24,8.1,Moto,Polipapel,0.0
+72555,2026-06-23,REST-079,Dietetica NutriShop,69700,Mercado Pago,32,2.3,Moto,Plastico PET/PP,0.0
+91485,2026-08-15,REST-101,Empanadas El Sanjuanino,27500,Efectivo,36,4.8,Bicicleta,Fibra de Cana,0.2236
+73515,2026-06-26,REST-192,Parrilla El Pobre Luis,13500,Tarjeta de Credito,63,4.8,Moto,Carton / Papel,0.0
+19386,2026-07-28,REST-150,Hamburgueseria Williams,78600,Tarjeta de Credito,17,2.9,Moto,Carton / Papel,0.0
+29830,2026-06-26,REST-196,Parrilla La Brigada,76500,Tarjeta de Debito,44,1.2,Bicicleta,Carton / Papel,0.0559
+50209,2026-06-03,REST-236,Pizzeria Pirillo,27800,Mercado Pago,19,6.8,Bicicleta,Carton / Papel,0.3167
+45514,2026-08-31,REST-221,Pizzeria Guerrin,42400,Mercado Pago,17,0.6,Moto,Bioplastico PLA,0.0
+99352,2026-07-13,REST-275,Sushi Edo,79300,Tarjeta de Debito,18,3.2,Bicicleta,Carton / Papel,0.1491
+78000,2026-06-24,REST-184,Parrilla Don Julio,7500,Tarjeta de Credito,54,6.5,Moto,Telgopor (EPS),0.0
+95868,2026-06-13,REST-121,Hamburgueseria Arredondo,29700,Mercado Pago,16,4.2,Moto,Polipapel,0.0
+61837,2026-08-06,REST-040,Cafeteria Florida Garden,57500,Efectivo,44,3.5,Moto,Polipapel,0.0
+60723,2026-08-25,REST-238,Pizzeria San Antonio,69300,Mercado Pago,55,5.6,Moto,Carton / Papel,0.0
+57820,2026-06-13,REST-276,Sushi Fabric,49800,Efectivo,44,4.1,Moto,Aluminio,0.0
+15771,2026-08-01,REST-166,Heladeria Milano,40400,Mercado Pago,51,5.9,Moto,Carton / Papel,0.0
+75232,2026-06-26,REST-236,Pizzeria Pirillo,23400,Mercado Pago,46,2.8,Bicicleta,Aluminio,0.1304
+46580,2026-07-31,REST-207,Parrilla Los Talas,30700,Tarjeta de Debito,33,5.8,Moto,Telgopor (EPS),0.0
+72022,2026-08-18,REST-219,Pizzeria El Mazacote,45800,Mercado Pago,15,4.3,Bicicleta,Polipapel,0.2003
+93893,2026-07-23,REST-063,Dietetica Brote,47200,Mercado Pago,38,5.6,Auto,Carton / Papel,0.0
+89901,2026-08-15,REST-139,Hamburgueseria Mi Barrio,44500,Tarjeta de Credito,62,5.7,Moto,Telgopor (EPS),0.0
+41729,2026-07-26,REST-041,Cafeteria Full City,66200,Tarjeta de Credito,37,1.8,Auto,Carton / Papel,0.0
+67558,2026-08-07,REST-171,Heladeria Podio,77200,Tarjeta de Credito,36,6.8,Bicicleta,Plastico PET/PP,0.3167
+52786,2026-07-23,REST-253,Rotiseria El Gato Negro,35700,Mercado Pago,65,5.0,Bicicleta,Bioplastico PLA,0.2329
+45782,2026-07-01,REST-268,Rotiseria San Cayetano,29900,Mercado Pago,23,3.4,Bicicleta,Polipapel,0.1584
+90562,2026-07-04,REST-096,Empanadas Cumen,58500,Mercado Pago,54,7.4,Bicicleta,Fibra de Cana,0.3447
+68812,2026-08-10,REST-088,Dietetica Vida Sana,9300,Tarjeta de Debito,51,6.0,Bicicleta,Carton / Papel,0.2795
+17839,2026-07-25,REST-070,Dietetica Flor,42900,Tarjeta de Credito,27,5.9,Moto,Plastico PET/PP,0.0
+71915,2026-06-18,REST-187,Parrilla El Ferroviario,35300,Tarjeta de Credito,55,0.6,Bicicleta,Telgopor (EPS),0.0279
+24628,2026-08-24,REST-065,Dietetica Eco Market,62800,Tarjeta de Credito,53,3.9,Moto,Polipapel,0.0
+72168,2026-08-25,REST-274,Sushi Dashi,72100,Tarjeta de Credito,32,6.0,Auto,Plastico PET/PP,0.0
+86066,2026-07-27,REST-160,Heladeria Freddo,6100,Tarjeta de Debito,33,6.2,Bicicleta,Telgopor (EPS),0.2888
+92646,2026-08-03,REST-127,Hamburgueseria Classic,6500,Mercado Pago,49,8.3,Moto,Carton / Papel,0.0
+77056,2026-06-07,REST-252,Rotiseria El Cucharón,20100,Mercado Pago,26,1.8,Bicicleta,Telgopor (EPS),0.0838
+23491,2026-06-06,REST-266,Rotiseria Sabor de Hogar,11300,Efectivo,45,7.0,Bicicleta,Fibra de Cana,0.3261
+11217,2026-07-16,REST-197,Parrilla La Cabrera,75200,Mercado Pago,64,8.3,Moto,Fibra de Cana,0.0
+74923,2026-07-28,REST-047,Cafeteria Lattente,28700,Tarjeta de Credito,57,5.1,Moto,Plastico PET/PP,0.0
+69438,2026-08-14,REST-289,Sushi Sakura,15600,Mercado Pago,35,4.0,Bicicleta,Carton / Papel,0.1863
+46764,2026-06-12,REST-075,Dietetica La Esquina,32900,Mercado Pago,41,1.4,Bicicleta,Fibra de Cana,0.0652
+27886,2026-08-27,REST-244,Rotiseria Delicias,47600,Tarjeta de Credito,61,4.9,Moto,Aluminio,0.0
+32274,2026-06-13,REST-112,Empanadas Picantes,22200,Mercado Pago,16,1.0,Moto,Carton / Papel,0.0
+31397,2026-08-10,REST-297,Sushi Sushiman,79900,Mercado Pago,22,3.6,Bicicleta,Polipapel,0.1677
+10889,2026-08-15,REST-053,Cafeteria Olimpo,7400,Mercado Pago,45,6.2,Moto,Plastico PET/PP,0.0
+98376,2026-07-10,REST-095,Empanadas Criollas,6000,Tarjeta de Credito,27,6.6,Bicicleta,Plastico PET/PP,0.3074
+58428,2026-06-16,REST-231,Pizzeria La Universal,79500,Tarjeta de Credito,59,5.3,Moto,Fibra de Cana,0.0
+56325,2026-08-15,REST-028,Bodegon Seddon,35900,Mercado Pago,65,2.3,Moto,Plastico PET/PP,0.0
+52482,2026-06-15,REST-217,Pizzeria El Cuartito,35400,Tarjeta de Credito,33,4.8,Bicicleta,Bioplastico PLA,0.2236
+68998,2026-06-12,REST-240,Pizzeria Solis,36900,Mercado Pago,37,2.4,Moto,Fibra de Cana,0.0
+15965,2026-08-16,REST-204,Parrilla La Vuelta,41000,Efectivo,39,7.8,Auto,Polipapel,0.0
+91079,2026-06-26,REST-055,Cafeteria Poesia,66100,Mercado Pago,39,4.5,Bicicleta,Carton / Papel,0.2096
+60403,2026-07-25,REST-073,Dietetica Green Eat,21900,Efectivo,46,3.2,Bicicleta,Aluminio,0.1491
+81450,2026-07-10,REST-220,Pizzeria El Trébol,35600,Tarjeta de Credito,65,7.5,Bicicleta,Carton / Papel,0.3494
+99596,2026-08-15,REST-110,Empanadas Mi Gusto,70200,Mercado Pago,43,8.2,Bicicleta,Fibra de Cana,0.382
+15839,2026-06-19,REST-216,Pizzeria El Cedrón,39800,Mercado Pago,29,7.3,Moto,Aluminio,0.0
+13998,2026-08-20,REST-271,Sushi Akira,12100,Mercado Pago,29,7.2,Bicicleta,Plastico PET/PP,0.3354
+21783,2026-08-18,REST-014,Bodegon Flor de Barracas,47700,Mercado Pago,59,1.2,Moto,Telgopor (EPS),0.0
+37266,2026-08-02,REST-248,Rotiseria Doña Rosa,56500,Mercado Pago,46,8.2,Auto,Carton / Papel,0.0
+81643,2026-06-08,REST-008,Bodegon El Banderin,63400,Mercado Pago,58,8.5,Bicicleta,Polipapel,0.3959
+78070,2026-06-14,REST-022,Bodegon Norte,48200,Mercado Pago,31,5.4,Moto,Bioplastico PLA,0.0
+21908,2026-08-25,REST-285,Sushi Ninja,58200,Mercado Pago,41,1.0,Bicicleta,Carton / Papel,0.0466
+26160,2026-08-07,REST-271,Sushi Akira,30000,Tarjeta de Credito,56,4.7,Moto,Fibra de Cana,0.0
+91073,2026-08-01,REST-247,Rotiseria Doña Maria,45000,Mercado Pago,53,3.5,Moto,Bioplastico PLA,0.0
+59739,2026-06-12,REST-189,Parrilla El Lazo,31200,Tarjeta de Credito,63,7.3,Bicicleta,Polipapel,0.34
+56417,2026-08-12,REST-167,Heladeria Munchis,13100,Efectivo,62,5.6,Bicicleta,Aluminio,0.2608
+44055,2026-08-28,REST-024,Bodegon Plaza Astolfi,27800,Mercado Pago,18,7.9,Moto,Polipapel,0.0
+64357,2026-07-12,REST-244,Rotiseria Delicias,56300,Tarjeta de Credito,58,6.3,Bicicleta,Bioplastico PLA,0.2935
+53545,2026-07-29,REST-197,Parrilla La Cabrera,77700,Tarjeta de Credito,53,3.4,Bicicleta,Bioplastico PLA,0.1584
+72793,2026-07-11,REST-269,Rotiseria Tentaciones,70200,Mercado Pago,17,5.0,Auto,Carton / Papel,0.0
+49073,2026-08-17,REST-030,Bodegon Yiyo,7100,Tarjeta de Credito,24,6.9,Bicicleta,Plastico PET/PP,0.3214
+27788,2026-06-16,REST-094,Empanadas Costumbres,64000,Mercado Pago,57,1.1,Moto,Polipapel,0.0
+12763,2026-07-13,REST-274,Sushi Dashi,75500,Efectivo,61,2.0,Bicicleta,Bioplastico PLA,0.0932
+73056,2026-07-07,REST-016,Bodegon La Poesia,57600,Mercado Pago,35,4.9,Moto,Aluminio,0.0
+10871,2026-08-20,REST-181,Parrilla Cabaña Las Lilas,54700,Mercado Pago,37,4.9,Bicicleta,Fibra de Cana,0.2282
+84700,2026-06-02,REST-036,Cafeteria Cabrales,56200,Tarjeta de Credito,15,0.7,Bicicleta,Carton / Papel,0.0326
+14541,2026-08-07,REST-076,Dietetica Luna,67600,Mercado Pago,30,0.7,Auto,Fibra de Cana,0.0
+78180,2026-08-21,REST-062,Dietetica Bio Natural,51400,Tarjeta de Credito,23,7.3,Moto,Polipapel,0.0
+23121,2026-06-12,REST-073,Dietetica Green Eat,41900,Mercado Pago,22,7.1,Moto,Telgopor (EPS),0.0
+92776,2026-08-09,REST-183,Parrilla Don Ignacio,33900,Tarjeta de Credito,54,3.7,Bicicleta,Bioplastico PLA,0.1723
+72842,2026-08-12,REST-060,Cafeteria Varela Varelita,32500,Efectivo,50,0.5,Moto,Carton / Papel,0.0
+29845,2026-06-17,REST-166,Heladeria Milano,45500,Tarjeta de Debito,27,2.6,Moto,Plastico PET/PP,0.0
+79708,2026-08-22,REST-061,Dietetica Armonia,19800,Mercado Pago,56,7.9,Bicicleta,Polipapel,0.368
+31308,2026-07-26,REST-021,Bodegon Miramar,5300,Mercado Pago,41,6.0,Moto,Telgopor (EPS),0.0
+87040,2026-06-09,REST-006,Bodegon Cerveceria Lopez,39200,Mercado Pago,51,4.3,Bicicleta,Polipapel,0.2003
+34032,2026-06-07,REST-159,Heladeria El Polo,38100,Tarjeta de Debito,34,4.3,Moto,Telgopor (EPS),0.0
+27352,2026-07-07,REST-152,Heladeria Arnaldo,26300,Mercado Pago,62,1.4,Moto,Carton / Papel,0.0
+75711,2026-07-12,REST-005,Bodegon Celta Bar,11000,Tarjeta de Credito,56,1.7,Moto,Polipapel,0.0
+86424,2026-06-08,REST-190,Parrilla El Matrero,18800,Mercado Pago,30,4.1,Moto,Carton / Papel,0.0
+47967,2026-06-18,REST-005,Bodegon Celta Bar,76700,Efectivo,18,6.4,Moto,Polipapel,0.0
+20555,2026-07-23,REST-028,Bodegon Seddon,40800,Tarjeta de Credito,63,2.8,Moto,Bioplastico PLA,0.0
+87102,2026-08-29,REST-273,Sushi Club,18400,Mercado Pago,24,1.5,Bicicleta,Fibra de Cana,0.0699
+28750,2026-08-30,REST-132,Hamburgueseria Gourmet,13300,Tarjeta de Credito,17,6.1,Moto,Telgopor (EPS),0.0
+87652,2026-07-26,REST-292,Sushi Sushi Express,11600,Tarjeta de Credito,17,7.8,Moto,Aluminio,0.0
+70879,2026-06-19,REST-051,Cafeteria Martinez,32800,Tarjeta de Credito,49,3.7,Moto,Fibra de Cana,0.0
+47527,2026-08-17,REST-140,Hamburgueseria Moe's,23300,Mercado Pago,44,3.9,Moto,Plastico PET/PP,0.0
+31360,2026-06-21,REST-047,Cafeteria Lattente,31400,Tarjeta de Debito,22,5.8,Moto,Fibra de Cana,0.0
+53650,2026-07-13,REST-128,Hamburgueseria Deniro,16600,Tarjeta de Credito,23,7.6,Moto,Telgopor (EPS),0.0
+83303,2026-08-07,REST-071,Dietetica Fresh,24800,Efectivo,49,8.3,Bicicleta,Telgopor (EPS),0.3866
+80778,2026-08-25,REST-289,Sushi Sakura,9000,Mercado Pago,40,2.7,Moto,Aluminio,0.0
+30457,2026-07-21,REST-270,Rotiseria Viandas Express,8200,Tarjeta de Credito,43,8.1,Bicicleta,Plastico PET/PP,0.3773
+89518,2026-07-02,REST-276,Sushi Fabric,19100,Mercado Pago,56,5.6,Auto,Polipapel,0.0
+87199,2026-07-10,REST-103,Empanadas Gourmet,19800,Mercado Pago,19,2.9,Moto,Aluminio,0.0
+70650,2026-07-18,REST-273,Sushi Club,73100,Efectivo,48,6.9,Moto,Carton / Papel,0.0
+38061,2026-08-07,REST-164,Heladeria La Sorbetiere,17600,Tarjeta de Credito,16,2.9,Moto,Aluminio,0.0
+35210,2026-08-22,REST-244,Rotiseria Delicias,17100,Mercado Pago,25,0.8,Moto,Bioplastico PLA,0.0
+88382,2026-07-15,REST-100,Empanadas El Noble,77500,Mercado Pago,58,2.7,Moto,Polipapel,0.0
+49054,2026-06-15,REST-006,Bodegon Cerveceria Lopez,14000,Mercado Pago,46,7.8,Auto,Polipapel,0.0
+72969,2026-08-27,REST-284,Sushi Nihon,71600,Mercado Pago,37,1.9,Moto,Aluminio,0.0
+35519,2026-06-06,REST-114,Empanadas Rincon Norteño,70000,Efectivo,42,2.8,Bicicleta,Carton / Papel,0.1304
+40628,2026-08-10,REST-036,Cafeteria Cabrales,26800,Tarjeta de Credito,17,3.2,Moto,Fibra de Cana,0.0
+50058,2026-06-23,REST-038,Cafeteria El Federal,23500,Tarjeta de Credito,44,6.4,Bicicleta,Bioplastico PLA,0.2981
+56384,2026-07-29,REST-292,Sushi Sushi Express,12200,Mercado Pago,48,3.4,Bicicleta,Carton / Papel,0.1584
+18923,2026-08-10,REST-098,Empanadas Delicias,56800,Tarjeta de Credito,50,4.9,Moto,Telgopor (EPS),0.0
+55079,2026-06-23,REST-019,Bodegon Los Galgos,23600,Mercado Pago,15,6.1,Bicicleta,Plastico PET/PP,0.2841
+27243,2026-06-22,REST-044,Cafeteria Homero,67000,Mercado Pago,54,6.8,Moto,Aluminio,0.0
+79980,2026-06-22,REST-099,Empanadas El Horno,29100,Mercado Pago,21,2.0,Bicicleta,Fibra de Cana,0.0932
+22960,2026-07-02,REST-146,Hamburgueseria Tierra de Nadie,23700,Mercado Pago,28,3.6,Bicicleta,Telgopor (EPS),0.1677
+87655,2026-08-18,REST-208,Parrilla Miravalles,6500,Tarjeta de Debito,27,7.3,Moto,Carton / Papel,0.0
+17028,2026-06-22,REST-114,Empanadas Rincon Norteño,13600,Tarjeta de Debito,34,8.1,Bicicleta,Fibra de Cana,0.3773
+87072,2026-06-04,REST-163,Heladeria Jauja,53500,Tarjeta de Debito,34,2.1,Moto,Aluminio,0.0
+63976,2026-08-09,REST-101,Empanadas El Sanjuanino,22700,Mercado Pago,20,0.9,Moto,Carton / Papel,0.0
+81384,2026-07-01,REST-103,Empanadas Gourmet,5700,Tarjeta de Credito,60,1.2,Moto,Carton / Papel,0.0
+99313,2026-07-07,REST-290,Sushi Samurai,39900,Mercado Pago,62,7.9,Moto,Aluminio,0.0
+58753,2026-07-17,REST-285,Sushi Ninja,60400,Mercado Pago,32,4.6,Moto,Fibra de Cana,0.0
+74054,2026-06-10,REST-141,Hamburgueseria Paris Burger,75600,Tarjeta de Debito,16,4.3,Bicicleta,Polipapel,0.2003
+89389,2026-07-14,REST-248,Rotiseria Doña Rosa,64900,Efectivo,32,8.1,Moto,Telgopor (EPS),0.0
+36282,2026-08-25,REST-218,Pizzeria El Fortin,75100,Tarjeta de Debito,51,4.3,Moto,Bioplastico PLA,0.0
+64827,2026-07-14,REST-203,Parrilla La Tradición,55200,Tarjeta de Credito,23,7.2,Moto,Fibra de Cana,0.0
+27821,2026-06-12,REST-017,Bodegon Lezama,48900,Mercado Pago,49,5.5,Moto,Polipapel,0.0
+54539,2026-07-31,REST-034,Cafeteria Biela,48600,Tarjeta de Credito,53,4.5,Bicicleta,Plastico PET/PP,0.2096
+26300,2026-08-17,REST-082,Dietetica Saludable,77800,Tarjeta de Debito,63,7.9,Bicicleta,Bioplastico PLA,0.368
+97264,2026-07-14,REST-025,Bodegon Roma,4000,Mercado Pago,24,6.1,Moto,Bioplastico PLA,0.0
+32648,2026-07-23,REST-257,Rotiseria Gourmet Express,68400,Mercado Pago,35,5.8,Moto,Fibra de Cana,0.0
+56588,2026-08-01,REST-206,Parrilla Los Platitos,54000,Tarjeta de Credito,20,4.6,Bicicleta,Aluminio,0.2143
+29518,2026-07-03,REST-074,Dietetica Hoja,64500,Tarjeta de Credito,37,5.9,Bicicleta,Bioplastico PLA,0.2748
+76883,2026-07-08,REST-091,Empanadas 1990,76500,Mercado Pago,61,2.5,Bicicleta,Aluminio,0.1165
+21685,2026-08-10,REST-118,Empanadas Tomasso,62800,Tarjeta de Debito,36,2.4,Moto,Bioplastico PLA,0.0
+77424,2026-07-19,REST-279,Sushi Kenzo,52600,Mercado Pago,58,5.3,Moto,Plastico PET/PP,0.0
+76098,2026-07-18,REST-078,Dietetica Naturaleza,57700,Efectivo,57,3.8,Moto,Polipapel,0.0
+96612,2026-08-31,REST-198,Parrilla La Cabrera Norte,47800,Tarjeta de Credito,55,1.0,Bicicleta,Carton / Papel,0.0466
+85815,2026-07-08,REST-032,Cafeteria All Saints,48200,Mercado Pago,23,1.3,Bicicleta,Carton / Papel,0.0606
+79417,2026-06-25,REST-116,Empanadas Solo,22700,Efectivo,65,2.7,Moto,Bioplastico PLA,0.0
+14703,2026-06-03,REST-257,Rotiseria Gourmet Express,50600,Mercado Pago,23,5.2,Moto,Fibra de Cana,0.0
+68297,2026-06-29,REST-220,Pizzeria El Trébol,25900,Tarjeta de Credito,58,4.4,Moto,Plastico PET/PP,0.0
+27183,2026-07-28,REST-137,Hamburgueseria Krusty,56300,Mercado Pago,39,0.6,Moto,Telgopor (EPS),0.0
+75880,2026-08-26,REST-004,Bodegon Cantina Pierino,47000,Mercado Pago,16,4.2,Bicicleta,Aluminio,0.1956
+76128,2026-06-21,REST-031,Cafeteria Adorado,15000,Mercado Pago,19,1.2,Bicicleta,Carton / Papel,0.0559
+31316,2026-06-03,REST-167,Heladeria Munchis,58600,Mercado Pago,38,7.3,Bicicleta,Polipapel,0.34
+86374,2026-07-26,REST-194,Parrilla El Secretito,27800,Mercado Pago,30,2.8,Bicicleta,Carton / Papel,0.1304
+78352,2026-08-28,REST-113,Empanadas Porteñas,36600,Tarjeta de Credito,37,3.9,Bicicleta,Polipapel,0.1817
+46028,2026-08-25,REST-139,Hamburgueseria Mi Barrio,9400,Tarjeta de Credito,59,5.8,Bicicleta,Polipapel,0.2702
+62546,2026-08-15,REST-232,Pizzeria Las Cuartetas,39800,Efectivo,55,6.9,Moto,Plastico PET/PP,0.0
+36405,2026-07-15,REST-287,Sushi Osaka,34100,Tarjeta de Debito,47,3.2,Bicicleta,Fibra de Cana,0.1491
+19226,2026-07-05,REST-231,Pizzeria La Universal,50100,Mercado Pago,33,1.6,Moto,Plastico PET/PP,0.0
+81686,2026-07-31,REST-135,Hamburgueseria Kevin Bacon,10100,Tarjeta de Credito,51,3.4,Moto,Aluminio,0.0
+90516,2026-07-09,REST-148,Hamburgueseria Voraz,28000,Mercado Pago,57,3.3,Moto,Polipapel,0.0
+54762,2026-08-03,REST-260,Rotiseria La Esquina,52800,Tarjeta de Credito,47,3.1,Bicicleta,Fibra de Cana,0.1444
+49419,2026-08-18,REST-025,Bodegon Roma,34300,Tarjeta de Credito,63,0.6,Bicicleta,Carton / Papel,0.0279
+56494,2026-06-23,REST-049,Cafeteria London City,68000,Tarjeta de Credito,54,5.7,Moto,Polipapel,0.0
+82814,2026-07-11,REST-300,Sushi Zen,42000,Mercado Pago,55,2.7,Moto,Carton / Papel,0.0
+34043,2026-06-28,REST-257,Rotiseria Gourmet Express,61900,Mercado Pago,17,7.9,Moto,Aluminio,0.0
+43647,2026-07-03,REST-096,Empanadas Cumen,8700,Mercado Pago,53,7.8,Moto,Telgopor (EPS),0.0
+55648,2026-07-10,REST-062,Dietetica Bio Natural,74700,Mercado Pago,41,4.6,Moto,Polipapel,0.0
+27084,2026-07-24,REST-032,Cafeteria All Saints,43400,Mercado Pago,19,2.3,Moto,Fibra de Cana,0.0
+89103,2026-08-17,REST-222,Pizzeria Génova,12300,Mercado Pago,54,3.5,Moto,Telgopor (EPS),0.0
+17289,2026-07-12,REST-109,Empanadas Mendocinas,70500,Mercado Pago,16,3.9,Moto,Plastico PET/PP,0.0
+56968,2026-07-11,REST-067,Dietetica Energia,5500,Tarjeta de Credito,23,6.7,Bicicleta,Aluminio,0.3121
+47697,2026-06-04,REST-244,Rotiseria Delicias,30900,Tarjeta de Credito,41,6.2,Bicicleta,Polipapel,0.2888
+84708,2026-07-21,REST-180,Heladeria Volta,17900,Mercado Pago,38,4.0,Moto,Plastico PET/PP,0.0
+96504,2026-08-14,REST-101,Empanadas El Sanjuanino,16000,Mercado Pago,24,6.6,Moto,Carton / Papel,0.0
+25454,2026-07-13,REST-062,Dietetica Bio Natural,70200,Efectivo,44,5.8,Bicicleta,Telgopor (EPS),0.2702
+45134,2026-07-03,REST-172,Heladeria Ramon Ceria,39400,Tarjeta de Credito,50,1.3,Moto,Telgopor (EPS),0.0
+40683,2026-08-06,REST-266,Rotiseria Sabor de Hogar,45600,Mercado Pago,19,6.5,Bicicleta,Aluminio,0.3028
+40930,2026-07-19,REST-179,Heladeria Via Maggiore,57800,Tarjeta de Credito,52,4.7,Moto,Telgopor (EPS),0.0
+19330,2026-06-21,REST-237,Pizzeria Roma,65400,Tarjeta de Credito,23,2.5,Bicicleta,Fibra de Cana,0.1165
+21128,2026-06-28,REST-095,Empanadas Criollas,53700,Mercado Pago,59,5.4,Bicicleta,Plastico PET/PP,0.2515
+32167,2026-07-24,REST-185,Parrilla El Desnivel,62800,Mercado Pago,38,6.2,Moto,Bioplastico PLA,0.0
+29746,2026-08-25,REST-023,Bodegon Pippo,63500,Tarjeta de Credito,53,6.3,Moto,Telgopor (EPS),0.0
+78682,2026-08-27,REST-021,Bodegon Miramar,67600,Mercado Pago,57,8.4,Moto,Fibra de Cana,0.0
+15827,2026-06-19,REST-102,Empanadas Fritas,11500,Mercado Pago,32,4.5,Moto,Telgopor (EPS),0.0
+35117,2026-07-09,REST-048,Cafeteria Le Ble,30800,Mercado Pago,15,5.2,Bicicleta,Carton / Papel,0.2422
+26991,2026-07-14,REST-098,Empanadas Delicias,10400,Mercado Pago,61,5.2,Bicicleta,Bioplastico PLA,0.2422
+88891,2026-08-21,REST-291,Sushi Sensei,9300,Tarjeta de Credito,51,7.9,Bicicleta,Polipapel,0.368
+87221,2026-06-10,REST-008,Bodegon El Banderin,49800,Mercado Pago,59,1.3,Moto,Plastico PET/PP,0.0
+13402,2026-07-25,REST-214,Pizzeria Centenario,71900,Tarjeta de Credito,31,5.2,Moto,Polipapel,0.0
+88124,2026-08-24,REST-280,Sushi Kobe,31700,Mercado Pago,28,4.1,Moto,Fibra de Cana,0.0
+29689,2026-06-30,REST-253,Rotiseria El Gato Negro,50100,Mercado Pago,58,0.7,Bicicleta,Carton / Papel,0.0326
+22828,2026-06-14,REST-092,Empanadas Al Horno,9400,Tarjeta de Credito,53,5.5,Moto,Aluminio,0.0
+13224,2026-06-19,REST-050,Cafeteria Margot,23900,Tarjeta de Credito,63,7.6,Moto,Polipapel,0.0
+60448,2026-06-23,REST-249,Rotiseria El Barrio,31700,Tarjeta de Credito,53,8.1,Moto,Bioplastico PLA,0.0
+26215,2026-08-19,REST-206,Parrilla Los Platitos,73300,Mercado Pago,46,3.6,Bicicleta,Carton / Papel,0.1677
+35626,2026-07-20,REST-085,Dietetica Tierra,60300,Tarjeta de Credito,52,7.6,Bicicleta,Aluminio,0.354
+11402,2026-06-11,REST-282,Sushi Mika,79500,Mercado Pago,57,6.4,Moto,Carton / Papel,0.0
+83728,2026-06-16,REST-106,Empanadas La Cocina,36600,Mercado Pago,53,1.4,Moto,Polipapel,0.0
+80171,2026-07-10,REST-102,Empanadas Fritas,51100,Mercado Pago,52,6.6,Bicicleta,Telgopor (EPS),0.3074
+86192,2026-06-14,REST-177,Heladeria Tufic,53800,Tarjeta de Credito,28,4.5,Moto,Fibra de Cana,0.0
+94035,2026-07-29,REST-272,Sushi Bonsai,55500,Tarjeta de Credito,33,7.0,Moto,Aluminio,0.0
+97842,2026-07-10,REST-023,Bodegon Pippo,71700,Mercado Pago,50,4.5,Moto,Telgopor (EPS),0.0
+71837,2026-07-31,REST-133,Hamburgueseria Gula,24300,Mercado Pago,17,3.1,Bicicleta,Fibra de Cana,0.1444
+36361,2026-08-31,REST-226,Pizzeria La Guitarrita,61300,Tarjeta de Credito,43,4.9,Moto,Plastico PET/PP,0.0
+16191,2026-07-17,REST-028,Bodegon Seddon,19000,Tarjeta de Debito,38,3.5,Bicicleta,Fibra de Cana,0.163
+72690,2026-07-13,REST-021,Bodegon Miramar,21200,Mercado Pago,42,4.5,Moto,Aluminio,0.0
+80039,2026-08-12,REST-144,Hamburgueseria Slvj,57500,Tarjeta de Debito,52,7.9,Auto,Fibra de Cana,0.0
+12858,2026-08-16,REST-109,Empanadas Mendocinas,67400,Tarjeta de Credito,43,3.7,Moto,Polipapel,0.0
+50608,2026-07-28,REST-093,Empanadas Caseras,63500,Tarjeta de Credito,26,8.2,Bicicleta,Telgopor (EPS),0.382
+94047,2026-07-03,REST-246,Rotiseria Don Jose,74200,Tarjeta de Credito,35,7.8,Bicicleta,Polipapel,0.3633
+36442,2026-06-05,REST-200,Parrilla La Dorita,28500,Tarjeta de Debito,31,6.3,Moto,Aluminio,0.0
+20514,2026-06-26,REST-187,Parrilla El Ferroviario,56900,Tarjeta de Credito,58,7.7,Bicicleta,Bioplastico PLA,0.3587
+71195,2026-08-02,REST-024,Bodegon Plaza Astolfi,55900,Mercado Pago,49,4.4,Moto,Bioplastico PLA,0.0
+34392,2026-07-22,REST-248,Rotiseria Doña Rosa,55400,Mercado Pago,40,7.3,Moto,Fibra de Cana,0.0
+44308,2026-06-28,REST-046,Cafeteria Las Violetas,64300,Tarjeta de Credito,56,2.5,Bicicleta,Plastico PET/PP,0.1165
+27453,2026-08-10,REST-270,Rotiseria Viandas Express,14300,Mercado Pago,32,6.9,Moto,Aluminio,0.0
+11389,2026-08-01,REST-168,Heladeria Napoli,75900,Mercado Pago,49,5.5,Bicicleta,Bioplastico PLA,0.2562
+37929,2026-07-22,REST-174,Heladeria San Remo,13700,Tarjeta de Debito,26,8.4,Bicicleta,Fibra de Cana,0.3913
+93418,2026-06-17,REST-104,Empanadas Kiosco,15800,Mercado Pago,49,7.4,Moto,Bioplastico PLA,0.0
+60744,2026-07-13,REST-105,Empanadas La Americana,39000,Efectivo,59,3.1,Moto,Fibra de Cana,0.0
+59940,2026-08-20,REST-001,Bodegon Bar Sur,41800,Efectivo,36,3.8,Moto,Polipapel,0.0
+93046,2026-08-31,REST-088,Dietetica Vida Sana,40800,Mercado Pago,48,0.9,Moto,Polipapel,0.0
+22779,2026-07-17,REST-060,Cafeteria Varela Varelita,35000,Mercado Pago,33,0.8,Bicicleta,Telgopor (EPS),0.0373
+53321,2026-07-30,REST-056,Cafeteria Tienda de Cafe,62400,Mercado Pago,34,6.4,Bicicleta,Carton / Papel,0.2981
+73088,2026-06-23,REST-194,Parrilla El Secretito,6200,Tarjeta de Credito,46,2.9,Moto,Aluminio,0.0
+62488,2026-06-13,REST-253,Rotiseria El Gato Negro,50800,Mercado Pago,58,5.9,Moto,Polipapel,0.0
+14951,2026-07-06,REST-155,Heladeria Chungo,23200,Mercado Pago,44,0.8,Moto,Carton / Papel,0.0
+27196,2026-06-26,REST-224,Pizzeria Kentucky,13300,Mercado Pago,20,2.3,Moto,Fibra de Cana,0.0
+35628,2026-08-13,REST-285,Sushi Ninja,42800,Tarjeta de Credito,26,4.2,Moto,Plastico PET/PP,0.0
+41426,2026-07-23,REST-295,Sushi Sushi Phone,77700,Efectivo,42,1.4,Moto,Carton / Papel,0.0
+50813,2026-08-30,REST-295,Sushi Sushi Phone,48300,Mercado Pago,54,4.7,Bicicleta,Plastico PET/PP,0.2189
+61005,2026-08-21,REST-100,Empanadas El Noble,41100,Mercado Pago,33,4.7,Bicicleta,Bioplastico PLA,0.2189
+56712,2026-07-16,REST-100,Empanadas El Noble,29800,Mercado Pago,58,1.7,Moto,Aluminio,0.0
+93760,2026-08-30,REST-250,Rotiseria El Buen Gusto,61600,Tarjeta de Debito,58,2.4,Bicicleta,Plastico PET/PP,0.1118
+16514,2026-07-24,REST-138,Hamburgueseria La Birra Bar,30300,Mercado Pago,29,6.2,Bicicleta,Fibra de Cana,0.2888
+82685,2026-07-30,REST-241,Rotiseria A Punto,62800,Mercado Pago,15,2.8,Auto,Polipapel,0.0
+37785,2026-06-20,REST-280,Sushi Kobe,49400,Efectivo,21,1.2,Bicicleta,Bioplastico PLA,0.0559
+47356,2026-07-31,REST-038,Cafeteria El Federal,24200,Tarjeta de Credito,65,6.8,Moto,Polipapel,0.0
+36725,2026-08-28,REST-038,Cafeteria El Federal,45400,Efectivo,39,4.2,Moto,Telgopor (EPS),0.0
+99403,2026-07-30,REST-135,Hamburgueseria Kevin Bacon,74200,Tarjeta de Debito,24,3.0,Moto,Plastico PET/PP,0.0
+91439,2026-06-16,REST-095,Empanadas Criollas,40700,Tarjeta de Debito,27,6.2,Moto,Polipapel,0.0
+50766,2026-07-02,REST-097,Empanadas De la Abuela,10400,Mercado Pago,55,4.8,Moto,Carton / Papel,0.0
+56109,2026-06-09,REST-037,Cafeteria Cuervo,53100,Tarjeta de Debito,34,6.0,Bicicleta,Fibra de Cana,0.2795
+77529,2026-08-10,REST-214,Pizzeria Centenario,14500,Tarjeta de Credito,63,6.5,Moto,Plastico PET/PP,0.0
+48143,2026-06-28,REST-006,Bodegon Cerveceria Lopez,39200,Efectivo,18,7.1,Moto,Fibra de Cana,0.0
+15131,2026-08-23,REST-100,Empanadas El Noble,53800,Tarjeta de Credito,63,3.7,Bicicleta,Carton / Papel,0.1723
+85346,2026-06-18,REST-131,Hamburgueseria Fat Broder,26500,Mercado Pago,61,2.2,Bicicleta,Plastico PET/PP,0.1025
+25058,2026-07-06,REST-269,Rotiseria Tentaciones,24800,Mercado Pago,60,8.4,Bicicleta,Aluminio,0.3913
+49997,2026-08-31,REST-005,Bodegon Celta Bar,50500,Tarjeta de Credito,57,5.4,Moto,Carton / Papel,0.0
+23826,2026-07-09,REST-018,Bodegon Los Chicos,50800,Mercado Pago,53,7.2,Moto,Carton / Papel,0.0
+26861,2026-06-17,REST-093,Empanadas Caseras,42600,Tarjeta de Debito,39,4.9,Bicicleta,Polipapel,0.2282
+33220,2026-06-03,REST-228,Pizzeria La Nueva,17800,Mercado Pago,49,5.3,Auto,Bioplastico PLA,0.0
+18755,2026-07-03,REST-074,Dietetica Hoja,16000,Mercado Pago,61,2.7,Moto,Aluminio,0.0
+46204,2026-08-25,REST-255,Rotiseria El Plato,34800,Mercado Pago,59,6.9,Moto,Telgopor (EPS),0.0
+25005,2026-07-22,REST-026,Bodegon Rovira,29400,Tarjeta de Credito,25,2.5,Moto,Bioplastico PLA,0.0
+92808,2026-07-04,REST-054,Cafeteria Petit Colon,16300,Mercado Pago,31,7.9,Bicicleta,Plastico PET/PP,0.368
+50991,2026-06-04,REST-089,Dietetica Vital,63400,Mercado Pago,29,5.0,Bicicleta,Plastico PET/PP,0.2329
+81374,2026-08-27,REST-206,Parrilla Los Platitos,45800,Mercado Pago,48,1.4,Moto,Fibra de Cana,0.0
+25328,2026-06-09,REST-059,Cafeteria Usina Cafetera,39100,Tarjeta de Credito,60,6.0,Moto,Plastico PET/PP,0.0
+13803,2026-08-04,REST-020,Bodegon Manolo,21400,Efectivo,16,2.5,Bicicleta,Fibra de Cana,0.1165
+59884,2026-08-11,REST-036,Cafeteria Cabrales,53300,Tarjeta de Credito,15,0.7,Bicicleta,Aluminio,0.0326
+89262,2026-07-19,REST-024,Bodegon Plaza Astolfi,79400,Tarjeta de Credito,52,4.4,Moto,Bioplastico PLA,0.0
+86396,2026-06-09,REST-191,Parrilla El Ombú,11900,Mercado Pago,25,4.3,Moto,Carton / Papel,0.0
+62116,2026-08-19,REST-066,Dietetica El Naranjo,78200,Tarjeta de Credito,31,3.7,Moto,Polipapel,0.0
+70171,2026-07-12,REST-090,Dietetica Zen,52600,Mercado Pago,34,6.6,Moto,Polipapel,0.0
+16566,2026-06-11,REST-098,Empanadas Delicias,79200,Tarjeta de Debito,57,1.1,Bicicleta,Aluminio,0.0512
+93779,2026-07-12,REST-080,Dietetica Pura Vida,40200,Mercado Pago,27,0.8,Moto,Aluminio,0.0
+93285,2026-07-27,REST-171,Heladeria Podio,76100,Mercado Pago,29,1.3,Moto,Carton / Papel,0.0
+90702,2026-08-30,REST-016,Bodegon La Poesia,29500,Tarjeta de Credito,19,1.5,Bicicleta,Bioplastico PLA,0.0699
+62940,2026-08-16,REST-074,Dietetica Hoja,76300,Tarjeta de Debito,32,6.0,Auto,Telgopor (EPS),0.0
+13105,2026-07-22,REST-081,Dietetica Raiz,40900,Mercado Pago,64,6.8,Bicicleta,Bioplastico PLA,0.3167
+27047,2026-06-09,REST-034,Cafeteria Biela,62700,Mercado Pago,45,2.6,Moto,Aluminio,0.0
+69523,2026-06-24,REST-017,Bodegon Lezama,63900,Tarjeta de Debito,41,0.6,Bicicleta,Fibra de Cana,0.0279
+27344,2026-07-24,REST-271,Sushi Akira,22400,Mercado Pago,17,4.4,Bicicleta,Aluminio,0.205
+79820,2026-07-25,REST-287,Sushi Osaka,45400,Mercado Pago,49,2.4,Bicicleta,Aluminio,0.1118
+14308,2026-06-21,REST-081,Dietetica Raiz,33400,Mercado Pago,17,1.0,Moto,Fibra de Cana,0.0
+97101,2026-07-15,REST-263,Rotiseria La Reina,17700,Mercado Pago,35,5.2,Moto,Fibra de Cana,0.0
+73790,2026-06-23,REST-260,Rotiseria La Esquina,52700,Mercado Pago,48,2.8,Moto,Fibra de Cana,0.0
+19574,2026-08-02,REST-037,Cafeteria Cuervo,24200,Mercado Pago,38,5.5,Moto,Polipapel,0.0
+12156,2026-06-02,REST-276,Sushi Fabric,79800,Tarjeta de Credito,21,6.9,Auto,Aluminio,0.0
+61672,2026-08-03,REST-216,Pizzeria El Cedrón,15100,Tarjeta de Credito,30,4.5,Moto,Plastico PET/PP,0.0
+62556,2026-08-03,REST-258,Rotiseria La Abuela,71900,Tarjeta de Credito,57,4.2,Bicicleta,Carton / Papel,0.1956
+46306,2026-08-01,REST-097,Empanadas De la Abuela,70200,Tarjeta de Credito,47,8.0,Bicicleta,Carton / Papel,0.3726
+18669,2026-07-11,REST-056,Cafeteria Tienda de Cafe,40500,Tarjeta de Credito,22,4.3,Bicicleta,Aluminio,0.2003
+68367,2026-08-28,REST-012,Bodegon El Preferido,44400,Mercado Pago,38,3.1,Moto,Polipapel,0.0
+54198,2026-06-13,REST-294,Sushi Sushi Master,62300,Mercado Pago,22,7.8,Moto,Aluminio,0.0
+57127,2026-06-24,REST-196,Parrilla La Brigada,17300,Tarjeta de Credito,27,2.9,Moto,Telgopor (EPS),0.0
+84072,2026-07-10,REST-291,Sushi Sensei,72500,Mercado Pago,19,8.0,Moto,Aluminio,0.0
+39566,2026-07-11,REST-102,Empanadas Fritas,21400,Tarjeta de Credito,42,1.3,Bicicleta,Carton / Papel,0.0606
+40292,2026-07-21,REST-025,Bodegon Roma,57700,Tarjeta de Credito,21,3.3,Bicicleta,Plastico PET/PP,0.1537
+57894,2026-08-15,REST-187,Parrilla El Ferroviario,56000,Mercado Pago,54,0.7,Moto,Telgopor (EPS),0.0
+23728,2026-08-24,REST-206,Parrilla Los Platitos,19600,Mercado Pago,20,1.2,Moto,Polipapel,0.0
+92505,2026-08-21,REST-089,Dietetica Vital,67800,Tarjeta de Debito,46,2.6,Bicicleta,Plastico PET/PP,0.1211
+92915,2026-06-24,REST-068,Dietetica Equilibrio,71400,Mercado Pago,31,6.5,Bicicleta,Polipapel,0.3028
+58408,2026-06-06,REST-083,Dietetica Semilla,68000,Mercado Pago,65,6.7,Moto,Plastico PET/PP,0.0
+61349,2026-08-27,REST-298,Sushi Tokio,18900,Mercado Pago,52,2.6,Bicicleta,Telgopor (EPS),0.1211
+61592,2026-07-09,REST-062,Dietetica Bio Natural,57200,Mercado Pago,51,2.4,Moto,Aluminio,0.0
+78909,2026-07-15,REST-231,Pizzeria La Universal,64300,Mercado Pago,36,6.9,Moto,Carton / Papel,0.0
+58303,2026-07-11,REST-122,Hamburgueseria Bacon,40200,Efectivo,53,7.0,Moto,Carton / Papel,0.0
+27648,2026-07-20,REST-067,Dietetica Energia,78700,Mercado Pago,17,2.6,Moto,Polipapel,0.0
+68487,2026-08-09,REST-032,Cafeteria All Saints,21500,Tarjeta de Debito,54,6.4,Moto,Carton / Papel,0.0
+31237,2026-07-27,REST-009,Bodegon El Faro,44700,Mercado Pago,33,5.0,Moto,Polipapel,0.0
+70084,2026-08-30,REST-018,Bodegon Los Chicos,74200,Mercado Pago,22,3.6,Moto,Carton / Papel,0.0
+25865,2026-08-06,REST-025,Bodegon Roma,26900,Tarjeta de Credito,27,5.2,Moto,Aluminio,0.0
+72420,2026-06-25,REST-057,Cafeteria Tortoni,17200,Tarjeta de Debito,43,3.4,Bicicleta,Bioplastico PLA,0.1584
+88751,2026-06-14,REST-125,Hamburgueseria Burger Joint,66700,Tarjeta de Credito,40,3.3,Moto,Plastico PET/PP,0.0
+14663,2026-08-04,REST-124,Hamburgueseria Big Pons,37900,Mercado Pago,37,5.3,Bicicleta,Aluminio,0.2469
+39709,2026-07-05,REST-178,Heladeria Venecia,74400,Tarjeta de Debito,15,4.9,Bicicleta,Aluminio,0.2282
+17414,2026-07-17,REST-296,Sushi Sushi Roll,16300,Mercado Pago,50,4.5,Bicicleta,Bioplastico PLA,0.2096
+28670,2026-07-16,REST-155,Heladeria Chungo,56600,Mercado Pago,17,3.9,Moto,Aluminio,0.0
+52081,2026-07-03,REST-171,Heladeria Podio,56500,Mercado Pago,31,1.1,Moto,Carton / Papel,0.0
+52447,2026-07-24,REST-066,Dietetica El Naranjo,60500,Mercado Pago,51,1.5,Moto,Polipapel,0.0
+24114,2026-06-24,REST-041,Cafeteria Full City,45900,Tarjeta de Credito,30,6.2,Bicicleta,Carton / Papel,0.2888
+25139,2026-06-10,REST-146,Hamburgueseria Tierra de Nadie,47400,Tarjeta de Credito,34,2.7,Moto,Bioplastico PLA,0.0
+90109,2026-07-04,REST-089,Dietetica Vital,70700,Tarjeta de Credito,33,5.6,Bicicleta,Telgopor (EPS),0.2608
+92615,2026-08-22,REST-207,Parrilla Los Talas,12600,Tarjeta de Credito,34,4.0,Bicicleta,Carton / Papel,0.1863
+90084,2026-07-30,REST-280,Sushi Kobe,47400,Tarjeta de Credito,31,7.4,Moto,Plastico PET/PP,0.0
+78725,2026-07-26,REST-191,Parrilla El Ombú,50400,Tarjeta de Credito,27,2.9,Moto,Telgopor (EPS),0.0
+69850,2026-08-15,REST-129,Hamburgueseria Dilligan,57700,Tarjeta de Credito,41,1.0,Moto,Telgopor (EPS),0.0
+27576,2026-06-09,REST-037,Cafeteria Cuervo,38200,Mercado Pago,48,8.4,Bicicleta,Bioplastico PLA,0.3913
+17924,2026-08-09,REST-074,Dietetica Hoja,69700,Tarjeta de Debito,29,2.9,Moto,Plastico PET/PP,0.0
+14875,2026-06-01,REST-129,Hamburgueseria Dilligan,17400,Mercado Pago,33,4.3,Bicicleta,Aluminio,0.2003
+27755,2026-06-23,REST-154,Heladeria Cadore,75500,Mercado Pago,40,2.1,Bicicleta,Aluminio,0.0978
+11850,2026-08-23,REST-080,Dietetica Pura Vida,74800,Mercado Pago,60,6.3,Bicicleta,Fibra de Cana,0.2935
+86544,2026-08-27,REST-038,Cafeteria El Federal,44400,Mercado Pago,57,2.1,Moto,Carton / Papel,0.0
+54251,2026-08-23,REST-131,Hamburgueseria Fat Broder,70600,Tarjeta de Credito,63,0.6,Bicicleta,Polipapel,0.0279
+12259,2026-07-30,REST-297,Sushi Sushiman,25700,Mercado Pago,52,8.3,Moto,Bioplastico PLA,0.0
+51621,2026-08-18,REST-167,Heladeria Munchis,68000,Mercado Pago,16,2.8,Bicicleta,Aluminio,0.1304
+17470,2026-06-09,REST-068,Dietetica Equilibrio,32100,Mercado Pago,57,3.7,Moto,Telgopor (EPS),0.0
+48480,2026-07-27,REST-250,Rotiseria El Buen Gusto,36900,Tarjeta de Credito,49,4.9,Bicicleta,Aluminio,0.2282
+22612,2026-06-19,REST-172,Heladeria Ramon Ceria,67800,Mercado Pago,36,3.5,Bicicleta,Carton / Papel,0.163
+10165,2026-07-19,REST-076,Dietetica Luna,39000,Tarjeta de Credito,63,7.1,Bicicleta,Fibra de Cana,0.3307
+54838,2026-06-22,REST-143,Hamburgueseria Pony Line,5300,Tarjeta de Credito,48,2.1,Bicicleta,Fibra de Cana,0.0978
+93881,2026-06-17,REST-184,Parrilla Don Julio,52100,Tarjeta de Debito,18,2.1,Moto,Fibra de Cana,0.0
+73012,2026-08-14,REST-117,Empanadas Suaves,68100,Tarjeta de Credito,37,4.6,Moto,Carton / Papel,0.0
+15311,2026-06-11,REST-253,Rotiseria El Gato Negro,50300,Tarjeta de Credito,28,3.0,Bicicleta,Plastico PET/PP,0.1397
+64996,2026-06-03,REST-228,Pizzeria La Nueva,10100,Tarjeta de Credito,25,5.1,Moto,Aluminio,0.0
+87407,2026-07-05,REST-101,Empanadas El Sanjuanino,54000,Mercado Pago,22,6.5,Moto,Plastico PET/PP,0.0
+80375,2026-08-15,REST-259,Rotiseria La Cocina de Mama,55600,Tarjeta de Credito,58,3.0,Bicicleta,Plastico PET/PP,0.1397
+42197,2026-07-26,REST-117,Empanadas Suaves,34500,Tarjeta de Credito,24,6.5,Moto,Aluminio,0.0
+97077,2026-08-18,REST-037,Cafeteria Cuervo,60800,Mercado Pago,39,5.1,Moto,Carton / Papel,0.0
+94619,2026-07-06,REST-055,Cafeteria Poesia,41700,Mercado Pago,15,8.4,Moto,Bioplastico PLA,0.0
+47305,2026-06-01,REST-165,Heladeria Luccianos,68200,Tarjeta de Debito,38,6.3,Bicicleta,Aluminio,0.2935
+51587,2026-08-28,REST-259,Rotiseria La Cocina de Mama,72100,Mercado Pago,36,4.8,Moto,Bioplastico PLA,0.0
+40627,2026-06-28,REST-237,Pizzeria Roma,29500,Tarjeta de Credito,26,1.3,Moto,Aluminio,0.0
+36167,2026-08-01,REST-215,Pizzeria Cervantes,19900,Mercado Pago,51,1.8,Moto,Telgopor (EPS),0.0
+51448,2026-06-06,REST-040,Cafeteria Florida Garden,64100,Tarjeta de Credito,16,1.3,Auto,Polipapel,0.0
+94080,2026-06-08,REST-243,Rotiseria Comida Casera,77800,Tarjeta de Credito,36,3.2,Bicicleta,Carton / Papel,0.1491
+80914,2026-07-20,REST-224,Pizzeria Kentucky,4600,Tarjeta de Credito,20,5.5,Moto,Fibra de Cana,0.0
+69022,2026-07-05,REST-180,Heladeria Volta,60600,Mercado Pago,40,5.8,Bicicleta,Bioplastico PLA,0.2702
+34015,2026-06-03,REST-129,Hamburgueseria Dilligan,18500,Tarjeta de Debito,29,4.4,Moto,Fibra de Cana,0.0
+43453,2026-06-16,REST-046,Cafeteria Las Violetas,12300,Tarjeta de Credito,47,8.2,Moto,Bioplastico PLA,0.0
+28958,2026-07-18,REST-071,Dietetica Fresh,78500,Mercado Pago,54,8.0,Moto,Fibra de Cana,0.0
+49705,2026-08-16,REST-116,Empanadas Solo,79200,Mercado Pago,62,2.9,Moto,Aluminio,0.0
+32255,2026-06-11,REST-077,Dietetica Natural Market,17200,Tarjeta de Credito,53,2.3,Moto,Telgopor (EPS),0.0
+45225,2026-08-18,REST-189,Parrilla El Lazo,10000,Tarjeta de Credito,52,2.8,Moto,Polipapel,0.0
+86135,2026-07-11,REST-111,Empanadas Morita,31000,Mercado Pago,65,5.0,Moto,Bioplastico PLA,0.0
+91081,2026-08-29,REST-145,Hamburgueseria The Burger Company,19900,Mercado Pago,40,8.0,Moto,Polipapel,0.0
+27182,2026-07-21,REST-039,Cafeteria El Gato,5700,Tarjeta de Credito,17,3.5,Bicicleta,Plastico PET/PP,0.163
+96834,2026-08-20,REST-228,Pizzeria La Nueva,17200,Mercado Pago,45,7.6,Moto,Plastico PET/PP,0.0
+65185,2026-08-15,REST-167,Heladeria Munchis,25400,Mercado Pago,26,3.2,Moto,Carton / Papel,0.0
+62853,2026-06-24,REST-099,Empanadas El Horno,41400,Mercado Pago,43,4.1,Bicicleta,Bioplastico PLA,0.191
+88591,2026-08-24,REST-086,Dietetica Tomate Algo,12900,Tarjeta de Debito,42,4.4,Moto,Carton / Papel,0.0
+86877,2026-08-17,REST-249,Rotiseria El Barrio,41000,Tarjeta de Credito,61,8.0,Moto,Bioplastico PLA,0.0
+80339,2026-06-16,REST-067,Dietetica Energia,31400,Mercado Pago,30,2.6,Bicicleta,Carton / Papel,0.1211
+14726,2026-06-07,REST-209,Parrilla Peña,23200,Mercado Pago,37,6.8,Bicicleta,Bioplastico PLA,0.3167
+10843,2026-06-29,REST-002,Bodegon Bar de Cao,58600,Tarjeta de Credito,15,2.1,Bicicleta,Polipapel,0.0978
+51662,2026-07-16,REST-213,Pizzeria Burgio,26700,Tarjeta de Credito,26,4.2,Moto,Telgopor (EPS),0.0
+48841,2026-08-31,REST-281,Sushi Kyoto,61900,Mercado Pago,20,5.9,Bicicleta,Telgopor (EPS),0.2748
+82586,2026-07-04,REST-039,Cafeteria El Gato,14800,Tarjeta de Credito,55,7.6,Moto,Fibra de Cana,0.0
+44532,2026-06-08,REST-277,Sushi Fuji,32300,Tarjeta de Credito,44,4.0,Moto,Carton / Papel,0.0
+64860,2026-06-03,REST-279,Sushi Kenzo,71400,Tarjeta de Credito,44,6.6,Bicicleta,Bioplastico PLA,0.3074
+27772,2026-07-23,REST-130,Hamburgueseria Dogg,12400,Efectivo,32,3.7,Moto,Polipapel,0.0
+71415,2026-08-27,REST-013,Bodegon Federal,76200,Tarjeta de Credito,23,7.9,Moto,Bioplastico PLA,0.0
+13693,2026-06-08,REST-290,Sushi Samurai,32000,Mercado Pago,58,2.0,Moto,Aluminio,0.0
+74308,2026-07-23,REST-110,Empanadas Mi Gusto,37300,Mercado Pago,58,5.5,Auto,Telgopor (EPS),0.0
+62257,2026-06-28,REST-215,Pizzeria Cervantes,76700,Tarjeta de Credito,16,0.9,Moto,Carton / Papel,0.0
+57274,2026-08-17,REST-054,Cafeteria Petit Colon,15800,Mercado Pago,53,2.3,Moto,Bioplastico PLA,0.0
+23495,2026-06-20,REST-165,Heladeria Luccianos,25700,Tarjeta de Credito,63,3.9,Bicicleta,Fibra de Cana,0.1817
+20036,2026-07-21,REST-147,Hamburgueseria Toro,76900,Mercado Pago,36,5.5,Bicicleta,Polipapel,0.2562
+34789,2026-07-13,REST-038,Cafeteria El Federal,54800,Mercado Pago,59,7.8,Moto,Carton / Papel,0.0
+23543,2026-07-15,REST-022,Bodegon Norte,71900,Tarjeta de Debito,18,7.1,Moto,Fibra de Cana,0.0
+91922,2026-06-28,REST-263,Rotiseria La Reina,25700,Mercado Pago,60,4.1,Auto,Bioplastico PLA,0.0
+73843,2026-06-24,REST-001,Bodegon Bar Sur,58800,Mercado Pago,37,7.2,Moto,Polipapel,0.0
+15867,2026-07-15,REST-032,Cafeteria All Saints,16500,Mercado Pago,54,0.5,Bicicleta,Carton / Papel,0.0233
+24428,2026-08-21,REST-188,Parrilla El Fogón,10800,Tarjeta de Credito,20,5.9,Bicicleta,Plastico PET/PP,0.2748
+25228,2026-08-21,REST-097,Empanadas De la Abuela,28500,Mercado Pago,41,6.9,Moto,Carton / Papel,0.0
+73548,2026-08-13,REST-288,Sushi Pop,77500,Efectivo,64,3.4,Bicicleta,Fibra de Cana,0.1584
+74781,2026-07-28,REST-285,Sushi Ninja,27900,Tarjeta de Credito,16,1.1,Moto,Bioplastico PLA,0.0
+11949,2026-06-26,REST-209,Parrilla Peña,47700,Mercado Pago,34,4.1,Bicicleta,Bioplastico PLA,0.191
+10795,2026-07-17,REST-056,Cafeteria Tienda de Cafe,51700,Efectivo,64,5.2,Moto,Aluminio,0.0
+71340,2026-07-04,REST-257,Rotiseria Gourmet Express,21200,Tarjeta de Debito,18,5.1,Moto,Carton / Papel,0.0
+24850,2026-07-02,REST-224,Pizzeria Kentucky,16100,Mercado Pago,54,4.7,Bicicleta,Polipapel,0.2189
+79655,2026-08-21,REST-261,Rotiseria La Familia,73600,Tarjeta de Credito,63,6.0,Moto,Telgopor (EPS),0.0
+31438,2026-08-04,REST-024,Bodegon Plaza Astolfi,21800,Efectivo,31,5.1,Moto,Polipapel,0.0
+46418,2026-08-13,REST-061,Dietetica Armonia,12900,Tarjeta de Credito,28,4.6,Moto,Bioplastico PLA,0.0
+61898,2026-06-22,REST-079,Dietetica NutriShop,55100,Tarjeta de Credito,18,5.0,Bicicleta,Polipapel,0.2329
+35665,2026-06-19,REST-102,Empanadas Fritas,21200,Mercado Pago,50,3.9,Bicicleta,Carton / Papel,0.1817
+98300,2026-06-03,REST-102,Empanadas Fritas,79200,Tarjeta de Credito,16,5.2,Moto,Carton / Papel,0.0
+98394,2026-06-25,REST-063,Dietetica Brote,66400,Mercado Pago,50,6.3,Bicicleta,Fibra de Cana,0.2935
+29743,2026-08-13,REST-185,Parrilla El Desnivel,66700,Mercado Pago,41,1.3,Moto,Plastico PET/PP,0.0
+58875,2026-08-05,REST-265,Rotiseria Rico y Sano,26200,Tarjeta de Debito,45,1.9,Bicicleta,Polipapel,0.0885
+19877,2026-06-05,REST-225,Pizzeria La Americana,58200,Tarjeta de Credito,63,8.2,Moto,Telgopor (EPS),0.0
+50365,2026-07-14,REST-170,Heladeria Persicco,14500,Mercado Pago,19,6.6,Moto,Aluminio,0.0
+20055,2026-08-16,REST-138,Hamburgueseria La Birra Bar,17600,Tarjeta de Credito,31,6.6,Moto,Fibra de Cana,0.0
+32248,2026-08-16,REST-132,Hamburgueseria Gourmet,59300,Mercado Pago,34,2.4,Moto,Polipapel,0.0
+44098,2026-08-01,REST-243,Rotiseria Comida Casera,73400,Mercado Pago,64,5.4,Bicicleta,Polipapel,0.2515
+97926,2026-07-11,REST-249,Rotiseria El Barrio,49400,Tarjeta de Credito,39,7.4,Bicicleta,Aluminio,0.3447
+10838,2026-07-29,REST-235,Pizzeria Nápoles,4900,Mercado Pago,21,4.7,Moto,Polipapel,0.0
+65527,2026-06-13,REST-297,Sushi Sushiman,67700,Efectivo,24,7.6,Bicicleta,Bioplastico PLA,0.354
+99180,2026-07-22,REST-080,Dietetica Pura Vida,46600,Efectivo,40,1.8,Moto,Aluminio,0.0
+30800,2026-06-18,REST-035,Cafeteria Britanico,77800,Mercado Pago,20,4.8,Moto,Bioplastico PLA,0.0
+37853,2026-08-08,REST-099,Empanadas El Horno,30800,Tarjeta de Credito,19,2.2,Moto,Carton / Papel,0.0
+93597,2026-08-20,REST-180,Heladeria Volta,61200,Mercado Pago,44,4.7,Moto,Aluminio,0.0
+54873,2026-06-24,REST-290,Sushi Samurai,42800,Mercado Pago,28,5.8,Moto,Bioplastico PLA,0.0
+65035,2026-06-13,REST-063,Dietetica Brote,16100,Tarjeta de Credito,26,8.0,Moto,Telgopor (EPS),0.0
+40989,2026-08-30,REST-261,Rotiseria La Familia,31300,Mercado Pago,26,1.4,Moto,Telgopor (EPS),0.0
+23975,2026-08-18,REST-235,Pizzeria Nápoles,65300,Tarjeta de Debito,28,5.0,Bicicleta,Fibra de Cana,0.2329
+54425,2026-07-24,REST-290,Sushi Samurai,56400,Mercado Pago,48,6.7,Bicicleta,Fibra de Cana,0.3121
+44348,2026-08-28,REST-127,Hamburgueseria Classic,45300,Tarjeta de Credito,47,5.7,Moto,Carton / Papel,0.0
+78228,2026-06-02,REST-220,Pizzeria El Trébol,31800,Tarjeta de Credito,59,8.2,Bicicleta,Plastico PET/PP,0.382
+69746,2026-06-01,REST-271,Sushi Akira,10800,Mercado Pago,26,0.8,Moto,Carton / Papel,0.0
+70350,2026-07-04,REST-177,Heladeria Tufic,58400,Mercado Pago,33,3.7,Moto,Polipapel,0.0
+88522,2026-06-02,REST-276,Sushi Fabric,17400,Mercado Pago,58,1.9,Bicicleta,Telgopor (EPS),0.0885
+29994,2026-08-28,REST-132,Hamburgueseria Gourmet,48400,Mercado Pago,27,7.0,Moto,Bioplastico PLA,0.0
+80231,2026-07-16,REST-297,Sushi Sushiman,17000,Tarjeta de Credito,57,1.6,Moto,Fibra de Cana,0.0
+85547,2026-07-07,REST-005,Bodegon Celta Bar,62000,Efectivo,53,2.5,Bicicleta,Telgopor (EPS),0.1165
+56834,2026-08-17,REST-022,Bodegon Norte,58500,Tarjeta de Credito,34,1.8,Moto,Telgopor (EPS),0.0
+31253,2026-06-10,REST-160,Heladeria Freddo,45600,Mercado Pago,23,1.8,Bicicleta,Bioplastico PLA,0.0838
+80208,2026-06-23,REST-024,Bodegon Plaza Astolfi,7100,Tarjeta de Credito,19,6.8,Bicicleta,Carton / Papel,0.3167
+25946,2026-06-10,REST-207,Parrilla Los Talas,19900,Mercado Pago,57,5.9,Moto,Polipapel,0.0
+29756,2026-07-29,REST-010,Bodegon El Globo,25400,Tarjeta de Debito,57,7.2,Moto,Polipapel,0.0
+18872,2026-06-15,REST-202,Parrilla La Estancia,70700,Tarjeta de Credito,37,0.8,Bicicleta,Plastico PET/PP,0.0373
+42373,2026-06-03,REST-239,Pizzeria San Carlos,20400,Tarjeta de Debito,36,6.3,Bicicleta,Carton / Papel,0.2935
+92398,2026-08-04,REST-205,Parrilla Lo de Jesus,6000,Mercado Pago,25,7.8,Bicicleta,Fibra de Cana,0.3633
+66816,2026-08-26,REST-257,Rotiseria Gourmet Express,62500,Mercado Pago,45,2.7,Bicicleta,Telgopor (EPS),0.1258
+87147,2026-07-09,REST-161,Heladeria Grido,46800,Tarjeta de Credito,44,2.7,Bicicleta,Telgopor (EPS),0.1258
+68801,2026-06-09,REST-214,Pizzeria Centenario,41700,Mercado Pago,24,0.9,Moto,Fibra de Cana,0.0
+85638,2026-07-07,REST-221,Pizzeria Guerrin,39800,Tarjeta de Credito,30,8.2,Bicicleta,Telgopor (EPS),0.382
+21833,2026-08-27,REST-044,Cafeteria Homero,12700,Tarjeta de Credito,56,3.8,Moto,Polipapel,0.0
+41336,2026-06-24,REST-134,Hamburgueseria Heisenburger,58000,Tarjeta de Credito,19,8.4,Moto,Aluminio,0.0
+62745,2026-08-07,REST-153,Heladeria Bari,30400,Tarjeta de Credito,63,2.6,Bicicleta,Aluminio,0.1211
+14771,2026-07-28,REST-261,Rotiseria La Familia,62600,Mercado Pago,26,2.1,Auto,Carton / Papel,0.0
+10330,2026-07-22,REST-165,Heladeria Luccianos,6800,Tarjeta de Debito,18,2.7,Moto,Fibra de Cana,0.0
+91829,2026-07-13,REST-138,Hamburgueseria La Birra Bar,72500,Mercado Pago,37,2.6,Bicicleta,Carton / Papel,0.1211
+64006,2026-07-01,REST-103,Empanadas Gourmet,24600,Tarjeta de Credito,63,4.6,Moto,Polipapel,0.0
+31488,2026-06-04,REST-148,Hamburgueseria Voraz,42600,Mercado Pago,29,5.0,Moto,Fibra de Cana,0.0
+27878,2026-08-14,REST-104,Empanadas Kiosco,76400,Mercado Pago,19,5.5,Bicicleta,Aluminio,0.2562
+38171,2026-08-19,REST-295,Sushi Sushi Phone,13000,Mercado Pago,61,7.7,Bicicleta,Fibra de Cana,0.3587
+22139,2026-06-13,REST-281,Sushi Kyoto,39000,Tarjeta de Credito,65,1.3,Bicicleta,Plastico PET/PP,0.0606
+64583,2026-08-21,REST-128,Hamburgueseria Deniro,68000,Tarjeta de Credito,16,4.3,Moto,Fibra de Cana,0.0
+69458,2026-08-03,REST-248,Rotiseria Doña Rosa,53100,Mercado Pago,17,5.1,Bicicleta,Polipapel,0.2376
+99588,2026-06-20,REST-284,Sushi Nihon,39100,Tarjeta de Credito,51,4.8,Moto,Polipapel,0.0
+30844,2026-08-10,REST-152,Heladeria Arnaldo,57600,Tarjeta de Credito,60,6.4,Moto,Carton / Papel,0.0
+64028,2026-08-17,REST-023,Bodegon Pippo,40800,Tarjeta de Credito,34,2.9,Bicicleta,Telgopor (EPS),0.1351
+23631,2026-08-23,REST-165,Heladeria Luccianos,29600,Efectivo,57,2.3,Moto,Aluminio,0.0
+40254,2026-07-28,REST-109,Empanadas Mendocinas,28900,Mercado Pago,26,7.0,Auto,Carton / Papel,0.0
+34387,2026-08-14,REST-263,Rotiseria La Reina,38700,Mercado Pago,15,1.6,Bicicleta,Bioplastico PLA,0.0745
+80053,2026-07-29,REST-276,Sushi Fabric,52500,Tarjeta de Credito,36,4.8,Moto,Bioplastico PLA,0.0
+45213,2026-08-03,REST-097,Empanadas De la Abuela,19800,Mercado Pago,54,3.9,Bicicleta,Telgopor (EPS),0.1817
+52269,2026-08-05,REST-269,Rotiseria Tentaciones,78600,Tarjeta de Debito,18,8.5,Bicicleta,Bioplastico PLA,0.3959
+62320,2026-08-30,REST-206,Parrilla Los Platitos,44000,Tarjeta de Credito,19,7.3,Auto,Bioplastico PLA,0.0
+78798,2026-06-25,REST-155,Heladeria Chungo,37000,Tarjeta de Credito,19,5.7,Moto,Telgopor (EPS),0.0
+48159,2026-07-14,REST-251,Rotiseria El Buen Sabor,60300,Tarjeta de Credito,58,7.5,Bicicleta,Fibra de Cana,0.3494
+75066,2026-08-10,REST-061,Dietetica Armonia,55400,Tarjeta de Credito,21,3.4,Bicicleta,Polipapel,0.1584
+84272,2026-07-11,REST-261,Rotiseria La Familia,46800,Mercado Pago,59,8.5,Moto,Polipapel,0.0
+24524,2026-07-15,REST-150,Hamburgueseria Williams,52100,Tarjeta de Credito,16,7.9,Moto,Plastico PET/PP,0.0
+62684,2026-08-10,REST-243,Rotiseria Comida Casera,43100,Tarjeta de Credito,60,5.1,Moto,Carton / Papel,0.0
+67239,2026-08-31,REST-184,Parrilla Don Julio,50800,Tarjeta de Credito,15,4.2,Moto,Aluminio,0.0
+32619,2026-08-26,REST-107,Empanadas La Continental,78900,Mercado Pago,64,5.8,Bicicleta,Plastico PET/PP,0.2702
+38299,2026-06-04,REST-253,Rotiseria El Gato Negro,17900,Mercado Pago,61,7.0,Bicicleta,Bioplastico PLA,0.3261
+25528,2026-08-01,REST-162,Heladeria Italia,55000,Efectivo,28,1.9,Bicicleta,Polipapel,0.0885
+80398,2026-07-08,REST-050,Cafeteria Margot,77500,Mercado Pago,62,8.3,Bicicleta,Polipapel,0.3866
+40685,2026-08-30,REST-174,Heladeria San Remo,58800,Mercado Pago,60,3.9,Bicicleta,Bioplastico PLA,0.1817
+69892,2026-06-17,REST-126,Hamburgueseria Burgertify,14200,Tarjeta de Debito,46,4.5,Bicicleta,Bioplastico PLA,0.2096
+58265,2026-08-03,REST-250,Rotiseria El Buen Gusto,28000,Tarjeta de Debito,43,6.1,Moto,Telgopor (EPS),0.0
+25575,2026-07-07,REST-026,Bodegon Rovira,11600,Mercado Pago,39,3.0,Moto,Plastico PET/PP,0.0
+70977,2026-06-27,REST-106,Empanadas La Cocina,18200,Mercado Pago,23,3.0,Bicicleta,Carton / Papel,0.1397
+96252,2026-08-25,REST-137,Hamburgueseria Krusty,42900,Mercado Pago,18,2.2,Moto,Carton / Papel,0.0
+56921,2026-08-10,REST-247,Rotiseria Doña Maria,68500,Tarjeta de Credito,58,7.0,Moto,Bioplastico PLA,0.0
+33531,2026-07-24,REST-285,Sushi Ninja,58700,Tarjeta de Credito,37,6.0,Bicicleta,Aluminio,0.2795
+59162,2026-08-05,REST-124,Hamburgueseria Big Pons,76100,Mercado Pago,15,5.7,Bicicleta,Carton / Papel,0.2655
+27370,2026-06-24,REST-216,Pizzeria El Cedrón,48500,Tarjeta de Credito,20,1.6,Moto,Fibra de Cana,0.0
+75592,2026-06-25,REST-142,Hamburgueseria Perez H,43200,Efectivo,18,4.9,Moto,Polipapel,0.0
+56635,2026-06-21,REST-160,Heladeria Freddo,79400,Tarjeta de Credito,52,5.9,Bicicleta,Bioplastico PLA,0.2748
+15240,2026-06-23,REST-294,Sushi Sushi Master,14100,Tarjeta de Debito,21,4.3,Moto,Aluminio,0.0
+73801,2026-08-10,REST-198,Parrilla La Cabrera Norte,26500,Mercado Pago,17,0.7,Bicicleta,Aluminio,0.0326
+51635,2026-07-16,REST-241,Rotiseria A Punto,59500,Mercado Pago,53,5.4,Bicicleta,Carton / Papel,0.2515
+83520,2026-06-29,REST-200,Parrilla La Dorita,26300,Mercado Pago,28,3.3,Bicicleta,Polipapel,0.1537
+48247,2026-07-18,REST-104,Empanadas Kiosco,26700,Mercado Pago,61,6.3,Moto,Telgopor (EPS),0.0
+15899,2026-06-05,REST-184,Parrilla Don Julio,79900,Mercado Pago,53,7.0,Moto,Carton / Papel,0.0
+90278,2026-08-12,REST-073,Dietetica Green Eat,49500,Mercado Pago,15,7.8,Bicicleta,Aluminio,0.3633
+80069,2026-07-14,REST-123,Hamburgueseria Basti,41600,Mercado Pago,33,1.1,Moto,Polipapel,0.0
+70052,2026-08-10,REST-222,Pizzeria Génova,14100,Mercado Pago,20,4.7,Moto,Fibra de Cana,0.0
+51777,2026-07-29,REST-269,Rotiseria Tentaciones,45900,Tarjeta de Credito,45,8.1,Bicicleta,Polipapel,0.3773
+78966,2026-07-14,REST-213,Pizzeria Burgio,68700,Tarjeta de Credito,34,2.3,Bicicleta,Polipapel,0.1071
+67860,2026-07-06,REST-250,Rotiseria El Buen Gusto,29900,Mercado Pago,48,5.3,Moto,Fibra de Cana,0.0
