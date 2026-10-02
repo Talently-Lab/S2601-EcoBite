@@ -1,13 +1,13 @@
 .cart-item img,
 .cart-item-remove {
     border-radius: var(--radius-sm);
-    background: var(--color-surface-muted);
+    background: var(--color-surface);
 }
 
 .cart-item {
     display: flex;
     justify-content: space-between;
-    padding: var(--space-4) var(--space-1);
+    padding: var(--space-2) calc(var(--space-1) / 2);
 
     & img {
         width: 80px;
@@ -18,10 +18,17 @@
 .cart-item-remove {
     display: grid;
     place-items: center;
-    padding: var(--space-2);
+    padding: var(--space-1);
     height: 32px;
     width: 32px;
     border: 0;
     color: var(--color-primary);
     cursor: pointer;
+}
+
+.empty-cart {
+    text-align: center;
+    color:  var(--color-primary);;
+    font-weight: 700;
+    margin-top: calc(var(--space-2) * 2);
 }

@@ -1,14 +1,11 @@
-body, header {
-	display: flex;
-	align-items: center;
-}
-
 html {
 	color-scheme: light;
-	scroll-padding-block-end: calc(var(--navbar-height) + 1rem);
+	scroll-padding-block-end: 1rem;
 }
 
 body {
+	display: flex;
+	align-items: center;
 	flex-direction: column;
 	min-inline-size: 0;
 	background: var(--color-background);
@@ -16,21 +13,6 @@ body {
 	font-family: var(--font-family);
 	font-size: var(--font-size-md);
 	line-height: 1.5;
-}
-
-header {
-	justify-content: center;
-	position: relative;
-    margin: var(--space-3) 0;
-
-    & h2 {
-        font-size: var(--font-size-sm);
-    }
-	& .button {
-		position: absolute;
-		left: 0;
-		padding: 0 var(--space-1);
-	}
 }
 
 :where(button, input, select, textarea) {
@@ -52,4 +34,13 @@ header {
 
 #root {
 	width: 100%;
+}
+
+.brand-logo {
+    display: inline-block;
+    inline-size: 5.4375rem;
+    block-size: 1.125rem;
+    color: var(--color-secondary);
+    background-color: currentColor;
+    mask: url('../../assets/icons/logo.svg') center / contain no-repeat;
 }

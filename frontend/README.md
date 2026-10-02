@@ -2,14 +2,14 @@
 
 ## Descripción
 
-Interfaz web de EcoBite desarrollada con **React 18 + Vite**. Proporciona la experiencia del usuario para navegar el catálogo, crear pedidos y ver el impacto ambiental generado.
+Interfaz web de EcoBite desarrollada con **React 19 + Vite**. Proporciona la experiencia del usuario para navegar el catálogo, crear pedidos y ver el impacto ambiental generado.
 
 ## Stack Tecnológico
 
-- **Framework:** React 18
+- **Framework:** React 19
 - **Build tool:** Vite
-- **Routing:** React Router v6
-- **Estilos:** Tailwind CSS
+- **Routing:** React Router v7
+- **Estilos:** CSS con variables y archivos por componente
 - **State management:** Context API
 - **HTTP client:** Fetch API / Axios
 
@@ -22,7 +22,7 @@ frontend/
 │   ├── pages/              # Páginas/rutas principales
 │   ├── services/           # Llamadas a API
 │   ├── context/            # Estado global (carrito, autenticación)
-│   ├── styles/             # Tailwind config
+│   ├── styles/             # Estilos y variables CSS
 │   ├── App.jsx
 │   └── main.jsx
 ├── index.html
@@ -39,7 +39,17 @@ frontend/
 npm install
 ```
 
-### 2. Iniciar servidor (desarrollo)
+### 2. Configurar el login de prueba
+
+En `.env.local`, completar `VITE_MOCK_AUTH_NAME`,
+`VITE_MOCK_AUTH_EMAIL` y `VITE_MOCK_AUTH_PASSWORD` con datos de prueba.
+El archivo `.env.local` está ignorado por Git. Reiniciar Vite después de modificarlo.
+Sin configuración, el login muestra un error y no permite ingresar.
+
+Después de cerrar sesión, solo puede iniciarse
+sesión con la cuenta configurada en `.env.local`. La sesión se pierde al recargar.
+
+### 3. Iniciar servidor (desarrollo)
 
 ```bash
 npm run dev
@@ -47,13 +57,13 @@ npm run dev
 
 La app estará disponible en `http://localhost:5173`
 
-## Componentes principales
+## Verificación
 
-- **Navbar** — Navegación global
-- **RestaurantCard** — Tarjeta de restaurante
-- **CartItem** — Ítem en el carrito
-- **GreenBadge** — Indicador eco-friendly
-- **Dashboard** — Panel admin (protegido)
+```bash
+npm run lint
+npm run typecheck
+npm run build
+```
 
 ## Documentación
 
