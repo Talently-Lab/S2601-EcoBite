@@ -1,4 +1,0 @@
-cd product_y_growth/data
-mkdir Documents
-cd Documents
-touch .gitkeep
