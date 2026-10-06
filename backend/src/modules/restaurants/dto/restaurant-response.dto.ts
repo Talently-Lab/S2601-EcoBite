@@ -9,6 +9,12 @@ export class RestaurantResponseDto {
   id!: string;
 
   @ApiProperty({
+    example: 'REST-001',
+    description: 'Identificador del restaurante proveniente del dataset.',
+  })
+  idRestaurant!: string;
+
+  @ApiProperty({
     example: 'Eco Burger',
     description: 'Nombre del restaurante.',
   })
