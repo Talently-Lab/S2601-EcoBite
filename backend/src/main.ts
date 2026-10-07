@@ -9,6 +9,7 @@ import appConfig from './config/app.config';
 import { setupSwagger } from './common/swagger/setup-swagger';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { bufferLogs: true });
+  app.setGlobalPrefix('api');
   const appCfg = app.get<ConfigType<typeof appConfig>>(appConfig.KEY);
   setupHttpLayer(app, appCfg);
   app.useLogger(app.get(Logger));

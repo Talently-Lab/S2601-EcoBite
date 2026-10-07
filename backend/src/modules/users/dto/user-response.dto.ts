@@ -1,32 +1,29 @@
-// NOTE: Defines and documents safe authentication user response payloads.
-
 import { ApiProperty } from '@nestjs/swagger';
 
-export class AuthUserResponseDto {
+export class UserResponseDto {
   @ApiProperty({
-    format: 'uuid',
     example: '550e8400-e29b-41d4-a716-446655440000',
+    format: 'uuid',
     description: 'Identificador único del usuario.',
   })
   id!: string;
 
   @ApiProperty({
-    example: 'Maria Garcia',
+    example: 'Ana Pérez',
     description: 'Nombre del usuario.',
   })
   name!: string;
 
   @ApiProperty({
+    example: 'ana@example.com',
     format: 'email',
-    example: 'maria@example.com',
     description: 'Correo electrónico del usuario.',
   })
   email!: string;
 
   @ApiProperty({
-    type: String,
-    format: 'date-time',
     example: '2026-09-30T18:00:00.000Z',
+    format: 'date-time',
     description: 'Fecha y hora de registro del usuario.',
   })
   registeredAt!: Date;

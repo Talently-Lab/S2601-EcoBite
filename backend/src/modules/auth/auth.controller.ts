@@ -1,4 +1,5 @@
 // NOTE: Exposes authentication, session, CSRF, and profile endpoints.
+
 import {
   Body,
   Controller,
@@ -9,6 +10,7 @@ import {
   Req,
   Res,
 } from '@nestjs/common';
+
 import {
   ApiExtraModels,
   ApiBody,
@@ -17,25 +19,29 @@ import {
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
+
 import type { Request, Response } from 'express';
+
 import { Throttle } from '@nestjs/throttler';
+
 import type { UserSafe } from './auth-user.service';
 import { AuthService } from './auth.service';
 import { CurrentUser } from './decorators/current-user.decorator';
 import { Public } from './decorators/public.decorator';
 import { LoginDto } from './dto/login.dto';
 import { SignupDto } from './dto/signup.dto';
+import { AuthUserResponseDto } from './dto/user-response.dto';
+import { LogoutResponseDto } from './dto/logout-response.dto';
+
 import { wrappedSuccessSchema } from '../../common/swagger/wrapped-success.schema';
 import { emailTakenExample } from '../../common/swagger/error-examples';
-import { UserResponseDto } from './dto/user-response.dto';
-import { LogoutResponseDto } from './dto/logout-response.dto';
 
 type AuthSignupPort = {
   completeSignup(dto: SignupDto, res: Response): Promise<UserSafe>;
 };
 
 @ApiTags('auth')
-@ApiExtraModels(LoginDto, SignupDto, UserResponseDto, LogoutResponseDto)
+@ApiExtraModels(LoginDto, SignupDto, AuthUserResponseDto, LogoutResponseDto)
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
@@ -45,14 +51,12 @@ export class AuthController {
   @Throttle({ default: { limit: 5, ttl: 60_000 } })
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({
-    summary:
-      'Public signup (active INSTALLER role); same session cookies as login',
+    summary: 'Public signup',
   })
   @ApiBody({ type: SignupDto })
   @ApiOkResponse({
-    description:
-      'Created user in `data`; session cookies are set (201 in envelope).',
-    schema: wrappedSuccessSchema(UserResponseDto, {
+    description: 'Created user in data; session cookies are set.',
+    schema: wrappedSuccessSchema(AuthUserResponseDto, {
       statusCode: 201,
       statusText: 'Created',
       pathExample: '/auth/signup',
@@ -72,7 +76,9 @@ export class AuthController {
     @Res({ passthrough: true }) res: Response,
   ): Promise<UserSafe> {
     const auth = this.authService as unknown as AuthSignupPort;
+
     const user: UserSafe = await auth.completeSignup(dto, res);
+
     return user;
   }
 
@@ -81,16 +87,18 @@ export class AuthController {
   @Throttle({ default: { limit: 10, ttl: 60_000 } })
   @HttpCode(HttpStatus.OK)
   @ApiOperation({
-    summary: 'Sign in (httpOnly access + refresh cookies)',
+    summary: 'Sign in',
   })
   @ApiOkResponse({
-    description:
-      'User in `data`; `access_token` / `refresh_token` cookies (configurable names).',
-    schema: wrappedSuccessSchema(UserResponseDto, {
+    description: 'User in data; access and refresh cookies are set.',
+    schema: wrappedSuccessSchema(AuthUserResponseDto, {
       pathExample: '/auth/login',
     }),
   })
-  @ApiResponse({ status: 401, description: 'Invalid credentials' })
+  @ApiResponse({
+    status: 401,
+    description: 'Invalid credentials',
+  })
   logIn(
     @Body() dto: LoginDto,
     @Res({ passthrough: true }) res: Response,
@@ -102,9 +110,11 @@ export class AuthController {
   @Public()
   @Throttle({ default: { limit: 30, ttl: 60_000 } })
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Renew access with refresh cookie (rotation)' })
+  @ApiOperation({
+    summary: 'Renew access with refresh cookie',
+  })
   @ApiOkResponse({
-    schema: wrappedSuccessSchema(UserResponseDto, {
+    schema: wrappedSuccessSchema(AuthUserResponseDto, {
       pathExample: '/auth/refresh',
     }),
   })
@@ -118,7 +128,9 @@ export class AuthController {
   @Get('csrf')
   @Public()
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Issue CSRF cookie for cookie-based mutations' })
+  @ApiOperation({
+    summary: 'Issue CSRF cookie for cookie-based mutations',
+  })
   @ApiOkResponse({
     schema: wrappedSuccessSchema(LogoutResponseDto, {
       pathExample: '/auth/csrf',
@@ -130,7 +142,9 @@ export class AuthController {
 
   @Post('logout')
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Sign out and revoke refresh family' })
+  @ApiOperation({
+    summary: 'Sign out and revoke refresh family',
+  })
   @ApiOkResponse({
     schema: wrappedSuccessSchema(LogoutResponseDto, {
       pathExample: '/auth/logout',
@@ -141,13 +155,16 @@ export class AuthController {
     @Res({ passthrough: true }) res: Response,
   ): Promise<{ ok: true }> {
     await this.authService.logout(req, res);
+
     return { ok: true };
   }
 
   @Get('me')
-  @ApiOperation({ summary: 'Authenticated user profile' })
+  @ApiOperation({
+    summary: 'Authenticated user profile',
+  })
   @ApiOkResponse({
-    schema: wrappedSuccessSchema(UserResponseDto, {
+    schema: wrappedSuccessSchema(AuthUserResponseDto, {
       pathExample: '/auth/me',
     }),
   })

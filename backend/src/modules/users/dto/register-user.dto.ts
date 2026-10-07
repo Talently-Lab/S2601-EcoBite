@@ -1,29 +1,31 @@
-// NOTE: Defines and documents the public signup request payload.
-
 import { ApiProperty } from '@nestjs/swagger';
-
 import { IsEmail, IsNotEmpty, IsString, MinLength } from 'class-validator';
 
-export class SignupDto {
-  @ApiProperty({ example: 'Maria Garcia' })
+export class RegisterUserDto {
+  @ApiProperty({
+    example: 'Ana Pérez',
+    description: 'Nombre del usuario.',
+  })
   @IsString()
   @IsNotEmpty()
   name!: string;
 
   @ApiProperty({
+    example: 'ana@example.com',
     format: 'email',
-    example: 'maria@example.com',
+    description: 'Correo electrónico del usuario.',
   })
   @IsEmail()
   @IsNotEmpty()
   email!: string;
 
   @ApiProperty({
-    minLength: 8,
     example: 'Password123',
+    minLength: 8,
+    description: 'Contraseña del usuario.',
   })
   @IsString()
-  @MinLength(8)
   @IsNotEmpty()
+  @MinLength(8)
   password!: string;
 }

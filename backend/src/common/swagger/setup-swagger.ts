@@ -15,19 +15,19 @@ export function setupSwagger(
   }
 
   const config = new DocumentBuilder()
-    .setTitle('ISP Manager API')
+    .setTitle('EcoBite API')
     .setDescription(
       [
-        'ISP manager API.',
+        'REST API for the EcoBite web platform.',
         '',
-        '**Authentication:** `POST /auth/signup` creates a public installer account and session cookies. `POST /auth/login` signs in with credentials. Access (`ACCESS_COOKIE_NAME`, default `access_token`) and refresh (`REFRESH_COOKIE_NAME`, default `refresh_token`) cookies are httpOnly. The `Authorization: Bearer <access JWT>` header is also supported.',
+        '**Authentication:** protected endpoints require a valid access token. Public endpoints are explicitly marked as public.',
         '',
-        '**CORS / cookies:** the client must use `credentials: true` and define `FRONTEND_ORIGINS` (CSV). Cookies use `SameSite=strict` by default (`COOKIE_SAMESITE`); cross-site SPAs may need `COOKIE_SAMESITE=none` and `COOKIE_SECURE=true`.',
+        '**CSRF:** cookie-based mutations require a valid CSRF token obtained from `GET /api/auth/csrf`.',
         '',
         '**Successful responses:** every endpoint returns JSON wrapped by the global interceptor:',
-        '`success`, `statusCode`, `statusText`, `timestamp`, `path`, `data` - each operation schema describes the contents of `data`.',
+        '`success`, `statusCode`, `statusText`, `timestamp`, `path`, `data`.',
         '',
-        '**Errors:** response body with `success: false`, `code` (when applicable), `message`, and `errors` for validation failures.',
+        '**Errors:** error responses include `success: false`, `message`, and `errors` for validation failures when applicable.',
       ].join('\n'),
     )
     .setVersion('1.0')

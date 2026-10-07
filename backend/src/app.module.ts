@@ -18,6 +18,8 @@ import { pinoRootParamsFromAppConfig } from './common/logging/pino-root.params';
 import { CustomValidationPipe } from './common/pipes/custom-validation.pipe';
 import { PrismaModule } from './prisma/prisma.module';
 import { SentryModule } from '@sentry/nestjs/setup';
+import { UsersModule } from './modules/users/users.module';
+import { RestaurantsModule } from './modules/restaurants/restaurants.module';
 
 @Module({
   imports: [
@@ -43,6 +45,8 @@ import { SentryModule } from '@sentry/nestjs/setup';
     PrismaModule,
     AuthModule,
     SentryModule.forRoot(),
+    UsersModule,
+    RestaurantsModule,
   ],
   providers: [
     {
