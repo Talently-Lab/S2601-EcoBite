@@ -48,6 +48,15 @@ export function setupSwagger(
       },
       'bearer',
     )
+    .addApiKey(
+      {
+        type: 'apiKey',
+        in: 'header',
+        name: 'X-CSRF-Token',
+        description: 'CSRF token obtained from GET /api/auth/csrf.',
+      },
+      'csrf-token',
+    )
     .build();
 
   const document = SwaggerModule.createDocument(app, config);

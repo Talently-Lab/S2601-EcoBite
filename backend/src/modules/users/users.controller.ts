@@ -7,6 +7,7 @@ import {
   ApiBody,
   ApiCreatedResponse,
   ApiOperation,
+  ApiSecurity,
   ApiTags,
 } from '@nestjs/swagger';
 
@@ -22,6 +23,7 @@ export class UsersController {
 
   @Post('register')
   @Public()
+  @ApiSecurity('csrf-token')
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({
     summary: 'Register a new user',
