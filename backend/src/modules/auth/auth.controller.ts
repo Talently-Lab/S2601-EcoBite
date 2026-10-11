@@ -17,6 +17,7 @@ import {
   ApiOkResponse,
   ApiOperation,
   ApiResponse,
+  ApiSecurity,
   ApiTags,
 } from '@nestjs/swagger';
 
@@ -48,6 +49,7 @@ export class AuthController {
 
   @Post('signup')
   @Public()
+  @ApiSecurity('csrf-token')
   @Throttle({ default: { limit: 5, ttl: 60_000 } })
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({
@@ -84,6 +86,7 @@ export class AuthController {
 
   @Post('login')
   @Public()
+  @ApiSecurity('csrf-token')
   @Throttle({ default: { limit: 10, ttl: 60_000 } })
   @HttpCode(HttpStatus.OK)
   @ApiOperation({
@@ -108,6 +111,7 @@ export class AuthController {
 
   @Post('refresh')
   @Public()
+  @ApiSecurity('csrf-token')
   @Throttle({ default: { limit: 30, ttl: 60_000 } })
   @HttpCode(HttpStatus.OK)
   @ApiOperation({
@@ -141,6 +145,7 @@ export class AuthController {
   }
 
   @Post('logout')
+  @ApiSecurity('csrf-token')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({
     summary: 'Sign out and revoke refresh family',
