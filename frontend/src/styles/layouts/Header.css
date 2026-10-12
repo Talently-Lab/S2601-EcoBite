@@ -1,0 +1,208 @@
+.site-header-bar, .site-header-actions, .header-drawer-top, .header-account,
+.header-drawer-content, .header-drawer-body, .header-menu-nav, .header-menu-help {
+    display: flex;
+}
+
+.site-header-bar, .site-header-actions, .header-drawer-top, .header-account {
+    align-items: center;
+}
+
+.site-header-bar, .header-drawer-top {
+    justify-content: space-between;
+    min-block-size: var(--header-height);
+    padding-inline: var(--page-gutter);
+}
+
+.site-header-cart, .header-avatar {
+    display: grid;
+    place-items: center;
+}
+
+.site-header-control, .site-header-cart, .header-avatar {
+    inline-size: var(--touch-target);
+    min-block-size: var(--touch-target);
+}
+
+.header-drawer-content, .header-drawer-body, .header-menu-nav, .header-menu-help {
+    flex-direction: column;
+}
+
+.site-brand, .site-header-cart, .header-account, .header-menu-link {
+    text-decoration: none;
+}
+
+.site-header, .header-account {
+    background: var(--color-surface);
+}
+
+.site-brand,
+.header-drawer {
+    color: var(--color-text);
+}
+
+.site-header-cart, .header-account, .header-menu-link, .header-help-link {
+    color: var(--color-primary);
+}
+
+.site-header-control, .header-drawer {
+    padding: 0;
+}
+
+.header-drawer, .header-menu-link, .header-help-link {
+    border: 0;
+    background: var(--color-background);
+}
+
+.header-menu-link, .header-help-link, .header-logout {
+    text-align: start;
+}
+
+.site-header-actions, .header-menu-help {
+    gap: var(--space-1);
+}
+
+.header-menu-link, .header-help-link, .header-account-name {
+    display: block;
+}
+
+.header-menu-link {
+    padding: calc(var(--space-3) / 2) 0;
+}
+
+.header-help-link {
+    padding: calc(var(--space-1) / 2) 0;
+}
+
+.header-menu-link, .header-help-link, .site-header-leaf, .header-logout {
+    font-size: 0.875rem;
+}
+
+.site-header-leaf, .header-avatar {
+    border-radius: var(--radius-pill);
+}
+
+.header-avatar, .header-account-caption, .header-menu-help h2 {
+    font-size: 0.75rem;
+}
+
+.header-menu-help h2, .header-logout {
+    font-weight: 500;
+}
+
+.site-header-bar {
+    max-inline-size: var(--content-width);
+    margin-inline: auto;
+}
+
+.site-brand {
+    font-size: 1.375rem;
+    font-weight: 800;
+    font-style: italic;
+}
+
+.site-header-control {
+    font-size: 1.25rem;
+}
+
+.site-header-cart {
+    position: relative;
+    border-radius: var(--radius-sm);
+    font-size: 1.5rem;
+    transition: background-color var(--transition-control), color var(--transition-control);
+}
+
+.site-header-leaf {
+    position: absolute;
+    inset-block-start: calc(var(--space-1) / 2);
+    inset-inline-end: calc(var(--space-1) / 2);
+    background: var(--color-accent);
+    color: var(--color-focus);
+}
+
+.header-drawer {
+    position: fixed;
+    inset: 0 0 0 auto;
+    inline-size: min(82vw, 22rem);
+    max-inline-size: none;
+    block-size: 100dvh;
+    max-block-size: none;
+    margin: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+.header-drawer::backdrop {
+    background: var(--color-primary);
+    opacity: 0.5;
+}
+
+body:has(.header-drawer[open]) {
+    overflow: hidden;
+}
+
+.header-drawer-content {
+    min-block-size: 100%;
+}
+
+.header-drawer-body {
+    flex: 1;
+    gap: calc(var(--space-2) * 2);
+    padding: var(--space-2) var(--space-4) max(var(--space-1), env(safe-area-inset-bottom));
+}
+
+.header-account {
+    gap: calc(var(--space-3) / 2);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-md);
+}
+
+.header-avatar {
+    flex-shrink: 0;
+    background: var(--color-text);
+    color: var(--color-background);
+}
+
+.header-account-details {
+    min-inline-size: 0;
+    line-height: 1.2;
+}
+
+.header-account-name {
+    overflow-wrap: anywhere;
+}
+
+.header-menu-link:not(:last-child) {
+    border-block-end: 1px solid var(--color-border);
+}
+
+.header-menu-link[aria-current='page'] {
+    font-weight: 700;
+}
+
+.header-menu-help {
+    margin-block-start: var(--space-4);
+}
+
+.header-menu-help h2 {
+    text-transform: uppercase;
+}
+
+.header-logout {
+    justify-content: flex-start;
+    margin-block-start: auto;
+    padding-inline: 0;
+    color: var(--color-error);
+}
+
+.site-header-cart:hover {
+    background: var(--color-accent);
+}
+
+.header-account:hover, .header-menu-link[href]:hover {
+    background: var(--color-secondary);
+}
+
+.header-logout:hover:enabled {
+    background: var(--color-surface);
+    color: var(--color-error);
+}

@@ -2,9 +2,9 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: var(--space-2);
+    gap: var(--space-1);
     min-block-size: var(--control-height);
-    padding: var(--space-3) var(--space-5);
+    padding: calc(var(--space-3) / 2) var(--space-3);
     border: 1px solid transparent;
     border-radius: var(--radius-sm);
     font-weight: 600;
@@ -18,6 +18,7 @@
 .button--primary {
     background: var(--color-primary);
     color: var(--color-surface);
+    width: 100%;
 }
 
 .button--icon {
@@ -26,12 +27,13 @@
 }
 
 .button:disabled {
-    background: var(--color-surface-muted);
-    color: var(--color-text-muted);
+    background: var(--color-surface);
+    color: var(--color-muted);
 }
 
 .button--primary:hover:enabled {
-    background: #20473e;
+    background: var(--color-accent);
+    color: var(--color-primary);
 }
 
 .button--icon:hover:enabled {

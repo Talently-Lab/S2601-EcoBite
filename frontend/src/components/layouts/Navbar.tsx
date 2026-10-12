@@ -1,24 +1,27 @@
-import { Link } from 'react-router';
-import { LuHouse, LuUser } from "react-icons/lu";
-import { LuShoppingCart } from "react-icons/lu";
-import { TbLeaf } from "react-icons/tb";
+import { NavLink } from 'react-router';
 
-export function Navbar() {
-    const navItems = [
-        { route: '/', label: 'Home', icon: <LuHouse /> },
-        { route: '/impact', label: 'Impacto', icon: <TbLeaf /> },
-        { route: '/cart', label: 'Carrito', icon: <LuShoppingCart /> },
-        { route: '/profile', label: 'Perfil', icon: <LuUser /> }
-    ];
+type NavbarProps = {
+    onNavigate: () => void;
+};
 
+const links = [
+    { to: '/', label: 'Inicio' },
+    { to: '/restaurants', label: 'Restaurantes' },
+    { to: '/impact', label: 'Tu impacto' },
+    { to: '/cart', label: 'Tu carrito' },
+];
+
+export function Navbar({ onNavigate }: NavbarProps) {
     return (
-        <nav className="navbar">
-            {navItems?.map((item, index) => (
-                <Link to={item.route} className="nav-item" key={index}>
-                    <span className="nav-item-icon">{item.icon}</span>
-                    <span className="nav-item-label">{item.label}</span>
-                </Link>
+        <nav aria-label="Navegación principal" className="header-menu-nav">
+            {links.map((link) => (
+                <NavLink key={link.to} to={link.to} end className="header-menu-link" onClick={onNavigate}>
+                    {link.label}
+                </NavLink>
             ))}
+            <button type="button" className="header-menu-link" disabled>
+                Historial de pedidos
+            </button>
         </nav>
     );
 }

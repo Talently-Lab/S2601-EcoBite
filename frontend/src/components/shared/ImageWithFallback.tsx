@@ -13,11 +13,13 @@ export function ImageWithFallback(props: ImageWithFallbackProps) {
 function FallbackImage({ src, alt }: ImageWithFallbackProps) {
     const [failed, setFailed] = useState(false);
     const imageSrc = src?.trim();
+    const usePlaceholder = failed || !imageSrc;
 
     return (
         <img
-            src={failed || !imageSrc ? imagePlaceholder : imageSrc}
+            src={usePlaceholder ? imagePlaceholder : imageSrc}
             alt={alt}
+            data-fallback={usePlaceholder}
             onError={() => setFailed(true)}
         />
     );

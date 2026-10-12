@@ -1,17 +1,17 @@
 input::placeholder,
 input:disabled {
-	color: var(--color-text-muted);
+	color: var(--color-muted);
 }
 
 input {
 	inline-size: 100%;
-	padding: var(--space-3) var(--space-4);
+	padding: calc(var(--space-3) / 2) var(--space-2);
 	border: 1px solid var(--color-border);
 	border-radius: var(--radius-md);
 	background: var(--color-surface);
 	color: var(--color-text);
 	transition: border-color var(--transition-control);
-    margin: var(--space-1) 0;
+    margin: calc(var(--space-1) / 2) 0;
 }
 
 input::placeholder {
@@ -19,11 +19,11 @@ input::placeholder {
 }
 
 input[aria-invalid='true'] {
-	border-color: var(--color-danger);
+	border-color: var(--color-error);
 }
 
 input:disabled {
-	background: var(--color-surface-muted);
+	background: var(--color-surface);
 	cursor: not-allowed;
 }
 

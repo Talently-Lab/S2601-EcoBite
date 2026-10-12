@@ -1,6 +1,6 @@
 interface QuantitySelectorProps
     extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-    variant?: "counter" | "icon" | "dropdown";
+    variant?: "counter" | "icon";
 }
 
 export function QuantitySelector({
