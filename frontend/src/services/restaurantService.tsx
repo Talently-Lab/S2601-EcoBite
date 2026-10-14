@@ -1,12 +1,24 @@
-import { IoBicycleOutline } from "react-icons/io5";
-import { TbLeaf } from "react-icons/tb";
-import type { RestaurantProps } from '../types/types';
+import type { Restaurant } from '../types/types';
 
-const restaurants: RestaurantProps[] = [
-    { name: 'Kanu', description: '100% libre de gluten', img: '', tags: [{ icon: <TbLeaf />, text: 'Envases compostables' }, { icon: <IoBicycleOutline />, text: 'Entrega en bici' }] },
-    { name: 'Verde Bowl', description: 'Bowls y ensaladas', img: '', tags: [{ icon: <TbLeaf />, text: 'Envases compostables' }, { icon: <IoBicycleOutline />, text: 'Entrega en bici' }] }
-];
+type RestaurantsResponse = {
+    success: boolean;
+    data: Restaurant[];
+};
 
-export const getRestaurants = async (): Promise<RestaurantProps[]> => {
-    return restaurants;
+const apiUrl = (import.meta.env.VITE_API_URL || 'http://localhost:3000/api').replace(/\/+$/, '');
+
+export const getRestaurants = async (): Promise<Restaurant[]> => {
+    const response = await fetch(`${apiUrl}/restaurants`);
+
+    if (!response.ok) {
+        throw new Error(`No se pudieron cargar los restaurantes (${response.status}).`);
+    }
+
+    const result: RestaurantsResponse = await response.json();
+
+    if (!result.success || !Array.isArray(result.data)) {
+        throw new Error('La respuesta de restaurantes no es válida.');
+    }
+
+    return result.data;
 };
