@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Routes, Route, Navigate, Outlet, useNavigate } from 'react-router';
+import { Routes, Route, Navigate, Outlet } from 'react-router';
+import { useUser } from './context/UserContext';
 import { Header } from './components/layouts/Header';
 import { Footer } from './components/layouts/Footer';
 import { Login } from './pages/Login';
@@ -10,28 +10,17 @@ import { Profile } from './pages/Profile';
 import { Home } from './pages/Home';
 
 export default function App() {
-	const [user, setUser] = useState(null);
-	const navigate = useNavigate();
-
-	const handleLogin = (authenticatedUser) => {
-		setUser(authenticatedUser);
-		navigate('/', { replace: true });
-	};
-
-	const handleLogout = () => {
-		setUser(null);
-		navigate('/login', { replace: true });
-	};
+	const { user } = useUser();
 
 	return (
 			<Routes>
 				<Route path="/login" element={
-					user ? <Navigate to="/" replace /> : <main><Login onLogin={handleLogin} /></main>
+					user ? <Navigate to="/" replace /> : <main><Login /></main>
 				} />
 				<Route element={
 					user
 						? <>
-                                <Header user={user} onLogout={handleLogout} />
+                                <Header />
                                 <main>
                                     <Outlet />
                                 </main>

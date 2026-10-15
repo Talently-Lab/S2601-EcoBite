@@ -9,7 +9,7 @@ type ItemHeaderProps = {
 
 export function ItemHeader({title, description, image, variant = 'horizontal'}: ItemHeaderProps) {
     return (
-        <div className={`item-header item-header--${variant}`}>
+        <div className={`item-header item-header--${variant}`.trimEnd()}>
 			{image !== undefined && (
 				<ImageWithFallback src={image} alt={title}/>
 			)}

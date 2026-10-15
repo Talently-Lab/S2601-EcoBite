@@ -10,7 +10,7 @@ export function QuantitySelector({
 }: QuantitySelectorProps) {
     return (
         <button
-            className={`quantity-selector quantity-selector--${variant} ${className}`}
+            className={`quantity-selector quantity-selector--${variant} ${className}`.trimEnd()}
             {...props}
         />
     );

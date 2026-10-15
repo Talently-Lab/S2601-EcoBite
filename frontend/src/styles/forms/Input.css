@@ -3,38 +3,87 @@ input:disabled {
 	color: var(--color-muted);
 }
 
-input {
+input:where(:not([type='checkbox']):not([type='radio'])), input:disabled {
+	background: var(--color-surface);
+}
+
+input[aria-invalid='true'], .input--login[aria-invalid='true'] {
+	border-color: var(--color-error);
+}
+
+.input-field, .input-wrapper, .input-icon {
+	min-inline-size: 0;
+}
+
+.input-wrapper, .input-icon {
+	display: flex;
+	align-items: center;
+}
+
+.input-icon, .input--login::placeholder, .input-hint {
+	color: var(--color-focus);
+}
+
+input:where(:not([type='checkbox']):not([type='radio'])) {
 	inline-size: 100%;
-	padding: calc(var(--space-3) / 2) var(--space-2);
+	padding: var(--space-1-5) var(--space-2);
 	border: 1px solid var(--color-border);
 	border-radius: var(--radius-md);
-	background: var(--color-surface);
 	color: var(--color-text);
 	transition: border-color var(--transition-control);
-    margin: calc(var(--space-1) / 2) 0;
+	margin: var(--space-0-5) 0;
 }
 
 input::placeholder {
 	opacity: 0.6;
 }
 
-input[aria-invalid='true'] {
-	border-color: var(--color-error);
-}
-
 input:disabled {
-	background: var(--color-surface);
 	cursor: not-allowed;
 }
 
-.input-wrapper {
-	display: flex;
-	align-items: center;
-	position: relative;
+.input-field {
+	display: grid;
+	gap: var(--space-1);
+}
 
-	& .button--icon {
-		position: absolute;
-		right: 0;
-		padding-right: 30px;
-	}
+.input-label {
+	font-weight: 600;
+}
+
+.input-wrapper {
+	position: relative;
+}
+
+.input-wrapper:has(.input-icon) input {
+	padding-inline-end: calc(var(--touch-target) + var(--space-1-5));
+}
+
+.input-icon {
+	position: absolute;
+	inset-block: 0;
+	inset-inline-end: var(--space-0-5);
+	justify-content: center;
+	inline-size: var(--touch-target);
+}
+
+.input--login {
+	margin: 0;
+	border-color: var(--color-muted);
+	border-radius: var(--radius-sm);
+	background: var(--color-background);
+}
+
+.input--login::placeholder {
+	opacity: 1;
+}
+
+.input--login:where(:focus) {
+	border-color: var(--color-focus);
+	outline: 1px solid var(--color-focus);
+	outline-offset: 0;
+}
+
+.input--login[aria-invalid='true'] {
+	outline-color: var(--color-error);
 }
