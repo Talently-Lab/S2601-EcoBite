@@ -7,7 +7,7 @@ type GreenBagdeProps = {
 
 export function GreenBadge({ icon, text, amount, variant='descriptive' }: GreenBagdeProps ) {
     return (
-        <div className={`green-badge green-badge--${variant}`}>
+        <div className={`green-badge green-badge--${variant}`.trimEnd()}>
             <div className="green-badge-content">
                 <span className="green-badge-icon">{icon}</span>
                 <span>{text}</span>

@@ -7,7 +7,7 @@ type ImpactCardProps = {
 
 export function ImpactCard({ icon, amount, description, variant }: ImpactCardProps) {
     return (
-        <article className={`impact-card impact-card--${variant}`}>
+        <article className={`impact-card impact-card--${variant}`.trimEnd()}>
             <div className="impact-icon">
                 {icon}
             </div>

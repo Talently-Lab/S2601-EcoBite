@@ -6,7 +6,7 @@ interface ButtonProps
 export function Button({ variant = "primary", className = "", ...props }: ButtonProps) {
     return (
         <button
-            className={`button button--${variant} ${className}`}
+            className={`button button--${variant} ${className}`.trimEnd()}
             {...props}
         />
     );

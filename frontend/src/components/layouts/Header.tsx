@@ -4,18 +4,31 @@ import { LuMenu, LuShoppingCart, LuX } from 'react-icons/lu';
 import { TbLeaf } from 'react-icons/tb';
 import { Button } from '../core/Button';
 import { Navbar } from './Navbar';
-import type { AuthUser } from '../../services/authService';
+import { AuthError } from '../../services/authService';
+import { useUser } from '../../context/UserContext';
 import logo from '../../assets/icons/logo.svg';
 
-type HeaderProps = {
-    user: AuthUser;
-    onLogout: () => void;
-};
-
-export function Header({ user, onLogout }: HeaderProps) {
+export function Header() {
+    const { user, logout } = useUser();
     const menuRef = useRef<HTMLDialogElement>(null);
     const [menuOpen, setMenuOpen] = useState(false);
-    const initials = user.name.trim().split(/\s+/).slice(0, 2).map((part) => part[0]).join('').toUpperCase();
+    const [isLoggingOut, setIsLoggingOut] = useState(false);
+    const [logoutError, setLogoutError] = useState('');
+    const initials = user?.name.trim().split(/\s+/).slice(0, 2).map((part) => part[0]).join('').toUpperCase();
+
+    async function handleLogout() {
+        if (isLoggingOut) return;
+        setIsLoggingOut(true);
+        setLogoutError('');
+        try {
+            await logout();
+            closeMenu();
+        } catch (cause) {
+            setLogoutError(cause instanceof AuthError ? cause.message : 'No pudimos cerrar tu sesión. Probá de nuevo.');
+        } finally {
+            setIsLoggingOut(false);
+        }
+    }
 
     function closeMenu() {
         menuRef.current?.close();
@@ -57,7 +70,7 @@ export function Header({ user, onLogout }: HeaderProps) {
                         <Link to="/profile" className="header-account" onClick={closeMenu}>
                             <span className="header-avatar" aria-hidden="true">{initials}</span>
                             <span className="header-account-details">
-                                <span className="header-account-name">{user.name}</span>
+                                <span className="header-account-name">{user?.name}</span>
                                 <span className="header-account-caption">Ver tu cuenta</span>
                             </span>
                         </Link>
@@ -74,10 +87,9 @@ export function Header({ user, onLogout }: HeaderProps) {
                             </button>
                         </nav>
 
-                        <Button type="button" variant="icon" className="header-logout" onClick={() => {
-                            closeMenu();
-                            onLogout();
-                        }}>Cerrar sesión</Button>
+                        {logoutError && <p role="alert">{logoutError}</p>}
+                        <Button type="button" variant="icon" className="header-logout" disabled={isLoggingOut}
+                            onClick={handleLogout}>{isLoggingOut ? 'Cerrando sesión...' : 'Cerrar sesión'}</Button>
                     </div>
                 </div>
             </dialog>

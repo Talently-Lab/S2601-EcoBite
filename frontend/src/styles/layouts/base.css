@@ -4,7 +4,6 @@ html {
 }
 
 body {
-	display: flex;
 	align-items: center;
 	flex-direction: column;
 	min-inline-size: 0;
@@ -43,4 +42,29 @@ body {
     color: var(--color-secondary);
     background-color: currentColor;
     mask: url('../../assets/icons/logo.svg') center / contain no-repeat;
+}
+
+body, .input-error, .login-error {
+	display: flex;
+}
+
+.input-hint, .login-terms, .login-links {
+    font-size: var(--font-size-caption);
+    line-height: 1.35;
+}
+
+.input--login, .login-submit {
+    min-block-size: var(--control-height-lg);
+}
+
+.input-error, .login-error {
+    align-items: flex-start;
+    gap: var(--space-1-5);
+    color: var(--color-error);
+    line-height: 1.3;
+}
+
+.input-error svg, .login-error svg {
+    flex-shrink: 0;
+    margin-block-start: var(--space-0-5);
 }

@@ -39,15 +39,11 @@ frontend/
 npm install
 ```
 
-### 2. Configurar el login de prueba
+### 2. Configurar la API
 
-En `.env.local`, completar `VITE_MOCK_AUTH_NAME`,
-`VITE_MOCK_AUTH_EMAIL` y `VITE_MOCK_AUTH_PASSWORD` con datos de prueba.
-El archivo `.env.local` está ignorado por Git. Reiniciar Vite después de modificarlo.
-Sin configuración, el login muestra un error y no permite ingresar.
-
-Después de cerrar sesión, solo puede iniciarse
-sesión con la cuenta configurada en `.env.local`. La sesión se pierde al recargar.
+1. Copiar `.env.example` a `.env.local`.
+2. Ajustar `VITE_API_URL` con la URL de la API, incluyendo `/api` (por defecto `http://localhost:3000/api`).
+3. Reiniciar Vite si estaba abierto.
 
 ### 3. Iniciar servidor (desarrollo)
 
@@ -67,4 +63,4 @@ npm run build
 
 ## Documentación
 
-Ver `/docs/api/postman-collection.json` para entender qué endpoints consume el frontend.
+Consultar el [README del backend](../backend/README.md) y [Swagger](http://localhost:3000/docs).
