@@ -18,6 +18,15 @@ enum DeliveryMethod {
   CAR
 }
 
+enum FoodCategory {
+  HOMEMADE
+  FAST_FOOD
+  COFFEE_AND_DESSERTS
+  HEALTHY
+  VEGAN
+  INTERNATIONAL
+}
+
 enum RestaurantStatus {
   ACTIVE
   INACTIVE
@@ -46,8 +55,9 @@ model User {
 
 model Restaurant {
   id                      String           @id @default(uuid()) @map("restaurant_id") @db.Uuid
-  idRestaurant           String           @unique @map("id_restaurante")
+  idRestaurant            String           @unique @map("id_restaurante")
   name                    String
+  foodCategory            FoodCategory    @map("food_category")
   packagingType           PackagingType    @map("packaging_type")
   availableDeliveryMethod DeliveryMethod   @map("available_delivery_method")
   status                  RestaurantStatus

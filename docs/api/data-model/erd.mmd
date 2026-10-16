@@ -18,7 +18,9 @@ erDiagram
 
     RESTAURANT {
         uuid restaurant_id PK
+        varchar id_restaurante UK
         varchar name
+        enum food_category
         enum packaging_type
         enum available_delivery_method
         enum status
