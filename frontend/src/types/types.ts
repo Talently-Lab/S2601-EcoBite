@@ -1,5 +1,3 @@
-import type { ReactNode } from 'react';
-
 export type Restaurant = {
     id: string;
     idRestaurant: string;
@@ -10,10 +8,29 @@ export type Restaurant = {
     sustainabilityIndicator: string;
 };
 
-export type RestaurantProps = {
+export type CartProduct = {
     id: string;
+    restaurantId: string;
+    restaurantName: string;
     name: string;
+    unitPriceCents: number;
     description?: string;
-    img?: string;
-    tags?: { icon: ReactNode; text: string }[];
+    image?: string;
+};
+
+export type CatalogProduct = Omit<CartProduct, 'restaurantName'>;
+export type CartItem = CartProduct & { quantity: number };
+export type ProductCardProps = { product: CartProduct };
+export type CartItemProps = {
+    item: CartItem;
+    onRemove: () => void;
+    onQuantityChange: (quantity: number) => void;
+    disabled?: boolean;
+};
+export type QuantitySelectorProps = {
+    value: number;
+    onChange: (value: number) => void;
+    onRemove?: () => void;
+    label: string;
+    disabled?: boolean;
 };
