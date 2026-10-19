@@ -20,6 +20,7 @@ import { PrismaModule } from './prisma/prisma.module';
 import { SentryModule } from '@sentry/nestjs/setup';
 import { UsersModule } from './modules/users/users.module';
 import { RestaurantsModule } from './modules/restaurants/restaurants.module';
+import { OrdersModule } from './modules/orders/orders.module';
 
 @Module({
   imports: [
@@ -47,6 +48,7 @@ import { RestaurantsModule } from './modules/restaurants/restaurants.module';
     SentryModule.forRoot(),
     UsersModule,
     RestaurantsModule,
+    OrdersModule,
   ],
   providers: [
     {

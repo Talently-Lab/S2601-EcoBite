@@ -1,0 +1,98 @@
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
+import { DeliveryMethod, Prisma } from '@prisma/client';
+
+import { PrismaService } from '../../prisma/prisma.service';
+import { CreateOrderDto } from './dto/create-order.dto';
+
+@Injectable()
+export class OrdersService {
+  constructor(private readonly prisma: PrismaService) {}
+
+  async create(userId: string, dto: CreateOrderDto) {
+    const restaurant = await this.prisma.restaurant.findUnique({
+      where: { id: dto.restaurantId },
+    });
+
+    if (!restaurant || restaurant.status !== 'ACTIVE') {
+      throw new NotFoundException('Restaurant not found or inactive');
+    }
+
+    const productIds = dto.items.map((item) => item.productId);
+
+    if (new Set(productIds).size !== productIds.length) {
+      throw new BadRequestException('Duplicate products are not allowed');
+    }
+
+    const products = await this.prisma.product.findMany({
+      where: {
+        id: { in: productIds },
+        restaurantId: restaurant.id,
+      },
+    });
+
+    if (products.length !== productIds.length) {
+      throw new BadRequestException(
+        'All products must exist and belong to the selected restaurant',
+      );
+    }
+
+    const productsById = new Map(
+      products.map((product) => [product.id, product]),
+    );
+
+    const orderItems = dto.items.map((item) => {
+      const product = productsById.get(item.productId)!;
+      const subtotal = product.price.mul(item.quantity);
+
+      return {
+        productId: product.id,
+        quantity: item.quantity,
+        unitPrice: product.price,
+        subtotal,
+      };
+    });
+
+    const totalAmount = orderItems.reduce(
+      (total, item) => total.add(item.subtotal),
+      new Prisma.Decimal(0),
+    );
+
+    const emissionsByMethod: Record<DeliveryMethod, number> = {
+      BIKE: 0,
+      MOTORCYCLE: 72,
+      CAR: 216,
+    };
+
+    const emissionPerKm = emissionsByMethod[restaurant.availableDeliveryMethod];
+
+    const co2SavedG = new Prisma.Decimal('46.58')
+      .minus(emissionPerKm)
+      .mul(dto.distanceKm)
+      .toDecimalPlaces(0, Prisma.Decimal.ROUND_HALF_UP)
+      .toNumber();
+
+    return this.prisma.order.create({
+      data: {
+        userId,
+        restaurantId: restaurant.id,
+        totalAmount,
+        distanceKm: new Prisma.Decimal(dto.distanceKm),
+        deliveryMethod: restaurant.availableDeliveryMethod,
+        packagingType: restaurant.packagingType,
+        orderStatus: 'COMPLETED',
+        co2SavedG,
+        plasticItemsAvoided: 0,
+        orderItems: {
+          create: orderItems,
+        },
+      },
+      include: {
+        orderItems: true,
+      },
+    });
+  }
+}
