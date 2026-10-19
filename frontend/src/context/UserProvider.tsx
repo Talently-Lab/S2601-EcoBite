@@ -1,23 +1,6 @@
-/* eslint-disable react-refresh/only-export-components -- Context, hook and provider intentionally share this module. */
-import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { AuthError, getCurrentUser, login, logout, type AuthUser, type LoginInput } from '../services/authService';
-
-type UserContextValue = {
-    user: AuthUser | null;
-    isAuthenticated: boolean;
-    isLoading: boolean;
-    sessionError: string;
-    login: (input: LoginInput) => Promise<void>;
-    logout: () => Promise<void>;
-};
-
-export const UserContext = createContext<UserContextValue | null>(null);
-
-export function useUser() {
-    const context = useContext(UserContext);
-    if (!context) throw new Error('useUser debe usarse dentro de UserProvider.');
-    return context;
-}
+import { UserContext } from './UserContext';
 
 export function UserProvider({ children }: { children: ReactNode }) {
     const [user, setUser] = useState<AuthUser | null>(null);
@@ -82,8 +65,8 @@ export function UserProvider({ children }: { children: ReactNode }) {
     }
 
     return (
-        <UserContext.Provider value={{ user, isAuthenticated: user !== null, isLoading, sessionError, login: handleLogin, logout: handleLogout }}>
+        <UserContext value={{ user, isAuthenticated: user !== null, isLoading, sessionError, login: handleLogin, logout: handleLogout }}>
             {children}
-        </UserContext.Provider>
+        </UserContext>
     );
 }

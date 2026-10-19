@@ -1,15 +1,26 @@
 import { ItemHeader } from "../shared/ItemHeader";
 import { GreenBadge } from "../shared/GreenBadge";
-import type { RestaurantProps } from '../../types/types';
+import type { ReactNode } from 'react';
+import { Link } from 'react-router';
+
+export type RestaurantProps = {
+    id: string;
+    name: string;
+    description?: string;
+    img?: string;
+    tags?: { icon: ReactNode; text: string }[];
+};
 
 export function RestaurantCard({ restaurant }: { restaurant: RestaurantProps }) {
     return (
         <article className="restaurant-card">
-            <ItemHeader
-                title={restaurant.name}
-                description={restaurant.description}
-                image={restaurant.img}
-                variant="vertical" />
+            <Link className="restaurant-menu-link" to={`/restaurants/${encodeURIComponent(restaurant.id)}`}>
+                <ItemHeader
+                    title={restaurant.name}
+                    description={restaurant.description}
+                    image=""
+                    variant="vertical" />
+            </Link>
             {restaurant.tags?.length ? (
                 <div className="restaurant-card-tags">
                     {restaurant.tags.map((tag) => (
