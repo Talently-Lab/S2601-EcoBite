@@ -20,6 +20,19 @@ export type CartProduct = {
 
 export type CatalogProduct = Omit<CartProduct, 'restaurantName'>;
 export type CartItem = CartProduct & { quantity: number };
+
+export type CreateOrderInput = {
+    restaurantId: string;
+    distanceKm: number;
+    items: { productId: string; quantity: number }[];
+};
+
+export type CreatedOrder = {
+    id: string;
+    totalAmount: number;
+    co2SavedG: number;
+};
+
 export type ProductCardProps = { product: CartProduct };
 export type CartItemProps = {
     item: CartItem;

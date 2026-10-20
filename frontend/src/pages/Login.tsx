@@ -35,7 +35,9 @@ export function Login() {
             const remainingErrors = { ...current.fieldErrors };
             delete remainingErrors[field];
             return Object.keys(remainingErrors).length
-                ? new AuthError(current.message, current.status, remainingErrors, current.code) : null;
+                ? new AuthError(current.message, {
+                    status: current.status, code: current.code, fieldErrors: remainingErrors, cause: current.cause,
+                }) : null;
         });
     }
 
