@@ -1,21 +1,23 @@
+import { ApiError, mutate as apiMutate, request as apiRequest } from './apiClient';
+import { ServiceError, type ServiceErrorOptions } from './ServiceError';
+import { isRecord } from '../utils/isRecord';
+
 export type LoginInput = { email: string; password: string };
 export type SignUpInput = LoginInput & { name: string };
 type AuthBody = LoginInput | SignUpInput;
 export type AuthUser = { id: string; name: string; email: string; registeredAt: string };
 export type AuthField = keyof SignUpInput;
 type FieldErrors = Partial<Record<AuthField, string>>;
+type AuthErrorOptions = ServiceErrorOptions & { fieldErrors?: FieldErrors };
+type Validator = (value: string) => string | undefined;
 
-export class AuthError extends Error {
-    readonly status?: number;
+export class AuthError extends ServiceError {
     readonly fieldErrors: FieldErrors;
-    readonly code?: string;
 
-    constructor(message: string, status?: number, fieldErrors: FieldErrors = {}, code?: string) {
-        super(message);
+    constructor(message: string, { fieldErrors = {}, ...options }: AuthErrorOptions = {}) {
+        super(message, options);
         this.name = 'AuthError';
-        this.status = status;
         this.fieldErrors = fieldErrors;
-        this.code = code;
     }
 }
 
@@ -26,17 +28,13 @@ function passwordLength(value: string): number {
 
 export const MIN_PASSWORD_LENGTH = 8;
 
-const apiUrl = (import.meta.env.VITE_API_URL || 'http://localhost:3000/api').replace(/\/+$/, '');
 const invalidResponse = 'La respuesta del servidor no es válida. Probá de nuevo.';
-
-function isRecord(value: unknown): value is Record<string, unknown> {
-    return typeof value === 'object' && value !== null;
-}
 
 const defaultErrorMessage = 'No pudimos completar la solicitud. Probá de nuevo.';
 const invalidCredentialsMessage = 'El mail o la contraseña son incorrectos. Revisalos y probá de nuevo.';
 const emailTakenMessage = 'Este email ya tiene una cuenta.';
 const requiredMessage = 'Nos falta este dato para arrancar.';
+const invalidInputMessage = 'Revisá los datos ingresados e intentá de nuevo.';
 
 const fieldErrorMessages: Record<string, string> = {
     name: requiredMessage,
@@ -52,7 +50,7 @@ function validationFieldErrors(body: unknown): FieldErrors {
 }
 
 const statusErrorMessages: Record<number, string> = {
-    400: 'Revisá los datos ingresados e intentá de nuevo.',
+    400: invalidInputMessage,
     401: 'Tu sesión venció. Volvé a ingresar.',
     403: 'No pudimos validar la seguridad de la solicitud. Probá de nuevo.',
     429: 'Demasiados intentos. Esperá un minuto antes de volver a intentar.',
@@ -69,19 +67,7 @@ const pathErrorCodes: Record<string, Record<number, string>> = {
     '/users/register': { 409: 'USR_EMAIL_TAKEN' },
 };
 
-const statusFieldErrors: Record<number, (body: unknown) => FieldErrors> = {
-    400: validationFieldErrors,
-};
-
-function responseError(status: number, body: unknown, path: string): AuthError {
-    const code = isRecord(body) && typeof body.code === 'string' ? body.code : pathErrorCodes[path]?.[status] ?? '';
-    const details = Object.hasOwn(codeErrors, code) ? codeErrors[code] : undefined;
-    const message = details?.message ?? statusErrorMessages[Math.min(status, 500)] ?? defaultErrorMessage;
-    const fieldErrors = details?.fieldErrors ?? statusFieldErrors[status]?.(body) ?? {};
-    return new AuthError(message, status, fieldErrors, code);
-}
-
-const fieldValidators: Record<AuthField, (value: string) => string | undefined> = {
+const fieldValidators: Record<AuthField, Validator> = {
     name: (value) => value.trim() ? undefined : requiredMessage,
     email: (value) => !value.trim() ? requiredMessage
         : /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim()) ? undefined : fieldErrorMessages.email,
@@ -89,81 +75,57 @@ const fieldValidators: Record<AuthField, (value: string) => string | undefined> 
         ? undefined : fieldErrorMessages.password,
 };
 
-const formValidators = {
-    login: { email: fieldValidators.email, password: (value: string) => value ? undefined : requiredMessage },
-    signup: fieldValidators,
+const loginValidators = {
+    email: fieldValidators.email,
+    password: (value: string) => value ? undefined : requiredMessage,
 };
 
-function validateInput(input: Record<string, string>, mode: keyof typeof formValidators) {
-    const fields = Object.entries(formValidators[mode]).flatMap(([field, validate]) => {
+function validateInput<T extends AuthField>(input: Record<T, string>, validators: Record<T, Validator>) {
+    const entries = (Object.entries(validators) as [T, Validator][]).flatMap(([field, validate]) => {
         const message = validate(input[field] ?? '');
         return message ? [[field, message]] : [];
     });
-    if (fields.length) throw new AuthError('Revisá los datos ingresados e intentá de nuevo.', undefined, Object.fromEntries(fields));
+    if (entries.length) throw new AuthError(invalidInputMessage, { fieldErrors: Object.fromEntries(entries) });
 }
 
-const sessionErrorHandlers: Record<number, () => null> = {
-    401: () => null,
-};
-
 function handleSessionError(cause: unknown): null {
-    const handler = cause instanceof AuthError ? sessionErrorHandlers[cause.status ?? 0] : undefined;
-    if (handler) return handler();
+    if (cause instanceof AuthError && cause.status === 401) return null;
     throw cause;
 }
 
-async function request(path: string, options: RequestInit = {}): Promise<unknown> {
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 15_000);
+function handleTransportError(cause: unknown): never {
+    if (!(cause instanceof ApiError)) throw cause;
+    const { details } = cause;
+    if (details.kind === 'http') {
+        const { status, body, path } = details;
+        const code = cause.code ?? pathErrorCodes[path]?.[status] ?? '';
+        const mapped = Object.hasOwn(codeErrors, code) ? codeErrors[code] : undefined;
+        const message = mapped?.message ?? statusErrorMessages[status >= 500 ? 500 : status] ?? defaultErrorMessage;
+        const fieldErrors = mapped?.fieldErrors ?? (status === 400 ? validationFieldErrors(body) : {});
+        throw new AuthError(message, { status, code, fieldErrors, cause });
+    }
+    const messages = {
+        'invalid-response': invalidResponse,
+        timeout: 'La solicitud tardó demasiado. Probá de nuevo.',
+        network: 'No pudimos conectarnos. Revisá tu conexión e intentá de nuevo.',
+    };
+    throw new AuthError(messages[details.kind], { cause });
+}
 
+async function requestAuthData(path: string): Promise<unknown> {
     try {
-        const response = await fetch(`${apiUrl}${path}`, {
-            ...options,
-            credentials: 'include',
-            signal: controller.signal,
-        });
-        const body: unknown = await response.json().catch((cause: unknown) => {
-            if (cause instanceof SyntaxError) return null;
-            throw cause;
-        });
-        if (!response.ok) throw responseError(response.status, body, path);
-        if (!isRecord(body) || body.success !== true || !('data' in body)) {
-            throw new AuthError(invalidResponse);
-        }
-        return body.data;
+        return await apiRequest(path);
     } catch (cause) {
-        if (cause instanceof AuthError) throw cause;
-        throw new AuthError(controller.signal.aborted
-            ? 'La solicitud tardó demasiado. Probá de nuevo.'
-            : 'No pudimos conectarnos. Revisá tu conexión e intentá de nuevo.');
-    } finally {
-        clearTimeout(timeout);
+        handleTransportError(cause);
     }
 }
 
-async function postWithCsrf(path: string, input?: AuthBody, retryCsrf = true): Promise<unknown> {
-    const csrf = await request('/auth/csrf');
-    if (!isRecord(csrf) || typeof csrf.token !== 'string' || !csrf.token) {
-        throw new AuthError(invalidResponse);
+async function mutate(path: string, input?: AuthBody): Promise<unknown> {
+    try {
+        return await apiMutate(path, input);
+    } catch (cause) {
+        handleTransportError(cause);
     }
-    return request(path, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': csrf.token },
-        ...(input ? { body: JSON.stringify(input) } : {}),
-    }).catch((cause: unknown) => {
-        if (retryCsrf && cause instanceof AuthError && cause.status === 403 && cause.code === 'CSRF_INVALID') {
-            return postWithCsrf(path, input, false);
-        }
-        throw cause;
-    });
-}
-
-let mutationQueue: Promise<void> = Promise.resolve();
-
-function mutate(path: string, input?: AuthBody): Promise<unknown> {
-    const operation = mutationQueue.then(() => postWithCsrf(path, input));
-    mutationQueue = operation.then(() => undefined, () => undefined);
-    return operation;
 }
 
 function parseUser(data: unknown): AuthUser {
@@ -176,21 +138,29 @@ function parseUser(data: unknown): AuthUser {
 }
 
 export async function login({ email, password }: LoginInput): Promise<AuthUser> {
-    validateInput({ email, password }, 'login');
+    validateInput({ email, password }, loginValidators);
     return parseUser(await mutate('/auth/login', { email: email.trim(), password }));
 }
 
 export async function signUp({ name, email, password }: SignUpInput): Promise<void> {
-    validateInput({ name, email, password }, 'signup');
+    validateInput({ name, email, password }, fieldValidators);
     await mutate('/users/register', {
         name: name.trim(), email: email.trim(), password,
     });
 }
 
-export function getCurrentUser(): Promise<AuthUser | null> {
-    return request('/auth/me').then(parseUser).catch(handleSessionError);
+export async function getCurrentUser(): Promise<AuthUser | null> {
+    try {
+        return parseUser(await requestAuthData('/auth/me'));
+    } catch (cause) {
+        return handleSessionError(cause);
+    }
 }
 
 export async function logout(): Promise<void> {
-    await mutate('/auth/logout').catch(handleSessionError);
+    try {
+        await mutate('/auth/logout');
+    } catch (cause) {
+        handleSessionError(cause);
+    }
 }
