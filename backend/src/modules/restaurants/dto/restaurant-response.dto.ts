@@ -21,6 +21,15 @@ export class RestaurantResponseDto {
   name!: string;
 
   @ApiProperty({
+    example: 3,
+    nullable: true,
+    minimum: 1,
+    maximum: 15,
+    description: 'Comuna de CABA donde se ubica el restaurante (1 a 15).',
+  })
+  comuna!: number | null;
+
+  @ApiProperty({
     example: 'BIODEGRADABLE',
     description: 'Tipo de packaging utilizado por el restaurante.',
   })

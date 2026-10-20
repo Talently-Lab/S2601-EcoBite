@@ -57,6 +57,7 @@ model Restaurant {
   id                      String           @id @default(uuid()) @map("restaurant_id") @db.Uuid
   idRestaurant            String           @unique @map("id_restaurante")
   name                    String
+  comuna                  Int?
   foodCategory            FoodCategory    @map("food_category")
   packagingType           PackagingType    @map("packaging_type")
   availableDeliveryMethod DeliveryMethod   @map("available_delivery_method")
