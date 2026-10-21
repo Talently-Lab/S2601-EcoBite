@@ -8,6 +8,8 @@ import { Cart } from './pages/Cart';
 import { Impact } from './pages/Impact';
 import { Profile } from './pages/Profile';
 import { Home } from './pages/Home';
+import { CartProvider } from './context/CartProvider';
+import { Checkout } from './pages/Checkout';
 
 export default function App() {
 	const { user } = useUser();
@@ -19,18 +21,19 @@ export default function App() {
 				} />
 				<Route element={
 					user
-						? <>
+						? <CartProvider key={user.id}>
                                 <Header />
                                 <main>
                                     <Outlet />
                                 </main>
                                 <Footer />
-                            </>
+                            </CartProvider>
 						: <Navigate to="/login" replace />
 				}>
 					<Route path="/" element={<Home />} />
 					<Route path="/restaurants" element={<Restaurants />} />
 					<Route path="/cart" element={<Cart />} />
+					<Route path="/checkout" element={<Checkout />} />
 					<Route path="/impact" element={<Impact />} />
 					<Route path="/profile" element={<Profile />} />
 				</Route>

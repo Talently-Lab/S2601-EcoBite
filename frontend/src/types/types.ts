@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react';
+
 export type Restaurant = {
     id: string;
     idRestaurant: string;
@@ -6,6 +8,14 @@ export type Restaurant = {
     availableDeliveryMethod: 'BIKE' | 'MOTORCYCLE' | 'CAR';
     status: 'ACTIVE' | 'INACTIVE';
     sustainabilityIndicator: string;
+};
+
+export type RestaurantProps = {
+    id: string;
+    name: string;
+    description?: string;
+    img?: string;
+    tags?: { icon: ReactNode; text: string }[];
 };
 
 export type CartProduct = {
@@ -33,17 +43,3 @@ export type CreatedOrder = {
     co2SavedG: number;
 };
 
-export type ProductCardProps = { product: CartProduct };
-export type CartItemProps = {
-    item: CartItem;
-    onRemove: () => void;
-    onQuantityChange: (quantity: number) => void;
-    disabled?: boolean;
-};
-export type QuantitySelectorProps = {
-    value: number;
-    onChange: (value: number) => void;
-    onRemove?: () => void;
-    label: string;
-    disabled?: boolean;
-};

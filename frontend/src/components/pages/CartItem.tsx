@@ -1,15 +1,27 @@
-import { Button } from "../core/Button";
 import { ItemHeader } from "../shared/ItemHeader";
-import { AiOutlineDelete } from "react-icons/ai";
+import { ImageWithFallback } from '../shared/ImageWithFallback';
+import { Price } from '../core/Price';
+import { QuantitySelector } from '../forms/QuantitySelector';
+import type { CartItem as CartItemData } from '../../types/types';
 
-export function CartItem({ ...props }) {
+type CartItemProps = {
+    item: CartItemData;
+    onRemove: () => void;
+    onQuantityChange: (quantity: number) => void;
+    disabled?: boolean;
+};
+
+export function CartItem({ item, onRemove, onQuantityChange, disabled = false }: CartItemProps) {
 
     return (
-        <div className="cart-item">
-            <ItemHeader title={props.name} description={props.description} image={props.img} />
-            <Button variant="icon">
-                <AiOutlineDelete className="cart-item-remove" />
-            </Button>
-        </div>
+        <article className="cart-item">
+            <ImageWithFallback src={item.image} alt={item.name} />
+            <div className="cart-item-details">
+                <ItemHeader title={item.name} />
+                <span aria-label="Subtotal"><Price price={item.unitPriceCents * item.quantity / 100} /></span>
+            </div>
+            <QuantitySelector variant="counter" value={item.quantity} onChange={onQuantityChange}
+                onRemove={onRemove} label={item.name} disabled={disabled} />
+        </article>
     );
 }

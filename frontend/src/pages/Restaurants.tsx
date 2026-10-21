@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { IoBicycleOutline } from 'react-icons/io5';
 import { TbLeaf } from 'react-icons/tb';
-import { RestaurantCard, type RestaurantProps } from '../components/pages/RestaurantCard';
+import { RestaurantCard } from '../components/pages/RestaurantCard';
 import { getRestaurants } from '../services/restaurantService';
-import type { Restaurant } from '../types/types';
+import type { Restaurant, RestaurantProps } from '../types/types';
 
 type RestaurantTags = NonNullable<RestaurantProps['tags']>;
 
