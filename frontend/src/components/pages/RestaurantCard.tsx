@@ -1,15 +1,7 @@
 import { ItemHeader } from "../shared/ItemHeader";
 import { GreenBadge } from "../shared/GreenBadge";
-import type { ReactNode } from 'react';
+import type { RestaurantProps } from '../../types/types';
 import { Link } from 'react-router';
-
-export type RestaurantProps = {
-    id: string;
-    name: string;
-    description?: string;
-    img?: string;
-    tags?: { icon: ReactNode; text: string }[];
-};
 
 export function RestaurantCard({ restaurant }: { restaurant: RestaurantProps }) {
     return (

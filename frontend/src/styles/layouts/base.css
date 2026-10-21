@@ -49,7 +49,7 @@ body, .input-error, .login-error {
 }
 
 .input-hint, .login-terms, .login-links {
-    font-size: var(--font-size-caption);
+    font-size: var(--font-sm);
     line-height: 1.35;
 }
 

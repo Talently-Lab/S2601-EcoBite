@@ -1,34 +1,191 @@
-.cart-item img,
-.cart-item-remove {
+.cart-page,
+.cart-item,
+.cart-item-details,
+.product-card,
+.product-card-details {
+    display: grid;
+}
+
+.cart-item,
+.product-card,
+.cart-item-details,
+.product-card-details {
+    min-inline-size: 0;
+    overflow-wrap: anywhere;
+}
+
+.cart-summary,
+.quantity-selector--counter {
+    display: flex;
+    align-items: center;
+}
+
+.cart-item > img,
+.product-card-image img {
+    display: block;
+    inline-size: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
     border-radius: var(--radius-sm);
-    background: var(--color-surface);
+    background: var(--color-surface-muted);
+}
+
+.cart-item > img[data-fallback='true'],
+.product-card-image img[data-fallback='true'] {
+    object-fit: contain;
+    padding: 25%;
+}
+
+.cart-page {
+    gap: var(--space-2);
+}
+
+.cart-page .page-title {
+    margin-block-end: 0;
 }
 
 .cart-item {
-    display: flex;
-    justify-content: space-between;
-    padding: var(--space-2) calc(var(--space-1) / 2);
-
-    & img {
-        width: 80px;
-        height: 80px;
-    }
+    grid-template-columns: 3.5rem minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--space-1-5);
+    padding-block: var(--space-2);
+    border-block-end: 1px solid var(--color-border);
 }
 
-.cart-item-remove {
-    display: grid;
-    place-items: center;
-    padding: var(--space-1);
-    height: 32px;
-    width: 32px;
-    border: 0;
+.cart-item-details {
+    gap: var(--space-0-5);
+}
+
+.cart-item .item-header h3 {
+    font-size: var(--font-size-sm);
+    font-weight: 400;
+}
+
+.cart-item .price {
+    font-size: var(--font-size-lg);
+    font-weight: 500;
+}
+
+.cart-summary {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-1);
+}
+
+.quantity-selector--counter {
+    border: 1px solid var(--color-forest);
+    border-radius: var(--radius-sm);
     color: var(--color-primary);
-    cursor: pointer;
+    overflow: hidden;
+}
+
+.quantity-selector--counter .button {
+    min-inline-size: var(--touch-target);
+    min-block-size: var(--touch-target);
+    padding: var(--space-1);
+    border-radius: 0;
+}
+
+.quantity-selector--counter output {
+    min-inline-size: 1.5rem;
+    padding-inline: var(--space-0-5);
+    text-align: center;
+    font-size: var(--font-size-md);
+}
+
+.quantity-selector--counter svg {
+    inline-size: 1rem;
+    block-size: 1rem;
+}
+
+.quantity-selector--icon {
+    inline-size: var(--touch-target);
+    min-block-size: var(--touch-target);
+    padding: var(--space-1);
+    border: 1px solid var(--color-lime);
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: var(--color-lime);
+    font-size: var(--font-size-lg);
+}
+
+.quantity-selector--icon:hover:enabled {
+    background: var(--color-forest);
+}
+
+.product-card {
+    grid-template-columns: minmax(0, 1fr) 8rem;
+    gap: var(--space-2);
+    padding-block: var(--space-1);
+}
+
+.product-card-details {
+    align-content: space-between;
+    gap: var(--space-2);
+}
+
+.product-card .item-header h3 {
+    font-weight: 500;
+}
+
+.product-card .item-header p {
+    color: var(--color-primary);
+    font-size: var(--font-size-sm);
+}
+
+.product-card .price {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+}
+
+.product-card-image {
+    position: relative;
+    align-self: start;
+}
+
+.product-card-image .quantity-selector {
+    position: absolute;
+    inset-inline-end: -0.25rem;
+    inset-block-end: -0.25rem;
+}
+
+.product-card-image .quantity-selector--counter {
+    background: var(--color-background);
+}
+
+.product-card-status {
+    grid-column: 1 / -1;
+    font-size: var(--font-size-sm);
+}
+
+.product-card-status:empty {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
 }
 
 .empty-cart {
     text-align: center;
-    color:  var(--color-primary);;
+    color: var(--color-primary);
     font-weight: 700;
     margin-top: calc(var(--space-2) * 2);
+}
+
+.checkout-items {
+    padding-inline-start: var(--space-3);
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 23rem) {
+    .cart-item {
+        grid-template-columns: 3rem minmax(0, 1fr) auto;
+        gap: var(--space-1);
+    }
+
+    .product-card {
+        grid-template-columns: minmax(0, 1fr) 7rem;
+    }
 }

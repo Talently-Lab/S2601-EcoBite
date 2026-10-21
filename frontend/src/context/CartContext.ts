@@ -1,7 +1,7 @@
 import { createContext, useContext } from 'react';
 import type { CartItem, CartProduct } from '../types/types';
 
-export type CartMutationResult = 'added' | 'restaurant-conflict' | 'invalid';
+export type CartMutationResult = 'added' | 'invalid';
 
 export type CartContextValue = {
     items: CartItem[];
@@ -9,10 +9,8 @@ export type CartContextValue = {
     totalQuantity: number;
     totalCents: number;
     addToCart: (product: CartProduct) => CartMutationResult;
-    replaceCart: (product: CartProduct) => CartMutationResult;
     removeFromCart: (productId: string) => void;
     setQuantity: (productId: string, quantity: number) => void;
-    clearCart: () => void;
 };
 
 export const CartContext = createContext<CartContextValue | null>(null);
