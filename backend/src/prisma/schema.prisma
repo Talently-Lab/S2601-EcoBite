@@ -41,13 +41,19 @@ enum OrderStatus {
   CANCELLED
 }
 
+enum UserRole {
+  ADMIN
+  CLIENT
+}
+
 model User {
   id           String   @id @default(uuid()) @map("user_id") @db.Uuid
   name         String
   email        String   @unique
   passwordHash String   @map("password_hash")
   registeredAt DateTime @default(now()) @map("registered_at") @db.Timestamptz(6)
-
+  role         UserRole @default(CLIENT)
+  
   orders Order[]
 
   @@map("users")
