@@ -1,7 +1,6 @@
 // NOTE: Verifies user service persistence and error handling behavior.
 import { Test, TestingModule } from '@nestjs/testing';
 import { Prisma } from '@prisma/client';
-import { Role } from '@prisma/client';
 import { AppException } from '../../common/errors/app.exception';
 import { ErrorCode, OrmKnownCodes } from '../../common/errors/error-codes';
 import { PrismaService } from '../../prisma/prisma.service';
@@ -45,31 +44,39 @@ describe('UserService', () => {
   });
 
   describe('create', () => {
-    it('hashes the password and persists default role and active state', async () => {
+    it('hashes the password and creates a user without assigning admin privileges', async () => {
       const dto = makeUserSafe();
 
-      prisma.user.create.mockResolvedValue(makeUserSafe({ email: dto.email }));
+      prisma.user.create.mockResolvedValue(makeUserSafe());
 
       await service.create({
         name: dto.name,
         email: dto.email,
         password: 'plain',
-        phone: dto.phone,
-        role: Role.ADMIN,
-        active: dto.active ?? true,
       });
 
       expect(prisma.user.create).toHaveBeenCalledTimes(1);
       expect(bcrypt.hash).toHaveBeenCalledWith('plain', 10);
 
-      const tuple = prisma.user.create.mock.calls[0];
-      expect(tuple).toBeDefined();
-      const payload = tuple![0] as {
-        data: { email: string; password: string; role: Role };
-      };
-      expect(payload.data.email).toBe(dto.email);
-      expect(payload.data.password).toBe('hashed-password');
-      expect(payload.data.role).toBe(Role.ADMIN);
+      expect(prisma.user.create).toHaveBeenCalledWith({
+        data: {
+          name: dto.name,
+          email: dto.email,
+          passwordHash: 'hashed-password',
+          registeredAt: expect.any(Date),
+        },
+        select: {
+          id: true,
+          name: true,
+          email: true,
+          registeredAt: true,
+        },
+      });
+
+      const payload = prisma.user.create.mock.calls[0][0];
+
+      expect(payload.data).not.toHaveProperty('role');
+      expect(payload.data).not.toHaveProperty('active');
     });
 
     it('traduce unicidad violada Prisma P2002 a USR_EMAIL_TAKEN', async () => {
@@ -85,8 +92,6 @@ describe('UserService', () => {
           name: 'A',
           email: 'dup@example.com',
           password: 'p',
-          role: Role.INSTALLER,
-          active: true,
         }),
       ).rejects.toMatchObject({
         constructor: AppException,
@@ -102,8 +107,6 @@ describe('UserService', () => {
           name: 'A',
           email: 'x@example.com',
           password: 'p',
-          role: Role.INSTALLER,
-          active: true,
         }),
       ).rejects.toThrow('db down');
     });
@@ -116,30 +119,36 @@ describe('UserService', () => {
       await service.findAll({ skip: 0, take: 500 });
 
       expect(prisma.user.findMany).toHaveBeenCalledWith(
-        expect.objectContaining({ skip: 0, take: 100 }),
-      );
-    });
-
-    it('solo activos cuando activeOnly es true', async () => {
-      prisma.user.findMany.mockResolvedValue([]);
-
-      await service.findAll({ activeOnly: true });
-
-      expect(prisma.user.findMany).toHaveBeenCalledWith(
         expect.objectContaining({
-          where: { active: true },
+          skip: 0,
+          take: 100,
         }),
       );
     });
 
-    it('omit where cuando activeOnly no es true', async () => {
+    it('uses default pagination values when no parameters are provided', async () => {
       prisma.user.findMany.mockResolvedValue([]);
 
-      await service.findAll({ activeOnly: false });
+      await service.findAll();
 
       expect(prisma.user.findMany).toHaveBeenCalledWith(
         expect.objectContaining({
-          where: undefined,
+          skip: 0,
+          take: 50,
+        }),
+      );
+    });
+
+    it('orders users by registration date descending', async () => {
+      prisma.user.findMany.mockResolvedValue([]);
+
+      await service.findAll();
+
+      expect(prisma.user.findMany).toHaveBeenCalledWith(
+        expect.objectContaining({
+          orderBy: {
+            registeredAt: 'desc',
+          },
         }),
       );
     });
@@ -187,19 +196,24 @@ describe('UserService', () => {
   });
 
   describe('remove', () => {
-    it('sets active to false after ensureExists', async () => {
-      const safe = makeUserSafe({ active: false });
+    it('returns the existing user without modifying the database', async () => {
+      const safe = makeUserSafe();
 
-      prisma.user.findUnique.mockResolvedValue({ id: safe.id });
+      prisma.user.findUnique.mockResolvedValue(safe);
 
-      prisma.user.update.mockResolvedValue(safe);
+      const result = await service.remove(safe.id);
 
-      await expect(service.remove(safe.id)).resolves.toEqual(safe);
-      expect(prisma.user.update).toHaveBeenCalledWith(
-        expect.objectContaining({
-          data: { active: false },
-        }),
-      );
+      expect(result).toEqual(safe);
+      expect(prisma.user.findUnique).toHaveBeenCalledWith({
+        where: { id: safe.id },
+        select: {
+          id: true,
+          name: true,
+          email: true,
+          registeredAt: true,
+        },
+      });
+      expect(prisma.user.update).not.toHaveBeenCalled();
     });
   });
 });

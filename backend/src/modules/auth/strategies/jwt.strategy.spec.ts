@@ -1,6 +1,6 @@
 // NOTE: Verifies JWT strategy payload validation behavior.
 import { Test, TestingModule } from '@nestjs/testing';
-import { Role } from '@prisma/client';
+import { UserRole } from '@prisma/client';
 import authConfig from '../../../config/auth.config';
 import { ErrorCode } from '../../../common/errors/error-codes';
 import { PrismaService } from '../../../prisma/prisma.service';
@@ -16,11 +16,11 @@ describe('JwtStrategy', () => {
         findUnique: jest.fn().mockResolvedValue({
           id: 'user-uuid',
           email: 'fresh@example.com',
-          role: Role.SUPERVISOR,
-          active: true,
+          role: UserRole.CLIENT,
         }),
       },
     };
+
     const moduleRef: TestingModule = await Test.createTestingModule({
       providers: [
         JwtStrategy,
@@ -45,45 +45,54 @@ describe('JwtStrategy', () => {
       const out = await strategy.validate({
         sub: 'user-uuid',
         email: 'u@example.com',
-        role: Role.INSTALLER,
       });
+
       expect(out).toEqual({
         userId: 'user-uuid',
         email: 'fresh@example.com',
-        role: Role.SUPERVISOR,
+        role: UserRole.CLIENT,
+      });
+
+      expect(prisma.user.findUnique).toHaveBeenCalledWith({
+        where: { id: 'user-uuid' },
+        select: {
+          id: true,
+          email: true,
+          role: true,
+        },
       });
     });
 
-    it('throws AUTH_UNAUTHENTICATED when user is inactive', async () => {
-      prisma.user.findUnique.mockResolvedValueOnce({
-        id: '1',
-        email: 'a@b.co',
-        role: Role.ADMIN,
-        active: false,
-      });
+    it('throws AUTH_UNAUTHENTICATED when user does not exist', async () => {
+      prisma.user.findUnique.mockResolvedValueOnce(null);
 
       await expect(
         strategy.validate({
-          sub: '1',
+          sub: 'nonexistent-user',
           email: 'a@b.co',
-          role: Role.ADMIN,
         }),
-      ).rejects.toMatchObject({ code: ErrorCode.AUTH_UNAUTHENTICATED.code });
+      ).rejects.toMatchObject({
+        code: ErrorCode.AUTH_UNAUTHENTICATED.code,
+      });
     });
 
-    it('uses current role across enum values', async () => {
+    it('uses the current ADMIN role from the database', async () => {
       prisma.user.findUnique.mockResolvedValueOnce({
-        id: '1',
-        email: 'a@b.co',
-        role: Role.ADMIN,
-        active: true,
+        id: 'user-uuid',
+        email: 'admin@example.com',
+        role: UserRole.ADMIN,
       });
+
       const out = await strategy.validate({
-        sub: '1',
-        email: 'a@b.co',
-        role: Role.INSTALLER,
+        sub: 'user-uuid',
+        email: 'old@example.com',
       });
-      expect(out.role).toBe(Role.ADMIN);
+
+      expect(out).toEqual({
+        userId: 'user-uuid',
+        email: 'admin@example.com',
+        role: UserRole.ADMIN,
+      });
     });
   });
 });

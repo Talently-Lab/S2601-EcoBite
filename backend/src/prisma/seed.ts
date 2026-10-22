@@ -8,6 +8,7 @@ import { PrismaPg } from '@prisma/adapter-pg';
 import pg from 'pg';
 import {
   DeliveryMethod,
+  FoodCategory,
   PackagingType,
   PrismaClient,
   RestaurantStatus,
@@ -26,6 +27,7 @@ const prisma = new PrismaClient({ adapter });
 interface DatasetRow {
   id_restaurante: string;
   nombre_restaurante: string;
+  categoria: string;
   tipo_transporte: string;
   tipo_envase: string;
 }
@@ -39,6 +41,7 @@ interface RestaurantData {
   idRestaurant: string;
   name: string;
   comuna: number;
+  foodCategory: FoodCategory;
   packagingType: PackagingType;
   availableDeliveryMethod: DeliveryMethod;
   status: RestaurantStatus;
@@ -96,6 +99,31 @@ function mapDeliveryMethod(rawTransport: string): DeliveryMethod {
 
     default:
       throw new Error(`Unknown transport type: "${rawTransport}"`);
+  }
+}
+
+function mapFoodCategory(rawCategory: string): FoodCategory {
+  switch (rawCategory.trim()) {
+    case 'Comida casera':
+      return FoodCategory.HOMEMADE;
+
+    case 'Fast food':
+      return FoodCategory.FAST_FOOD;
+
+    case 'Cafe y postres':
+      return FoodCategory.COFFEE_AND_DESSERTS;
+
+    case 'Saludable':
+      return FoodCategory.HEALTHY;
+
+    case 'Vegano':
+      return FoodCategory.VEGAN;
+
+    case 'Internacional':
+      return FoodCategory.INTERNATIONAL;
+
+    default:
+      throw new Error(`Unknown food category: "${rawCategory}"`);
   }
 }
 
@@ -234,6 +262,7 @@ function buildRestaurants(
       );
     }
 
+    const foodCategory = mapFoodCategory(row.categoria);
     const packagingType = mapPackagingType(row.tipo_envase);
     const availableDeliveryMethod = mapDeliveryMethod(row.tipo_transporte);
 
@@ -242,6 +271,7 @@ function buildRestaurants(
     if (existing) {
       if (
         existing.name !== name ||
+        existing.foodCategory !== foodCategory ||
         existing.packagingType !== packagingType ||
         existing.availableDeliveryMethod !== availableDeliveryMethod
       ) {
@@ -255,6 +285,7 @@ function buildRestaurants(
       idRestaurant,
       name,
       comuna,
+      foodCategory,
       packagingType,
       availableDeliveryMethod,
       status: RestaurantStatus.ACTIVE,
@@ -303,6 +334,7 @@ async function main() {
       update: {
         name: restaurant.name,
         comuna: restaurant.comuna,
+        foodCategory: restaurant.foodCategory,
         packagingType: restaurant.packagingType,
         availableDeliveryMethod: restaurant.availableDeliveryMethod,
         status: restaurant.status,

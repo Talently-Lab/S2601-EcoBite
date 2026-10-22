@@ -32,7 +32,7 @@ describe('auth.utils', () => {
     it('returns string only when value is typed string', () => {
       const req = {
         cookies: { session: 'abc', weird: 1, obj: {} },
-      } as Parameters<typeof readCookie>[0];
+      } as unknown as Parameters<typeof readCookie>[0];
       expect(readCookie(req, 'session')).toBe('abc');
       expect(readCookie(req, 'weird')).toBeUndefined();
       expect(readCookie(req, 'missing')).toBeUndefined();

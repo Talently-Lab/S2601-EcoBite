@@ -21,6 +21,7 @@ import { SentryModule } from '@sentry/nestjs/setup';
 import { UsersModule } from './modules/users/users.module';
 import { RestaurantsModule } from './modules/restaurants/restaurants.module';
 import { OrdersModule } from './modules/orders/orders.module';
+import { DashboardModule } from './modules/dashboard/dashboard.module';
 
 @Module({
   imports: [
@@ -49,6 +50,7 @@ import { OrdersModule } from './modules/orders/orders.module';
     UsersModule,
     RestaurantsModule,
     OrdersModule,
+    DashboardModule,
   ],
   providers: [
     {

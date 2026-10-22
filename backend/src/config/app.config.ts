@@ -6,7 +6,7 @@ export default registerAs('app', () => {
   const port = portRaw !== undefined && portRaw !== '' ? Number(portRaw) : 3000;
 
   return {
-    appName: process.env.APP_NAME?.trim() || 'ISP Manager API',
+    appName: process.env.APP_NAME?.trim() || 'EcoBite API',
     port: Number.isFinite(port) ? port : 3000,
     nodeEnv: process.env.NODE_ENV ?? 'development',
     frontendOrigins: process.env.FRONTEND_ORIGINS,

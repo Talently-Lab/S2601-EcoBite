@@ -2,7 +2,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { JwtService } from '@nestjs/jwt';
 import type { Request, Response } from 'express';
-import { RefreshSessionStatus, Role } from '@prisma/client';
+import { UserRole } from '@prisma/client';
 import authConfig from '../../config/auth.config';
 import { ErrorCode } from '../../common/errors/error-codes';
 import { PrismaService } from '../../prisma/prisma.service';
@@ -14,25 +14,20 @@ const mockedCompare = bcrypt.compare as jest.Mock;
 
 const userRow = (
   overrides: Partial<{
-    password: string;
-    active: boolean;
-    role: Role;
     id: string;
-    email: string;
     name: string;
-    phone: string | null;
+    email: string;
+    passwordHash: string;
+    registeredAt: Date;
+    role: UserRole;
   }> = {},
 ) => ({
   id: '550e8400-e29b-41d4-a716-446655440001',
   name: 'Auth User',
   email: 'auth@example.com',
-  password: 'stored-hash',
-  phone: null,
-  role: Role.INSTALLER,
-  active: true,
-  lastLoginAt: null,
-  createdAt: new Date(),
-  updatedAt: new Date(),
+  passwordHash: 'stored-hash',
+  registeredAt: new Date('2026-01-01T00:00:00.000Z'),
+  role: UserRole.CLIENT,
   ...overrides,
 });
 
@@ -119,14 +114,20 @@ describe('AuthService', () => {
   });
 
   describe('login', () => {
-    it('throws AUTH_INVALID_CREDENTIALS for an inactive user', async () => {
-      prisma.user.findUnique.mockResolvedValue(userRow({ active: false }));
+    it('rejects login when the password is incorrect', async () => {
+      prisma.user.findUnique.mockResolvedValue(userRow());
+      mockedCompare.mockResolvedValueOnce(false);
 
       await expect(
-        service.login('a@b.com', 'pwd', mockCookies()),
+        service.login('auth@example.com', 'wrong-password', mockCookies()),
       ).rejects.toMatchObject({
         code: ErrorCode.AUTH_INVALID_CREDENTIALS.code,
       });
+
+      expect(mockedCompare).toHaveBeenCalledWith(
+        'wrong-password',
+        'stored-hash',
+      );
     });
 
     it('lanza AUTH_INVALID_CREDENTIALS si bcrypt no coincide', async () => {
@@ -141,7 +142,7 @@ describe('AuthService', () => {
       });
     });
 
-    it('sets cookies and updates last login with valid credentials', async () => {
+    it('sets the access cookie and returns UserSafe with valid credentials', async () => {
       prisma.user.findUnique.mockResolvedValue(userRow());
       mockedCompare.mockResolvedValueOnce(true);
 
@@ -149,26 +150,24 @@ describe('AuthService', () => {
 
       const out = await service.login('auth@example.com', 'good', res);
 
-      expect(out.email).toBe('auth@example.com');
+      expect(out).toEqual({
+        id: userRow().id,
+        name: userRow().name,
+        email: userRow().email,
+        registeredAt: userRow().registeredAt,
+      });
 
-      expect(prisma.refreshSession.create).toHaveBeenCalledTimes(1);
-      expect(prisma.refreshSession.create.mock.calls[0]?.[0]).toMatchObject({
-        data: expect.objectContaining({
-          userId: userRow().id,
-          status: RefreshSessionStatus.ACTIVE,
-        }),
+      expect(mockedCompare).toHaveBeenCalledWith('good', 'stored-hash');
+
+      expect(jwtService.signAsync).toHaveBeenCalledWith({
+        sub: userRow().id,
+        email: userRow().email,
       });
 
       expect(res.cookie as jest.Mock).toHaveBeenCalledWith(
         'access_token',
         'access.jwt',
         expect.objectContaining({ httpOnly: true }),
-      );
-
-      expect(res.cookie as jest.Mock).toHaveBeenCalledWith(
-        'refresh_token',
-        expect.any(String),
-        expect.any(Object),
       );
     });
 
@@ -187,14 +186,9 @@ describe('AuthService', () => {
     it('delegates creation to UserService and throws INTERNAL_ERROR if the user cannot be read from the database', async () => {
       const createdSafe = {
         id: userRow().id,
-        email: userRow().email,
         name: userRow().name,
-        phone: null,
-        role: Role.INSTALLER,
-        active: true,
-        lastLoginAt: null,
-        createdAt: new Date(),
-        updatedAt: new Date(),
+        email: userRow().email,
+        registeredAt: userRow().registeredAt,
       };
 
       userService.create.mockResolvedValue(createdSafe);
@@ -214,158 +208,85 @@ describe('AuthService', () => {
   });
 
   describe('refresh', () => {
-    it('AUTH_REFRESH_INVALID without refresh cookie', async () => {
-      const req = {
-        cookies: {},
-      } as unknown as Request;
+    it('returns AUTH_REFRESH_INVALID without a refresh cookie', async () => {
+      const req = { cookies: {} } as unknown as Request;
 
       await expect(service.refresh(req, mockCookies())).rejects.toMatchObject({
         code: ErrorCode.AUTH_REFRESH_INVALID.code,
       });
     });
 
-    it('AUTH_REFRESH_INVALID for an expired or non-ACTIVE session', async () => {
-      const raw = Buffer.from('raw-refresh-token').toString('base64url');
+    it('returns AUTH_REFRESH_INVALID when a refresh cookie is provided', async () => {
       const req = {
-        cookies: { refresh_token: raw },
+        cookies: { refresh_token: 'some-refresh-token' },
       } as unknown as Request;
-
-      prisma.refreshSession.findUnique.mockResolvedValue({
-        id: 's1',
-        userId: userRow().id,
-        tokenHash: 'x',
-        familyId: 'f1',
-        status: RefreshSessionStatus.ACTIVE,
-        expiresAt: new Date(0),
-        user: userRow(),
-      });
 
       await expect(service.refresh(req, mockCookies())).rejects.toMatchObject({
         code: ErrorCode.AUTH_REFRESH_INVALID.code,
       });
-    });
-
-    it('AUTH_REFRESH_REUSE y revoca familia si estado REPLACED', async () => {
-      const raw = 'plaintext-refresh-used-twice';
-
-      prisma.refreshSession.findUnique.mockResolvedValue({
-        id: 's-old',
-        userId: userRow().id,
-        tokenHash: 'irrelevant-checked-by-db',
-        familyId: 'fam-99',
-        status: RefreshSessionStatus.REPLACED,
-        expiresAt: new Date(Date.now() + 86400000),
-        user: userRow({ active: true }),
-      });
-
-      const req = {
-        cookies: { refresh_token: raw },
-      } as unknown as Request;
-
-      await expect(service.refresh(req, mockCookies())).rejects.toMatchObject({
-        code: ErrorCode.AUTH_REFRESH_REUSE.code,
-      });
-
-      expect(prisma.refreshSession.updateMany).toHaveBeenCalled();
-    });
-
-    it('AUTH_REFRESH_REUSE if another request replaced the session during rotation', async () => {
-      const session = {
-        id: 's-race',
-        userId: userRow().id,
-        tokenHash: 'h',
-        familyId: 'f-race',
-        status: RefreshSessionStatus.ACTIVE,
-        expiresAt: new Date(Date.now() + 86400000),
-        user: userRow({ active: true }),
-      };
-      prisma.refreshSession.findUnique
-        .mockResolvedValueOnce(session)
-        .mockResolvedValueOnce({
-          familyId: session.familyId,
-          status: RefreshSessionStatus.REPLACED,
-        });
-      prisma.refreshSession.updateMany.mockResolvedValueOnce({ count: 0 });
-
-      await expect(
-        service.refresh(
-          { cookies: { refresh_token: 'x' } } as unknown as Request,
-          mockCookies(),
-        ),
-      ).rejects.toMatchObject({ code: ErrorCode.AUTH_REFRESH_REUSE.code });
-
-      expect(prisma.refreshSession.create).not.toHaveBeenCalled();
-      expect(prisma.refreshSession.updateMany).toHaveBeenCalledTimes(2);
-    });
-
-    it('AUTH_REFRESH_INVALID for an inactive user', async () => {
-      prisma.refreshSession.findUnique.mockResolvedValue({
-        id: 's',
-        tokenHash: 'h',
-        familyId: 'f',
-        status: RefreshSessionStatus.ACTIVE,
-        expiresAt: new Date(Date.now() + 86400000),
-        user: userRow({ active: false }),
-      });
-
-      await expect(
-        service.refresh(
-          { cookies: { refresh_token: 'x' } } as unknown as Request,
-          mockCookies(),
-        ),
-      ).rejects.toMatchObject({ code: ErrorCode.AUTH_REFRESH_INVALID.code });
     });
   });
 
   describe('logout', () => {
-    it('limpia cookies aun si no hay refresh', async () => {
+    it('clears authentication cookies without a refresh cookie', async () => {
       const res = mockCookies();
 
       await service.logout({ cookies: {} } as unknown as Request, res);
 
-      expect(res.clearCookie as jest.Mock).toHaveBeenCalled();
-      expect(prisma.refreshSession.updateMany).not.toHaveBeenCalled();
+      expect(res.clearCookie as jest.Mock).toHaveBeenCalledTimes(3);
+      expect(res.clearCookie as jest.Mock).toHaveBeenCalledWith(
+        mockAuthCfg.accessCookieName,
+        expect.any(Object),
+      );
+      expect(res.clearCookie as jest.Mock).toHaveBeenCalledWith(
+        mockAuthCfg.refreshCookieName,
+        expect.any(Object),
+      );
+      expect(res.clearCookie as jest.Mock).toHaveBeenCalledWith(
+        mockAuthCfg.csrfCookieName,
+        expect.any(Object),
+      );
     });
 
-    it('clears cookies and revokes the family when there is a valid session', async () => {
-      prisma.refreshSession.findUnique.mockResolvedValue({
-        familyId: 'fam',
-      });
-
+    it('clears authentication cookies when a refresh cookie exists', async () => {
       const res = mockCookies();
 
       await service.logout(
-        { cookies: { refresh_token: 'plain' } } as unknown as Request,
+        {
+          cookies: { refresh_token: 'some-refresh-token' },
+        } as unknown as Request,
         res,
       );
 
-      expect(res.clearCookie as jest.Mock).toHaveBeenCalled();
-      expect(prisma.refreshSession.updateMany).toHaveBeenCalled();
+      expect(res.clearCookie as jest.Mock).toHaveBeenCalledTimes(3);
     });
   });
 
   describe('me', () => {
-    it('AUTH_UNAUTHENTICATED for an inactive or missing user', async () => {
+    it('returns AUTH_UNAUTHENTICATED when the user does not exist', async () => {
       prisma.user.findUnique.mockResolvedValue(null);
 
       await expect(service.me(userRow().id)).rejects.toMatchObject({
         code: ErrorCode.AUTH_UNAUTHENTICATED.code,
       });
-
-      prisma.user.findUnique.mockResolvedValue(userRow({ active: false }));
-
-      await expect(service.me(userRow().id)).rejects.toMatchObject({
-        code: ErrorCode.AUTH_UNAUTHENTICATED.code,
-      });
     });
 
-    it('returns UserSafe when active', async () => {
-      const u = userRow();
-      prisma.user.findUnique.mockResolvedValue(u);
+    it('returns UserSafe when the user exists', async () => {
+      const user = userRow();
+      prisma.user.findUnique.mockResolvedValue(user);
 
-      const out = await service.me(u.id);
-      expect(out.email).toBe(u.email);
-      expect(out.id).toBe(u.id);
+      const result = await service.me(user.id);
+
+      expect(prisma.user.findUnique).toHaveBeenCalledWith({
+        where: { id: user.id },
+      });
+
+      expect(result).toEqual({
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        registeredAt: user.registeredAt,
+      });
     });
   });
 
