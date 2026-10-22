@@ -17,7 +17,7 @@ describe('Prisma schema', () => {
     expect(schema).toMatch(/model Order\s*\{[\s\S]*?id\s+String\s+@id/);
     expect(schema).toMatch(/model OrderItem\s*\{[\s\S]*?id\s+String\s+@id/);
 
-    expect(schema).toMatch(/userId\s+String\s+@map\("user_id"\)\s+@db\.Uuid/);
+    expect(schema).toMatch(/userId\s+String\?\s+@map\("user_id"\)\s+@db\.Uuid/);
     expect(schema).toMatch(
       /restaurantId\s+String\s+@map\("restaurant_id"\)\s+@db\.Uuid/,
     );
@@ -27,7 +27,7 @@ describe('Prisma schema', () => {
     );
 
     expect(schema).toMatch(
-      /user\s+User\s+@relation\(fields: \[userId\], references: \[id\]\)/,
+      /user\s+User\?\s+@relation\(fields: \[userId\], references: \[id\]\)/,
     );
     expect(schema).toMatch(
       /restaurant\s+Restaurant\s+@relation\(fields: \[restaurantId\], references: \[id\]\)/,

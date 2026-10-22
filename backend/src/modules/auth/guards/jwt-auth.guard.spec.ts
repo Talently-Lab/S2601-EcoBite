@@ -1,6 +1,6 @@
 // NOTE: Verifies global JWT guard behavior and public route bypasses.
 import { Reflector } from '@nestjs/core';
-import { Role } from '@prisma/client';
+import { UserRole } from '@prisma/client';
 import { AppException } from '../../../common/errors/app.exception';
 import { ErrorCode } from '../../../common/errors/error-codes';
 import { IS_PUBLIC_KEY } from '../decorators/public.decorator';
@@ -92,7 +92,7 @@ describe('JwtAuthGuard', () => {
       const user = {
         userId: 'id',
         email: 'x@y.com',
-        role: Role.ADMIN,
+        role: UserRole.ADMIN,
       } satisfies Express.User;
       expect(guard.handleRequest(undefined, user, undefined)).toBe(user);
     });

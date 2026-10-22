@@ -41,13 +41,24 @@ enum OrderStatus {
   CANCELLED
 }
 
+enum OrderSource {
+  APP
+  DATASET
+}
+
+enum UserRole {
+  ADMIN
+  CLIENT
+}
+
 model User {
   id           String   @id @default(uuid()) @map("user_id") @db.Uuid
   name         String
   email        String   @unique
   passwordHash String   @map("password_hash")
   registeredAt DateTime @default(now()) @map("registered_at") @db.Timestamptz(6)
-
+  role         UserRole @default(CLIENT)
+  
   orders Order[]
 
   @@map("users")
@@ -57,6 +68,7 @@ model Restaurant {
   id                      String           @id @default(uuid()) @map("restaurant_id") @db.Uuid
   idRestaurant            String           @unique @map("id_restaurante")
   name                    String
+  comuna                  Int?
   foodCategory            FoodCategory    @map("food_category")
   packagingType           PackagingType    @map("packaging_type")
   availableDeliveryMethod DeliveryMethod   @map("available_delivery_method")
@@ -84,7 +96,9 @@ model Product {
 
 model Order {
   id                  String         @id @default(uuid()) @map("order_id") @db.Uuid
-  userId              String         @map("user_id") @db.Uuid
+  source              OrderSource    @default(APP)
+  datasetOrderId      String?        @unique @map("dataset_order_id")
+  userId              String?         @map("user_id") @db.Uuid
   restaurantId        String         @map("restaurant_id") @db.Uuid
   orderedAt           DateTime       @default(now()) @map("ordered_at") @db.Timestamptz(6)
   totalAmount         Decimal        @map("total_amount") @db.Decimal(10, 2)
@@ -96,7 +110,7 @@ model Order {
   plasticItemsAvoided Int            @map("plastic_items_avoided")
   deliveryLatitude    Decimal?       @map("delivery_latitude")
 
-  user       User        @relation(fields: [userId], references: [id])
+  user       User?        @relation(fields: [userId], references: [id])
   restaurant Restaurant  @relation(fields: [restaurantId], references: [id])
   orderItems OrderItem[]
 

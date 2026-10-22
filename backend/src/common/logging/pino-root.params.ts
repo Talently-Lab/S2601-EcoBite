@@ -1,4 +1,5 @@
 // NOTE: Builds Pino HTTP logger configuration from application settings.
+import { RequestMethod } from '@nestjs/common';
 import type { ConfigType } from '@nestjs/config';
 import type { IncomingMessage, ServerResponse } from 'http';
 import type { LevelWithSilent } from 'pino';
@@ -84,6 +85,7 @@ export function pinoRootParamsFromAppConfig(
   const isProd = appCfg.nodeEnv === 'production';
 
   return {
+    forRoutes: [{ path: '{*path}', method: RequestMethod.ALL }],
     pinoHttp: {
       wrapSerializers: false,
       serializers: {

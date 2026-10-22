@@ -99,6 +99,10 @@ export class AuthController {
     }),
   })
   @ApiResponse({
+    status: 400,
+    description: 'DTO validation (VALIDATION_ERROR)',
+  })
+  @ApiResponse({
     status: 401,
     description: 'Invalid credentials',
   })

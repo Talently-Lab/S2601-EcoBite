@@ -1,7 +1,6 @@
 // NOTE: Verifies authentication controller delegation and responses.
 import { Test, TestingModule } from '@nestjs/testing';
 import type { Response } from 'express';
-import { Role } from '@prisma/client';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { makeUserSafe } from './fixtures/user.fixtures';
@@ -52,7 +51,7 @@ describe('AuthController', () => {
 
   describe('logIn', () => {
     it('delegates to login with DTO credentials', async () => {
-      const safe = makeUserSafe({ role: Role.ADMIN });
+      const safe = makeUserSafe();
       authService.login.mockResolvedValue(safe);
       const res = {} as Response;
 
@@ -92,7 +91,7 @@ describe('AuthController', () => {
       const jwtUser = {
         userId: safe.id,
         email: safe.email,
-        role: safe.role,
+        role: 'CLIENT' as const,
       };
 
       await expect(controller.me(jwtUser)).resolves.toEqual(safe);

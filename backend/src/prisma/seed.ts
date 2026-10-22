@@ -8,6 +8,7 @@ import { PrismaPg } from '@prisma/adapter-pg';
 import pg from 'pg';
 import {
   DeliveryMethod,
+  FoodCategory,
   PackagingType,
   PrismaClient,
   RestaurantStatus,
@@ -26,13 +27,21 @@ const prisma = new PrismaClient({ adapter });
 interface DatasetRow {
   id_restaurante: string;
   nombre_restaurante: string;
+  categoria: string;
   tipo_transporte: string;
   tipo_envase: string;
+}
+
+interface RestaurantComunaRow {
+  id_restaurante: string;
+  comuna: string;
 }
 
 interface RestaurantData {
   idRestaurant: string;
   name: string;
+  comuna: number;
+  foodCategory: FoodCategory;
   packagingType: PackagingType;
   availableDeliveryMethod: DeliveryMethod;
   status: RestaurantStatus;
@@ -46,6 +55,15 @@ const csvPath = path.resolve(
   'api',
   'data-model',
   'dataset.csv',
+);
+
+const comunasCsvPath = path.resolve(
+  process.cwd(),
+  '..',
+  'docs',
+  'api',
+  'data-model',
+  'restaurantes_comuna.csv',
 );
 
 function mapPackagingType(rawPackagingType: string): PackagingType {
@@ -81,6 +99,31 @@ function mapDeliveryMethod(rawTransport: string): DeliveryMethod {
 
     default:
       throw new Error(`Unknown transport type: "${rawTransport}"`);
+  }
+}
+
+function mapFoodCategory(rawCategory: string): FoodCategory {
+  switch (rawCategory.trim()) {
+    case 'Comida casera':
+      return FoodCategory.HOMEMADE;
+
+    case 'Fast food':
+      return FoodCategory.FAST_FOOD;
+
+    case 'Cafe y postres':
+      return FoodCategory.COFFEE_AND_DESSERTS;
+
+    case 'Saludable':
+      return FoodCategory.HEALTHY;
+
+    case 'Vegano':
+      return FoodCategory.VEGAN;
+
+    case 'Internacional':
+      return FoodCategory.INTERNATIONAL;
+
+    default:
+      throw new Error(`Unknown food category: "${rawCategory}"`);
   }
 }
 
@@ -148,7 +191,57 @@ function readDataset(): Promise<DatasetRow[]> {
   });
 }
 
-function buildRestaurants(rows: DatasetRow[]): RestaurantData[] {
+function readComunasCsv(): Promise<RestaurantComunaRow[]> {
+  return new Promise((resolve, reject) => {
+    const rows: RestaurantComunaRow[] = [];
+
+    fs.createReadStream(comunasCsvPath)
+      .pipe(csv())
+      .on('data', (row: RestaurantComunaRow) => {
+        rows.push(row);
+      })
+      .on('end', () => {
+        resolve(rows);
+      })
+      .on('error', (error) => {
+        reject(error);
+      });
+  });
+}
+
+function buildComunasMap(rows: RestaurantComunaRow[]): Map<string, number> {
+  const comunas = new Map<string, number>();
+
+  for (const row of rows) {
+    const idRestaurant = row.id_restaurante?.trim();
+    const rawComuna = row.comuna?.trim();
+
+    if (!idRestaurant || !rawComuna) {
+      throw new Error('El CSV de comunas contiene un ID o una comuna vacía.');
+    }
+
+    if (comunas.has(idRestaurant)) {
+      throw new Error(`ID de restaurante duplicado: "${idRestaurant}".`);
+    }
+
+    const match = /^Comuna\s+(1[0-5]|[1-9])$/.exec(rawComuna);
+
+    if (!match) {
+      throw new Error(
+        `Comuna inválida para "${idRestaurant}": "${rawComuna}".`,
+      );
+    }
+
+    comunas.set(idRestaurant, Number(match[1]));
+  }
+
+  return comunas;
+}
+
+function buildRestaurants(
+  rows: DatasetRow[],
+  comunas: Map<string, number>,
+): RestaurantData[] {
   const restaurants = new Map<string, RestaurantData>();
 
   for (const row of rows) {
@@ -161,6 +254,15 @@ function buildRestaurants(rows: DatasetRow[]): RestaurantData[] {
       );
     }
 
+    const comuna = comunas.get(idRestaurant);
+
+    if (comuna === undefined) {
+      throw new Error(
+        `No se encontró comuna para el restaurante "${idRestaurant}".`,
+      );
+    }
+
+    const foodCategory = mapFoodCategory(row.categoria);
     const packagingType = mapPackagingType(row.tipo_envase);
     const availableDeliveryMethod = mapDeliveryMethod(row.tipo_transporte);
 
@@ -169,6 +271,7 @@ function buildRestaurants(rows: DatasetRow[]): RestaurantData[] {
     if (existing) {
       if (
         existing.name !== name ||
+        existing.foodCategory !== foodCategory ||
         existing.packagingType !== packagingType ||
         existing.availableDeliveryMethod !== availableDeliveryMethod
       ) {
@@ -181,6 +284,8 @@ function buildRestaurants(rows: DatasetRow[]): RestaurantData[] {
     restaurants.set(idRestaurant, {
       idRestaurant,
       name,
+      comuna,
+      foodCategory,
       packagingType,
       availableDeliveryMethod,
       status: RestaurantStatus.ACTIVE,
@@ -191,18 +296,34 @@ function buildRestaurants(rows: DatasetRow[]): RestaurantData[] {
     });
   }
 
+  for (const idRestaurant of comunas.keys()) {
+    if (!restaurants.has(idRestaurant)) {
+      throw new Error(
+        `El CSV de comunas contiene un restaurante inexistente: "${idRestaurant}".`,
+      );
+    }
+  }
+
   return Array.from(restaurants.values());
 }
 
 async function main() {
   const rows = await readDataset();
+  const comunaRows = await readComunasCsv();
 
   console.log(`Dataset rows read: ${rows.length}`);
+  console.log(`Comunas rows read: ${comunaRows.length}`);
 
-  const restaurants = buildRestaurants(rows);
+  const comunas = buildComunasMap(comunaRows);
+  const restaurants = buildRestaurants(rows, comunas);
+
+  if (restaurants.length !== 294 || comunas.size !== 294) {
+    throw new Error(
+      `Se esperaban 294 restaurantes y 294 comunas. Restaurantes: ${restaurants.length}, comunas: ${comunas.size}.`,
+    );
+  }
 
   console.log(`Restaurants prepared: ${restaurants.length}`);
-
   console.log(restaurants.slice(0, 5));
 
   for (const restaurant of restaurants) {
@@ -212,6 +333,8 @@ async function main() {
       },
       update: {
         name: restaurant.name,
+        comuna: restaurant.comuna,
+        foodCategory: restaurant.foodCategory,
         packagingType: restaurant.packagingType,
         availableDeliveryMethod: restaurant.availableDeliveryMethod,
         status: restaurant.status,
