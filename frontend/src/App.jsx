@@ -10,6 +10,7 @@ import { Profile } from './pages/Profile';
 import { Home } from './pages/Home';
 import { CartProvider } from './context/CartProvider';
 import { Checkout } from './pages/Checkout';
+import { ConfirmationModal } from './components/pages/ConfirmationModal';
 
 export default function App() {
 	const { user } = useUser();
@@ -23,10 +24,11 @@ export default function App() {
 					user
 						? <CartProvider key={user.id}>
                                 <Header />
-                                <main>
+                                <main tabIndex={-1}>
                                     <Outlet />
                                 </main>
                                 <Footer />
+                                <ConfirmationModal />
                             </CartProvider>
 						: <Navigate to="/login" replace />
 				}>

@@ -3,6 +3,44 @@ html {
 	scroll-padding-block-end: 1rem;
 }
 
+.sr-only,
+.product-card-status:empty {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
+.page-back,
+.home-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-back {
+    inline-size: var(--touch-target);
+    block-size: var(--touch-target);
+    color: var(--color-primary);
+
+    & svg {
+        inline-size: var(--space-3);
+        block-size: var(--space-3);
+    }
+}
+
+.home-link {
+    min-block-size: var(--touch-target);
+    color: inherit;
+    font-weight: 600;
+    text-underline-offset: 0.15em;
+}
+
 body {
 	align-items: center;
 	flex-direction: column;

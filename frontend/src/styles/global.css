@@ -10,6 +10,10 @@
 @import './pages/Login.css';
 @import './pages/Profile.css';
 @import './pages/Cart.css';
+@import './forms/QuantitySelector.css';
+@import './pages/ProductCard.css';
+@import './pages/Checkout.css';
+@import './pages/ConfirmationModal.css';
 @import './pages/Restaurants.css';
 @import './shared/GreenBadge.css';
 @import './pages/ProfileItem.css';
@@ -32,6 +36,7 @@
     --color-forest: #3a6851;
     --color-lime: #94d22d;
     --color-surface-muted: #d9e4dc;
+    --color-page-background: color-mix(in srgb, var(--color-accent) 12%, var(--color-background));
     --font-family: 'BricolageGrotesque', sans-serif;
     --font-size-xs: 10px;
     --font-size-sm: 12px;

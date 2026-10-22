@@ -16,9 +16,9 @@ export function CartItem({ item, onRemove, onQuantityChange, disabled = false }:
     return (
         <article className="cart-item">
             <ImageWithFallback src={item.image} alt={item.name} />
-            <div className="cart-item-details">
+            <div className="product-details">
                 <ItemHeader title={item.name} />
-                <span aria-label="Subtotal"><Price price={item.unitPriceCents * item.quantity / 100} /></span>
+                <span><span className="sr-only">Subtotal: </span><Price price={item.unitPriceCents * item.quantity / 100} /></span>
             </div>
             <QuantitySelector variant="counter" value={item.quantity} onChange={onQuantityChange}
                 onRemove={onRemove} label={item.name} disabled={disabled} />

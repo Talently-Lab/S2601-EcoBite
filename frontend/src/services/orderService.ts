@@ -29,7 +29,12 @@ function parseOrder(data: unknown): CreatedOrder {
         throw new OrderError(uncertainMessage, { outcome: 'uncertain' });
     }
 
-    return { id: data.id, totalAmount, co2SavedG: data.co2SavedG };
+    const deliveryMethod = data.deliveryMethod;
+    return {
+        id: data.id, totalAmount, co2SavedG: data.co2SavedG,
+        ...(deliveryMethod === 'BIKE' || deliveryMethod === 'MOTORCYCLE' || deliveryMethod === 'CAR'
+            ? { deliveryMethod } : {}),
+    };
 }
 
 const statusMessages: Record<number, string> = {
