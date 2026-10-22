@@ -41,5 +41,8 @@ export type CreatedOrder = {
     id: string;
     totalAmount: number;
     co2SavedG: number;
+    deliveryMethod?: Restaurant['availableDeliveryMethod'];
 };
+
+export type ConfirmedOrder = CreatedOrder & { restaurantName: string };
 
