@@ -25,7 +25,7 @@ export type CartProduct = {
     name: string;
     unitPriceCents: number;
     description?: string;
-    image?: string;
+    isMock?: boolean;
 };
 
 export type CatalogProduct = Omit<CartProduct, 'restaurantName'>;
@@ -44,5 +44,5 @@ export type CreatedOrder = {
     deliveryMethod?: Restaurant['availableDeliveryMethod'];
 };
 
-export type ConfirmedOrder = CreatedOrder & { restaurantName: string };
+export type ConfirmedOrder = CreatedOrder & { restaurantName: string; isPreview?: boolean };
 
