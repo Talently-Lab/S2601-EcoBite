@@ -31,7 +31,7 @@
     color: var(--color-muted);
 }
 
-.button--primary:hover:enabled {
+.button--primary:hover:not(:disabled) {
     background: var(--color-accent);
     color: var(--color-primary);
 }

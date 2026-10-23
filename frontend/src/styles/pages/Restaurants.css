@@ -1,21 +1,26 @@
+.restaurant-page > .page-title, .restaurant-page > p {
+    grid-column: 1 / -1;
+}
+
 .restaurant-page {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     gap: var(--space-2);
 }
 
-.restaurant-page > .page-title, .restaurant-page > p {
-    grid-column: 1 / -1;
-}
-
 .restaurant-card {
     min-inline-size: 0;
+}
+
+.restaurant-card > a {
+    color: inherit;
+    text-decoration: none;
 }
 
 .restaurant-card-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 4px;
+    gap: var(--space-0-5);
 }
 
 .restaurant-card .item-header--vertical img {
@@ -29,16 +34,6 @@
 
 .restaurant-card .item-header--vertical img[data-fallback='true'] {
     object-fit: contain;
-}
-
-.restaurant-link {
-    cursor: pointer;
-    max-width: 320px;
-    text-decoration: none;
-    color: inherit;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
 }
 
 @media (min-width: 40rem) {

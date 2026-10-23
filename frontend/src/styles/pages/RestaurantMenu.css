@@ -1,0 +1,45 @@
+.restaurant-menu-page,
+.restaurant-menu-heading,
+.restaurant-menu-products {
+    display: grid;
+}
+
+.restaurant-menu-page,
+.restaurant-menu-products {
+    gap: var(--space-2);
+}
+
+.restaurant-menu-heading p,
+.restaurant-menu-notice {
+    color: var(--color-forest);
+    font-size: var(--font-size-md);
+}
+
+.restaurant-menu-page {
+    max-inline-size: 44rem;
+    margin-inline: auto;
+}
+
+.restaurant-menu-heading {
+    gap: var(--space-1);
+}
+
+.restaurant-menu-heading h1 {
+    font-size: var(--font-size-lg);
+}
+
+.restaurant-menu-notice {
+    padding: var(--space-1-5);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface);
+}
+
+.restaurant-menu-notice a {
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+.restaurant-menu-products .product-card {
+    padding-block: var(--space-2);
+    border-block-end: 1px solid var(--color-border);
+}

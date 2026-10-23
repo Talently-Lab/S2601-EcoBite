@@ -1,4 +1,5 @@
 @import './core/Button.css';
+@import './core/PageHeader.css';
 @import './forms/Input.css';
 @import './shared/ItemHeader.css';
 @import './layouts/base.css';
@@ -15,6 +16,7 @@
 @import './pages/Checkout.css';
 @import './pages/ConfirmationModal.css';
 @import './pages/Restaurants.css';
+@import './pages/RestaurantMenu.css';
 @import './shared/GreenBadge.css';
 @import './pages/ProfileItem.css';
 @font-face {
@@ -25,7 +27,7 @@
 :root {
     --color-primary: #0e2926;
     --color-secondary: #bcf8d6;
-    --color-background: #fff;
+    --color-background: #F8FFF2;
     --color-accent: #c5ef7f;
     --color-text: #17231d;
     --color-surface: #eaf4ef;
@@ -59,7 +61,7 @@
     --control-height: 3rem;
     --control-height-lg: 3.25rem;
     --touch-target: 2.75rem;
-    --page-gutter: 1.25rem;
+    --page-gutter: calc(var(--space-2) + var(--space-0-5));
     --content-width: 75rem;
     --navbar-height: 5rem;
     --header-height: 4rem;

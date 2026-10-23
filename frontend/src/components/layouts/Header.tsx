@@ -1,20 +1,21 @@
 import { useRef, useState } from 'react';
 import { Link } from 'react-router';
 import { LuMenu, LuShoppingCart, LuX } from 'react-icons/lu';
-import { TbLeaf } from 'react-icons/tb';
 import { Button } from '../core/Button';
 import { Navbar } from './Navbar';
 import { AuthError } from '../../services/authService';
+import { useCart } from '../../context/CartContext';
 import { useUser } from '../../context/UserContext';
-import logo from '../../assets/icons/logo.svg';
 
 export function Header() {
     const { user, logout } = useUser();
+    const { totalQuantity } = useCart();
     const menuRef = useRef<HTMLDialogElement>(null);
     const [menuOpen, setMenuOpen] = useState(false);
     const [isLoggingOut, setIsLoggingOut] = useState(false);
     const [logoutError, setLogoutError] = useState('');
     const initials = user?.name.trim().split(/\s+/).slice(0, 2).map((part) => part[0]).join('').toUpperCase();
+    const filledCart = totalQuantity > 0;
 
     async function handleLogout() {
         if (isLoggingOut) return;
@@ -37,11 +38,14 @@ export function Header() {
     return (
         <header className="site-header">
             <div className="site-header-bar">
-                <Link to="/" className="site-brand" aria-label="EcoBite, inicio"><img src={logo} alt="EcoBite" /></Link>
+                <Link to="/" className="site-brand" aria-label="EcoBite, inicio"><span className="brand-logo" aria-hidden="true" /></Link>
                 <div className="site-header-actions">
-                    <Link to="/cart" className="site-header-cart" aria-label="Ir al carrito">
+                    <Link to="/cart" className="site-header-cart"
+                        aria-label={filledCart
+                            ? `Ir al carrito, ${totalQuantity} ${totalQuantity === 1 ? 'producto' : 'productos'}`
+                            : 'Ir al carrito'}>
                         <LuShoppingCart aria-hidden="true" />
-                        <TbLeaf className="site-header-leaf" aria-hidden="true" />
+                        {filledCart ? <span className="site-header-cart-count" aria-hidden="true">{totalQuantity}</span> : null}
                     </Link>
                     <Button type="button" variant="icon" className="site-header-control"
                         aria-label="Abrir menú" aria-controls="site-menu" aria-expanded={menuOpen}
@@ -61,7 +65,7 @@ export function Header() {
                 }}>
                 <div className="header-drawer-content">
                     <div className="header-drawer-top">
-                        <Link to="/" className="site-brand" onClick={closeMenu} aria-label="EcoBite, inicio"><img src={logo} alt="EcoBite" /></Link>
+                        <Link to="/" className="site-brand" onClick={closeMenu} aria-label="EcoBite, inicio"><span className="brand-logo" aria-hidden="true" /></Link>
                         <Button type="button" variant="icon" className="site-header-control" aria-label="Cerrar menú"
                             autoFocus onClick={closeMenu}><LuX aria-hidden="true" /></Button>
                     </div>
