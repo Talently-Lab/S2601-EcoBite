@@ -1,0 +1,47 @@
+.quantity-selector--counter .button,
+.quantity-selector--icon {
+    min-block-size: var(--touch-target);
+    padding: var(--space-1);
+}
+
+.quantity-selector--counter {
+    display: flex;
+    align-items: center;
+    min-inline-size: 0;
+    margin: 0;
+    padding: 0;
+    border: 1px solid var(--color-forest);
+    border-radius: var(--radius-sm);
+    color: var(--color-primary);
+    overflow: hidden;
+
+    & .button {
+        min-inline-size: var(--touch-target);
+        border-radius: 0;
+    }
+
+    & output {
+        min-inline-size: 1.5rem;
+        padding-inline: var(--space-0-5);
+        text-align: center;
+        font-size: var(--font-size-md);
+    }
+
+    & svg {
+        inline-size: 1rem;
+        block-size: 1rem;
+    }
+}
+
+.quantity-selector--icon {
+    inline-size: var(--touch-target);
+    border: 1px solid var(--color-lime);
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: var(--color-lime);
+    font-size: var(--font-size-lg);
+
+    &:hover:enabled {
+        background: var(--color-forest);
+    }
+}
