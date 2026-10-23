@@ -13,8 +13,8 @@ export type CartContextValue = {
     confirmPurchase: (distanceKm: number) => Promise<void>;
     closeConfirmationModal: () => void;
     addToCart: (product: CartProduct) => void;
-    removeFromCart: (productId: string) => void;
-    setQuantity: (productId: string, quantity: number) => void;
+    removeFromCart: (productId: string, restaurantId: string) => void;
+    setQuantity: (productId: string, restaurantId: string, quantity: number) => void;
 };
 
 export const CartContext = createContext<CartContextValue | null>(null);

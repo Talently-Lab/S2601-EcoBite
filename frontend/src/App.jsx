@@ -4,6 +4,7 @@ import { Header } from './components/layouts/Header';
 import { Footer } from './components/layouts/Footer';
 import { Login } from './pages/Login';
 import { Restaurants } from './pages/Restaurants';
+import { RestaurantMenu } from './pages/RestaurantMenu';
 import { Cart } from './pages/Cart';
 import { Impact } from './pages/Impact';
 import { Profile } from './pages/Profile';
@@ -13,7 +14,8 @@ import { Checkout } from './pages/Checkout';
 import { ConfirmationModal } from './components/pages/ConfirmationModal';
 
 export default function App() {
-	const { user } = useUser();
+	const { user, isLoading } = useUser();
+	if (isLoading) return <main role="status">Cargando sesión...</main>;
 
 	return (
 			<Routes>
@@ -34,6 +36,7 @@ export default function App() {
 				}>
 					<Route path="/" element={<Home />} />
 					<Route path="/restaurants" element={<Restaurants />} />
+					<Route path="/restaurants/:id" element={<RestaurantMenu />} />
 					<Route path="/cart" element={<Cart />} />
 					<Route path="/checkout" element={<Checkout />} />
 					<Route path="/impact" element={<Impact />} />

@@ -6,7 +6,7 @@ import { Link } from 'react-router';
 export function RestaurantCard({ restaurant }: { restaurant: RestaurantProps }) {
     return (
         <article className="restaurant-card">
-            <Link className="restaurant-menu-link" to={`/restaurants/${encodeURIComponent(restaurant.id)}`}>
+            <Link to={`/restaurants/${encodeURIComponent(restaurant.id)}`}>
                 <ItemHeader
                     title={restaurant.name}
                     description={restaurant.description}
