@@ -1,10 +1,41 @@
-html {
-	color-scheme: light;
-	scroll-padding-block-end: 1rem;
+body,
+.input-error,
+.login-error {
+    display: flex;
 }
 
-.sr-only,
-.product-card-status:empty {
+.input-hint,
+.login-terms,
+.login-links {
+    font-size: var(--font-size-sm);
+    line-height: 1.35;
+}
+
+.input--login,
+.login-submit {
+    min-block-size: var(--control-height-lg);
+}
+
+.input-error,
+.login-error {
+    align-items: flex-start;
+    gap: var(--space-1-5);
+    color: var(--color-error);
+    line-height: 1.3;
+}
+
+.input-error svg,
+.login-error svg {
+    flex-shrink: 0;
+    margin-block-start: var(--space-0-5);
+}
+
+html {
+	color-scheme: light;
+	scroll-padding-block-end: var(--space-2);
+}
+
+.sr-only {
     position: absolute;
     inline-size: 1px;
     block-size: 1px;
@@ -16,25 +47,10 @@ html {
     border: 0;
 }
 
-.page-back,
 .home-link {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-}
-
-.page-back {
-    inline-size: var(--touch-target);
-    block-size: var(--touch-target);
-    color: var(--color-primary);
-
-    & svg {
-        inline-size: var(--space-3);
-        block-size: var(--space-3);
-    }
-}
-
-.home-link {
     min-block-size: var(--touch-target);
     color: inherit;
     font-weight: 600;
@@ -58,7 +74,7 @@ body {
 
 :where(button, a, input, select, textarea):focus-visible {
 	outline: 2px solid var(--color-focus);
-	outline-offset: 2px;
+	outline-offset: calc(var(--space-0-5) / 2);
 }
 
 :where(button, a) {
@@ -80,29 +96,4 @@ body {
     color: var(--color-secondary);
     background-color: currentColor;
     mask: url('../../assets/icons/logo.svg') center / contain no-repeat;
-}
-
-body, .input-error, .login-error {
-	display: flex;
-}
-
-.input-hint, .login-terms, .login-links {
-    font-size: var(--font-sm);
-    line-height: 1.35;
-}
-
-.input--login, .login-submit {
-    min-block-size: var(--control-height-lg);
-}
-
-.input-error, .login-error {
-    align-items: flex-start;
-    gap: var(--space-1-5);
-    color: var(--color-error);
-    line-height: 1.3;
-}
-
-.input-error svg, .login-error svg {
-    flex-shrink: 0;
-    margin-block-start: var(--space-0-5);
 }
