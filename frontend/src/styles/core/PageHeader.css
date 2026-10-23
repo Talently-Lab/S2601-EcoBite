@@ -1,0 +1,29 @@
+.page-header,
+.page-header__back {
+    align-items: center;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    min-block-size: var(--touch-target);
+}
+
+.page-header__back {
+    display: inline-flex;
+    justify-content: center;
+    inline-size: var(--touch-target);
+    block-size: var(--touch-target);
+    flex-shrink: 0;
+    color: var(--color-primary);
+
+    & svg {
+        inline-size: var(--space-3);
+        block-size: var(--space-3);
+    }
+}
+
+.page-header__title {
+    font-size: var(--font-size-md);
+    font-weight: 400;
+}
