@@ -5,6 +5,7 @@ import { Button } from '../components/core/Button';
 import { PageHeader } from '../components/core/PageHeader';
 import { Input } from '../components/forms/Input';
 import { FormError } from '../components/forms/FormError';
+import { CHECKOUT_PREVIEW_ENABLED } from '../config/checkout';
 import { useCart } from '../context/CartContext';
 
 const SIMULATED_DISTANCE_KM = 3.5;
@@ -110,7 +111,7 @@ export function Checkout() {
                 productCount={totalQuantity} totalCents={totalCents} />
 
             {purchaseError && <FormError id={`${checkoutId}-error`} className="input-error">{purchaseError.message}</FormError>}
-            <ConfirmOrderAction isSubmitting={isSubmitting} disabled={hasMockProducts}
+            <ConfirmOrderAction isSubmitting={isSubmitting} disabled={hasMockProducts && !CHECKOUT_PREVIEW_ENABLED}
                 onConfirm={() => void confirmPurchase(SIMULATED_DISTANCE_KM)} />
         </div>
     );

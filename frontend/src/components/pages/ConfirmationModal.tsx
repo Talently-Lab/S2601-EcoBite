@@ -43,10 +43,14 @@ export function ConfirmationModal() {
             <div className="confirmation-modal-content">
                 <img className="confirmation-modal-illustration" src={confirmationIllustration} alt="" />
                 <div className="confirmation-modal-heading">
-                    <h2 id={titleId}>¡Pedido confirmado!</h2>
+                    <h2 id={titleId}>{createdOrder.isPreview ? '¡Pedido de prueba!' : '¡Pedido confirmado!'}</h2>
                     <p id={descriptionId}>
-                        {createdOrder.restaurantName} ya está preparando tu pedido.
-                        {createdOrder.deliveryMethod && <><br />{deliveryMessages[createdOrder.deliveryMethod]}</>}
+                        {createdOrder.isPreview
+                            ? `Vista previa de ${createdOrder.restaurantName}. No se creó una compra real.`
+                            : <>
+                                {createdOrder.restaurantName} ya está preparando tu pedido.
+                                {createdOrder.deliveryMethod && <><br />{deliveryMessages[createdOrder.deliveryMethod]}</>}
+                            </>}
                     </p>
                 </div>
                 <div className="confirmation-modal-impact">
