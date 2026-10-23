@@ -1,46 +1,38 @@
-import { useState } from 'react';
-import { useCart } from '../../context/CartContext';
-import type { CartProduct } from '../../types/types';
+import type { CartItem, CartProduct } from '../../types/types';
 import { Price } from '../core/Price';
 import { ItemHeader } from '../shared/ItemHeader';
-import { ImageWithFallback } from '../shared/ImageWithFallback';
 import { QuantitySelector } from '../forms/QuantitySelector';
+import platePlaceholder from '../../assets/icons/plate_placeholder.svg';
 
-type ProductCardProps = { product: CartProduct };
+type ProductCardProps =
+    | { variant?: 'menu'; product: CartProduct; disabled?: boolean }
+    | { variant: 'cart'; product: CartItem; disabled?: boolean };
 
-export function ProductCard({ product }: ProductCardProps) {
-    const { items, addToCart, setQuantity, removeFromCart } = useCart();
-    const cartItem = items.find((item) => item.id === product.id && item.restaurantId === product.restaurantId);
-    const [message, setMessage] = useState('');
+const VARIANT_CONFIG = {
+    menu: { showDescription: true, selectorInImage: true },
+    cart: { showDescription: false, selectorInImage: false },
+} as const;
 
-    function handleAdd() {
-        const result = addToCart(product);
-        setMessage(result === 'added' ? `${product.name} agregado al carrito.` : 'No se pudo agregar el producto.');
-    }
+export function ProductCard(props: ProductCardProps) {
+    const { product, disabled = false } = props;
+    const variant = props.variant ?? 'menu';
+    const config = VARIANT_CONFIG[variant];
+    const price = product.unitPriceCents * ('quantity' in product ? product.quantity : 1) / 100;
 
     return (
-        <article className="product-card">
-            <div className="product-card-details">
-                <ItemHeader title={product.name} description={product.description} />
-                <Price price={product.unitPriceCents / 100} />
+        <article className={`product-card product-card--${variant}`}>
+            <div className="product-details">
+                <ItemHeader title={product.name} description={config.showDescription ? product.description : undefined} />
+                <span>
+                    {!config.showDescription && <span className="sr-only">Subtotal: </span>}
+                    <Price price={price} />
+                </span>
             </div>
             <div className="product-card-image">
-                <ImageWithFallback src={product.image} alt={product.name} />
-                {cartItem ? (
-                    <QuantitySelector variant="counter" label={product.name} value={cartItem.quantity}
-                        onChange={(quantity) => {
-                            setQuantity(product.id, quantity);
-                            setMessage('');
-                        }}
-                        onRemove={() => {
-                            removeFromCart(product.id);
-                            setMessage('');
-                        }} />
-                ) : (
-                    <QuantitySelector variant="icon" label={product.name} onAdd={handleAdd} />
-                )}
+                <img src={platePlaceholder} alt="" />
+                {config.selectorInImage && <QuantitySelector product={product} disabled={disabled} />}
             </div>
-            <p className="product-card-status" role="status">{message}</p>
+            {!config.selectorInImage && <QuantitySelector product={product} disabled={disabled} />}
         </article>
     );
 }
