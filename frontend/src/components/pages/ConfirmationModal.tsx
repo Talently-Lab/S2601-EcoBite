@@ -2,6 +2,7 @@ import { useEffect, useId, useRef } from 'react';
 import { Link } from 'react-router';
 import { useCart } from '../../context/CartContext';
 import { Price } from '../core/Price';
+import { Button } from '../core/Button';
 import confirmationIllustration from '../../assets/icons/confirmation.svg';
 
 const deliveryMessages = {
@@ -65,7 +66,7 @@ export function ConfirmationModal() {
                     <div><dt>Total</dt><dd><Price price={createdOrder.totalAmount} /></dd></div>
                 </dl>
                 <div className="state-actions">
-                    <Link className="button button--primary" to="/impact" autoFocus onClick={closeConfirmationModal}>Ver tu impacto</Link>
+                    <Button to="/impact" autoFocus onClick={closeConfirmationModal}>Ver tu impacto</Button>
                     <Link className="home-link" to="/" onClick={closeConfirmationModal}>Volver a inicio</Link>
                 </div>
             </div>

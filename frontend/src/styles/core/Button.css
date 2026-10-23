@@ -19,6 +19,10 @@
     background: var(--color-primary);
     color: var(--color-surface);
     width: 100%;
+
+    &:has(svg) {
+        justify-content: space-between;
+    }
 }
 
 .button--icon {
@@ -38,4 +42,21 @@
 
 .button--icon:hover:enabled {
     background: var(--color-accent);
+}
+
+.home-catalog-link {
+    display: flex;
+    min-block-size: var(--control-height-lg);
+    margin-block-start: var(--space-3);
+    margin-inline: auto;
+}
+
+.home-catalog-link svg {
+    flex-shrink: 0;
+}
+
+@media (min-width: 48rem) {
+    .home-catalog-link {
+        max-inline-size: 21rem;
+    }
 }

@@ -5,14 +5,13 @@ import { ProductCard } from '../components/pages/ProductCard';
 import { Price } from '../components/core/Price';
 import { GreenBadge } from '../components/shared/GreenBadge';
 import { useCart } from '../context/CartContext';
-import { Link, useNavigate } from 'react-router';
+import { Link } from 'react-router';
 import { FiInfo } from 'react-icons/fi';
 import emptyCartIllustration from '../assets/icons/empty-cart.svg';
 
 export function Cart() {
 
     const { items, totalCents } = useCart();
-    const navigate = useNavigate();
     const emptyTitleId = useId();
 
     return (
@@ -38,7 +37,7 @@ export function Cart() {
                         <span>Total</span>
                         <Price price={totalCents / 100} />
                     </div>
-                    <Button type="button" onClick={() => navigate('/checkout')}>Ir a pagar</Button>
+                    <Button to="/checkout">Ir a pagar</Button>
                 </div>
             </>
             ) : (
@@ -50,7 +49,7 @@ export function Cart() {
                         <p><strong>Cada pedido suma</strong></p>
                     </div>
                     <div className="state-actions">
-                        <Link className="button button--primary" to="/restaurants">Explorar restaurantes</Link>
+                        <Button to="/restaurants">Explorar restaurantes</Button>
                         <Link className="home-link" to="/">Volver a inicio</Link>
                     </div>
                 </section>
