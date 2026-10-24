@@ -12,6 +12,14 @@ import { Home } from './pages/Home';
 import { CartProvider } from './context/CartProvider';
 import { Checkout } from './pages/Checkout';
 import { ConfirmationModal } from './components/pages/ConfirmationModal';
+import { AdminDashboard } from './pages/AdminDashboard';
+
+const HOME_BY_ROLE = {
+	ADMIN: '/admin/dashboard',
+	CLIENT: '/',
+};
+
+const getHomePath = (user) => user ? HOME_BY_ROLE[user.role] : '/login';
 
 export default function App() {
 	const { user, isLoading } = useUser();
@@ -20,10 +28,13 @@ export default function App() {
 	return (
 			<Routes>
 				<Route path="/login" element={
-					user ? <Navigate to="/" replace /> : <main><Login /></main>
+					user ? <Navigate to={getHomePath(user)} replace /> : <main><Login /></main>
+				} />
+				<Route path="/admin/dashboard" element={
+					user?.role === 'ADMIN' ? <AdminDashboard /> : <Navigate to={getHomePath(user)} replace />
 				} />
 				<Route element={
-					user
+					user?.role === 'CLIENT'
 						? <CartProvider key={user.id}>
                                 <Header />
                                 <main tabIndex={-1}>
@@ -32,7 +43,7 @@ export default function App() {
                                 <Footer />
                                 <ConfirmationModal />
                             </CartProvider>
-						: <Navigate to="/login" replace />
+						: <Navigate to={getHomePath(user)} replace />
 				}>
 					<Route path="/" element={<Home />} />
 					<Route path="/restaurants" element={<Restaurants />} />
@@ -42,6 +53,7 @@ export default function App() {
 					<Route path="/impact" element={<Impact />} />
 					<Route path="/profile" element={<Profile />} />
 				</Route>
+				<Route path="*" element={<Navigate to={getHomePath(user)} replace />} />
 			</Routes>
 	);
 }

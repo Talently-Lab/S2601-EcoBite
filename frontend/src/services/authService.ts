@@ -5,7 +5,9 @@ import { isRecord } from '../utils/isRecord';
 export type LoginInput = { email: string; password: string };
 export type SignUpInput = LoginInput & { name: string };
 type AuthBody = LoginInput | SignUpInput;
-export type AuthUser = { id: string; name: string; email: string; registeredAt: string };
+export type UserRole = 'ADMIN' | 'CLIENT';
+export type AuthUser = { id: string; name: string; email: string; registeredAt: string; role: UserRole };
+const USER_ROLES: Record<UserRole, true> = { ADMIN: true, CLIENT: true };
 export type AuthField = keyof SignUpInput;
 type FieldErrors = Partial<Record<AuthField, string>>;
 type AuthErrorOptions = ServiceErrorOptions & { fieldErrors?: FieldErrors };
@@ -128,13 +130,17 @@ async function mutate(path: string, input?: AuthBody): Promise<unknown> {
     }
 }
 
+function isUserRole(value: unknown): value is UserRole {
+    return typeof value === 'string' && Object.hasOwn(USER_ROLES, value);
+}
+
 function parseUser(data: unknown): AuthUser {
     const isFilled = (value: unknown): value is string => typeof value === 'string' && value.trim() !== '';
     if (!isRecord(data) || !isFilled(data.id) || !isFilled(data.name) || !isFilled(data.email) ||
-        typeof data.registeredAt !== 'string') {
+        !isFilled(data.registeredAt) || Number.isNaN(Date.parse(data.registeredAt)) || !isUserRole(data.role)) {
         throw new AuthError(invalidResponse);
     }
-    return { id: data.id, name: data.name, email: data.email, registeredAt: data.registeredAt };
+    return { id: data.id, name: data.name, email: data.email, registeredAt: data.registeredAt, role: data.role };
 }
 
 export async function login({ email, password }: LoginInput): Promise<AuthUser> {
