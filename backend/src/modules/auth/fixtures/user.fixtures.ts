@@ -1,5 +1,6 @@
 // NOTE: Provides reusable user fixtures for unit tests.
 
+import { UserRole } from '@prisma/client';
 import type { UserSafe } from '../auth-user.service';
 
 export function makeUserSafe(overrides: Partial<UserSafe> = {}): UserSafe {
@@ -10,6 +11,7 @@ export function makeUserSafe(overrides: Partial<UserSafe> = {}): UserSafe {
     name: 'Fixture User',
     email: 'fixture@example.com',
     registeredAt,
+    role: UserRole.CLIENT,
     ...overrides,
   };
 }

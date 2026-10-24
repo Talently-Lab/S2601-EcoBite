@@ -34,6 +34,7 @@ function toUserSafe(user: User): UserSafe {
     name: user.name,
     email: user.email,
     registeredAt: user.registeredAt,
+    role: user.role,
   };
 }
 
