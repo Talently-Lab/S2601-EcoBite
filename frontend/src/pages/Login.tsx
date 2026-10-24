@@ -131,9 +131,6 @@ export function Login() {
                     </form>
                     <div className="login-links">
                         <AuthModeLink mode={mode} onModeChange={changeMode} disabled={isSubmitting} />
-                        {!isSignUp && (
-                            <a className="login-text-link login-admin-link" role="link" aria-disabled="true">Soy administrador</a>
-                        )}
                     </div>
                 </div>
             </div>
