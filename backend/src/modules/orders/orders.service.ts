@@ -3,7 +3,7 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { DeliveryMethod, Prisma } from '@prisma/client';
+import { DeliveryMethod, Prisma, ProductType } from '@prisma/client';
 
 import { PrismaService } from '../../prisma/prisma.service';
 import { CreateOrderDto } from './dto/create-order.dto';
@@ -31,6 +31,7 @@ export class OrdersService {
       where: {
         id: { in: productIds },
         restaurantId: restaurant.id,
+        type: ProductType.DISH,
       },
     });
 
@@ -91,7 +92,20 @@ export class OrdersService {
         },
       },
       include: {
-        orderItems: true,
+        restaurant: {
+          select: {
+            name: true,
+          },
+        },
+        orderItems: {
+          include: {
+            product: {
+              select: {
+                name: true,
+              },
+            },
+          },
+        },
       },
     });
   }

@@ -27,6 +27,11 @@ enum FoodCategory {
   INTERNATIONAL
 }
 
+enum ProductType {
+  FOOD_CATEGORY
+  DISH
+}
+
 enum RestaurantStatus {
   ACTIVE
   INACTIVE
@@ -86,6 +91,7 @@ model Product {
   restaurantId String  @map("restaurant_id") @db.Uuid
   name         String
   price        Decimal @db.Decimal(10, 2)
+  type         ProductType @default(FOOD_CATEGORY)
 
   restaurant Restaurant  @relation(fields: [restaurantId], references: [id])
   orderItems OrderItem[]
@@ -103,6 +109,7 @@ model Order {
   orderedAt           DateTime       @default(now()) @map("ordered_at") @db.Timestamptz(6)
   totalAmount         Decimal        @map("total_amount") @db.Decimal(10, 2)
   distanceKm          Decimal        @map("distance_km") @db.Decimal(6, 2)
+  deliveryComuna      Int?           @map("delivery_comuna")
   deliveryMethod      DeliveryMethod @map("delivery_method")
   packagingType       PackagingType  @map("packaging_type")
   orderStatus         OrderStatus    @map("order_status")
@@ -133,4 +140,14 @@ model OrderItem {
   @@index([orderId])
   @@index([productId])
   @@map("order_items")
+}
+
+model ComunaDistance {
+  id                Int     @id @default(autoincrement())
+  originComuna      Int     @map("origin_comuna")
+  destinationComuna Int     @map("destination_comuna")
+  distanceKm        Decimal @map("distance_km") @db.Decimal(6, 2)
+
+  @@unique([originComuna, destinationComuna])
+  @@map("comuna_distances")
 }
