@@ -1,5 +1,26 @@
 import { ApiProperty } from '@nestjs/swagger';
 
+export class RestaurantDishResponseDto {
+  @ApiProperty({
+    example: '550e8400-e29b-41d4-a716-446655440000',
+    format: 'uuid',
+    description: 'Identificador único del plato.',
+  })
+  id!: string;
+
+  @ApiProperty({
+    example: 'Milanesa con papas',
+    description: 'Nombre del plato.',
+  })
+  name!: string;
+
+  @ApiProperty({
+    example: '12500.00',
+    description: 'Precio del plato en ARS.',
+  })
+  price!: string;
+}
+
 export class RestaurantResponseDto {
   @ApiProperty({
     example: '550e8400-e29b-41d4-a716-446655440000',
@@ -52,4 +73,11 @@ export class RestaurantResponseDto {
     description: 'Indicador de sostenibilidad del restaurante.',
   })
   sustainabilityIndicator!: string;
+
+  @ApiProperty({
+    type: () => RestaurantDishResponseDto,
+    isArray: true,
+    description: 'Platos disponibles del restaurante.',
+  })
+  products!: RestaurantDishResponseDto[];
 }

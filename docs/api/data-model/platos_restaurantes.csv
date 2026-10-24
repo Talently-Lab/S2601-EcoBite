@@ -1,0 +1,1765 @@
+id_restaurante;platos;monto
+REST-001;Ojo de bife;49500
+REST-001;Tira de asado;40500
+REST-001;Bife de chorizo;46000
+REST-001;Vacio;46000
+REST-001;Matambre a la pizza;36000
+REST-001;Asado completo con vegetales asados;74000
+REST-002;Ojo de bife;52000
+REST-002;Tira de asado;42000
+REST-002;Bife de chorizo;45500
+REST-002;Vacio;43500
+REST-002;Matambre a la pizza;39500
+REST-002;Matambrito de cerdo a la lena;60000
+REST-004;Ojo de bife;49500
+REST-004;Tira de asado;44500
+REST-004;Bife de chorizo;47000
+REST-004;Vacio;38500
+REST-004;Matambre a la pizza;37500
+REST-004;Costillar al asador;69500
+REST-005;Ojo de bife;52500
+REST-005;Tira de asado;44000
+REST-005;Bife de chorizo;49000
+REST-005;Vacio;40000
+REST-005;Matambre a la pizza;40500
+REST-005;Pechito al asador;68000
+REST-006;Ojo de bife;45000
+REST-006;Tira de asado;39000
+REST-006;Bife de chorizo;46500
+REST-006;Vacio;40500
+REST-006;Matambre a la pizza;41000
+REST-006;Costillar con provoleta;67500
+REST-007;Ojo de bife;48000
+REST-007;Tira de asado;37500
+REST-007;Bife de chorizo;44000
+REST-007;Vacio;42500
+REST-007;Matambre a la pizza;35500
+REST-007;Matambrito de cerdo al asador;60500
+REST-008;Ojo de bife;49500
+REST-008;Tira de asado;42000
+REST-008;Bife de chorizo;48500
+REST-008;Vacio;39000
+REST-008;Matambre a la pizza;34000
+REST-008;Asado del centro con salsa criolla;65000
+REST-009;Ojo de bife;53000
+REST-009;Tira de asado;41500
+REST-009;Bife de chorizo;41000
+REST-009;Vacio;44500
+REST-009;Matambre a la pizza;41000
+REST-009;Matambrito de cerdo con salsa criolla;67500
+REST-010;Ojo de bife;51500
+REST-010;Tira de asado;38500
+REST-010;Bife de chorizo;41500
+REST-010;Vacio;41000
+REST-010;Matambre a la pizza;41000
+REST-010;Costillar al disco;69500
+REST-011;Ojo de bife;54500
+REST-011;Tira de asado;41500
+REST-011;Bife de chorizo;46000
+REST-011;Vacio;41500
+REST-011;Matambre a la pizza;38000
+REST-011;Entrana fina con salsa criolla;70500
+REST-012;Ojo de bife;50500
+REST-012;Tira de asado;43000
+REST-012;Bife de chorizo;45500
+REST-012;Vacio;42500
+REST-012;Matambre a la pizza;40500
+REST-012;Entrana fina a la lena;65500
+REST-013;Ojo de bife;53000
+REST-013;Tira de asado;43000
+REST-013;Bife de chorizo;41500
+REST-013;Vacio;39000
+REST-013;Matambre a la pizza;39000
+REST-013;Bife de lomo con vegetales asados;70500
+REST-014;Ojo de bife;50500
+REST-014;Tira de asado;39000
+REST-014;Bife de chorizo;42000
+REST-014;Vacio;46000
+REST-014;Matambre a la pizza;40500
+REST-014;Costillar a la lena;62500
+REST-015;Ojo de bife;46000
+REST-015;Tira de asado;40000
+REST-015;Bife de chorizo;43000
+REST-015;Vacio;38500
+REST-015;Matambre a la pizza;35000
+REST-015;Entrana fina al disco;69500
+REST-016;Ojo de bife;55000
+REST-016;Tira de asado;45000
+REST-016;Bife de chorizo;44500
+REST-016;Vacio;40500
+REST-016;Matambre a la pizza;39500
+REST-016;Costillar con salsa criolla;68500
+REST-017;Ojo de bife;51500
+REST-017;Tira de asado;44500
+REST-017;Bife de chorizo;44500
+REST-017;Vacio;40000
+REST-017;Matambre a la pizza;40500
+REST-017;Matambrito de cerdo al disco;65000
+REST-018;Ojo de bife;54500
+REST-018;Tira de asado;42500
+REST-018;Bife de chorizo;43000
+REST-018;Vacio;38000
+REST-018;Matambre a la pizza;41500
+REST-018;Pechito con provoleta;70500
+REST-019;Ojo de bife;50500
+REST-019;Tira de asado;39500
+REST-019;Bife de chorizo;42000
+REST-019;Vacio;45500
+REST-019;Matambre a la pizza;41000
+REST-019;Pechito al disco;71000
+REST-020;Ojo de bife;53500
+REST-020;Tira de asado;41000
+REST-020;Bife de chorizo;45500
+REST-020;Vacio;42500
+REST-020;Matambre a la pizza;35000
+REST-020;Bife de lomo con provoleta;73500
+REST-021;Ojo de bife;45500
+REST-021;Tira de asado;40500
+REST-021;Bife de chorizo;41500
+REST-021;Vacio;38000
+REST-021;Matambre a la pizza;41500
+REST-021;Asado del centro a la lena;74000
+REST-022;Ojo de bife;45500
+REST-022;Tira de asado;40000
+REST-022;Bife de chorizo;47000
+REST-022;Vacio;41000
+REST-022;Matambre a la pizza;39500
+REST-022;Bife de lomo al asador;61500
+REST-023;Ojo de bife;46500
+REST-023;Tira de asado;41000
+REST-023;Bife de chorizo;42500
+REST-023;Vacio;38500
+REST-023;Matambre a la pizza;38500
+REST-023;Matambrito de cerdo con provoleta;69500
+REST-024;Ojo de bife;54500
+REST-024;Tira de asado;40000
+REST-024;Bife de chorizo;42000
+REST-024;Vacio;39500
+REST-024;Matambre a la pizza;36500
+REST-024;Bife de lomo con salsa criolla;73500
+REST-025;Ojo de bife;53000
+REST-025;Tira de asado;41000
+REST-025;Bife de chorizo;44500
+REST-025;Vacio;43500
+REST-025;Matambre a la pizza;39000
+REST-025;Pechito con salsa criolla;74000
+REST-026;Ojo de bife;50500
+REST-026;Tira de asado;43000
+REST-026;Bife de chorizo;42500
+REST-026;Vacio;43000
+REST-026;Matambre a la pizza;38000
+REST-026;Pechito con vegetales asados;66000
+REST-027;Ojo de bife;49000
+REST-027;Tira de asado;37000
+REST-027;Bife de chorizo;49000
+REST-027;Vacio;46000
+REST-027;Matambre a la pizza;39500
+REST-027;Entrana fina con provoleta;65500
+REST-028;Ojo de bife;46000
+REST-028;Tira de asado;43500
+REST-028;Bife de chorizo;41500
+REST-028;Vacio;38500
+REST-028;Matambre a la pizza;41000
+REST-028;Bife de lomo a la lena;74000
+REST-029;Ojo de bife;50000
+REST-029;Tira de asado;39000
+REST-029;Bife de chorizo;46500
+REST-029;Vacio;41000
+REST-029;Matambre a la pizza;39000
+REST-029;Entrana fina al asador;68000
+REST-030;Ojo de bife;53500
+REST-030;Tira de asado;43500
+REST-030;Bife de chorizo;47500
+REST-030;Vacio;42500
+REST-030;Matambre a la pizza;36500
+REST-030;Pechito a la lena;66000
+REST-031;Ojo de bife;46000
+REST-031;Tira de asado;37500
+REST-031;Bife de chorizo;44000
+REST-031;Vacio;44000
+REST-031;Matambre a la pizza;35000
+REST-031;Asado del centro con provoleta;64500
+REST-032;Ojo de bife;52500
+REST-032;Tira de asado;44000
+REST-032;Bife de chorizo;49000
+REST-032;Vacio;41500
+REST-032;Matambre a la pizza;35000
+REST-032;Costillar con vegetales asados;64500
+REST-033;Milanesa napolitana;25000
+REST-033;Tortilla de papas espanola;17000
+REST-033;Ravioles con estofado;20000
+REST-033;Bife de chorizo a caballo;30500
+REST-033;Canelones de verdura;16000
+REST-033;Guiso de lentejas receta de la abuela;36500
+REST-034;Milanesa napolitana;23000
+REST-034;Tortilla de papas espanola;16500
+REST-034;Ravioles con estofado;21000
+REST-034;Bife de chorizo a caballo;29000
+REST-034;Canelones de verdura;13500
+REST-034;Noquis caseros receta de la abuela;31000
+REST-035;Milanesa napolitana;22500
+REST-035;Tortilla de papas espanola;19500
+REST-035;Ravioles con estofado;22000
+REST-035;Bife de chorizo a caballo;29000
+REST-035;Canelones de verdura;14000
+REST-035;Guiso de lentejas clasico;32000
+REST-036;Milanesa napolitana;25000
+REST-036;Tortilla de papas espanola;18500
+REST-036;Ravioles con estofado;23500
+REST-036;Bife de chorizo a caballo;28000
+REST-036;Canelones de verdura;14500
+REST-036;Puchero mixto especial;33000
+REST-037;Milanesa napolitana;22500
+REST-037;Tortilla de papas espanola;18000
+REST-037;Ravioles con estofado;21000
+REST-037;Bife de chorizo a caballo;27500
+REST-037;Canelones de verdura;15000
+REST-037;Mondongo a la espanola porteno;30500
+REST-038;Milanesa napolitana;26500
+REST-038;Tortilla de papas espanola;16500
+REST-038;Ravioles con estofado;21000
+REST-038;Bife de chorizo a caballo;30500
+REST-038;Canelones de verdura;15000
+REST-038;Lengua a la vinagreta receta de la abuela;33000
+REST-039;Milanesa napolitana;27000
+REST-039;Tortilla de papas espanola;19500
+REST-039;Ravioles con estofado;22000
+REST-039;Bife de chorizo a caballo;29000
+REST-039;Canelones de verdura;13500
+REST-039;Mondongo a la espanola clasico;32000
+REST-040;Milanesa napolitana;22500
+REST-040;Tortilla de papas espanola;17500
+REST-040;Ravioles con estofado;22500
+REST-040;Bife de chorizo a caballo;32000
+REST-040;Canelones de verdura;15500
+REST-040;Suprema Maryland especial;32000
+REST-041;Milanesa napolitana;25000
+REST-041;Tortilla de papas espanola;18000
+REST-041;Ravioles con estofado;20500
+REST-041;Bife de chorizo a caballo;32500
+REST-041;Canelones de verdura;16000
+REST-041;Mondongo a la espanola especial;36500
+REST-042;Milanesa napolitana;25500
+REST-042;Tortilla de papas espanola;16500
+REST-042;Ravioles con estofado;23500
+REST-042;Bife de chorizo a caballo;28000
+REST-042;Canelones de verdura;14500
+REST-042;Suprema Maryland a la crema;33000
+REST-043;Milanesa napolitana;27000
+REST-043;Tortilla de papas espanola;17500
+REST-043;Ravioles con estofado;21500
+REST-043;Bife de chorizo a caballo;31000
+REST-043;Canelones de verdura;16500
+REST-043;Guiso de lentejas a la crema;33500
+REST-044;Milanesa napolitana;24000
+REST-044;Tortilla de papas espanola;18500
+REST-044;Ravioles con estofado;21000
+REST-044;Bife de chorizo a caballo;30500
+REST-044;Canelones de verdura;15500
+REST-044;Noquis caseros clasico;35000
+REST-045;Milanesa napolitana;24500
+REST-045;Tortilla de papas espanola;18500
+REST-045;Ravioles con estofado;21000
+REST-045;Bife de chorizo a caballo;27500
+REST-045;Canelones de verdura;16000
+REST-045;Suprema Maryland para compartir;32000
+REST-046;Milanesa napolitana;24000
+REST-046;Tortilla de papas espanola;19000
+REST-046;Ravioles con estofado;22000
+REST-046;Bife de chorizo a caballo;29500
+REST-046;Canelones de verdura;14500
+REST-046;Puchero mixto receta de la abuela;35000
+REST-047;Milanesa napolitana;24500
+REST-047;Tortilla de papas espanola;19500
+REST-047;Ravioles con estofado;20500
+REST-047;Bife de chorizo a caballo;30000
+REST-047;Canelones de verdura;16500
+REST-047;Noquis caseros a la crema;34000
+REST-048;Milanesa napolitana;25000
+REST-048;Tortilla de papas espanola;19500
+REST-048;Ravioles con estofado;23000
+REST-048;Bife de chorizo a caballo;27500
+REST-048;Canelones de verdura;13500
+REST-048;Lengua a la vinagreta clasico;31000
+REST-049;Milanesa napolitana;24000
+REST-049;Tortilla de papas espanola;17000
+REST-049;Ravioles con estofado;22500
+REST-049;Bife de chorizo a caballo;28000
+REST-049;Canelones de verdura;15500
+REST-049;Suprema Maryland clasico;34500
+REST-050;Milanesa napolitana;23000
+REST-050;Tortilla de papas espanola;17000
+REST-050;Ravioles con estofado;21000
+REST-050;Bife de chorizo a caballo;31000
+REST-050;Canelones de verdura;14500
+REST-050;Guiso de lentejas especial;32500
+REST-051;Milanesa napolitana;24000
+REST-051;Tortilla de papas espanola;18000
+REST-051;Ravioles con estofado;24000
+REST-051;Bife de chorizo a caballo;33000
+REST-051;Canelones de verdura;14500
+REST-051;Lengua a la vinagreta especial;34000
+REST-052;Milanesa napolitana;24500
+REST-052;Tortilla de papas espanola;17500
+REST-052;Ravioles con estofado;20500
+REST-052;Bife de chorizo a caballo;30000
+REST-052;Canelones de verdura;14000
+REST-052;Mondongo a la espanola receta de la abuela;30000
+REST-053;Milanesa napolitana;25500
+REST-053;Tortilla de papas espanola;17000
+REST-053;Ravioles con estofado;21000
+REST-053;Bife de chorizo a caballo;32000
+REST-053;Canelones de verdura;14000
+REST-053;Mondongo a la espanola a la crema;33500
+REST-054;Milanesa napolitana;25000
+REST-054;Tortilla de papas espanola;17500
+REST-054;Ravioles con estofado;20000
+REST-054;Bife de chorizo a caballo;32000
+REST-054;Canelones de verdura;14000
+REST-054;Noquis caseros especial;37000
+REST-055;Milanesa napolitana;24000
+REST-055;Tortilla de papas espanola;17000
+REST-055;Ravioles con estofado;22500
+REST-055;Bife de chorizo a caballo;31000
+REST-055;Canelones de verdura;13500
+REST-055;Puchero mixto clasico;31000
+REST-056;Milanesa napolitana;23500
+REST-056;Tortilla de papas espanola;19000
+REST-056;Ravioles con estofado;20500
+REST-056;Bife de chorizo a caballo;29000
+REST-056;Canelones de verdura;14500
+REST-056;Noquis caseros porteno;30500
+REST-057;Milanesa napolitana;25000
+REST-057;Tortilla de papas espanola;18000
+REST-057;Ravioles con estofado;23000
+REST-057;Bife de chorizo a caballo;31000
+REST-057;Canelones de verdura;15500
+REST-057;Noquis caseros para compartir;35000
+REST-058;Milanesa napolitana;24500
+REST-058;Tortilla de papas espanola;17000
+REST-058;Ravioles con estofado;22000
+REST-058;Bife de chorizo a caballo;30000
+REST-058;Canelones de verdura;14000
+REST-058;Puchero mixto para compartir;31000
+REST-059;Milanesa napolitana;24000
+REST-059;Tortilla de papas espanola;17000
+REST-059;Ravioles con estofado;20000
+REST-059;Bife de chorizo a caballo;27500
+REST-059;Canelones de verdura;16000
+REST-059;Lengua a la vinagreta para compartir;33000
+REST-060;Milanesa napolitana;27000
+REST-060;Tortilla de papas espanola;17500
+REST-060;Ravioles con estofado;20500
+REST-060;Bife de chorizo a caballo;32500
+REST-060;Canelones de verdura;14000
+REST-060;Puchero mixto porteno;36000
+REST-061;Milanesa napolitana;27000
+REST-061;Tortilla de papas espanola;17500
+REST-061;Ravioles con estofado;22000
+REST-061;Bife de chorizo a caballo;30000
+REST-061;Canelones de verdura;14000
+REST-061;Suprema Maryland porteno;32500
+REST-062;Pizza grande de muzzarella;23000
+REST-062;Pizza grande napolitana;28000
+REST-062;Pizza grande calabresa;22500
+REST-062;Pizza grande de fugazzeta;25000
+REST-062;Calzone napolitano;20000
+REST-062;Pizza de rucula a la parrilla;30500
+REST-063;Pizza grande de muzzarella;21000
+REST-063;Pizza grande napolitana;26000
+REST-063;Pizza grande calabresa;26000
+REST-063;Pizza grande de fugazzeta;26000
+REST-063;Calzone napolitano;20500
+REST-063;Pizza de rucula estilo media masa;28000
+REST-065;Pizza grande de muzzarella;22000
+REST-065;Pizza grande napolitana;26500
+REST-065;Pizza grande calabresa;25000
+REST-065;Pizza grande de fugazzeta;25500
+REST-065;Calzone napolitano;23000
+REST-065;Pizza de palmitos con borde de queso;27500
+REST-066;Pizza grande de muzzarella;21000
+REST-066;Pizza grande napolitana;27500
+REST-066;Pizza grande calabresa;21500
+REST-066;Pizza grande de fugazzeta;23500
+REST-066;Calzone napolitano;20000
+REST-066;Pizza de rucula al molde;29500
+REST-067;Pizza grande de muzzarella;21500
+REST-067;Pizza grande napolitana;25000
+REST-067;Pizza grande calabresa;26000
+REST-067;Pizza grande de fugazzeta;27000
+REST-067;Calzone napolitano;23000
+REST-067;Pizza de roquefort a la piedra;31000
+REST-068;Pizza grande de muzzarella;22000
+REST-068;Pizza grande napolitana;24500
+REST-068;Pizza grande calabresa;25000
+REST-068;Pizza grande de fugazzeta;25500
+REST-068;Calzone napolitano;20000
+REST-068;Pizza de roquefort estilo media masa;31500
+REST-069;Pizza grande de muzzarella;20500
+REST-069;Pizza grande napolitana;24000
+REST-069;Pizza grande calabresa;22500
+REST-069;Pizza grande de fugazzeta;26000
+REST-069;Calzone napolitano;22500
+REST-069;Pizza de palmitos rellena;28000
+REST-070;Pizza grande de muzzarella;21000
+REST-070;Pizza grande napolitana;26500
+REST-070;Pizza grande calabresa;25500
+REST-070;Pizza grande de fugazzeta;25000
+REST-070;Calzone napolitano;19500
+REST-070;Pizza de rucula con borde de queso;33000
+REST-071;Pizza grande de muzzarella;20000
+REST-071;Pizza grande napolitana;23500
+REST-071;Pizza grande calabresa;25500
+REST-071;Pizza grande de fugazzeta;23000
+REST-071;Calzone napolitano;21000
+REST-071;Pizza de provolone rellena;29000
+REST-072;Pizza grande de muzzarella;20500
+REST-072;Pizza grande napolitana;25000
+REST-072;Pizza grande calabresa;24000
+REST-072;Pizza grande de fugazzeta;25500
+REST-072;Calzone napolitano;20500
+REST-072;Pizza de champinones estilo media masa;32000
+REST-073;Pizza grande de muzzarella;22500
+REST-073;Pizza grande napolitana;23500
+REST-073;Pizza grande calabresa;24500
+REST-073;Pizza grande de fugazzeta;25500
+REST-073;Calzone napolitano;23000
+REST-073;Pizza de palmitos estilo media masa;29000
+REST-074;Pizza grande de muzzarella;24000
+REST-074;Pizza grande napolitana;23500
+REST-074;Pizza grande calabresa;26000
+REST-074;Pizza grande de fugazzeta;27000
+REST-074;Calzone napolitano;19000
+REST-074;Pizza de champinones a la piedra;28500
+REST-075;Pizza grande de muzzarella;21000
+REST-075;Pizza grande napolitana;24000
+REST-075;Pizza grande calabresa;24000
+REST-075;Pizza grande de fugazzeta;23500
+REST-075;Calzone napolitano;23000
+REST-075;Pizza de provolone con borde de queso;28000
+REST-076;Pizza grande de muzzarella;24000
+REST-076;Pizza grande napolitana;27000
+REST-076;Pizza grande calabresa;24500
+REST-076;Pizza grande de fugazzeta;23500
+REST-076;Calzone napolitano;22000
+REST-076;Pizza de champinones a la parrilla;29500
+REST-077;Pizza grande de muzzarella;22000
+REST-077;Pizza grande napolitana;28000
+REST-077;Pizza grande calabresa;24500
+REST-077;Pizza grande de fugazzeta;26000
+REST-077;Calzone napolitano;20500
+REST-077;Pizza de provolone a la piedra;29000
+REST-078;Pizza grande de muzzarella;22500
+REST-078;Pizza grande napolitana;28000
+REST-078;Pizza grande calabresa;23000
+REST-078;Pizza grande de fugazzeta;24000
+REST-078;Calzone napolitano;21500
+REST-078;Pizza de champinones con borde de queso;32500
+REST-079;Pizza grande de muzzarella;20500
+REST-079;Pizza grande napolitana;28000
+REST-079;Pizza grande calabresa;23000
+REST-079;Pizza grande de fugazzeta;25000
+REST-079;Calzone napolitano;20000
+REST-079;Pizza de rucula a la piedra;26500
+REST-080;Pizza grande de muzzarella;21000
+REST-080;Pizza grande napolitana;27000
+REST-080;Pizza grande calabresa;24000
+REST-080;Pizza grande de fugazzeta;25500
+REST-080;Calzone napolitano;20000
+REST-080;Pizza de palmitos al molde;33000
+REST-081;Pizza grande de muzzarella;20000
+REST-081;Pizza grande napolitana;27500
+REST-081;Pizza grande calabresa;25000
+REST-081;Pizza grande de fugazzeta;24500
+REST-081;Calzone napolitano;21500
+REST-081;Pizza de rucula rellena;27000
+REST-082;Pizza grande de muzzarella;21500
+REST-082;Pizza grande napolitana;26500
+REST-082;Pizza grande calabresa;23500
+REST-082;Pizza grande de fugazzeta;23500
+REST-082;Calzone napolitano;19500
+REST-082;Pizza de panceta a la parrilla;26500
+REST-083;Pizza grande de muzzarella;20500
+REST-083;Pizza grande napolitana;24000
+REST-083;Pizza grande calabresa;25000
+REST-083;Pizza grande de fugazzeta;23500
+REST-083;Calzone napolitano;23000
+REST-083;Pizza de panceta estilo media masa;30000
+REST-085;Pizza grande de muzzarella;21000
+REST-085;Pizza grande napolitana;28500
+REST-085;Pizza grande calabresa;23500
+REST-085;Pizza grande de fugazzeta;26000
+REST-085;Calzone napolitano;21500
+REST-085;Pizza de palmitos a la piedra;27500
+REST-086;Pizza grande de muzzarella;22000
+REST-086;Pizza grande napolitana;26500
+REST-086;Pizza grande calabresa;21500
+REST-086;Pizza grande de fugazzeta;24500
+REST-086;Calzone napolitano;21000
+REST-086;Pizza de palmitos a la parrilla;31500
+REST-088;Hamburguesa doble cheeseburger;16500
+REST-088;Hamburguesa con bacon y cheddar;18500
+REST-088;Hamburguesa clasica completa;17000
+REST-088;Hamburguesa de pollo crispy;17000
+REST-088;Hamburguesa triple carne;23500
+REST-088;Burger de cordero con barbacoa;23500
+REST-089;Hamburguesa doble cheeseburger;18000
+REST-089;Hamburguesa con bacon y cheddar;19000
+REST-089;Hamburguesa clasica completa;15500
+REST-089;Hamburguesa de pollo crispy;18500
+REST-089;Hamburguesa triple carne;21500
+REST-089;Burger de entrana con barbacoa;24500
+REST-090;Hamburguesa doble cheeseburger;19000
+REST-090;Hamburguesa con bacon y cheddar;20000
+REST-090;Hamburguesa clasica completa;15000
+REST-090;Hamburguesa de pollo crispy;16500
+REST-090;Hamburguesa triple carne;24000
+REST-090;Burger tex-mex con aros de cebolla;22500
+REST-091;Hamburguesa doble cheeseburger;19500
+REST-091;Hamburguesa con bacon y cheddar;18500
+REST-091;Hamburguesa clasica completa;15500
+REST-091;Hamburguesa de pollo crispy;17000
+REST-091;Hamburguesa triple carne;25000
+REST-091;Burger pulled pork con barbacoa;22500
+REST-092;Hamburguesa doble cheeseburger;17500
+REST-092;Hamburguesa con bacon y cheddar;17500
+REST-092;Hamburguesa clasica completa;15500
+REST-092;Hamburguesa de pollo crispy;18000
+REST-092;Hamburguesa triple carne;25000
+REST-092;Burger pulled pork con cheddar fundido;26000
+REST-093;Hamburguesa doble cheeseburger;17500
+REST-093;Hamburguesa con bacon y cheddar;18500
+REST-093;Hamburguesa clasica completa;16000
+REST-093;Hamburguesa de pollo crispy;16000
+REST-093;Hamburguesa triple carne;24500
+REST-093;Burger de picana doble smash;25000
+REST-094;Hamburguesa doble cheeseburger;19000
+REST-094;Hamburguesa con bacon y cheddar;20000
+REST-094;Hamburguesa clasica completa;17000
+REST-094;Hamburguesa de pollo crispy;15500
+REST-094;Hamburguesa triple carne;25000
+REST-094;Burger tex-mex con cheddar fundido;25000
+REST-095;Hamburguesa doble cheeseburger;17500
+REST-095;Hamburguesa con bacon y cheddar;18500
+REST-095;Hamburguesa clasica completa;16500
+REST-095;Hamburguesa de pollo crispy;16000
+REST-095;Hamburguesa triple carne;24500
+REST-095;Burger de cordero con aros de cebolla;25500
+REST-096;Hamburguesa doble cheeseburger;18500
+REST-096;Hamburguesa con bacon y cheddar;21000
+REST-096;Hamburguesa clasica completa;15000
+REST-096;Hamburguesa de pollo crispy;15500
+REST-096;Hamburguesa triple carne;24000
+REST-096;Burger de wagyu con pan brioche;24500
+REST-097;Hamburguesa doble cheeseburger;19500
+REST-097;Hamburguesa con bacon y cheddar;20500
+REST-097;Hamburguesa clasica completa;17000
+REST-097;Hamburguesa de pollo crispy;16500
+REST-097;Hamburguesa triple carne;21000
+REST-097;Burger de cordero con cheddar fundido;22000
+REST-098;Hamburguesa doble cheeseburger;16000
+REST-098;Hamburguesa con bacon y cheddar;19000
+REST-098;Hamburguesa clasica completa;14500
+REST-098;Hamburguesa de pollo crispy;16000
+REST-098;Hamburguesa triple carne;22500
+REST-098;Burger pulled pork con pan brioche;24500
+REST-099;Hamburguesa doble cheeseburger;18000
+REST-099;Hamburguesa con bacon y cheddar;19000
+REST-099;Hamburguesa clasica completa;16500
+REST-099;Hamburguesa de pollo crispy;18500
+REST-099;Hamburguesa triple carne;24000
+REST-099;Burger de entrana con mermelada de panceta;22000
+REST-100;Hamburguesa doble cheeseburger;17500
+REST-100;Hamburguesa con bacon y cheddar;17500
+REST-100;Hamburguesa clasica completa;17000
+REST-100;Hamburguesa de pollo crispy;16500
+REST-100;Hamburguesa triple carne;25000
+REST-100;Burger tex-mex con barbacoa;22500
+REST-101;Hamburguesa doble cheeseburger;18500
+REST-101;Hamburguesa con bacon y cheddar;19000
+REST-101;Hamburguesa clasica completa;15500
+REST-101;Hamburguesa de pollo crispy;17000
+REST-101;Hamburguesa triple carne;24000
+REST-101;Burger tex-mex con mermelada de panceta;24000
+REST-102;Hamburguesa doble cheeseburger;16500
+REST-102;Hamburguesa con bacon y cheddar;21000
+REST-102;Hamburguesa clasica completa;15500
+REST-102;Hamburguesa de pollo crispy;17500
+REST-102;Hamburguesa triple carne;25000
+REST-102;Burger de picana con mermelada de panceta;26500
+REST-103;Hamburguesa doble cheeseburger;18500
+REST-103;Hamburguesa con bacon y cheddar;19500
+REST-103;Hamburguesa clasica completa;14500
+REST-103;Hamburguesa de pollo crispy;16500
+REST-103;Hamburguesa triple carne;25000
+REST-103;Burger tex-mex con pan brioche;22500
+REST-104;Hamburguesa doble cheeseburger;17000
+REST-104;Hamburguesa con bacon y cheddar;17500
+REST-104;Hamburguesa clasica completa;17000
+REST-104;Hamburguesa de pollo crispy;18000
+REST-104;Hamburguesa triple carne;24500
+REST-104;Burger de entrana doble smash;22000
+REST-105;Hamburguesa doble cheeseburger;20000
+REST-105;Hamburguesa con bacon y cheddar;17500
+REST-105;Hamburguesa clasica completa;16500
+REST-105;Hamburguesa de pollo crispy;18000
+REST-105;Hamburguesa triple carne;21000
+REST-105;Burger de cordero doble smash;21500
+REST-106;Hamburguesa doble cheeseburger;18500
+REST-106;Hamburguesa con bacon y cheddar;18000
+REST-106;Hamburguesa clasica completa;16000
+REST-106;Hamburguesa de pollo crispy;18500
+REST-106;Hamburguesa triple carne;24000
+REST-106;Burger de picana con cheddar fundido;24500
+REST-107;Hamburguesa doble cheeseburger;17500
+REST-107;Hamburguesa con bacon y cheddar;21000
+REST-107;Hamburguesa clasica completa;16500
+REST-107;Hamburguesa de pollo crispy;16500
+REST-107;Hamburguesa triple carne;21000
+REST-107;Burger de picana con pan brioche;22000
+REST-108;Hamburguesa doble cheeseburger;19500
+REST-108;Hamburguesa con bacon y cheddar;19000
+REST-108;Hamburguesa clasica completa;15500
+REST-108;Hamburguesa de pollo crispy;15500
+REST-108;Hamburguesa triple carne;23500
+REST-108;Burger de wagyu con barbacoa;24500
+REST-109;Hamburguesa doble cheeseburger;19500
+REST-109;Hamburguesa con bacon y cheddar;18500
+REST-109;Hamburguesa clasica completa;17500
+REST-109;Hamburguesa de pollo crispy;15500
+REST-109;Hamburguesa triple carne;23500
+REST-109;Burger pulled pork doble smash;23500
+REST-110;Hamburguesa doble cheeseburger;18000
+REST-110;Hamburguesa con bacon y cheddar;20000
+REST-110;Hamburguesa clasica completa;16000
+REST-110;Hamburguesa de pollo crispy;16500
+REST-110;Hamburguesa triple carne;22000
+REST-110;Burger de wagyu con aros de cebolla;21500
+REST-111;Hamburguesa doble cheeseburger;16500
+REST-111;Hamburguesa con bacon y cheddar;21000
+REST-111;Hamburguesa clasica completa;15500
+REST-111;Hamburguesa de pollo crispy;18000
+REST-111;Hamburguesa triple carne;24500
+REST-111;Burger de wagyu con cheddar fundido;26500
+REST-112;Hamburguesa doble cheeseburger;17500
+REST-112;Hamburguesa con bacon y cheddar;17500
+REST-112;Hamburguesa clasica completa;16000
+REST-112;Hamburguesa de pollo crispy;16000
+REST-112;Hamburguesa triple carne;25000
+REST-112;Burger de entrana con pan brioche;22000
+REST-113;Docena de empanadas de carne cortada a cuchillo;23000
+REST-113;Docena de empanadas de jamon y queso;24500
+REST-113;Docena de empanadas de pollo;23500
+REST-113;Docena de empanadas de humita;20500
+REST-113;Docena de empanadas de verdura;21000
+REST-113;Empanada de quinoa al horno de barro;31000
+REST-114;Docena de empanadas de carne cortada a cuchillo;24500
+REST-114;Docena de empanadas de jamon y queso;23500
+REST-114;Docena de empanadas de pollo;23500
+REST-114;Docena de empanadas de humita;23000
+REST-114;Docena de empanadas de verdura;22000
+REST-114;Empanada de quinoa frita;35000
+REST-115;Docena de empanadas de carne cortada a cuchillo;24000
+REST-115;Docena de empanadas de jamon y queso;21500
+REST-115;Docena de empanadas de pollo;22500
+REST-115;Docena de empanadas de humita;20000
+REST-115;Docena de empanadas de verdura;21000
+REST-115;Empanada de bondiola tamano XL;35500
+REST-116;Docena de empanadas de carne cortada a cuchillo;26500
+REST-116;Docena de empanadas de jamon y queso;22000
+REST-116;Docena de empanadas de pollo;22000
+REST-116;Docena de empanadas de humita;20500
+REST-116;Docena de empanadas de verdura;21500
+REST-116;Empanada de bondiola agridulce;35500
+REST-117;Docena de empanadas de carne cortada a cuchillo;24000
+REST-117;Docena de empanadas de jamon y queso;22000
+REST-117;Docena de empanadas de pollo;24500
+REST-117;Docena de empanadas de humita;21500
+REST-117;Docena de empanadas de verdura;23000
+REST-117;Empanada de osobuco picante;31500
+REST-118;Docena de empanadas de carne cortada a cuchillo;26000
+REST-118;Docena de empanadas de jamon y queso;22000
+REST-118;Docena de empanadas de pollo;23000
+REST-118;Docena de empanadas de humita;23500
+REST-118;Docena de empanadas de verdura;20500
+REST-118;Empanada de matambre tamano XL;35500
+REST-119;Docena de empanadas de carne cortada a cuchillo;27500
+REST-119;Docena de empanadas de jamon y queso;22500
+REST-119;Docena de empanadas de pollo;22000
+REST-119;Docena de empanadas de humita;20000
+REST-119;Docena de empanadas de verdura;20000
+REST-119;Empanada de osobuco frita;36000
+REST-120;Docena de empanadas de carne cortada a cuchillo;27000
+REST-120;Docena de empanadas de jamon y queso;24000
+REST-120;Docena de empanadas de pollo;25000
+REST-120;Docena de empanadas de humita;21000
+REST-120;Docena de empanadas de verdura;22000
+REST-120;Empanada de quinoa tamano XL;37000
+REST-121;Docena de empanadas de carne cortada a cuchillo;26500
+REST-121;Docena de empanadas de jamon y queso;23500
+REST-121;Docena de empanadas de pollo;21500
+REST-121;Docena de empanadas de humita;23000
+REST-121;Docena de empanadas de verdura;19500
+REST-121;Empanada de bondiola al horno de barro;34000
+REST-122;Docena de empanadas de carne cortada a cuchillo;25500
+REST-122;Docena de empanadas de jamon y queso;24500
+REST-122;Docena de empanadas de pollo;22500
+REST-122;Docena de empanadas de humita;20000
+REST-122;Docena de empanadas de verdura;21000
+REST-122;Empanada de quinoa picante;32500
+REST-123;Docena de empanadas de carne cortada a cuchillo;22500
+REST-123;Docena de empanadas de jamon y queso;25000
+REST-123;Docena de empanadas de pollo;24500
+REST-123;Docena de empanadas de humita;21500
+REST-123;Docena de empanadas de verdura;20000
+REST-123;Empanada de matambre frita;32000
+REST-124;Docena de empanadas de carne cortada a cuchillo;25000
+REST-124;Docena de empanadas de jamon y queso;22500
+REST-124;Docena de empanadas de pollo;21000
+REST-124;Docena de empanadas de humita;20500
+REST-124;Docena de empanadas de verdura;21000
+REST-124;Empanada de pollo al verdeo frita;31000
+REST-125;Docena de empanadas de carne cortada a cuchillo;24000
+REST-125;Docena de empanadas de jamon y queso;22000
+REST-125;Docena de empanadas de pollo;24500
+REST-125;Docena de empanadas de humita;20500
+REST-125;Docena de empanadas de verdura;19000
+REST-125;Empanada de pollo al verdeo al malbec;32000
+REST-126;Docena de empanadas de carne cortada a cuchillo;24500
+REST-126;Docena de empanadas de jamon y queso;23000
+REST-126;Docena de empanadas de pollo;24000
+REST-126;Docena de empanadas de humita;22500
+REST-126;Docena de empanadas de verdura;20500
+REST-126;Empanada de osobuco agridulce;30500
+REST-127;Docena de empanadas de carne cortada a cuchillo;23000
+REST-127;Docena de empanadas de jamon y queso;23000
+REST-127;Docena de empanadas de pollo;21000
+REST-127;Docena de empanadas de humita;20500
+REST-127;Docena de empanadas de verdura;22500
+REST-127;Empanada de osobuco al horno de barro;35000
+REST-128;Docena de empanadas de carne cortada a cuchillo;23000
+REST-128;Docena de empanadas de jamon y queso;24500
+REST-128;Docena de empanadas de pollo;23000
+REST-128;Docena de empanadas de humita;21500
+REST-128;Docena de empanadas de verdura;20500
+REST-128;Empanada de matambre picante;37000
+REST-129;Docena de empanadas de carne cortada a cuchillo;26000
+REST-129;Docena de empanadas de jamon y queso;21000
+REST-129;Docena de empanadas de pollo;22500
+REST-129;Docena de empanadas de humita;23000
+REST-129;Docena de empanadas de verdura;19000
+REST-129;Empanada de cordero tamano XL;30500
+REST-130;Docena de empanadas de carne cortada a cuchillo;23500
+REST-130;Docena de empanadas de jamon y queso;23000
+REST-130;Docena de empanadas de pollo;22500
+REST-130;Docena de empanadas de humita;22500
+REST-130;Docena de empanadas de verdura;23000
+REST-130;Empanada de cordero picante;35500
+REST-131;Docena de empanadas de carne cortada a cuchillo;27000
+REST-131;Docena de empanadas de jamon y queso;23000
+REST-131;Docena de empanadas de pollo;22500
+REST-131;Docena de empanadas de humita;22500
+REST-131;Docena de empanadas de verdura;22000
+REST-131;Empanada de quinoa agridulce;34000
+REST-132;Docena de empanadas de carne cortada a cuchillo;25500
+REST-132;Docena de empanadas de jamon y queso;24000
+REST-132;Docena de empanadas de pollo;24500
+REST-132;Docena de empanadas de humita;20000
+REST-132;Docena de empanadas de verdura;21000
+REST-132;Empanada de cordero agridulce;36500
+REST-133;Docena de empanadas de carne cortada a cuchillo;23000
+REST-133;Docena de empanadas de jamon y queso;22500
+REST-133;Docena de empanadas de pollo;25000
+REST-133;Docena de empanadas de humita;23000
+REST-133;Docena de empanadas de verdura;20000
+REST-133;Empanada de bondiola al malbec;33000
+REST-134;Docena de empanadas de carne cortada a cuchillo;26000
+REST-134;Docena de empanadas de jamon y queso;21000
+REST-134;Docena de empanadas de pollo;23500
+REST-134;Docena de empanadas de humita;22000
+REST-134;Docena de empanadas de verdura;20000
+REST-134;Empanada de cordero frita;32500
+REST-135;Cafe de especialidad;5500
+REST-135;Cafe con leche con dos medialunas de manteca;8500
+REST-135;Porcion de torta;6500
+REST-135;Avocado toast;8000
+REST-135;Tostado de jamon y queso;6000
+REST-135;Te hebras blend con alfajor de maicena;7000
+REST-136;Cafe de especialidad;5500
+REST-136;Cafe con leche con dos medialunas de manteca;9500
+REST-136;Porcion de torta;7500
+REST-136;Avocado toast;8000
+REST-136;Tostado de jamon y queso;5500
+REST-136;Te hebras blend con budin;6000
+REST-137;Cafe de especialidad;4500
+REST-137;Cafe con leche con dos medialunas de manteca;9000
+REST-137;Porcion de torta;6500
+REST-137;Avocado toast;8000
+REST-137;Tostado de jamon y queso;5500
+REST-137;Expreso doble con croissant;7000
+REST-138;Cafe de especialidad;4500
+REST-138;Cafe con leche con dos medialunas de manteca;9000
+REST-138;Porcion de torta;7500
+REST-138;Avocado toast;7000
+REST-138;Tostado de jamon y queso;6000
+REST-138;Macchiato con tostado frances;6500
+REST-139;Cafe de especialidad;5500
+REST-139;Cafe con leche con dos medialunas de manteca;9000
+REST-139;Porcion de torta;6500
+REST-139;Avocado toast;8500
+REST-139;Tostado de jamon y queso;6000
+REST-139;Latte caramel con tostado frances;6500
+REST-140;Cafe de especialidad;5000
+REST-140;Cafe con leche con dos medialunas de manteca;9500
+REST-140;Porcion de torta;6500
+REST-140;Avocado toast;8000
+REST-140;Tostado de jamon y queso;6500
+REST-140;Cold brew con roll de canela;7500
+REST-141;Cafe de especialidad;5000
+REST-141;Cafe con leche con dos medialunas de manteca;9500
+REST-141;Porcion de torta;7000
+REST-141;Avocado toast;8000
+REST-141;Tostado de jamon y queso;6000
+REST-141;Cold brew con tostado frances;6500
+REST-142;Cafe de especialidad;5500
+REST-142;Cafe con leche con dos medialunas de manteca;10000
+REST-142;Porcion de torta;7500
+REST-142;Avocado toast;8500
+REST-142;Tostado de jamon y queso;6000
+REST-142;Macchiato con budin;7000
+REST-143;Cafe de especialidad;5500
+REST-143;Cafe con leche con dos medialunas de manteca;9500
+REST-143;Porcion de torta;6500
+REST-143;Avocado toast;8500
+REST-143;Tostado de jamon y queso;6500
+REST-143;Macchiato con scone de queso;6000
+REST-144;Cafe de especialidad;5500
+REST-144;Cafe con leche con dos medialunas de manteca;8500
+REST-144;Porcion de torta;6500
+REST-144;Avocado toast;8000
+REST-144;Tostado de jamon y queso;5500
+REST-144;Expreso doble con alfajor de maicena;7000
+REST-145;Cafe de especialidad;4500
+REST-145;Cafe con leche con dos medialunas de manteca;9500
+REST-145;Porcion de torta;7500
+REST-145;Avocado toast;7500
+REST-145;Tostado de jamon y queso;6000
+REST-145;Macchiato con alfajor de maicena;6500
+REST-146;Cafe de especialidad;4500
+REST-146;Cafe con leche con dos medialunas de manteca;10500
+REST-146;Porcion de torta;7000
+REST-146;Avocado toast;8500
+REST-146;Tostado de jamon y queso;5500
+REST-146;Macchiato con roll de canela;6000
+REST-147;Cafe de especialidad;5500
+REST-147;Cafe con leche con dos medialunas de manteca;10500
+REST-147;Porcion de torta;7500
+REST-147;Avocado toast;8000
+REST-147;Tostado de jamon y queso;6000
+REST-147;Te hebras blend con tostado frances;7500
+REST-148;Cafe de especialidad;5000
+REST-148;Cafe con leche con dos medialunas de manteca;9500
+REST-148;Porcion de torta;7000
+REST-148;Avocado toast;9000
+REST-148;Tostado de jamon y queso;5500
+REST-148;Cold brew con croissant;7000
+REST-150;Cafe de especialidad;5500
+REST-150;Cafe con leche con dos medialunas de manteca;9500
+REST-150;Porcion de torta;6500
+REST-150;Avocado toast;7500
+REST-150;Tostado de jamon y queso;5500
+REST-150;Expreso doble con scone de queso;6500
+REST-152;Cafe de especialidad;5000
+REST-152;Cafe con leche con dos medialunas de manteca;8500
+REST-152;Porcion de torta;7500
+REST-152;Avocado toast;8000
+REST-152;Tostado de jamon y queso;6000
+REST-152;Cold brew con scone de queso;7000
+REST-153;Cafe de especialidad;5000
+REST-153;Cafe con leche con dos medialunas de manteca;9000
+REST-153;Porcion de torta;6500
+REST-153;Avocado toast;7500
+REST-153;Tostado de jamon y queso;6500
+REST-153;Cold brew con alfajor de maicena;7000
+REST-154;Cafe de especialidad;5000
+REST-154;Cafe con leche con dos medialunas de manteca;9500
+REST-154;Porcion de torta;7500
+REST-154;Avocado toast;8000
+REST-154;Tostado de jamon y queso;6000
+REST-154;Frappuccino de moka con budin;7500
+REST-155;Cafe de especialidad;5500
+REST-155;Cafe con leche con dos medialunas de manteca;9500
+REST-155;Porcion de torta;7500
+REST-155;Avocado toast;7500
+REST-155;Tostado de jamon y queso;6000
+REST-155;Expreso doble con roll de canela;6000
+REST-156;1 kg de helado artesanal;30500
+REST-156;1/2 kg de helado artesanal;15000
+REST-156;1/4 kg de helado artesanal;9500
+REST-156;Cucurucho 2 sabores;6500
+REST-156;Copa helada de la casa;11000
+REST-156;Copa macedonia tamano familiar;43500
+REST-157;1 kg de helado artesanal;28500
+REST-157;1/2 kg de helado artesanal;16000
+REST-157;1/4 kg de helado artesanal;9000
+REST-157;Cucurucho 2 sabores;5500
+REST-157;Copa helada de la casa;11000
+REST-157;Copa sundae con nueces;37000
+REST-159;1 kg de helado artesanal;31500
+REST-159;1/2 kg de helado artesanal;16500
+REST-159;1/4 kg de helado artesanal;8500
+REST-159;Cucurucho 2 sabores;6000
+REST-159;Copa helada de la casa;11000
+REST-159;Copa sundae con almendras banadas;40500
+REST-160;1 kg de helado artesanal;30000
+REST-160;1/2 kg de helado artesanal;14500
+REST-160;1/4 kg de helado artesanal;9000
+REST-160;Cucurucho 2 sabores;5500
+REST-160;Copa helada de la casa;11500
+REST-160;Batido de chocolate tamano familiar;39000
+REST-161;1 kg de helado artesanal;31000
+REST-161;1/2 kg de helado artesanal;16000
+REST-161;1/4 kg de helado artesanal;9500
+REST-161;Cucurucho 2 sabores;6000
+REST-161;Copa helada de la casa;11500
+REST-161;Banana split tamano familiar;36000
+REST-162;1 kg de helado artesanal;28500
+REST-162;1/2 kg de helado artesanal;17000
+REST-162;1/4 kg de helado artesanal;8500
+REST-162;Cucurucho 2 sabores;5500
+REST-162;Copa helada de la casa;12500
+REST-162;Tiramisu helado con nueces;43000
+REST-163;1 kg de helado artesanal;31500
+REST-163;1/2 kg de helado artesanal;16500
+REST-163;1/4 kg de helado artesanal;8500
+REST-163;Cucurucho 2 sabores;6000
+REST-163;Copa helada de la casa;11000
+REST-163;Batido de chocolate con dulce de leche;38000
+REST-164;1 kg de helado artesanal;31500
+REST-164;1/2 kg de helado artesanal;16500
+REST-164;1/4 kg de helado artesanal;8500
+REST-164;Cucurucho 2 sabores;5500
+REST-164;Copa helada de la casa;12500
+REST-164;Tiramisu helado con frutos rojos;43000
+REST-165;1 kg de helado artesanal;29000
+REST-165;1/2 kg de helado artesanal;17000
+REST-165;1/4 kg de helado artesanal;10000
+REST-165;Cucurucho 2 sabores;5500
+REST-165;Copa helada de la casa;11500
+REST-165;Tiramisu helado con almendras banadas;42000
+REST-166;1 kg de helado artesanal;31500
+REST-166;1/2 kg de helado artesanal;14500
+REST-166;1/4 kg de helado artesanal;8000
+REST-166;Cucurucho 2 sabores;5500
+REST-166;Copa helada de la casa;13000
+REST-166;Cassata tamano familiar;44000
+REST-167;1 kg de helado artesanal;33000
+REST-167;1/2 kg de helado artesanal;17500
+REST-167;1/4 kg de helado artesanal;8500
+REST-167;Cucurucho 2 sabores;6000
+REST-167;Copa helada de la casa;13000
+REST-167;Copa sundae con frutos rojos;38000
+REST-168;1 kg de helado artesanal;31000
+REST-168;1/2 kg de helado artesanal;16500
+REST-168;1/4 kg de helado artesanal;9500
+REST-168;Cucurucho 2 sabores;5500
+REST-168;Copa helada de la casa;11000
+REST-168;Cassata con charlot;39500
+REST-169;1 kg de helado artesanal;29000
+REST-169;1/2 kg de helado artesanal;15500
+REST-169;1/4 kg de helado artesanal;9500
+REST-169;Cucurucho 2 sabores;6000
+REST-169;Copa helada de la casa;11500
+REST-169;Copa macedonia con charlot;40500
+REST-170;1 kg de helado artesanal;30000
+REST-170;1/2 kg de helado artesanal;16000
+REST-170;1/4 kg de helado artesanal;8500
+REST-170;Cucurucho 2 sabores;5500
+REST-170;Copa helada de la casa;12500
+REST-170;Banana split con dulce de leche;43500
+REST-171;1 kg de helado artesanal;29500
+REST-171;1/2 kg de helado artesanal;16500
+REST-171;1/4 kg de helado artesanal;9500
+REST-171;Cucurucho 2 sabores;6500
+REST-171;Copa helada de la casa;11000
+REST-171;Batido de chocolate con almendras banadas;39000
+REST-172;1 kg de helado artesanal;30000
+REST-172;1/2 kg de helado artesanal;17000
+REST-172;1/4 kg de helado artesanal;9000
+REST-172;Cucurucho 2 sabores;6000
+REST-172;Copa helada de la casa;11000
+REST-172;Copa sundae tamano familiar;44000
+REST-173;1 kg de helado artesanal;31000
+REST-173;1/2 kg de helado artesanal;15500
+REST-173;1/4 kg de helado artesanal;8500
+REST-173;Cucurucho 2 sabores;6000
+REST-173;Copa helada de la casa;11500
+REST-173;Batido de chocolate con charlot;43000
+REST-174;Bowl proteico de quinoa y garbanzos horneados;14000
+REST-174;Tarta individual de calabaza y espinaca con masa de semillas;15000
+REST-174;Wrap integral de vegetales asados y hummus;9000
+REST-174;Medallones de soja rellenos;12000
+REST-174;Wok de fideos de zucchini;11500
+REST-174;Yogur de coco sin TACC;18500
+REST-175;Bowl proteico de quinoa y garbanzos horneados;14500
+REST-175;Tarta individual de calabaza y espinaca con masa de semillas;13500
+REST-175;Wrap integral de vegetales asados y hummus;8500
+REST-175;Medallones de soja rellenos;13000
+REST-175;Wok de fideos de zucchini;10000
+REST-175;Yogur de coco con mix de nueces;18500
+REST-176;Bowl proteico de quinoa y garbanzos horneados;15000
+REST-176;Tarta individual de calabaza y espinaca con masa de semillas;14000
+REST-176;Wrap integral de vegetales asados y hummus;7500
+REST-176;Medallones de soja rellenos;12500
+REST-176;Wok de fideos de zucchini;12000
+REST-176;Muffin keto con matcha;21500
+REST-177;Bowl proteico de quinoa y garbanzos horneados;16500
+REST-177;Tarta individual de calabaza y espinaca con masa de semillas;14500
+REST-177;Wrap integral de vegetales asados y hummus;8000
+REST-177;Medallones de soja rellenos;13000
+REST-177;Wok de fideos de zucchini;11500
+REST-177;Muffin keto sin TACC;18000
+REST-178;Bowl proteico de quinoa y garbanzos horneados;15500
+REST-178;Tarta individual de calabaza y espinaca con masa de semillas;12500
+REST-178;Wrap integral de vegetales asados y hummus;7500
+REST-178;Medallones de soja rellenos;11500
+REST-178;Wok de fideos de zucchini;12000
+REST-178;Barrita cruda organico;22000
+REST-179;Bowl proteico de quinoa y garbanzos horneados;14000
+REST-179;Tarta individual de calabaza y espinaca con masa de semillas;13000
+REST-179;Wrap integral de vegetales asados y hummus;7500
+REST-179;Medallones de soja rellenos;13500
+REST-179;Wok de fideos de zucchini;11500
+REST-179;Bowl de acai endulzado con stevia;22000
+REST-180;Bowl proteico de quinoa y garbanzos horneados;14500
+REST-180;Tarta individual de calabaza y espinaca con masa de semillas;14500
+REST-180;Wrap integral de vegetales asados y hummus;8000
+REST-180;Medallones de soja rellenos;12500
+REST-180;Wok de fideos de zucchini;10500
+REST-180;Smoothie detox organico;22000
+REST-181;Bowl proteico de quinoa y garbanzos horneados;16000
+REST-181;Tarta individual de calabaza y espinaca con masa de semillas;14000
+REST-181;Wrap integral de vegetales asados y hummus;7500
+REST-181;Medallones de soja rellenos;12500
+REST-181;Wok de fideos de zucchini;11000
+REST-181;Muffin keto endulzado con stevia;22000
+REST-182;Bowl proteico de quinoa y garbanzos horneados;16000
+REST-182;Tarta individual de calabaza y espinaca con masa de semillas;14500
+REST-182;Wrap integral de vegetales asados y hummus;8500
+REST-182;Medallones de soja rellenos;13500
+REST-182;Wok de fideos de zucchini;10000
+REST-182;Smoothie detox con semillas de chia;20500
+REST-183;Bowl proteico de quinoa y garbanzos horneados;14000
+REST-183;Tarta individual de calabaza y espinaca con masa de semillas;15000
+REST-183;Wrap integral de vegetales asados y hummus;8000
+REST-183;Medallones de soja rellenos;11500
+REST-183;Wok de fideos de zucchini;10500
+REST-183;Pan integral relleno con espirulina;19500
+REST-184;Bowl proteico de quinoa y garbanzos horneados;16000
+REST-184;Tarta individual de calabaza y espinaca con masa de semillas;12500
+REST-184;Wrap integral de vegetales asados y hummus;8000
+REST-184;Medallones de soja rellenos;11500
+REST-184;Wok de fideos de zucchini;11500
+REST-184;Yogur de coco organico;18500
+REST-185;Bowl proteico de quinoa y garbanzos horneados;15000
+REST-185;Tarta individual de calabaza y espinaca con masa de semillas;15000
+REST-185;Wrap integral de vegetales asados y hummus;8500
+REST-185;Medallones de soja rellenos;11500
+REST-185;Wok de fideos de zucchini;11000
+REST-185;Bowl de acai con semillas de chia;21000
+REST-186;Bowl proteico de quinoa y garbanzos horneados;16000
+REST-186;Tarta individual de calabaza y espinaca con masa de semillas;14500
+REST-186;Wrap integral de vegetales asados y hummus;8000
+REST-186;Medallones de soja rellenos;13000
+REST-186;Wok de fideos de zucchini;11000
+REST-186;Galletas de avena con espirulina;20500
+REST-187;Bowl proteico de quinoa y garbanzos horneados;14000
+REST-187;Tarta individual de calabaza y espinaca con masa de semillas;13000
+REST-187;Wrap integral de vegetales asados y hummus;8000
+REST-187;Medallones de soja rellenos;13500
+REST-187;Wok de fideos de zucchini;10500
+REST-187;Ensalada proteica con semillas de chia;19000
+REST-188;Bowl proteico de quinoa y garbanzos horneados;14000
+REST-188;Tarta individual de calabaza y espinaca con masa de semillas;14000
+REST-188;Wrap integral de vegetales asados y hummus;8500
+REST-188;Medallones de soja rellenos;12000
+REST-188;Wok de fideos de zucchini;10000
+REST-188;Barrita cruda con semillas de chia;19000
+REST-189;Bowl proteico de quinoa y garbanzos horneados;16500
+REST-189;Tarta individual de calabaza y espinaca con masa de semillas;13500
+REST-189;Wrap integral de vegetales asados y hummus;8000
+REST-189;Medallones de soja rellenos;12500
+REST-189;Wok de fideos de zucchini;11000
+REST-189;Muffin keto organico;22000
+REST-190;Bowl proteico de quinoa y garbanzos horneados;13500
+REST-190;Tarta individual de calabaza y espinaca con masa de semillas;14500
+REST-190;Wrap integral de vegetales asados y hummus;8000
+REST-190;Medallones de soja rellenos;12000
+REST-190;Wok de fideos de zucchini;10000
+REST-190;Ensalada proteica con mix de nueces;19500
+REST-191;Bowl proteico de quinoa y garbanzos horneados;14000
+REST-191;Tarta individual de calabaza y espinaca con masa de semillas;14000
+REST-191;Wrap integral de vegetales asados y hummus;8500
+REST-191;Medallones de soja rellenos;11500
+REST-191;Wok de fideos de zucchini;11500
+REST-191;Barrita cruda con matcha;20000
+REST-192;Bowl proteico de quinoa y garbanzos horneados;16500
+REST-192;Tarta individual de calabaza y espinaca con masa de semillas;15000
+REST-192;Wrap integral de vegetales asados y hummus;7500
+REST-192;Medallones de soja rellenos;13000
+REST-192;Wok de fideos de zucchini;11000
+REST-192;Smoothie detox con matcha;18000
+REST-193;Bowl proteico de quinoa y garbanzos horneados;15500
+REST-193;Tarta individual de calabaza y espinaca con masa de semillas;14500
+REST-193;Wrap integral de vegetales asados y hummus;9000
+REST-193;Medallones de soja rellenos;13000
+REST-193;Wok de fideos de zucchini;11000
+REST-193;Smoothie detox con mix de nueces;20500
+REST-194;Bowl proteico de quinoa y garbanzos horneados;14000
+REST-194;Tarta individual de calabaza y espinaca con masa de semillas;15000
+REST-194;Wrap integral de vegetales asados y hummus;7500
+REST-194;Medallones de soja rellenos;12500
+REST-194;Wok de fideos de zucchini;11000
+REST-194;Pan integral relleno organico;21500
+REST-195;Bowl proteico de quinoa y garbanzos horneados;15500
+REST-195;Tarta individual de calabaza y espinaca con masa de semillas;13500
+REST-195;Wrap integral de vegetales asados y hummus;8000
+REST-195;Medallones de soja rellenos;11500
+REST-195;Wok de fideos de zucchini;10000
+REST-195;Galletas de avena con mix de nueces;21000
+REST-196;Bowl proteico de quinoa y garbanzos horneados;16500
+REST-196;Tarta individual de calabaza y espinaca con masa de semillas;15000
+REST-196;Wrap integral de vegetales asados y hummus;7500
+REST-196;Medallones de soja rellenos;13500
+REST-196;Wok de fideos de zucchini;10000
+REST-196;Ensalada proteica organico;20500
+REST-197;Bowl proteico de quinoa y garbanzos horneados;14000
+REST-197;Tarta individual de calabaza y espinaca con masa de semillas;14500
+REST-197;Wrap integral de vegetales asados y hummus;8500
+REST-197;Medallones de soja rellenos;12000
+REST-197;Wok de fideos de zucchini;11000
+REST-197;Muffin keto con semillas de chia;20000
+REST-198;Bowl proteico de quinoa y garbanzos horneados;16000
+REST-198;Tarta individual de calabaza y espinaca con masa de semillas;15000
+REST-198;Wrap integral de vegetales asados y hummus;8000
+REST-198;Medallones de soja rellenos;13500
+REST-198;Wok de fideos de zucchini;11500
+REST-198;Smoothie detox con espirulina;21500
+REST-199;Bowl proteico de quinoa y garbanzos horneados;15500
+REST-199;Tarta individual de calabaza y espinaca con masa de semillas;14000
+REST-199;Wrap integral de vegetales asados y hummus;7500
+REST-199;Medallones de soja rellenos;12000
+REST-199;Wok de fideos de zucchini;10000
+REST-199;Galletas de avena endulzado con stevia;22500
+REST-200;Bowl proteico de quinoa y garbanzos horneados;16000
+REST-200;Tarta individual de calabaza y espinaca con masa de semillas;14500
+REST-200;Wrap integral de vegetales asados y hummus;8500
+REST-200;Medallones de soja rellenos;13500
+REST-200;Wok de fideos de zucchini;11500
+REST-200;Galletas de avena con matcha;21500
+REST-202;Bowl proteico de quinoa y garbanzos horneados;14000
+REST-202;Tarta individual de calabaza y espinaca con masa de semillas;13000
+REST-202;Wrap integral de vegetales asados y hummus;7500
+REST-202;Medallones de soja rellenos;12000
+REST-202;Wok de fideos de zucchini;11000
+REST-202;Ensalada proteica con espirulina;19500
+REST-203;Bowl proteico de quinoa y garbanzos horneados;14500
+REST-203;Tarta individual de calabaza y espinaca con masa de semillas;15000
+REST-203;Wrap integral de vegetales asados y hummus;8500
+REST-203;Medallones de soja rellenos;13500
+REST-203;Wok de fideos de zucchini;11500
+REST-203;Ensalada proteica endulzado con stevia;20500
+REST-204;Bowl proteico de quinoa y garbanzos horneados;15000
+REST-204;Tarta individual de calabaza y espinaca con masa de semillas;14000
+REST-204;Wrap integral de vegetales asados y hummus;8000
+REST-204;Medallones de soja rellenos;13500
+REST-204;Wok de fideos de zucchini;11000
+REST-204;Barrita cruda sin TACC;21000
+REST-205;Bowl proteico de quinoa y garbanzos horneados;14500
+REST-205;Tarta individual de calabaza y espinaca con masa de semillas;12500
+REST-205;Wrap integral de vegetales asados y hummus;8000
+REST-205;Medallones de soja rellenos;11500
+REST-205;Wok de fideos de zucchini;10000
+REST-205;Ensalada proteica con matcha;20500
+REST-206;Bowl proteico de quinoa y garbanzos horneados;14500
+REST-206;Tarta individual de calabaza y espinaca con masa de semillas;15000
+REST-206;Wrap integral de vegetales asados y hummus;8000
+REST-206;Medallones de soja rellenos;13500
+REST-206;Wok de fideos de zucchini;10500
+REST-206;Bowl de acai sin TACC;22500
+REST-207;Bowl proteico de quinoa y garbanzos horneados;15500
+REST-207;Tarta individual de calabaza y espinaca con masa de semillas;15000
+REST-207;Wrap integral de vegetales asados y hummus;8500
+REST-207;Medallones de soja rellenos;12500
+REST-207;Wok de fideos de zucchini;10000
+REST-207;Pan integral relleno con matcha;18000
+REST-208;Bowl proteico de quinoa y garbanzos horneados;14000
+REST-208;Tarta individual de calabaza y espinaca con masa de semillas;15000
+REST-208;Wrap integral de vegetales asados y hummus;8500
+REST-208;Medallones de soja rellenos;12500
+REST-208;Wok de fideos de zucchini;11500
+REST-208;Yogur de coco con semillas de chia;20000
+REST-209;Bowl proteico de quinoa y garbanzos horneados;13500
+REST-209;Tarta individual de calabaza y espinaca con masa de semillas;13000
+REST-209;Wrap integral de vegetales asados y hummus;8500
+REST-209;Medallones de soja rellenos;12000
+REST-209;Wok de fideos de zucchini;11000
+REST-209;Bowl de acai con espirulina;18000
+REST-210;Bowl proteico de quinoa y garbanzos horneados;16000
+REST-210;Tarta individual de calabaza y espinaca con masa de semillas;13000
+REST-210;Wrap integral de vegetales asados y hummus;8500
+REST-210;Medallones de soja rellenos;13000
+REST-210;Wok de fideos de zucchini;11500
+REST-210;Yogur de coco con matcha;21500
+REST-211;Bowl proteico de quinoa y garbanzos horneados;15500
+REST-211;Tarta individual de calabaza y espinaca con masa de semillas;13000
+REST-211;Wrap integral de vegetales asados y hummus;8000
+REST-211;Medallones de soja rellenos;12000
+REST-211;Wok de fideos de zucchini;10000
+REST-211;Pan integral relleno sin TACC;19500
+REST-212;Bowl proteico de quinoa y garbanzos horneados;15000
+REST-212;Tarta individual de calabaza y espinaca con masa de semillas;14000
+REST-212;Wrap integral de vegetales asados y hummus;8500
+REST-212;Medallones de soja rellenos;11500
+REST-212;Wok de fideos de zucchini;10500
+REST-212;Muffin keto con espirulina;21500
+REST-213;Bowl proteico de quinoa y garbanzos horneados;15500
+REST-213;Tarta individual de calabaza y espinaca con masa de semillas;15000
+REST-213;Wrap integral de vegetales asados y hummus;8000
+REST-213;Medallones de soja rellenos;11500
+REST-213;Wok de fideos de zucchini;12000
+REST-213;Yogur de coco con espirulina;22000
+REST-214;Bowl proteico de quinoa y garbanzos horneados;15500
+REST-214;Tarta individual de calabaza y espinaca con masa de semillas;13000
+REST-214;Wrap integral de vegetales asados y hummus;8500
+REST-214;Medallones de soja rellenos;11500
+REST-214;Wok de fideos de zucchini;11500
+REST-214;Smoothie detox sin TACC;22500
+REST-215;Bowl proteico de quinoa y garbanzos horneados;16000
+REST-215;Tarta individual de calabaza y espinaca con masa de semillas;13000
+REST-215;Wrap integral de vegetales asados y hummus;8500
+REST-215;Medallones de soja rellenos;12000
+REST-215;Wok de fideos de zucchini;10500
+REST-215;Galletas de avena sin TACC;20500
+REST-216;Bowl proteico de quinoa y garbanzos horneados;14000
+REST-216;Tarta individual de calabaza y espinaca con masa de semillas;15500
+REST-216;Wrap integral de vegetales asados y hummus;9000
+REST-216;Medallones de soja rellenos;11500
+REST-216;Wok de fideos de zucchini;10000
+REST-216;Bowl de acai con matcha;20000
+REST-217;Bowl proteico de quinoa y garbanzos horneados;14000
+REST-217;Tarta individual de calabaza y espinaca con masa de semillas;13500
+REST-217;Wrap integral de vegetales asados y hummus;7500
+REST-217;Medallones de soja rellenos;12000
+REST-217;Wok de fideos de zucchini;12000
+REST-217;Bowl de acai organico;21500
+REST-218;Bowl proteico de quinoa y garbanzos horneados;14500
+REST-218;Tarta individual de calabaza y espinaca con masa de semillas;14500
+REST-218;Wrap integral de vegetales asados y hummus;7000
+REST-218;Medallones de soja rellenos;12000
+REST-218;Wok de fideos de zucchini;11000
+REST-218;Barrita cruda con espirulina;21500
+REST-219;Bowl proteico de quinoa y garbanzos horneados;16000
+REST-219;Tarta individual de calabaza y espinaca con masa de semillas;14000
+REST-219;Wrap integral de vegetales asados y hummus;7500
+REST-219;Medallones de soja rellenos;11500
+REST-219;Wok de fideos de zucchini;10500
+REST-219;Pan integral relleno con mix de nueces;20000
+REST-220;Bowl proteico de quinoa y garbanzos horneados;15000
+REST-220;Tarta individual de calabaza y espinaca con masa de semillas;14000
+REST-220;Wrap integral de vegetales asados y hummus;8000
+REST-220;Medallones de soja rellenos;13500
+REST-220;Wok de fideos de zucchini;12000
+REST-220;Galletas de avena con semillas de chia;18500
+REST-221;Bowl proteico de quinoa y garbanzos horneados;15500
+REST-221;Tarta individual de calabaza y espinaca con masa de semillas;12500
+REST-221;Wrap integral de vegetales asados y hummus;8500
+REST-221;Medallones de soja rellenos;13000
+REST-221;Wok de fideos de zucchini;10000
+REST-221;Barrita cruda endulzado con stevia;21500
+REST-222;Bowl proteico de quinoa y garbanzos horneados;15500
+REST-222;Tarta individual de calabaza y espinaca con masa de semillas;12500
+REST-222;Wrap integral de vegetales asados y hummus;7500
+REST-222;Medallones de soja rellenos;13000
+REST-222;Wok de fideos de zucchini;12000
+REST-222;Muffin keto con mix de nueces;18000
+REST-223;Bowl proteico de quinoa y garbanzos horneados;16000
+REST-223;Tarta individual de calabaza y espinaca con masa de semillas;14000
+REST-223;Wrap integral de vegetales asados y hummus;8000
+REST-223;Medallones de soja rellenos;13500
+REST-223;Wok de fideos de zucchini;10500
+REST-223;Barrita cruda con mix de nueces;19500
+REST-224;Bowl proteico de quinoa y garbanzos horneados;15000
+REST-224;Tarta individual de calabaza y espinaca con masa de semillas;14500
+REST-224;Wrap integral de vegetales asados y hummus;8000
+REST-224;Medallones de soja rellenos;13000
+REST-224;Wok de fideos de zucchini;11000
+REST-224;Pan integral relleno endulzado con stevia;20500
+REST-225;Bowl proteico de quinoa y garbanzos horneados;15500
+REST-225;Tarta individual de calabaza y espinaca con masa de semillas;13500
+REST-225;Wrap integral de vegetales asados y hummus;7500
+REST-225;Medallones de soja rellenos;13000
+REST-225;Wok de fideos de zucchini;10000
+REST-225;Pan integral relleno con semillas de chia;19000
+REST-226;Hamburguesa NotMeat;19500
+REST-226;Pizza vegana con queso de castanas;25500
+REST-226;Tofu revuelto con tostadas de masa madre;18000
+REST-226;Seitan al champinon;22000
+REST-226;Sorrentinos de calabaza veganos;20000
+REST-226;Curry de tofu picante;24500
+REST-227;Hamburguesa NotMeat;21500
+REST-227;Pizza vegana con queso de castanas;27500
+REST-227;Tofu revuelto con tostadas de masa madre;17000
+REST-227;Seitan al champinon;23000
+REST-227;Sorrentinos de calabaza veganos;21500
+REST-227;Curry de tofu con alioli de ajo asado;29000
+REST-228;Hamburguesa NotMeat;20500
+REST-228;Pizza vegana con queso de castanas;26500
+REST-228;Tofu revuelto con tostadas de masa madre;18000
+REST-228;Seitan al champinon;24000
+REST-228;Sorrentinos de calabaza veganos;23000
+REST-228;Chivito de seitan con mayonesa vegetal;24500
+REST-229;Hamburguesa NotMeat;19000
+REST-229;Pizza vegana con queso de castanas;28500
+REST-229;Tofu revuelto con tostadas de masa madre;18000
+REST-229;Seitan al champinon;23500
+REST-229;Sorrentinos de calabaza veganos;20000
+REST-229;Chivito de seitan con alioli de ajo asado;27500
+REST-230;Hamburguesa NotMeat;19500
+REST-230;Pizza vegana con queso de castanas;26000
+REST-230;Tofu revuelto con tostadas de masa madre;16500
+REST-230;Seitan al champinon;23000
+REST-230;Sorrentinos de calabaza veganos;20000
+REST-230;Pizza de masa madre con mayonesa vegetal;26000
+REST-231;Hamburguesa NotMeat;21500
+REST-231;Pizza vegana con queso de castanas;26000
+REST-231;Tofu revuelto con tostadas de masa madre;17500
+REST-231;Seitan al champinon;22500
+REST-231;Sorrentinos de calabaza veganos;20500
+REST-231;Wrap de falafel con palta;26500
+REST-232;Hamburguesa NotMeat;19500
+REST-232;Pizza vegana con queso de castanas;25000
+REST-232;Tofu revuelto con tostadas de masa madre;18500
+REST-232;Seitan al champinon;24500
+REST-232;Sorrentinos de calabaza veganos;21500
+REST-232;Pizza de masa madre con alioli de ajo asado;26500
+REST-233;Hamburguesa NotMeat;21000
+REST-233;Pizza vegana con queso de castanas;26500
+REST-233;Tofu revuelto con tostadas de masa madre;17000
+REST-233;Seitan al champinon;21000
+REST-233;Sorrentinos de calabaza veganos;20500
+REST-233;Chivito de seitan con palta;24500
+REST-234;Hamburguesa NotMeat;20500
+REST-234;Pizza vegana con queso de castanas;27000
+REST-234;Tofu revuelto con tostadas de masa madre;17500
+REST-234;Seitan al champinon;21000
+REST-234;Sorrentinos de calabaza veganos;20000
+REST-234;Tacos de soja con palta;28000
+REST-235;Hamburguesa NotMeat;21500
+REST-235;Pizza vegana con queso de castanas;26500
+REST-235;Tofu revuelto con tostadas de masa madre;16000
+REST-235;Seitan al champinon;23500
+REST-235;Sorrentinos de calabaza veganos;20500
+REST-235;Curry de tofu con palta;28500
+REST-236;Hamburguesa NotMeat;22000
+REST-236;Pizza vegana con queso de castanas;24500
+REST-236;Tofu revuelto con tostadas de masa madre;17500
+REST-236;Seitan al champinon;25000
+REST-236;Sorrentinos de calabaza veganos;21000
+REST-236;Pad thai de heura con palta;28500
+REST-237;Hamburguesa NotMeat;19000
+REST-237;Pizza vegana con queso de castanas;25500
+REST-237;Tofu revuelto con tostadas de masa madre;18000
+REST-237;Seitan al champinon;23000
+REST-237;Sorrentinos de calabaza veganos;20000
+REST-237;Wrap de falafel con queso de almendras;25000
+REST-238;Hamburguesa NotMeat;22000
+REST-238;Pizza vegana con queso de castanas;28000
+REST-238;Tofu revuelto con tostadas de masa madre;16500
+REST-238;Seitan al champinon;22500
+REST-238;Sorrentinos de calabaza veganos;20000
+REST-238;Tacos de soja con alioli de ajo asado;27500
+REST-239;Hamburguesa NotMeat;21000
+REST-239;Pizza vegana con queso de castanas;25000
+REST-239;Tofu revuelto con tostadas de masa madre;15500
+REST-239;Seitan al champinon;21500
+REST-239;Sorrentinos de calabaza veganos;21500
+REST-239;Wrap de falafel con alioli de ajo asado;25500
+REST-240;Hamburguesa NotMeat;18500
+REST-240;Pizza vegana con queso de castanas;25500
+REST-240;Tofu revuelto con tostadas de masa madre;17000
+REST-240;Seitan al champinon;23500
+REST-240;Sorrentinos de calabaza veganos;22000
+REST-240;Pad thai de heura con alioli de ajo asado;29500
+REST-241;Hamburguesa NotMeat;19500
+REST-241;Pizza vegana con queso de castanas;25500
+REST-241;Tofu revuelto con tostadas de masa madre;17500
+REST-241;Seitan al champinon;24000
+REST-241;Sorrentinos de calabaza veganos;21500
+REST-241;Curry de tofu a la plancha;27500
+REST-242;Hamburguesa NotMeat;21500
+REST-242;Pizza vegana con queso de castanas;27500
+REST-242;Tofu revuelto con tostadas de masa madre;16000
+REST-242;Seitan al champinon;21500
+REST-242;Sorrentinos de calabaza veganos;21000
+REST-242;Curry de tofu con queso de almendras;25500
+REST-243;Hamburguesa de lentejas;16500
+REST-243;Bowl de quinoa, palta y vegetales;22500
+REST-243;Tarta integral de espinaca y queso;16000
+REST-243;Wok de fideos de arroz y vegetales;17500
+REST-243;Milanesa de berenjena con pure;17000
+REST-243;Lasana de berenjena con salsa fileto;20500
+REST-244;Hamburguesa de lentejas;15500
+REST-244;Bowl de quinoa, palta y vegetales;19000
+REST-244;Tarta integral de espinaca y queso;15000
+REST-244;Wok de fideos de arroz y vegetales;20500
+REST-244;Milanesa de berenjena con pure;17000
+REST-244;Risotto de champinones con salsa fileto;22500
+REST-246;Hamburguesa de lentejas;17500
+REST-246;Bowl de quinoa, palta y vegetales;20500
+REST-246;Tarta integral de espinaca y queso;15000
+REST-246;Wok de fideos de arroz y vegetales;18000
+REST-246;Milanesa de berenjena con pure;18000
+REST-246;Lasana de berenjena con crema de castanas;21000
+REST-247;Hamburguesa de lentejas;16500
+REST-247;Bowl de quinoa, palta y vegetales;20500
+REST-247;Tarta integral de espinaca y queso;15500
+REST-247;Wok de fideos de arroz y vegetales;19000
+REST-247;Milanesa de berenjena con pure;18000
+REST-247;Risotto de champinones al wok;22000
+REST-248;Hamburguesa de lentejas;17500
+REST-248;Bowl de quinoa, palta y vegetales;20000
+REST-248;Tarta integral de espinaca y queso;14500
+REST-248;Wok de fideos de arroz y vegetales;17500
+REST-248;Milanesa de berenjena con pure;16000
+REST-248;Wok de vegetales gratinado;21000
+REST-249;Hamburguesa de lentejas;16500
+REST-249;Bowl de quinoa, palta y vegetales;20500
+REST-249;Tarta integral de espinaca y queso;16000
+REST-249;Wok de fideos de arroz y vegetales;19000
+REST-249;Milanesa de berenjena con pure;15500
+REST-249;Canelones de verdura al wok;23000
+REST-250;Hamburguesa de lentejas;15000
+REST-250;Bowl de quinoa, palta y vegetales;19500
+REST-250;Tarta integral de espinaca y queso;15500
+REST-250;Wok de fideos de arroz y vegetales;18000
+REST-250;Milanesa de berenjena con pure;18000
+REST-250;Tarta de calabaza con mix de semillas;23000
+REST-251;Hamburguesa de lentejas;17500
+REST-251;Bowl de quinoa, palta y vegetales;20500
+REST-251;Tarta integral de espinaca y queso;14000
+REST-251;Wok de fideos de arroz y vegetales;17000
+REST-251;Milanesa de berenjena con pure;18000
+REST-251;Hamburguesa de garbanzo con salsa fileto;23500
+REST-252;Hamburguesa de lentejas;15000
+REST-252;Bowl de quinoa, palta y vegetales;21000
+REST-252;Tarta integral de espinaca y queso;13500
+REST-252;Wok de fideos de arroz y vegetales;20000
+REST-252;Milanesa de berenjena con pure;17500
+REST-252;Wok de vegetales con crema de castanas;23500
+REST-253;Hamburguesa de lentejas;16000
+REST-253;Bowl de quinoa, palta y vegetales;23000
+REST-253;Tarta integral de espinaca y queso;15000
+REST-253;Wok de fideos de arroz y vegetales;19500
+REST-253;Milanesa de berenjena con pure;18000
+REST-253;Lasana de berenjena con mix de semillas;22500
+REST-255;Hamburguesa de lentejas;15000
+REST-255;Bowl de quinoa, palta y vegetales;22000
+REST-255;Tarta integral de espinaca y queso;15000
+REST-255;Wok de fideos de arroz y vegetales;18000
+REST-255;Milanesa de berenjena con pure;17000
+REST-255;Wok de vegetales con salsa fileto;22500
+REST-256;Hamburguesa de lentejas;17000
+REST-256;Bowl de quinoa, palta y vegetales;20000
+REST-256;Tarta integral de espinaca y queso;13500
+REST-256;Wok de fideos de arroz y vegetales;17500
+REST-256;Milanesa de berenjena con pure;17500
+REST-256;Lasana de berenjena con pesto;23500
+REST-257;Hamburguesa de lentejas;15500
+REST-257;Bowl de quinoa, palta y vegetales;20500
+REST-257;Tarta integral de espinaca y queso;15500
+REST-257;Wok de fideos de arroz y vegetales;19000
+REST-257;Milanesa de berenjena con pure;15500
+REST-257;Hamburguesa de garbanzo con pesto;20500
+REST-258;Hamburguesa de lentejas;15500
+REST-258;Bowl de quinoa, palta y vegetales;20000
+REST-258;Tarta integral de espinaca y queso;16500
+REST-258;Wok de fideos de arroz y vegetales;19000
+REST-258;Milanesa de berenjena con pure;18000
+REST-258;Lasana de berenjena gratinado;24000
+REST-259;Hamburguesa de lentejas;16000
+REST-259;Bowl de quinoa, palta y vegetales;19500
+REST-259;Tarta integral de espinaca y queso;14000
+REST-259;Wok de fideos de arroz y vegetales;19000
+REST-259;Milanesa de berenjena con pure;16500
+REST-259;Tarta de calabaza al wok;22500
+REST-260;Hamburguesa de lentejas;14500
+REST-260;Bowl de quinoa, palta y vegetales;19500
+REST-260;Tarta integral de espinaca y queso;15000
+REST-260;Wok de fideos de arroz y vegetales;18500
+REST-260;Milanesa de berenjena con pure;15500
+REST-260;Canelones de verdura con mix de semillas;21500
+REST-261;Hamburguesa de lentejas;15500
+REST-261;Bowl de quinoa, palta y vegetales;19000
+REST-261;Tarta integral de espinaca y queso;16000
+REST-261;Wok de fideos de arroz y vegetales;19500
+REST-261;Milanesa de berenjena con pure;16500
+REST-261;Tarta de calabaza gratinado;22000
+REST-262;Hamburguesa de lentejas;16500
+REST-262;Bowl de quinoa, palta y vegetales;21500
+REST-262;Tarta integral de espinaca y queso;14000
+REST-262;Wok de fideos de arroz y vegetales;19000
+REST-262;Milanesa de berenjena con pure;17500
+REST-262;Hamburguesa de garbanzo al wok;21500
+REST-263;Hamburguesa de lentejas;17500
+REST-263;Bowl de quinoa, palta y vegetales;22500
+REST-263;Tarta integral de espinaca y queso;15500
+REST-263;Wok de fideos de arroz y vegetales;21000
+REST-263;Milanesa de berenjena con pure;16000
+REST-263;Tarta de calabaza con pesto;22500
+REST-264;Combo Salmon (15 piezas);42000
+REST-264;Combo California (15 piezas);38000
+REST-264;Nigiri de salmon (5 piezas);16000
+REST-264;Wok de vegetales y arroz;23500
+REST-264;Sashimi de salmon (5 piezas);23000
+REST-264;Geishas de salmon flambeado;67000
+REST-265;Combo Salmon (15 piezas);43500
+REST-265;Combo California (15 piezas);35000
+REST-265;Nigiri de salmon (5 piezas);16500
+REST-265;Wok de vegetales y arroz;23500
+REST-265;Sashimi de salmon (5 piezas);20500
+REST-265;Ceviche mixto rebozado panko;66000
+REST-266;Combo Salmon (15 piezas);41500
+REST-266;Combo California (15 piezas);41000
+REST-266;Nigiri de salmon (5 piezas);19000
+REST-266;Wok de vegetales y arroz;22000
+REST-266;Sashimi de salmon (5 piezas);21000
+REST-266;Temaki de atun rebozado panko;62500
+REST-267;Combo Salmon (15 piezas);42500
+REST-267;Combo California (15 piezas);34500
+REST-267;Nigiri de salmon (5 piezas);17500
+REST-267;Wok de vegetales y arroz;23500
+REST-267;Sashimi de salmon (5 piezas);21000
+REST-267;Ceviche mixto estilo nikkei;54000
+REST-268;Combo Salmon (15 piezas);42000
+REST-268;Combo California (15 piezas);36000
+REST-268;Nigiri de salmon (5 piezas);16500
+REST-268;Wok de vegetales y arroz;20500
+REST-268;Sashimi de salmon (5 piezas);23000
+REST-268;Tiradito de pulpo con palta y queso;57000
+REST-269;Combo Salmon (15 piezas);49000
+REST-269;Combo California (15 piezas);34500
+REST-269;Nigiri de salmon (5 piezas);19000
+REST-269;Wok de vegetales y arroz;20000
+REST-269;Sashimi de salmon (5 piezas);21000
+REST-269;Tiradito de pulpo con maracuya;63000
+REST-270;Combo Salmon (15 piezas);48000
+REST-270;Combo California (15 piezas);38500
+REST-270;Nigiri de salmon (5 piezas);16500
+REST-270;Wok de vegetales y arroz;23500
+REST-270;Sashimi de salmon (5 piezas);21500
+REST-270;Temaki de atun flambeado;63500
+REST-271;Combo Salmon (15 piezas);45000
+REST-271;Combo California (15 piezas);37000
+REST-271;Nigiri de salmon (5 piezas);18500
+REST-271;Wok de vegetales y arroz;20000
+REST-271;Sashimi de salmon (5 piezas);21500
+REST-271;Geishas de salmon con maracuya;60000
+REST-272;Combo Salmon (15 piezas);48000
+REST-272;Combo California (15 piezas);39000
+REST-272;Nigiri de salmon (5 piezas);19000
+REST-272;Wok de vegetales y arroz;22500
+REST-272;Sashimi de salmon (5 piezas);23000
+REST-272;Ceviche mixto con maracuya;63000
+REST-273;Combo Salmon (15 piezas);43000
+REST-273;Combo California (15 piezas);37500
+REST-273;Nigiri de salmon (5 piezas);17000
+REST-273;Wok de vegetales y arroz;20500
+REST-273;Sashimi de salmon (5 piezas);23000
+REST-273;Temaki de atun con palta y queso;61500
+REST-274;Combo Salmon (15 piezas);44000
+REST-274;Combo California (15 piezas);41500
+REST-274;Nigiri de salmon (5 piezas);16500
+REST-274;Wok de vegetales y arroz;24000
+REST-274;Sashimi de salmon (5 piezas);23000
+REST-274;Tiradito de pulpo estilo nikkei;55500
+REST-275;Combo Salmon (15 piezas);47500
+REST-275;Combo California (15 piezas);39000
+REST-275;Nigiri de salmon (5 piezas);18000
+REST-275;Wok de vegetales y arroz;22500
+REST-275;Sashimi de salmon (5 piezas);20500
+REST-275;Tiradito de pulpo flambeado;62500
+REST-276;Combo Salmon (15 piezas);48500
+REST-276;Combo California (15 piezas);34500
+REST-276;Nigiri de salmon (5 piezas);19000
+REST-276;Wok de vegetales y arroz;23000
+REST-276;Sashimi de salmon (5 piezas);22500
+REST-276;Nigiri de pez blanco con maracuya;62500
+REST-277;Combo Salmon (15 piezas);48000
+REST-277;Combo California (15 piezas);41000
+REST-277;Nigiri de salmon (5 piezas);17500
+REST-277;Wok de vegetales y arroz;21500
+REST-277;Sashimi de salmon (5 piezas);22500
+REST-277;Ceviche mixto con palta y queso;62000
+REST-278;Combo Salmon (15 piezas);49000
+REST-278;Combo California (15 piezas);39500
+REST-278;Nigiri de salmon (5 piezas);17000
+REST-278;Wok de vegetales y arroz;24000
+REST-278;Sashimi de salmon (5 piezas);22500
+REST-278;Geishas de salmon estilo nikkei;59000
+REST-279;Combo Salmon (15 piezas);47500
+REST-279;Combo California (15 piezas);39000
+REST-279;Nigiri de salmon (5 piezas);18500
+REST-279;Wok de vegetales y arroz;21500
+REST-279;Sashimi de salmon (5 piezas);21000
+REST-279;Nigiri de pez blanco flambeado;56000
+REST-280;Combo Salmon (15 piezas);46500
+REST-280;Combo California (15 piezas);40500
+REST-280;Nigiri de salmon (5 piezas);17000
+REST-280;Wok de vegetales y arroz;20500
+REST-280;Sashimi de salmon (5 piezas);21500
+REST-280;Ceviche mixto flambeado;63500
+REST-281;Combo Salmon (15 piezas);48000
+REST-281;Combo California (15 piezas);36500
+REST-281;Nigiri de salmon (5 piezas);17500
+REST-281;Wok de vegetales y arroz;24000
+REST-281;Sashimi de salmon (5 piezas);22500
+REST-281;Temaki de atun estilo nikkei;59500
+REST-282;Combo Salmon (15 piezas);45500
+REST-282;Combo California (15 piezas);37500
+REST-282;Nigiri de salmon (5 piezas);16500
+REST-282;Wok de vegetales y arroz;23500
+REST-282;Sashimi de salmon (5 piezas);20500
+REST-282;Temaki de atun con salsa teriyaki;60500
+REST-283;Shawarma de carne tradicional;17000
+REST-283;Shawarma de pollo;15500
+REST-283;Falafel al plato;18000
+REST-283;Shawarma mixto;17500
+REST-283;Kebab de cordero;22500
+REST-283;Falafel relleno con salsa de yogur;25000
+REST-284;Shawarma de carne tradicional;16000
+REST-284;Shawarma de pollo;16500
+REST-284;Falafel al plato;19000
+REST-284;Shawarma mixto;17500
+REST-284;Kebab de cordero;21500
+REST-284;Shawarma mixto extra picante;23000
+REST-285;Shawarma de carne tradicional;15500
+REST-285;Shawarma de pollo;17500
+REST-285;Falafel al plato;16500
+REST-285;Shawarma mixto;21000
+REST-285;Kebab de cordero;21000
+REST-285;Kebab de ternera extra picante;21000
+REST-286;Shawarma de carne tradicional;17000
+REST-286;Shawarma de pollo;17500
+REST-286;Falafel al plato;17500
+REST-286;Shawarma mixto;19500
+REST-286;Kebab de cordero;23000
+REST-286;Kafta al plato extra picante;23500
+REST-287;Shawarma de carne tradicional;17500
+REST-287;Shawarma de pollo;15000
+REST-287;Falafel al plato;19000
+REST-287;Shawarma mixto;17500
+REST-287;Kebab de cordero;19000
+REST-287;Hummus con carne con ensalada tabule;24000
+REST-288;Shawarma de carne tradicional;15500
+REST-288;Shawarma de pollo;16000
+REST-288;Falafel al plato;19500
+REST-288;Shawarma mixto;18000
+REST-288;Kebab de cordero;19500
+REST-288;Shawarma mixto con pan arabe tostado;24000
+REST-289;Shawarma de carne tradicional;16000
+REST-289;Shawarma de pollo;14500
+REST-289;Falafel al plato;16500
+REST-289;Shawarma mixto;19000
+REST-289;Kebab de cordero;20000
+REST-289;Kafta al plato con salsa de yogur;22000
+REST-290;Shawarma de carne tradicional;17500
+REST-290;Shawarma de pollo;17000
+REST-290;Falafel al plato;18000
+REST-290;Shawarma mixto;20500
+REST-290;Kebab de cordero;20500
+REST-290;Shawarma de cordero con ensalada tabule;23500
+REST-291;Shawarma de carne tradicional;17500
+REST-291;Shawarma de pollo;15500
+REST-291;Falafel al plato;17000
+REST-291;Shawarma mixto;19500
+REST-291;Kebab de cordero;21500
+REST-291;Kebab de ternera con salsa de yogur;25000
+REST-292;Shawarma de carne tradicional;16500
+REST-292;Shawarma de pollo;16500
+REST-292;Falafel al plato;17500
+REST-292;Shawarma mixto;18500
+REST-292;Kebab de cordero;21500
+REST-292;Kafta al plato con ensalada tabule;22000
+REST-293;Shawarma de carne tradicional;16000
+REST-293;Shawarma de pollo;15000
+REST-293;Falafel al plato;16500
+REST-293;Shawarma mixto;20000
+REST-293;Kebab de cordero;19000
+REST-293;Shawarma mixto con ensalada tabule;25000
+REST-294;Shawarma de carne tradicional;17000
+REST-294;Shawarma de pollo;16500
+REST-294;Falafel al plato;19000
+REST-294;Shawarma mixto;20500
+REST-294;Kebab de cordero;22500
+REST-294;Kebab de ternera con pan arabe tostado;22500
+REST-295;Shawarma de carne tradicional;16000
+REST-295;Shawarma de pollo;16000
+REST-295;Falafel al plato;18500
+REST-295;Shawarma mixto;19000
+REST-295;Kebab de cordero;21000
+REST-295;Shawarma mixto tamano XL;21500
+REST-296;Shawarma de carne tradicional;17500
+REST-296;Shawarma de pollo;15500
+REST-296;Falafel al plato;19500
+REST-296;Shawarma mixto;17500
+REST-296;Kebab de cordero;23000
+REST-296;Shawarma de cordero con pan arabe tostado;23500
+REST-297;Shawarma de carne tradicional;17500
+REST-297;Shawarma de pollo;14500
+REST-297;Falafel al plato;18000
+REST-297;Shawarma mixto;20500
+REST-297;Kebab de cordero;20000
+REST-297;Kafta al plato en pan pita;24500
+REST-298;Shawarma de carne tradicional;18500
+REST-298;Shawarma de pollo;14500
+REST-298;Falafel al plato;18500
+REST-298;Shawarma mixto;20500
+REST-298;Kebab de cordero;23000
+REST-298;Hummus con carne extra picante;24000
+REST-299;Shawarma de carne tradicional;17500
+REST-299;Shawarma de pollo;16500
+REST-299;Falafel al plato;16500
+REST-299;Shawarma mixto;20500
+REST-299;Kebab de cordero;20500
+REST-299;Hummus con carne tamano XL;24500
+REST-300;Shawarma de carne tradicional;16000
+REST-300;Shawarma de pollo;16000
+REST-300;Falafel al plato;19500
+REST-300;Shawarma mixto;20500
+REST-300;Kebab de cordero;20000
+REST-300;Falafel relleno extra picante;24000
+REST-301;Shawarma de carne tradicional;17500
+REST-301;Shawarma de pollo;15500
+REST-301;Falafel al plato;17500
+REST-301;Shawarma mixto;18500
+REST-301;Kebab de cordero;20000
+REST-301;Shawarma mixto en pan pita;21000
+REST-302;Shawarma de carne tradicional;17500
+REST-302;Shawarma de pollo;15000
+REST-302;Falafel al plato;18500
+REST-302;Shawarma mixto;20500
+REST-302;Kebab de cordero;21000
+REST-302;Kafta al plato con pan arabe tostado;25000
+REST-303;Shawarma de carne tradicional;18500
+REST-303;Shawarma de pollo;14500
+REST-303;Falafel al plato;20000
+REST-303;Shawarma mixto;19500
+REST-303;Kebab de cordero;22000
+REST-303;Kebab de ternera tamano XL;24500
+REST-304;Shawarma de carne tradicional;16500
+REST-304;Shawarma de pollo;16000
+REST-304;Falafel al plato;17500
+REST-304;Shawarma mixto;17000
+REST-304;Kebab de cordero;22500
+REST-304;Shawarma de cordero en pan pita;22000
