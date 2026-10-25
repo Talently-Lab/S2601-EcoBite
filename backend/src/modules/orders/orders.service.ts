@@ -21,6 +21,27 @@ export class OrdersService {
       throw new NotFoundException('Restaurant not found or inactive');
     }
 
+    if (restaurant.comuna === null) {
+      throw new BadRequestException('Restaurant comuna is not configured');
+    }
+
+    const comunaDistance = await this.prisma.comunaDistance.findUnique({
+      where: {
+        originComuna_destinationComuna: {
+          originComuna: restaurant.comuna,
+          destinationComuna: dto.deliveryComuna,
+        },
+      },
+    });
+
+    if (!comunaDistance) {
+      throw new BadRequestException(
+        'Distance not found for the selected comunas',
+      );
+    }
+
+    const distanceKm = comunaDistance.distanceKm;
+
     const productIds = dto.items.map((item) => item.productId);
 
     if (new Set(productIds).size !== productIds.length) {
@@ -72,7 +93,7 @@ export class OrdersService {
 
     const co2SavedG = new Prisma.Decimal('46.58')
       .minus(emissionPerKm)
-      .mul(dto.distanceKm)
+      .mul(distanceKm)
       .toDecimalPlaces(0, Prisma.Decimal.ROUND_HALF_UP)
       .toNumber();
 
@@ -81,7 +102,8 @@ export class OrdersService {
         userId,
         restaurantId: restaurant.id,
         totalAmount,
-        distanceKm: new Prisma.Decimal(dto.distanceKm),
+        distanceKm,
+        deliveryComuna: dto.deliveryComuna,
         deliveryMethod: restaurant.availableDeliveryMethod,
         packagingType: restaurant.packagingType,
         orderStatus: 'COMPLETED',

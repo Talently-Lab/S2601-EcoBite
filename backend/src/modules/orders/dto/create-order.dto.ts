@@ -3,8 +3,8 @@ import {
   ArrayMinSize,
   IsArray,
   IsInt,
-  IsNumber,
   IsUUID,
+  Max,
   Min,
   ValidateNested,
 } from 'class-validator';
@@ -37,13 +37,15 @@ export class CreateOrderDto {
   restaurantId!: string;
 
   @ApiProperty({
-    description: 'Delivery distance in kilometers',
-    example: 3.5,
-    minimum: 0,
+    description: 'Delivery comuna (CABA, 1 to 15)',
+    example: 14,
+    minimum: 1,
+    maximum: 15,
   })
-  @IsNumber({ maxDecimalPlaces: 2 })
-  @Min(0)
-  distanceKm!: number;
+  @IsInt()
+  @Min(1)
+  @Max(15)
+  deliveryComuna!: number;
 
   @ApiProperty({
     description: 'Products included in the order',
