@@ -38,7 +38,7 @@ function parseOrder(data: unknown): CreatedOrder {
 }
 
 const statusMessages: Record<number, string> = {
-    400: 'Revisá los productos, las cantidades y la distancia antes de confirmar.',
+    400: 'Revisá los productos, las cantidades y la comuna de entrega antes de confirmar.',
     401: 'Tu sesión venció. Volvé a ingresar para confirmar la compra.',
     403: 'No pudimos autorizar la compra. Revisá tu sesión e intentá de nuevo.',
     404: 'El restaurante ya no está disponible. Revisá tu carrito.',
@@ -63,7 +63,7 @@ function handleOrderError(cause: unknown): never {
 export async function createOrder(input: CreateOrderInput): Promise<CreatedOrder> {
     const payload: CreateOrderInput = {
         restaurantId: input.restaurantId,
-        distanceKm: input.distanceKm,
+        deliveryComuna: input.deliveryComuna,
         items: input.items.map(({ productId, quantity }) => ({ productId, quantity })),
     };
     try {

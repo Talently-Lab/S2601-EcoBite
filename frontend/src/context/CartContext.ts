@@ -7,10 +7,12 @@ export type CartContextValue = {
     restaurantId: string | null;
     totalQuantity: number;
     totalCents: number;
+    deliveryComuna: number | null;
+    setDeliveryComuna: (comuna: number) => void;
     isSubmitting: boolean;
     purchaseError: OrderError | null;
     createdOrder: ConfirmedOrder | null;
-    confirmPurchase: (distanceKm: number) => Promise<void>;
+    confirmPurchase: () => Promise<void>;
     closeConfirmationModal: () => void;
     addToCart: (product: CartProduct) => void;
     removeFromCart: (productId: string, restaurantId: string) => void;

@@ -40,7 +40,7 @@ main:has(.cart-page:not(.cart-page--empty)) {
 
 .surface-card {
     background: var(--color-background);
-    box-shadow: 0 var(--space-0-5) var(--space-2) color-mix(in srgb, var(--color-primary) 10%, transparent);
+    box-shadow: var(--shadow-card);
 }
 
 .state-actions {

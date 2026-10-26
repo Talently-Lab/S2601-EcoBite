@@ -40,7 +40,7 @@ export default function App() {
 				</Route>
 				<Route element={
 					user?.role === 'CLIENT'
-						? <CartProvider key={user.id}>
+						? <CartProvider key={user.id} userId={user.id}>
                                 <Header />
                                 <main tabIndex={-1}>
                                     <Outlet />

@@ -17,7 +17,7 @@
     text-decoration: none;
 }
 
-.restaurant-card-tags {
+.restaurant-tags {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-0-5);

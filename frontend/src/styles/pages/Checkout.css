@@ -103,6 +103,13 @@ main:has(.checkout-page) {
     font-size: var(--font-size-md);
 }
 
+.checkout-choose-comuna {
+    color: var(--color-forest);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    text-underline-offset: 0.15em;
+}
+
 .checkout-payment legend {
     margin-block-end: var(--space-2);
     font-weight: 700;

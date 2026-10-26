@@ -8,6 +8,7 @@ import { useCart } from '../context/CartContext';
 import { Link } from 'react-router';
 import { FiInfo } from 'react-icons/fi';
 import emptyCartIllustration from '../assets/icons/empty-cart.svg';
+import { centsToPrice } from '../utils/price';
 
 export function Cart() {
 
@@ -35,7 +36,7 @@ export function Cart() {
                         variant="descriptive" />
                     <div className="cart-summary" aria-live="polite">
                         <span>Total</span>
-                        <Price price={totalCents / 100} />
+                        <Price price={centsToPrice(totalCents)} />
                     </div>
                     <Button to="/checkout">Ir a pagar</Button>
                 </div>

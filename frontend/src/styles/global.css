@@ -24,7 +24,10 @@
 @import './pages/ProfileItem.css';
 @font-face {
     font-family: 'BricolageGrotesque';
-    src: url(../assets/fonts/Bricolage_Grotesque/BricolageGrotesque-VariableFont_opsz\,wdth\,wght.ttf);
+    src: url('../assets/fonts/Bricolage_Grotesque/BricolageGrotesque-Variable.ttf') format('truetype');
+    font-weight: 200 800;
+    font-stretch: 75% 100%;
+    font-display: swap;
 }
 
 :root {
@@ -43,11 +46,11 @@
     --color-surface-muted: #d9e4dc;
     --color-page-background: color-mix(in srgb, var(--color-accent) 12%, var(--color-background));
     --font-family: 'BricolageGrotesque', sans-serif;
-    --font-size-xs: 10px;
-    --font-size-sm: 12px;
-    --font-size-md: 16px;
-    --font-size-lg: 18px;
-    --font-size-heading: 36px;
+    --font-size-xs: 0.625rem;
+    --font-size-sm: 0.75rem;
+    --font-size-md: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-heading: 2.25rem;
     --space-0-5: 4px;
     --space-1: 8px;
     --space-1-5: 12px;
@@ -69,7 +72,12 @@
     --navbar-height: 5rem;
     --header-height: 4rem;
     --shadow-navigation: 0 -1px 0 var(--color-border);
+    --shadow-card: 0 var(--space-0-5) var(--space-2) color-mix(in srgb, var(--color-primary) 10%, transparent);
     --transition-control: 160ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    :root { --transition-control: 0ms; }
 }
 
 *,
