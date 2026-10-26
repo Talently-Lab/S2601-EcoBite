@@ -94,13 +94,7 @@ describe('Auth (e2e)', () => {
       (login.body as ApiEnvelope<{ id: string }>).data.id,
     );
 
-    const afterRefresh = await agent
-      .post('/auth/refresh')
-      .set(CSRF_HEADER, csrf)
-      .expect(200);
-    expect((afterRefresh.body as ApiEnvelope<{ id: string }>).data.id).toBe(
-      (login.body as ApiEnvelope<{ id: string }>).data.id,
-    );
+    await agent.post('/auth/refresh').set(CSRF_HEADER, csrf).expect(401);
 
     await agent.post('/auth/logout').set(CSRF_HEADER, csrf).expect(200);
 

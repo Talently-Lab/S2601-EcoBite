@@ -155,6 +155,7 @@ describe('AuthService', () => {
         name: userRow().name,
         email: userRow().email,
         registeredAt: userRow().registeredAt,
+        role: UserRole.CLIENT,
       });
 
       expect(mockedCompare).toHaveBeenCalledWith('good', 'stored-hash');
@@ -169,6 +170,18 @@ describe('AuthService', () => {
         'access.jwt',
         expect.objectContaining({ httpOnly: true }),
       );
+    });
+
+    it('returns ADMIN role when an administrator logs in', async () => {
+      const admin = userRow({ role: UserRole.ADMIN });
+
+      prisma.user.findUnique.mockResolvedValue(admin);
+      mockedCompare.mockResolvedValueOnce(true);
+
+      const result = await service.login(admin.email, 'good', mockCookies());
+
+      expect(result.role).toBe(UserRole.ADMIN);
+      expect(result).not.toHaveProperty('passwordHash');
     });
 
     it('treats a missing user as invalid credentials', async () => {
@@ -286,6 +299,7 @@ describe('AuthService', () => {
         name: user.name,
         email: user.email,
         registeredAt: user.registeredAt,
+        role: user.role,
       });
     });
   });

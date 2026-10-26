@@ -70,6 +70,7 @@ describe('UserService', () => {
           name: true,
           email: true,
           registeredAt: true,
+          role: true,
         },
       });
 
@@ -211,6 +212,7 @@ describe('UserService', () => {
           name: true,
           email: true,
           registeredAt: true,
+          role: true,
         },
       });
       expect(prisma.user.update).not.toHaveBeenCalled();

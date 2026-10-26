@@ -21,6 +21,7 @@ const userSafeSelect = {
   name: true,
   email: true,
   registeredAt: true,
+  role: true,
 } satisfies Prisma.UserSelect;
 
 export type UserSafe = Prisma.UserGetPayload<{

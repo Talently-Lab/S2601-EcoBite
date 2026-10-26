@@ -1,6 +1,7 @@
 // NOTE: Defines and documents safe authentication user response payloads.
 
 import { ApiProperty } from '@nestjs/swagger';
+import { UserRole } from '@prisma/client';
 
 export class AuthUserResponseDto {
   @ApiProperty({
@@ -30,4 +31,11 @@ export class AuthUserResponseDto {
     description: 'Fecha y hora de registro del usuario.',
   })
   registeredAt!: Date;
+
+  @ApiProperty({
+    enum: UserRole,
+    example: UserRole.ADMIN,
+    description: 'Rol del usuario autenticado (ADMIN o CLIENT).',
+  })
+  role!: UserRole;
 }
