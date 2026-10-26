@@ -1,3 +1,9 @@
+.admin-dashboard,
+.admin-kpis,
+.admin-recent-orders-empty {
+    display: grid;
+}
+
 .admin-kpi-card,
 .admin-recent-orders {
     display: flex;
@@ -8,30 +14,34 @@
     background: var(--color-background);
 }
 
+.admin-dashboard-heading h1,
+.admin-kpi-empty {
+    font-size: var(--font-size-lg);
+    line-height: 1.2;
+}
+
+.admin-dashboard-heading p,
+.admin-kpi-caption {
+    font-size: var(--font-size-sm);
+}
+
+.admin-dashboard-heading p,
+.admin-recent-orders-empty {
+    color: var(--color-forest);
+}
+
 .admin-kpi-card h2,
 .admin-recent-orders h2 {
     font-size: var(--font-size-md);
 }
 
 .admin-dashboard {
-    display: grid;
     gap: var(--space-3);
     max-inline-size: var(--content-width);
     margin-inline: auto;
 }
 
-.admin-dashboard-heading h1 {
-    font-size: var(--font-size-lg);
-    line-height: 1.2;
-}
-
-.admin-dashboard-heading p {
-    color: var(--color-forest);
-    font-size: var(--font-size-sm);
-}
-
 .admin-kpis {
-    display: grid;
     gap: var(--space-2);
 }
 
@@ -58,16 +68,13 @@
 }
 
 .admin-kpi-empty {
-    font-size: var(--font-size-lg);
     font-weight: 700;
-    line-height: 1.2;
 }
 
 .admin-kpi-caption {
     margin-block-start: auto;
     padding-block-start: var(--space-1);
     border-block-start: 1px solid currentColor;
-    font-size: var(--font-size-sm);
     opacity: 0.8;
 }
 
@@ -76,13 +83,11 @@
 }
 
 .admin-recent-orders-empty {
-    display: grid;
     flex: 1;
     place-items: center;
     padding: var(--space-3);
     border: 1px dashed var(--color-border);
     border-radius: var(--radius-sm);
-    color: var(--color-forest);
     text-align: center;
 }
 
@@ -97,6 +102,11 @@
 }
 
 @media (min-width: 64rem) {
+    .admin-kpi-card,
+    .admin-recent-orders {
+        padding: var(--space-3);
+    }
+
     .admin-dashboard-heading h1 {
         font-size: var(--font-size-heading);
     }
@@ -111,10 +121,5 @@
 
     .admin-kpi-card--impact {
         grid-column: auto;
-    }
-
-    .admin-kpi-card,
-    .admin-recent-orders {
-        padding: var(--space-3);
     }
 }
