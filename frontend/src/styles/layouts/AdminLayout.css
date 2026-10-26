@@ -1,0 +1,41 @@
+.admin-shell {
+    position: relative;
+    min-block-size: 100dvh;
+    background: var(--color-surface);
+}
+
+.admin-skip-link {
+    position: absolute;
+    inset-block-start: var(--space-1);
+    inset-inline-start: var(--space-1);
+    z-index: 1;
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-sm);
+    background: var(--color-background);
+    color: var(--color-primary);
+    transform: translateY(calc(-100% - var(--space-1)));
+}
+
+.admin-skip-link:focus {
+    transform: none;
+}
+
+.admin-main {
+    min-inline-size: 0;
+    max-inline-size: none;
+    min-block-size: 0;
+    margin: 0;
+    padding: var(--space-3) var(--space-2) var(--space-4);
+}
+
+/* Keep this breakpoint in sync with AdminSidebar.css. */
+@media (min-width: 64rem) {
+    .admin-shell {
+        display: grid;
+        grid-template-columns: 16rem minmax(0, 1fr);
+    }
+
+    .admin-main {
+        padding: var(--space-4);
+    }
+}

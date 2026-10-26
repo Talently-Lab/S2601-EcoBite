@@ -5,9 +5,12 @@
 @import './layouts/base.css';
 @import './layouts/Navbar.css';
 @import './layouts/Header.css';
+@import './layouts/AdminLayout.css';
+@import './pages/AdminSidebar.css';
 @import './layouts/Footer.css';
 @import './layouts/pages.css';
 @import './pages/Home.css';
+@import './pages/AdminDashboard.css';
 @import './pages/Login.css';
 @import './pages/Profile.css';
 @import './pages/Cart.css';

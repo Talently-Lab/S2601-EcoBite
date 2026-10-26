@@ -81,7 +81,7 @@ body {
 	-webkit-tap-highlight-color: transparent;
 }
 
-:where(button):disabled {
+:where(button):disabled, input:disabled {
 	cursor: not-allowed;
 }
 
