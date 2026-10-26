@@ -13,9 +13,11 @@ import { CartProvider } from './context/CartProvider';
 import { Checkout } from './pages/Checkout';
 import { ConfirmationModal } from './components/pages/ConfirmationModal';
 import { AdminDashboard } from './pages/AdminDashboard';
+import { AdminLayout } from './components/layouts/AdminLayout';
+import { ADMIN_DASHBOARD_PATH } from './config/admin';
 
 const HOME_BY_ROLE = {
-	ADMIN: '/admin/dashboard',
+	ADMIN: ADMIN_DASHBOARD_PATH,
 	CLIENT: '/',
 };
 
@@ -30,9 +32,12 @@ export default function App() {
 				<Route path="/login" element={
 					user ? <Navigate to={getHomePath(user)} replace /> : <main><Login /></main>
 				} />
-				<Route path="/admin/dashboard" element={
-					user?.role === 'ADMIN' ? <AdminDashboard /> : <Navigate to={getHomePath(user)} replace />
-				} />
+				<Route path="/admin" element={
+					user?.role === 'ADMIN' ? <AdminLayout /> : <Navigate to={getHomePath(user)} replace />
+				}>
+					<Route index element={<Navigate to="dashboard" replace />} />
+					<Route path="dashboard" element={<AdminDashboard />} />
+				</Route>
 				<Route element={
 					user?.role === 'CLIENT'
 						? <CartProvider key={user.id}>

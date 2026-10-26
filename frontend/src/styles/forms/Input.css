@@ -38,10 +38,6 @@ input::placeholder {
 	opacity: 0.6;
 }
 
-input:disabled {
-	cursor: not-allowed;
-}
-
 .input-field {
 	display: grid;
 	gap: var(--space-1);

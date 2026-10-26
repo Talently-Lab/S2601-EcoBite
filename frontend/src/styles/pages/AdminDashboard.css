@@ -1,0 +1,120 @@
+.admin-kpi-card,
+.admin-recent-orders {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-2);
+    border-radius: var(--radius-md);
+    background: var(--color-background);
+}
+
+.admin-kpi-card h2,
+.admin-recent-orders h2 {
+    font-size: var(--font-size-md);
+}
+
+.admin-dashboard {
+    display: grid;
+    gap: var(--space-3);
+    max-inline-size: var(--content-width);
+    margin-inline: auto;
+}
+
+.admin-dashboard-heading h1 {
+    font-size: var(--font-size-lg);
+    line-height: 1.2;
+}
+
+.admin-dashboard-heading p {
+    color: var(--color-forest);
+    font-size: var(--font-size-sm);
+}
+
+.admin-kpis {
+    display: grid;
+    gap: var(--space-2);
+}
+
+.admin-kpi-card {
+    min-block-size: 12rem;
+    border: 1px solid var(--color-border);
+}
+
+.admin-kpi-card--impact {
+    border-color: var(--color-primary);
+    background: var(--color-primary);
+    color: var(--color-background);
+}
+
+.admin-kpi-card h2 {
+    display: flex;
+    align-items: center;
+    gap: var(--space-0-5);
+    font-weight: 600;
+}
+
+.admin-kpi-card h2 svg {
+    color: var(--color-accent);
+}
+
+.admin-kpi-empty {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.admin-kpi-caption {
+    margin-block-start: auto;
+    padding-block-start: var(--space-1);
+    border-block-start: 1px solid currentColor;
+    font-size: var(--font-size-sm);
+    opacity: 0.8;
+}
+
+.admin-recent-orders {
+    min-block-size: 16rem;
+}
+
+.admin-recent-orders-empty {
+    display: grid;
+    flex: 1;
+    place-items: center;
+    padding: var(--space-3);
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-forest);
+    text-align: center;
+}
+
+@media (min-width: 48rem) {
+    .admin-kpis {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .admin-kpi-card--impact {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (min-width: 64rem) {
+    .admin-dashboard-heading h1 {
+        font-size: var(--font-size-heading);
+    }
+
+    .admin-dashboard-heading p {
+        font-size: var(--font-size-md);
+    }
+
+    .admin-kpis {
+        grid-template-columns: 1.1fr 1fr 1fr;
+    }
+
+    .admin-kpi-card--impact {
+        grid-column: auto;
+    }
+
+    .admin-kpi-card,
+    .admin-recent-orders {
+        padding: var(--space-3);
+    }
+}
