@@ -1,9 +1,87 @@
-.addresses {
+.addresses,
+.addresses-trigger {
     display: flex;
     align-items: center;
-    font-size: var(--font-size-sm);
+}
 
-    & button {
-        padding: 0 var(--space-1);
+.addresses-trigger,
+.addresses-option {
+    border: 0;
+    background: transparent;
+    color: var(--color-text);
+    cursor: pointer;
+}
+
+.addresses-trigger:focus-visible,
+.addresses-option:focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: var(--space-0-5);
+}
+
+.addresses {
+    inline-size: fit-content;
+    margin-block-end: var(--space-3);
+}
+
+.addresses-trigger {
+    min-block-size: var(--touch-target);
+    gap: var(--space-1-5);
+    padding: 0;
+    font-size: var(--font-size-md);
+}
+
+.addresses-trigger svg {
+    inline-size: var(--space-3);
+    block-size: var(--space-3);
+}
+
+.addresses-chevron {
+    transition: transform var(--transition-control);
+}
+
+.addresses:has(.addresses-popover:popover-open) .addresses-chevron {
+    transform: rotate(180deg);
+}
+
+.addresses-popover {
+    --addresses-popover-viewport-reserve: 10rem;
+    position: fixed;
+    position-anchor: auto;
+    inset: auto;
+    top: calc(anchor(bottom) + var(--space-1));
+    left: anchor(left);
+    position-try-fallbacks: flip-block, flip-inline;
+    min-inline-size: 14rem;
+    max-block-size: calc(100dvh - var(--addresses-popover-viewport-reserve));
+    margin: 0;
+    padding: var(--space-1);
+    overflow-y: auto;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-card);
+}
+
+.addresses-popover:popover-open {
+    display: grid;
+}
+
+.addresses-option {
+    min-block-size: var(--touch-target);
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-md);
+    text-align: start;
+}
+
+.addresses-option[aria-pressed='true'] {
+    background: var(--color-surface-muted);
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+@media (hover: hover) {
+    .addresses-option:hover {
+        background: var(--color-surface-muted);
     }
 }

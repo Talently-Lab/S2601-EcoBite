@@ -1,14 +1,12 @@
 import { useId } from 'react';
-import { Navigate } from 'react-router';
+import { Link, Navigate } from 'react-router';
 import { Price } from '../components/core/Price';
 import { Button } from '../components/core/Button';
 import { PageHeader } from '../components/core/PageHeader';
 import { Input } from '../components/forms/Input';
 import { FormError } from '../components/forms/FormError';
-import { CHECKOUT_PREVIEW_ENABLED } from '../config/checkout';
 import { useCart } from '../context/CartContext';
-
-const SIMULATED_DISTANCE_KM = 3.5;
+import { centsToPrice } from '../utils/price';
 
 type PaymentOptionProps = {
     name: string;
@@ -34,7 +32,7 @@ type CheckoutSummaryProps = {
 };
 
 function CheckoutSummary({ titleId, restaurantName, productCount, totalCents }: CheckoutSummaryProps) {
-    const total = totalCents / 100;
+    const total = centsToPrice(totalCents);
 
     return (
         <section className="checkout-summary surface-card" aria-labelledby={titleId}>
@@ -85,11 +83,10 @@ function ConfirmOrderAction({ isSubmitting, disabled, onConfirm }: ConfirmOrderA
 }
 
 export function Checkout() {
-    const { items, totalQuantity, totalCents, isSubmitting, purchaseError, confirmPurchase } = useCart();
+    const { items, totalQuantity, totalCents, deliveryComuna, isSubmitting, purchaseError, confirmPurchase } = useCart();
     const checkoutId = useId();
     const deliveryTitleId = `${checkoutId}-delivery`;
     const summaryTitleId = `${checkoutId}-summary`;
-    const hasMockProducts = items.some((item) => item.isMock);
     if (!items.length) return <Navigate to="/cart" replace />;
 
     return (
@@ -98,7 +95,8 @@ export function Checkout() {
 
             <section className="checkout-address" aria-labelledby={deliveryTitleId}>
                 <h2 id={deliveryTitleId}>Dirección de entrega</h2>
-                <Input label="Dirección" value="Comuna 15" readOnly />
+                <Input label="Comuna de entrega" value={deliveryComuna === null ? 'Elegí una comuna' : `Comuna ${deliveryComuna}`} readOnly />
+                {deliveryComuna === null && <Link className="checkout-choose-comuna" to="/">Elegir comuna en inicio</Link>}
             </section>
 
             <fieldset className="checkout-payment" disabled={isSubmitting}>
@@ -111,8 +109,8 @@ export function Checkout() {
                 productCount={totalQuantity} totalCents={totalCents} />
 
             {purchaseError && <FormError id={`${checkoutId}-error`} className="input-error">{purchaseError.message}</FormError>}
-            <ConfirmOrderAction isSubmitting={isSubmitting} disabled={hasMockProducts && !CHECKOUT_PREVIEW_ENABLED}
-                onConfirm={() => void confirmPurchase(SIMULATED_DISTANCE_KM)} />
+            <ConfirmOrderAction isSubmitting={isSubmitting} disabled={deliveryComuna === null}
+                onConfirm={() => void confirmPurchase()} />
         </div>
     );
 }

@@ -4,10 +4,12 @@ export type Restaurant = {
     id: string;
     idRestaurant: string;
     name: string;
+    foodCategory: 'HOMEMADE' | 'FAST_FOOD' | 'COFFEE_AND_DESSERTS' | 'HEALTHY' | 'VEGAN' | 'INTERNATIONAL';
     packagingType: 'BIODEGRADABLE' | 'RECYCLABLE' | 'NON_RECYCLABLE';
     availableDeliveryMethod: 'BIKE' | 'MOTORCYCLE' | 'CAR';
     status: 'ACTIVE' | 'INACTIVE';
     sustainabilityIndicator: string;
+    products: { id: string; name: string; price: string }[];
 };
 
 export type RestaurantProps = {
@@ -25,7 +27,6 @@ export type CartProduct = {
     name: string;
     unitPriceCents: number;
     description?: string;
-    isMock?: boolean;
 };
 
 export type CatalogProduct = Omit<CartProduct, 'restaurantName'>;
@@ -33,7 +34,7 @@ export type CartItem = CartProduct & { quantity: number };
 
 export type CreateOrderInput = {
     restaurantId: string;
-    distanceKm: number;
+    deliveryComuna: number;
     items: { productId: string; quantity: number }[];
 };
 
@@ -44,5 +45,5 @@ export type CreatedOrder = {
     deliveryMethod?: Restaurant['availableDeliveryMethod'];
 };
 
-export type ConfirmedOrder = CreatedOrder & { restaurantName: string; isPreview?: boolean };
+export type ConfirmedOrder = CreatedOrder & { restaurantName: string };
 

@@ -3,6 +3,7 @@ import { Price } from '../core/Price';
 import { ItemHeader } from '../shared/ItemHeader';
 import { QuantitySelector } from '../forms/QuantitySelector';
 import platePlaceholder from '../../assets/icons/plate_placeholder.svg';
+import { centsToPrice, getSubtotalCents } from '../../utils/price';
 
 type ProductCardProps =
     | { variant?: 'menu'; product: CartProduct; disabled?: boolean }
@@ -17,7 +18,7 @@ export function ProductCard(props: ProductCardProps) {
     const { product, disabled = false } = props;
     const variant = props.variant ?? 'menu';
     const config = VARIANT_CONFIG[variant];
-    const price = product.unitPriceCents * ('quantity' in product ? product.quantity : 1) / 100;
+    const price = centsToPrice(getSubtotalCents(product.unitPriceCents, 'quantity' in product ? product.quantity : 1));
 
     return (
         <article className={`product-card product-card--${variant}`}>
