@@ -4,6 +4,7 @@
     display: grid;
 }
 
+.admin-kpi-feedback,
 .admin-kpi-card,
 .admin-recent-orders {
     display: flex;
@@ -15,18 +16,18 @@
 }
 
 .admin-dashboard-heading h1,
-.admin-kpi-empty {
+.admin-kpi-value {
     font-size: var(--font-size-lg);
     line-height: 1.2;
 }
 
-.admin-dashboard-heading p,
-.admin-kpi-caption {
+.admin-dashboard-heading p {
     font-size: var(--font-size-sm);
 }
 
 .admin-dashboard-heading p,
-.admin-recent-orders-empty {
+.admin-recent-orders-empty,
+.admin-kpi-feedback {
     color: var(--color-forest);
 }
 
@@ -67,15 +68,17 @@
     color: var(--color-accent);
 }
 
-.admin-kpi-empty {
+.admin-kpi-value {
     font-weight: 700;
 }
 
-.admin-kpi-caption {
-    margin-block-start: auto;
-    padding-block-start: var(--space-1);
-    border-block-start: 1px solid currentColor;
-    opacity: 0.8;
+.admin-kpi-feedback {
+    grid-column: 1 / -1;
+    align-items: center;
+    justify-content: center;
+    min-block-size: 12rem;
+    border: 1px solid var(--color-border);
+    text-align: center;
 }
 
 .admin-recent-orders {
@@ -102,6 +105,7 @@
 }
 
 @media (min-width: 64rem) {
+    .admin-kpi-feedback,
     .admin-kpi-card,
     .admin-recent-orders {
         padding: var(--space-3);

@@ -180,16 +180,6 @@ main:has(.checkout-page) {
     color: var(--color-background);
 }
 
-.checkout-confirm-spinner {
-    inline-size: 1.25em;
-    block-size: 1.25em;
-    flex-shrink: 0;
-    border: 2px solid currentColor;
-    border-block-start-color: transparent;
-    border-radius: 50%;
-    animation: checkout-confirm-spin 800ms linear infinite;
-}
-
 .checkout-submit {
     gap: var(--space-1);
 }
@@ -197,12 +187,4 @@ main:has(.checkout-page) {
 .checkout-submit-hint {
     font-size: var(--font-size-xs);
     text-align: center;
-}
-
-@keyframes checkout-confirm-spin {
-    to { transform: rotate(360deg); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .checkout-confirm-spinner { animation: none; }
 }

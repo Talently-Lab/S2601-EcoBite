@@ -1,0 +1,17 @@
+.loading-spinner {
+    inline-size: 1.25em;
+    block-size: 1.25em;
+    flex-shrink: 0;
+    border: 2px solid currentColor;
+    border-block-start-color: transparent;
+    border-radius: 50%;
+    animation: loading-spinner-spin 800ms linear infinite;
+}
+
+@keyframes loading-spinner-spin {
+    to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .loading-spinner { animation: none; }
+}

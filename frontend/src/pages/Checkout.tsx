@@ -70,7 +70,7 @@ function ConfirmOrderAction({ isSubmitting, disabled, onConfirm }: ConfirmOrderA
                 onClick={onConfirm}>
                 {isSubmitting ? (
                     <>
-                        <span className="checkout-confirm-spinner" aria-hidden="true" />
+                        <span className="loading-spinner" aria-hidden="true" />
                         Confirmando tu pedido...
                     </>
                 ) : 'Confirmar pedido'}
