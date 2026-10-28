@@ -6,9 +6,11 @@ import { ImageWithFallback } from '../components/shared/ImageWithFallback';
 import { ProfileItem } from '../components/pages/ProfileItem';
 import { ItemHeader } from "../components/shared/ItemHeader";
 import { useUser } from '../context/UserContext';
+import { getUserNamePresentation } from '../utils/userName';
 
 export function Profile() {
     const { user } = useUser();
+    const { displayName } = getUserNamePresentation(user?.name);
 
     const profileItems = [
         { icon: <TbMail />, label: user?.email ?? '', },
@@ -23,7 +25,7 @@ export function Profile() {
         <div className="profile-page">
             <div className="profile-photo">
                 <ImageWithFallback alt='profile-photo' />
-                <h2>{user?.name}</h2>
+                <h2>{displayName}</h2>
             </div>
             <ItemHeader title='Tu cuenta' />
             {profileItems.map((item, index) =>

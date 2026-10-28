@@ -16,7 +16,4 @@ export type KpiCardConfig = {
 export type KpiCardProps = KpiCardConfig & { reducedMotion: boolean };
 
 export const kgFormatter = new Intl.NumberFormat('es-AR', { maximumFractionDigits: 3 });
-export const revenueFormatter = new Intl.NumberFormat('es-AR', {
-    style: 'currency', currency: 'ARS', minimumFractionDigits: 2, maximumFractionDigits: 2,
-});
 export const countFormatter = new Intl.NumberFormat('es-AR');

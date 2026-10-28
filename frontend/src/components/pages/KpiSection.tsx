@@ -3,9 +3,14 @@ import { useCountUp } from 'react-countup';
 import { LuLeaf } from 'react-icons/lu';
 import { useDashboardStats } from '../../hooks/useDashboardStats';
 import type { DashboardStats } from '../../services/dashboardService';
-import { countFormatter, kgFormatter, revenueFormatter, type KpiCardConfig, type KpiCardProps } from '../../utils/kpiFormatters';
+import { countFormatter, kgFormatter, type KpiCardConfig, type KpiCardProps } from '../../utils/kpiFormatters';
+import { formatPrice } from '../../utils/price';
 
 const COUNT_DURATION_SECONDS = 2.5;
+const KPI_CARD_CLASSES = {
+    default: 'card card--panel admin-kpi-card',
+    impact: 'card card--panel card--dark admin-kpi-card admin-kpi-card--impact',
+} as const;
 
 function getKpiCards(stats: DashboardStats): KpiCardConfig[] {
     const co2SavedKg = stats.co2SavedG / 1000;
@@ -16,8 +21,7 @@ function getKpiCards(stats: DashboardStats): KpiCardConfig[] {
             decimals: 3, suffix: ' kg', icon: <LuLeaf aria-hidden="true" />, tone: 'impact',
         },
         {
-            label: 'Total recaudado', value: stats.totalRevenue, format: revenueFormatter.format,
-            decimals: 2,
+            label: 'Total recaudado', value: stats.totalRevenue, format: formatPrice,
         },
         {
             label: 'Pedidos completados', value: stats.completedOrders, format: countFormatter.format,
@@ -34,7 +38,7 @@ function AnimatedValue({ value, format, decimals = 0 }: Pick<KpiCardConfig, 'val
 
 function KpiCard({ label, value, format, decimals = 0, suffix = '', icon, tone = 'default', reducedMotion }: KpiCardProps) {
     return (
-        <article className={`admin-kpi-card admin-kpi-card--${tone}`}>
+        <article className={KPI_CARD_CLASSES[tone]}>
             <h2>{icon}{label}</h2>
             <p className="admin-kpi-value">
                 <span aria-hidden="true">
@@ -53,14 +57,14 @@ export function KpiSection() {
     const { state, reducedMotion } = useDashboardStats();
 
     return (
-        <section className="admin-kpis" aria-label="Indicadores principales" aria-busy={state.status === 'loading'}>
+        <section className="admin-kpis stack" aria-label="Indicadores principales" aria-busy={state.status === 'loading'}>
             {state.status === 'loading' && (
-                <div className="admin-kpi-feedback" role="status" aria-label="Cargando indicadores">
+                <div className="card card--panel admin-kpi-feedback" role="status" aria-label="Cargando indicadores">
                     <span className="loading-spinner" aria-hidden="true" />
                 </div>
             )}
             {state.status === 'error' && (
-                <div className="admin-kpi-feedback" role="alert">No pudimos cargar los indicadores.</div>
+                <div className="card card--panel admin-kpi-feedback" role="alert">No pudimos cargar los indicadores.</div>
             )}
             {state.status === 'ready' && getKpiCards(state.stats).map((card) => (
                 <KpiCard key={card.label} {...card} reducedMotion={reducedMotion} />
