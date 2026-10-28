@@ -1,0 +1,122 @@
+.impact-page-heading {
+    display: grid;
+}
+
+.impact-orders h2 {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+}
+
+.impact-order-info strong,
+.impact-order-co2 {
+    font-size: var(--font-size-sm);
+}
+
+.impact-page {
+    padding-block-end: var(--space-4);
+}
+
+.impact-page > .page-header {
+    margin-block-end: calc(-1 * var(--space-2));
+}
+
+.impact-orders {
+    gap: var(--space-3);
+}
+
+.impact-orders-list {
+    gap: var(--space-0-5);
+    padding: 0;
+    list-style: none;
+}
+
+.impact-order {
+    display: grid;
+    grid-template-columns: var(--space-4) minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--space-1);
+    min-block-size: calc(var(--space-4) + var(--space-2));
+    border-block-end: 1px solid var(--color-border);
+}
+
+.impact-order:last-child {
+    border-block-end: 0;
+}
+
+.impact-order-image {
+    display: grid;
+    place-items: center;
+    inline-size: var(--space-4);
+    block-size: var(--space-4);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface-muted);
+    color: var(--color-primary);
+}
+
+.impact-order-info {
+    gap: var(--space-0-5);
+    min-inline-size: 0;
+    line-height: var(--line-height-tight);
+}
+
+.impact-order-info strong {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.impact-order-info span {
+    font-size: var(--font-size-xs);
+}
+
+.impact-order-price {
+    display: none;
+}
+
+.impact-order-co2 {
+    padding: var(--space-0-5) var(--space-1);
+    border-radius: var(--radius-sm);
+    background: var(--color-secondary);
+    color: var(--color-primary);
+    font-weight: var(--font-weight-semibold);
+    white-space: nowrap;
+}
+
+@media (min-width: 48rem) {
+    .impact-page > .page-header {
+        display: none;
+    }
+
+    .impact-page-heading h1 {
+        font-size: var(--font-size-heading);
+    }
+
+    .impact-orders {
+        margin-block-start: var(--space-1);
+        padding: var(--space-4);
+        border: 1px solid var(--color-muted);
+        border-radius: var(--radius-md);
+        background: var(--color-background);
+    }
+
+    .impact-orders-list {
+        gap: 0;
+    }
+
+    .impact-order {
+        grid-template-columns: var(--space-4) minmax(0, 1fr) auto auto;
+        gap: var(--space-2);
+    }
+
+    .impact-order-info {
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+        gap: var(--space-2);
+    }
+
+    .impact-order-price {
+        display: inline;
+        font-size: var(--font-size-sm);
+        white-space: nowrap;
+    }
+}

@@ -6,15 +6,16 @@ import { Navbar } from './Navbar';
 import { AuthError } from '../../services/authService';
 import { useCart } from '../../context/CartContext';
 import { useUser } from '../../context/UserContext';
+import { getUserNamePresentation } from '../../utils/userName';
 
 export function Header() {
     const { user, logout } = useUser();
+    const { displayName, initials } = getUserNamePresentation(user?.name);
     const { totalQuantity } = useCart();
     const menuRef = useRef<HTMLDialogElement>(null);
     const [menuOpen, setMenuOpen] = useState(false);
     const [isLoggingOut, setIsLoggingOut] = useState(false);
     const [logoutError, setLogoutError] = useState('');
-    const initials = user?.name.trim().split(/\s+/).slice(0, 2).map((part) => part[0]).join('').toUpperCase();
     const filledCart = totalQuantity > 0;
 
     async function handleLogout() {
@@ -74,7 +75,7 @@ export function Header() {
                         <Link to="/profile" className="header-account" onClick={closeMenu}>
                             <span className="header-avatar" aria-hidden="true">{initials}</span>
                             <span className="header-account-details">
-                                <span className="header-account-name">{user?.name}</span>
+                                <span className="header-account-name">{displayName}</span>
                                 <span className="header-account-caption">Ver tu cuenta</span>
                             </span>
                         </Link>

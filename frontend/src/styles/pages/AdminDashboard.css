@@ -1,28 +1,11 @@
-.admin-dashboard,
-.admin-kpis,
 .admin-recent-orders-empty {
     display: grid;
 }
 
-.admin-kpi-feedback,
-.admin-kpi-card,
-.admin-recent-orders {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2);
-    padding: var(--space-2);
-    border-radius: var(--radius-md);
-    background: var(--color-background);
-}
-
-.admin-dashboard-heading h1,
 .admin-kpi-value {
     font-size: var(--font-size-lg);
-    line-height: 1.2;
-}
-
-.admin-dashboard-heading p {
-    font-size: var(--font-size-sm);
+    font-weight: 700;
+    line-height: var(--line-height-tight);
 }
 
 .admin-dashboard-heading p,
@@ -42,34 +25,23 @@
     margin-inline: auto;
 }
 
-.admin-kpis {
-    gap: var(--space-2);
-}
-
 .admin-kpi-card {
     min-block-size: 12rem;
-    border: 1px solid var(--color-border);
+
+    & h2 {
+        display: flex;
+        align-items: center;
+        gap: var(--space-0-5);
+        font-weight: var(--font-weight-semibold);
+
+        & svg {
+            color: var(--color-accent);
+        }
+    }
 }
 
 .admin-kpi-card--impact {
     border-color: var(--color-primary);
-    background: var(--color-primary);
-    color: var(--color-background);
-}
-
-.admin-kpi-card h2 {
-    display: flex;
-    align-items: center;
-    gap: var(--space-0-5);
-    font-weight: 600;
-}
-
-.admin-kpi-card h2 svg {
-    color: var(--color-accent);
-}
-
-.admin-kpi-value {
-    font-weight: 700;
 }
 
 .admin-kpi-feedback {
@@ -77,12 +49,12 @@
     align-items: center;
     justify-content: center;
     min-block-size: 12rem;
-    border: 1px solid var(--color-border);
     text-align: center;
 }
 
 .admin-recent-orders {
     min-block-size: 16rem;
+    border: 0;
 }
 
 .admin-recent-orders-empty {
@@ -105,18 +77,14 @@
 }
 
 @media (min-width: 64rem) {
-    .admin-kpi-feedback,
-    .admin-kpi-card,
-    .admin-recent-orders {
-        padding: var(--space-3);
-    }
+    .admin-dashboard-heading {
+        & h1 {
+            font-size: var(--font-size-heading);
+        }
 
-    .admin-dashboard-heading h1 {
-        font-size: var(--font-size-heading);
-    }
-
-    .admin-dashboard-heading p {
-        font-size: var(--font-size-md);
+        & p {
+            font-size: var(--font-size-md);
+        }
     }
 
     .admin-kpis {

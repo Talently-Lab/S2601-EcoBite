@@ -10,7 +10,10 @@
 @import './pages/AdminSidebar.css';
 @import './layouts/Footer.css';
 @import './layouts/pages.css';
+@import './shared/Cards.css';
 @import './pages/Home.css';
+@import './pages/ImpactCard.css';
+@import './pages/Impact.css';
 @import './pages/AdminDashboard.css';
 @import './pages/Login.css';
 @import './pages/Profile.css';
@@ -52,6 +55,8 @@
     --font-size-md: 1rem;
     --font-size-lg: 1.125rem;
     --font-size-heading: 2.25rem;
+    --font-weight-semibold: 600;
+    --line-height-tight: 1.2;
     --space-0-5: 4px;
     --space-1: 8px;
     --space-1-5: 12px;

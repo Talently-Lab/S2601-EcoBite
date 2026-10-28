@@ -18,6 +18,14 @@
     outline-offset: var(--space-0-5);
 }
 
+.home-intro {
+    margin-block-start: var(--space-2);
+}
+
+.home-greeting {
+    gap: var(--space-0-5);
+}
+
 .addresses {
     inline-size: fit-content;
     margin-block-end: var(--space-3);
@@ -83,5 +91,14 @@
 @media (hover: hover) {
     .addresses-option:hover {
         background: var(--color-surface-muted);
+    }
+}
+
+@media (min-width: 48rem) {
+    .home-intro {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        align-items: start;
+        gap: var(--space-3);
+        margin-block-start: var(--space-3);
     }
 }
