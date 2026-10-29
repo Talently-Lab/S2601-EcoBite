@@ -131,4 +131,27 @@ export class OrdersService {
       },
     });
   }
+
+  async getUserImpact(userId: string) {
+    const [co2Total, ordersWithImpact] = await Promise.all([
+      this.prisma.order.aggregate({
+        where: {
+          userId,
+          deliveryMethod: DeliveryMethod.BIKE,
+        },
+        _sum: { co2SavedG: true },
+      }),
+      this.prisma.order.count({
+        where: {
+          userId,
+          co2SavedG: { gt: 0 },
+        },
+      }),
+    ]);
+
+    return {
+      totalCo2SavedG: co2Total._sum.co2SavedG ?? 0,
+      ordersWithImpact,
+    };
+  }
 }
