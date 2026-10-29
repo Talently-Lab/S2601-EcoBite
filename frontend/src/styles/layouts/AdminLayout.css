@@ -13,6 +13,7 @@
     border-radius: var(--radius-sm);
     background: var(--color-background);
     color: var(--color-primary);
+    text-decoration: underline;
     transform: translateY(calc(-100% - var(--space-1)));
 }
 
@@ -32,7 +33,7 @@
 @media (min-width: 64rem) {
     .admin-shell {
         display: grid;
-        grid-template-columns: 16rem minmax(0, 1fr);
+        grid-template-columns: 14rem minmax(0, 1fr);
     }
 
     .admin-main {

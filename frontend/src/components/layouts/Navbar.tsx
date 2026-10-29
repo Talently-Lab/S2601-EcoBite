@@ -19,9 +19,6 @@ export function Navbar({ onNavigate }: NavbarProps) {
                     {link.label}
                 </NavLink>
             ))}
-            <button type="button" className="header-menu-link" disabled>
-                Historial de pedidos
-            </button>
         </nav>
     );
 }

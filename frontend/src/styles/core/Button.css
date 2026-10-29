@@ -10,7 +10,6 @@
     font-weight: 600;
     line-height: 1.25;
     text-align: center;
-    text-decoration: none;
     cursor: pointer;
     transition: background-color var(--transition-control), color var(--transition-control);
 }

@@ -1,20 +1,21 @@
-.admin-recent-orders-empty {
-    display: grid;
+.admin-kpi-feedback,
+.admin-recent-orders-feedback {
+    color: var(--color-forest);
+}
+
+.admin-orders-table th,
+.admin-orders-table td {
+    padding: var(--space-1-5) var(--space-1);
+    border-block-end: 1px solid var(--color-border);
+    text-align: start;
 }
 
 .admin-kpi-value {
-    font-size: var(--font-size-lg);
+    font-size: calc(var(--font-size-lg) + var(--font-size-sm));
     font-weight: 700;
     line-height: var(--line-height-tight);
 }
 
-.admin-dashboard-heading p,
-.admin-recent-orders-empty,
-.admin-kpi-feedback {
-    color: var(--color-forest);
-}
-
-.admin-kpi-card h2,
 .admin-recent-orders h2 {
     font-size: var(--font-size-md);
 }
@@ -26,22 +27,33 @@
 }
 
 .admin-kpi-card {
-    min-block-size: 12rem;
+    min-block-size: 9rem;
+    gap: var(--space-1);
+    padding: var(--space-2);
+    border-color: var(--color-muted);
 
     & h2 {
         display: flex;
         align-items: center;
         gap: var(--space-0-5);
+        font-size: var(--font-size-sm);
         font-weight: var(--font-weight-semibold);
-
-        & svg {
-            color: var(--color-accent);
-        }
     }
 }
 
 .admin-kpi-card--impact {
+    min-block-size: 12rem;
     border-color: var(--color-primary);
+
+    & h2 > .svg-icon {
+        flex: none;
+        inline-size: var(--space-2);
+        mask-image: url('../../assets/icons/leaves.svg');
+    }
+
+    & .impact-value {
+        line-height: var(--line-height-tight);
+    }
 }
 
 .admin-kpi-feedback {
@@ -57,18 +69,93 @@
     border: 0;
 }
 
-.admin-recent-orders-empty {
+.admin-recent-orders-feedback {
+    display: grid;
     flex: 1;
     place-items: center;
-    padding: var(--space-3);
-    border: 1px dashed var(--color-border);
+    padding: var(--space-2);
     border-radius: var(--radius-sm);
     text-align: center;
 }
 
-@media (min-width: 48rem) {
+.admin-orders-table {
+    inline-size: 100%;
+    border-collapse: collapse;
+}
+
+.admin-orders-table th {
+    color: var(--color-forest);
+    font-weight: var(--font-weight-semibold);
+}
+
+@media (width < 48rem) {
+    .admin-orders-table tbody {
+        display: grid;
+        gap: var(--space-1);
+    }
+
+    .admin-recent-orders {
+        min-block-size: 0;
+        padding: 0;
+        background: transparent;
+    }
+
+    .admin-orders-table {
+        & tbody tr {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            grid-template-areas: 'restaurant status' 'date total';
+            align-items: center;
+            gap: var(--space-0-5) var(--space-1);
+            padding: var(--space-1-5) var(--space-2);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-sm);
+            background: var(--color-background);
+        }
+
+        & td {
+            padding: 0;
+            border: 0;
+        }
+
+        & td:nth-child(1) {
+            grid-area: date;
+            color: var(--color-forest);
+            font-size: var(--font-size-sm);
+        }
+
+        & td:nth-child(2) {
+            grid-area: restaurant;
+            font-weight: var(--font-weight-semibold);
+        }
+
+        & td:nth-child(3) {
+            grid-area: total;
+            font-weight: var(--font-weight-semibold);
+            text-align: end;
+        }
+
+        & td:nth-child(4) {
+            grid-area: status;
+            justify-self: end;
+        }
+    }
+}
+
+@media (width >= 48rem) {
+    .admin-orders-table thead {
+        position: static;
+        inline-size: auto;
+        block-size: auto;
+        margin: 0;
+        overflow: visible;
+        clip-path: none;
+        white-space: normal;
+    }
+
     .admin-kpis {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: start;
     }
 
     .admin-kpi-card--impact {
@@ -76,22 +163,17 @@
     }
 }
 
-@media (min-width: 64rem) {
-    .admin-dashboard-heading {
-        & h1 {
-            font-size: var(--font-size-heading);
-        }
+@media (width >= 64rem) {
+    .admin-kpi-card--impact {
+        grid-column: auto;
+        padding: var(--space-3-5);
+    }
 
-        & p {
-            font-size: var(--font-size-md);
-        }
+    .admin-kpi-card h2 {
+        font-size: var(--font-size-md);
     }
 
     .admin-kpis {
         grid-template-columns: 1.1fr 1fr 1fr;
-    }
-
-    .admin-kpi-card--impact {
-        grid-column: auto;
     }
 }

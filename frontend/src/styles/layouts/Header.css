@@ -1,13 +1,15 @@
 .site-header-bar, .site-header-actions, .header-drawer-top, .header-account,
-.header-drawer-content, .header-drawer-body, .header-menu-nav, .header-menu-help {
+.header-drawer-content, .header-drawer-body, .header-menu-nav, .header-menu-help,
+.admin-sidebar, .admin-sidebar-head {
     display: flex;
 }
 
-.site-header-bar, .site-header-actions, .header-drawer-top, .header-account {
+.site-header-bar, .site-header-actions, .header-drawer-top, .header-account,
+.admin-sidebar, .admin-sidebar-head {
     align-items: center;
 }
 
-.site-header-bar, .header-drawer-top {
+.site-header-bar, .header-drawer-top, .admin-sidebar {
     justify-content: space-between;
     min-block-size: var(--header-height);
     padding-inline: var(--page-gutter);
@@ -27,11 +29,7 @@
     flex-direction: column;
 }
 
-.site-brand, .site-header-cart, .header-account, .header-menu-link {
-    text-decoration: none;
-}
-
-.site-header, .header-account {
+.site-header, .header-account, .admin-sidebar {
     background: var(--color-primary);
 }
 
@@ -44,12 +42,12 @@
 }
 
 .header-drawer, .header-menu-link, .header-help-link {
-    border: 0;
     background: var(--color-background);
 }
 
 .header-menu-link, .header-help-link, .header-logout {
     text-align: start;
+    font-size: var(--font-size-md);
 }
 
 .site-header-actions, .header-menu-help {
@@ -60,11 +58,7 @@
     display: block;
 }
 
-.header-menu-link, .header-help-link, .header-logout {
-    font-size: var(--font-size-md);
-}
-
-.header-account, .site-header-control {
+.header-account, .site-header-control, .admin-sidebar {
     color: var(--color-background);
 }
 
@@ -78,10 +72,6 @@
 
 .site-header-cart-count, .header-avatar {
     border-radius: var(--radius-pill);
-}
-
-.site-brand {
-    color: var(--color-secondary);
 }
 
 .header-account-caption {
@@ -99,12 +89,6 @@
 .site-header-bar {
     max-inline-size: var(--content-width);
     margin-inline: auto;
-}
-
-.site-brand {
-    display: inline-flex;
-    align-items: center;
-    min-block-size: var(--touch-target);
 }
 
 .site-header-control {
@@ -144,7 +128,7 @@
     max-inline-size: none;
     block-size: 100dvh;
     max-block-size: none;
-    margin: 0;
+    border: 0;
     overflow-y: auto;
     overscroll-behavior: contain;
 }
@@ -180,12 +164,7 @@ body:has(.header-drawer[open]) {
 }
 
 .header-account-details {
-    min-inline-size: 0;
     line-height: 1.2;
-}
-
-.header-account-name {
-    overflow-wrap: anywhere;
 }
 
 .header-menu-link:not(:last-child) {

@@ -42,8 +42,7 @@ main:has(.checkout-page) + .site-footer {
     color: var(--color-forest);
 }
 
-.checkout-address input,
-.checkout-payment-option input {
+.checkout-address input {
     margin: 0;
 }
 
@@ -106,6 +105,7 @@ main:has(.checkout-page) {
 .checkout-choose-comuna {
     color: var(--color-forest);
     font-size: var(--font-size-sm);
+    text-decoration: underline;
     font-weight: 600;
     text-underline-offset: 0.15em;
 }

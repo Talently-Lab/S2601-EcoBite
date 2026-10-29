@@ -1,9 +1,9 @@
+@import './layouts/base.css';
 @import './core/Button.css';
 @import './core/Spinner.css';
 @import './core/PageHeader.css';
 @import './forms/Input.css';
 @import './shared/ItemHeader.css';
-@import './layouts/base.css';
 @import './layouts/Navbar.css';
 @import './layouts/Header.css';
 @import './layouts/AdminLayout.css';

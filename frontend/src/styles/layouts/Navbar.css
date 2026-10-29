@@ -27,7 +27,6 @@
     border-radius: var(--radius-sm);
     color: var(--color-muted);
     text-align: center;
-    text-decoration: none;
 }
 
 .nav-item-icon {

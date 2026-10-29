@@ -1,4 +1,4 @@
-main:has(.login-page), .login-password-toggle, .login-text-link, .login-error-action {
+main:has(.login-page), .login-password-toggle {
     padding: 0;
 }
 
@@ -27,11 +27,7 @@ main:has(.login-page), .login-password-toggle, .login-text-link, .login-error-ac
 }
 
 .login-text-link, .login-error-action {
-    border: 0;
-    background: transparent;
-    font: inherit;
     text-decoration: underline;
-    cursor: pointer;
 }
 
 main:has(.login-page) {
@@ -48,15 +44,15 @@ main:has(.login-page) {
     padding: var(--space-4) var(--space-3);
     background: var(--color-text);
     color: var(--color-surface);
+
+    & .brand-logo {
+        inline-size: 7rem;
+        block-size: 1.5rem;
+    }
 }
 
 .login-hero--login {
     gap: var(--space-3-5);
-}
-
-.login-hero .brand-logo {
-    inline-size: 7rem;
-    block-size: 1.5rem;
 }
 
 .login-intro h1 {
@@ -99,7 +95,6 @@ main:has(.login-page) {
 .login-terms input {
     inline-size: 1rem;
     block-size: 1rem;
-    margin: 0;
     accent-color: var(--color-primary);
 }
 
