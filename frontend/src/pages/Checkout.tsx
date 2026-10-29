@@ -42,7 +42,6 @@ function CheckoutSummary({ titleId, restaurantName, productCount, totalCents }: 
                     {productCount} {productCount === 1 ? 'producto' : 'productos'}
                 </span>
             </div>
-            <p className="checkout-impact">Entrega en bici evitás 200g de CO₂</p>
             <div className="checkout-breakdown">
                 <div className="checkout-product-total">
                     <span>Producto</span>

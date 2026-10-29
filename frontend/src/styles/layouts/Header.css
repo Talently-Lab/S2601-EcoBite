@@ -1,15 +1,13 @@
 .site-header-bar, .site-header-actions, .header-drawer-top, .header-account,
-.header-drawer-content, .header-drawer-body, .header-menu-nav, .header-menu-help,
-.admin-sidebar, .admin-sidebar-head {
+.header-drawer-content, .header-drawer-body, .header-menu-nav, .header-menu-help {
     display: flex;
 }
 
-.site-header-bar, .site-header-actions, .header-drawer-top, .header-account,
-.admin-sidebar, .admin-sidebar-head {
+.site-header-bar, .site-header-actions, .header-drawer-top, .header-account {
     align-items: center;
 }
 
-.site-header-bar, .header-drawer-top, .admin-sidebar {
+.site-header-bar, .header-drawer-top {
     justify-content: space-between;
     min-block-size: var(--header-height);
     padding-inline: var(--page-gutter);
@@ -29,7 +27,7 @@
     flex-direction: column;
 }
 
-.site-header, .header-account, .admin-sidebar {
+.site-header, .header-account {
     background: var(--color-primary);
 }
 
@@ -58,7 +56,7 @@
     display: block;
 }
 
-.header-account, .site-header-control, .admin-sidebar {
+.header-account, .site-header-control {
     color: var(--color-background);
 }
 
@@ -164,7 +162,12 @@ body:has(.header-drawer[open]) {
 }
 
 .header-account-details {
+    min-inline-size: 0;
     line-height: 1.2;
+}
+
+.header-account-name {
+    overflow-wrap: anywhere;
 }
 
 .header-menu-link:not(:last-child) {

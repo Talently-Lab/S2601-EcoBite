@@ -15,6 +15,7 @@
 @import './pages/ImpactCard.css';
 @import './pages/Impact.css';
 @import './pages/AdminDashboard.css';
+@import './pages/ImpactRanking.css';
 @import './pages/Login.css';
 @import './pages/Profile.css';
 @import './pages/Cart.css';
@@ -38,6 +39,7 @@
     --color-primary: #0e2926;
     --color-secondary: #bcf8d6;
     --color-background: #F8FFF2;
+    --color-table: #FFFFFF;
     --color-accent: #c5ef7f;
     --color-text: #17231d;
     --color-surface: #eaf4ef;

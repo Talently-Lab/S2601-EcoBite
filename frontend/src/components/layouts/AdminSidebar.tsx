@@ -7,6 +7,7 @@ import { ADMIN_DASHBOARD_PATH } from '../../config/admin';
 const navLinks = [
     { text: 'Dashboard', to: ADMIN_DASHBOARD_PATH },
     { text: 'Últimos pedidos', to: `${ADMIN_DASHBOARD_PATH}#recent-orders` },
+    { text: 'Ranking de restaurantes', to: `${ADMIN_DASHBOARD_PATH}#impact-ranking` },
 ];
 
 export function AdminSidebar() {
@@ -24,7 +25,6 @@ export function AdminSidebar() {
                 {navLinks.map(({ text, to }) => (
                     <Link key={to} to={to} className="admin-nav-link" aria-current={`${pathname}${hash}` === to ? 'page' : undefined}>{text}</Link>
                 ))}
-                <span className="admin-nav-link">Ranking de restaurantes</span>
             </nav>
             <div className="admin-account">
                 <div className="admin-account-details">

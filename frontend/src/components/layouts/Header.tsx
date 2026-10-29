@@ -7,6 +7,7 @@ import { useCart } from '../../context/CartContext';
 import { useUser } from '../../context/UserContext';
 import { useLogout } from '../../hooks/useLogout';
 import { getUserNamePresentation } from '../../utils/userName';
+import { formatCount } from '../../utils/kpiFormatters';
 
 export function Header() {
     const { user, logout } = useUser();
@@ -28,10 +29,10 @@ export function Header() {
                 <div className="site-header-actions">
                     <Link to="/cart" className="site-header-cart"
                         aria-label={filledCart
-                            ? `Ir al carrito, ${totalQuantity} ${totalQuantity === 1 ? 'producto' : 'productos'}`
+                            ? `Ir al carrito, ${formatCount(totalQuantity)} ${totalQuantity === 1 ? 'producto' : 'productos'}`
                             : 'Ir al carrito'}>
                         <LuShoppingCart aria-hidden="true" />
-                        {filledCart ? <span className="site-header-cart-count" aria-hidden="true">{totalQuantity}</span> : null}
+                        {filledCart ? <span className="site-header-cart-count" aria-hidden="true">{formatCount(totalQuantity)}</span> : null}
                     </Link>
                     <Button type="button" variant="icon" className="site-header-control"
                         aria-label="Abrir menú" aria-controls="site-menu" aria-expanded={menuOpen}

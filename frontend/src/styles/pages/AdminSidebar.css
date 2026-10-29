@@ -3,6 +3,26 @@
     display: none;
 }
 
+.admin-sidebar,
+.admin-sidebar-head {
+    display: flex;
+    align-items: center;
+}
+
+.admin-account-email,
+.admin-logout-error {
+    overflow-wrap: anywhere;
+}
+
+.admin-sidebar {
+    justify-content: space-between;
+    min-inline-size: 0;
+    min-block-size: var(--header-height);
+    padding-inline: var(--page-gutter);
+    background: var(--color-primary);
+    color: var(--color-background);
+}
+
 .admin-sidebar-head {
     gap: var(--space-1-5);
 }

@@ -1,3 +1,9 @@
+.impact-card,
+.impact-card-main,
+.impact-card-orders {
+    min-inline-size: 0;
+}
+
 .impact-card-main,
 .impact-card-orders {
     padding: var(--space-3);
@@ -56,6 +62,12 @@
 }
 
 .impact-value {
+    color: var(--color-accent);
+    font-size: var(--font-size-heading);
+    font-weight: 800;
+}
+
+.impact-card .impact-value {
     line-height: 1.1;
 }
 

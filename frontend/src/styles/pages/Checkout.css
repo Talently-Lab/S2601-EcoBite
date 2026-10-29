@@ -67,7 +67,6 @@ main:has(.checkout-page) + .site-footer {
 }
 
 .checkout-product-count,
-.checkout-impact,
 .checkout-product-total {
     font-size: var(--font-size-sm);
 }

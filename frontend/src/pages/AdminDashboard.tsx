@@ -1,5 +1,5 @@
 import { KpiSection } from '../components/pages/KpiSection';
-import { RecentOrders } from '../components/pages/RecentOrders';
+import { RecentOrders, ImpactRanking } from '../components/pages/AdminTables';
 
 export function AdminDashboard() {
     return (
@@ -12,6 +12,8 @@ export function AdminDashboard() {
             <KpiSection />
 
             <RecentOrders />
+
+            <ImpactRanking />
         </div>
     );
 }

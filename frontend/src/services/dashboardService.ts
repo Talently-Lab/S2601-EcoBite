@@ -14,11 +14,17 @@ export type RecentOrder = {
     totalAmount: number;
 };
 
+export type ImpactRankingEntry = {
+    restaurant: string;
+    co2SavedG: number;
+};
+
 const STATS_PATH = '/dashboard/stats';
 const RECENT_ORDERS_PATH = '/dashboard/recent-orders';
+const IMPACT_RANKING_PATH = '/dashboard/impact-ranking';
 
-type DashboardStatsResponse = { completedOrders: number; totalRevenue: string; co2SavedG: number };
-type RecentOrderResponse = { orderedAt: string; restaurant: string; totalAmount: string };
+type DashboardStatsResponse = Omit<DashboardStats, 'totalRevenue'> & { totalRevenue: string };
+type RecentOrderResponse = Omit<RecentOrder, 'totalAmount'> & { totalAmount: string };
 type FieldValidators<T> = { [K in keyof T]: (value: unknown) => value is T[K] };
 
 function invalidResponse(path: string): ApiError {
@@ -27,6 +33,10 @@ function invalidResponse(path: string): ApiError {
 
 function isNonNegativeInteger(value: unknown): value is number {
     return typeof value === 'number' && Number.isSafeInteger(value) && value >= 0;
+}
+
+function isString(value: unknown): value is string {
+    return typeof value === 'string';
 }
 
 function hasValidFields<T extends object>(value: unknown, validators: FieldValidators<T>): value is T {
@@ -43,10 +53,6 @@ function hasValidFields<T extends object>(value: unknown, validators: FieldValid
     return true;
 }
 
-function isString(value: unknown): value is string {
-    return typeof value === 'string';
-}
-
 const recentOrderValidators: FieldValidators<RecentOrderResponse> = {
     orderedAt: isString,
     restaurant: isString,
@@ -59,6 +65,12 @@ const statsValidators: FieldValidators<DashboardStatsResponse> = {
     co2SavedG: isNonNegativeInteger,
 };
 
+function normalizePrice(value: string, path: string): number {
+    const cents = priceToCents(value);
+    if (cents === null) throw invalidResponse(path);
+    return centsToPrice(cents);
+}
+
 function parseRecentOrders(data: unknown): RecentOrder[] {
     if (!Array.isArray(data)) {
         throw invalidResponse(RECENT_ORDERS_PATH);
@@ -69,15 +81,10 @@ function parseRecentOrders(data: unknown): RecentOrder[] {
             throw invalidResponse(RECENT_ORDERS_PATH);
         }
 
-        const totalCents = priceToCents(order.totalAmount);
-        if (totalCents === null) {
-            throw invalidResponse(RECENT_ORDERS_PATH);
-        }
-
         return {
             orderedAt: order.orderedAt,
             restaurant: order.restaurant.trim(),
-            totalAmount: centsToPrice(totalCents),
+            totalAmount: normalizePrice(order.totalAmount, RECENT_ORDERS_PATH),
         };
     });
 }
@@ -87,14 +94,9 @@ function parseDashboardStats(data: unknown): DashboardStats {
         throw invalidResponse(STATS_PATH);
     }
 
-    const revenueCents = priceToCents(data.totalRevenue);
-    if (revenueCents === null) {
-        throw invalidResponse(STATS_PATH);
-    }
-
     return {
         completedOrders: data.completedOrders,
-        totalRevenue: centsToPrice(revenueCents),
+        totalRevenue: normalizePrice(data.totalRevenue, STATS_PATH),
         co2SavedG: data.co2SavedG,
     };
 }
@@ -105,4 +107,8 @@ export async function getDashboardStats(): Promise<DashboardStats> {
 
 export async function getRecentOrders(): Promise<RecentOrder[]> {
     return parseRecentOrders(await request(RECENT_ORDERS_PATH));
+}
+
+export async function getImpactRanking(): Promise<ImpactRankingEntry[]> {
+    return request(IMPACT_RANKING_PATH) as Promise<ImpactRankingEntry[]>;
 }

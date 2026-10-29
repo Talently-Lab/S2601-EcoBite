@@ -4,6 +4,7 @@ import { useCart } from '../../context/CartContext';
 import { Price } from '../core/Price';
 import { Button } from '../core/Button';
 import confirmationIllustration from '../../assets/icons/confirmation.svg';
+import { LOCALE } from '../../constants/constants';
 
 const deliveryMessages = {
     BIKE: 'Te lo llevan en bici.',
@@ -54,7 +55,7 @@ export function ConfirmationModal() {
                     <p className="confirmation-modal-impact-heading">Tu impacto en este pedido</p>
                     <p className="confirmation-modal-impact-value">
                         <span>{createdOrder.co2SavedG >= 0 ? 'Evitaste' : 'Balance de CO₂'}</span>
-                        <strong>{(createdOrder.co2SavedG / 1000).toLocaleString('es-AR', { maximumFractionDigits: 3 })} kg de CO₂</strong>
+                        <strong>{(createdOrder.co2SavedG / 1000).toLocaleString(LOCALE, { maximumFractionDigits: 3 })} kg de CO₂</strong>
                     </p>
                 </div>
                 <dl className="confirmation-modal-details">

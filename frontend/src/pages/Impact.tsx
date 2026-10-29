@@ -4,6 +4,7 @@ import { PageHeader } from '../components/core/PageHeader';
 import { impactMock } from '../mocks/impact';
 import { formatOrderDate } from '../utils/dates';
 import { formatPrice } from '../utils/price';
+import { formatGrams } from '../utils/kpiFormatters';
 
 export function Impact() {
     return (
@@ -25,7 +26,7 @@ export function Impact() {
                                 <span>{formatOrderDate(order.date)}</span>
                             </span>
                             <span className="impact-order-price">{formatPrice(order.totalAmount)}</span>
-                            <span className="impact-order-co2">+ {order.co2SavedG} g de CO₂</span>
+                            <span className="impact-order-co2">+ {formatGrams(order.co2SavedG)} de CO₂</span>
                         </li>
                     ))}
                 </ul>
