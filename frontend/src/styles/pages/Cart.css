@@ -48,7 +48,6 @@
     flex: none;
     color: var(--color-text);
     font-size: var(--font-size-md);
-    text-decoration: none;
 }
 
 .cart-products {

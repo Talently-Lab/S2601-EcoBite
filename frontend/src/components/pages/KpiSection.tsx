@@ -1,6 +1,5 @@
 import { useRef } from 'react';
 import { useCountUp } from 'react-countup';
-import { LuLeaf } from 'react-icons/lu';
 import { useDashboardStats } from '../../hooks/useDashboardStats';
 import type { DashboardStats } from '../../services/dashboardService';
 import { countFormatter, kgFormatter, type KpiCardConfig, type KpiCardProps } from '../../utils/kpiFormatters';
@@ -18,7 +17,7 @@ function getKpiCards(stats: DashboardStats): KpiCardConfig[] {
     return [
         {
             label: 'CO₂ ahorrado', value: co2SavedKg, format: kgFormatter.format,
-            decimals: 3, suffix: ' kg', icon: <LuLeaf aria-hidden="true" />, tone: 'impact',
+            decimals: 1, suffix: ' kg', icon: <span className="svg-icon" aria-hidden="true" />, tone: 'impact',
         },
         {
             label: 'Total recaudado', value: stats.totalRevenue, format: formatPrice,
@@ -40,7 +39,7 @@ function KpiCard({ label, value, format, decimals = 0, suffix = '', icon, tone =
     return (
         <article className={KPI_CARD_CLASSES[tone]}>
             <h2>{icon}{label}</h2>
-            <p className="admin-kpi-value">
+            <p className={tone === 'impact' ? 'impact-value' : 'admin-kpi-value'}>
                 <span aria-hidden="true">
                     {reducedMotion ? format(value) : (
                         <AnimatedValue value={value} decimals={decimals} format={format} />

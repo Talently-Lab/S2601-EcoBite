@@ -1,9 +1,3 @@
-.impact-card,
-.impact-card-main,
-.impact-card-orders {
-    min-inline-size: 0;
-}
-
 .impact-card-main,
 .impact-card-orders {
     padding: var(--space-3);
@@ -33,8 +27,8 @@
     color: var(--color-primary);
 }
 
-.impact-card-value,
 .impact-card--detail .impact-card-caption {
+    margin-block-start: var(--space-1);
     color: var(--color-accent);
 }
 
@@ -45,6 +39,14 @@
     min-block-size: calc(var(--space-5) * 2 + var(--space-1-5));
     overflow: hidden;
     box-shadow: var(--shadow-card);
+
+    & > .svg-icon {
+        position: absolute;
+        inset-block-start: var(--space-3);
+        inset-inline-end: var(--space-3);
+        inline-size: 4rem;
+        mask-image: url('../../assets/icons/leaves.svg');
+    }
 }
 
 .impact-card--home {
@@ -53,15 +55,7 @@
     }
 }
 
-.impact-card-leaves {
-    position: absolute;
-    inset-block-start: var(--space-3);
-    inset-inline-end: var(--space-3);
-}
-
-.impact-card-value {
-    font-size: var(--font-size-heading);
-    font-weight: 800;
+.impact-value {
     line-height: 1.1;
 }
 
@@ -74,7 +68,6 @@
     inline-size: var(--touch-target);
     block-size: var(--touch-target);
     border-radius: var(--radius-sm);
-    text-decoration: none;
     transition: background-color var(--transition-control);
 
     &:hover {
@@ -92,10 +85,6 @@
     & .impact-card-main {
         min-block-size: calc(var(--space-5) * 2 + var(--space-3));
     }
-
-    & .impact-card-caption {
-        margin-block-start: var(--space-1);
-    }
 }
 
 .impact-card-explanation {
@@ -107,9 +96,16 @@
     gap: var(--space-1);
     margin-block-start: calc(-1 * var(--space-2));
     padding-block-end: var(--space-1);
+
+    & > .svg-icon {
+        inline-size: 2rem;
+        block-size: 2.0625rem;
+        color: var(--color-forest);
+        mask-image: url('../../assets/icons/impact-deliveries.svg');
+    }
 }
 
-@media (min-width: 48rem) {
+@media (width >= 48rem) {
     .impact-card--detail .impact-card-main,
     .impact-card-orders {
         padding: var(--space-4);
@@ -134,9 +130,9 @@
     }
 }
 
-@media (min-width: 64rem) {
+@media (width >= 64rem) {
     .impact-card--home {
-        & .impact-card-leaves,
+        & .impact-card-main > .svg-icon,
         & .impact-card-link {
             position: static;
             grid-row: 1 / 4;
@@ -152,12 +148,12 @@
             padding: var(--space-4);
         }
 
-        & .impact-card-leaves {
+        & .impact-card-main > .svg-icon {
             grid-column: 1;
         }
 
         & .impact-card-eyebrow,
-        & .impact-card-value,
+        & .impact-value,
         & .impact-card-caption {
             grid-column: 2;
         }

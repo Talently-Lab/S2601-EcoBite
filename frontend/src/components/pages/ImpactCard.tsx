@@ -1,6 +1,4 @@
 import { Link } from 'react-router';
-import leavesIcon from '../../assets/icons/leaves.svg';
-import impactDeliveriesIcon from '../../assets/icons/impact-deliveries.svg';
 import { kgFormatter } from '../../utils/kpiFormatters';
 
 type ImpactCardProps =
@@ -14,8 +12,8 @@ export function ImpactCard(props: ImpactCardProps) {
         <section className={`impact-card impact-card--${props.variant}`} aria-label="Tu impacto">
             <div className="card card--dark impact-card-main">
                 {isHome && <p className="impact-card-eyebrow">Tu impacto hasta hoy</p>}
-                <img className="impact-card-leaves" src={leavesIcon} alt="" />
-                <p className="impact-card-value">{kgFormatter.format(props.co2SavedG / 1000)} kg</p>
+                <span className="svg-icon" aria-hidden="true" />
+                <p className="impact-value">{kgFormatter.format(props.co2SavedG / 1000)} kg</p>
                 <p className="impact-card-caption">
                     de CO₂ evitados{!isHome ? ' en total' : ''}
                 </p>
@@ -31,7 +29,7 @@ export function ImpactCard(props: ImpactCardProps) {
             </div>
             {!isHome && (
                 <div className="card impact-card-orders">
-                    <img src={impactDeliveriesIcon} alt="" />
+                    <span className="svg-icon" aria-hidden="true" />
                     <p>{props.impactedOrders} pedidos con impacto</p>
                 </div>
             )}

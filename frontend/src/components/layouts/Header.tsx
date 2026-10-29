@@ -3,9 +3,9 @@ import { Link } from 'react-router';
 import { LuMenu, LuShoppingCart, LuX } from 'react-icons/lu';
 import { Button } from '../core/Button';
 import { Navbar } from './Navbar';
-import { AuthError } from '../../services/authService';
 import { useCart } from '../../context/CartContext';
 import { useUser } from '../../context/UserContext';
+import { useLogout } from '../../hooks/useLogout';
 import { getUserNamePresentation } from '../../utils/userName';
 
 export function Header() {
@@ -14,23 +14,8 @@ export function Header() {
     const { totalQuantity } = useCart();
     const menuRef = useRef<HTMLDialogElement>(null);
     const [menuOpen, setMenuOpen] = useState(false);
-    const [isLoggingOut, setIsLoggingOut] = useState(false);
-    const [logoutError, setLogoutError] = useState('');
+    const { isLoggingOut, logoutError, handleLogout } = useLogout(logout, closeMenu);
     const filledCart = totalQuantity > 0;
-
-    async function handleLogout() {
-        if (isLoggingOut) return;
-        setIsLoggingOut(true);
-        setLogoutError('');
-        try {
-            await logout();
-            closeMenu();
-        } catch (cause) {
-            setLogoutError(cause instanceof AuthError ? cause.message : 'No pudimos cerrar tu sesión. Probá de nuevo.');
-        } finally {
-            setIsLoggingOut(false);
-        }
-    }
 
     function closeMenu() {
         menuRef.current?.close();
@@ -39,7 +24,7 @@ export function Header() {
     return (
         <header className="site-header">
             <div className="site-header-bar">
-                <Link to="/" className="site-brand" aria-label="EcoBite, inicio"><span className="brand-logo" aria-hidden="true" /></Link>
+                <Link to="/" className="brand-logo" aria-label="EcoBite, inicio" />
                 <div className="site-header-actions">
                     <Link to="/cart" className="site-header-cart"
                         aria-label={filledCart
@@ -66,7 +51,7 @@ export function Header() {
                 }}>
                 <div className="header-drawer-content">
                     <div className="header-drawer-top">
-                        <Link to="/" className="site-brand" onClick={closeMenu} aria-label="EcoBite, inicio"><span className="brand-logo" aria-hidden="true" /></Link>
+                        <Link to="/" className="brand-logo" onClick={closeMenu} aria-label="EcoBite, inicio" />
                         <Button type="button" variant="icon" className="site-header-control" aria-label="Cerrar menú"
                             autoFocus onClick={closeMenu}><LuX aria-hidden="true" /></Button>
                     </div>
