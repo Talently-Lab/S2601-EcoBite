@@ -38,6 +38,8 @@ describe('OrdersService - comuna distances', () => {
     },
     order: {
       create: jest.fn(),
+      aggregate: jest.fn(),
+      count: jest.fn(),
     },
   };
 
@@ -99,5 +101,68 @@ describe('OrdersService - comuna distances', () => {
     );
 
     expect(prisma.order.create).not.toHaveBeenCalled();
+  });
+});
+
+describe('OrdersService - user impact', () => {
+  const userId = 'user-1';
+
+  const prisma = {
+    order: {
+      aggregate: jest.fn(),
+      count: jest.fn(),
+    },
+  };
+
+  const service = new OrdersService(
+    prisma as unknown as ConstructorParameters<typeof OrdersService>[0],
+  );
+
+  beforeEach(() => {
+    jest.resetAllMocks();
+  });
+
+  it('calcula el CO2 total ahorrado del usuario', async () => {
+    prisma.order.aggregate.mockResolvedValue({
+      _sum: { co2SavedG: 450 },
+    });
+    prisma.order.count.mockResolvedValue(2);
+
+    const result = await service.getUserImpact(userId);
+
+    expect(result.totalCo2SavedG).toBe(450);
+    expect(prisma.order.aggregate).toHaveBeenCalledWith({
+      where: { userId },
+      _sum: { co2SavedG: true },
+    });
+  });
+
+  it('cuenta solamente los pedidos con CO2 ahorrado mayor que cero', async () => {
+    prisma.order.aggregate.mockResolvedValue({
+      _sum: { co2SavedG: 450 },
+    });
+    prisma.order.count.mockResolvedValue(2);
+
+    const result = await service.getUserImpact(userId);
+
+    expect(result.ordersWithImpact).toBe(2);
+    expect(prisma.order.count).toHaveBeenCalledWith({
+      where: {
+        userId,
+        co2SavedG: { gt: 0 },
+      },
+    });
+  });
+
+  it('devuelve cero cuando el usuario no tiene pedidos', async () => {
+    prisma.order.aggregate.mockResolvedValue({
+      _sum: { co2SavedG: null },
+    });
+    prisma.order.count.mockResolvedValue(0);
+
+    await expect(service.getUserImpact(userId)).resolves.toEqual({
+      totalCo2SavedG: 0,
+      ordersWithImpact: 0,
+    });
   });
 });

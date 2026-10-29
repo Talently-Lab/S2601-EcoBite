@@ -51,16 +51,27 @@ EcoBite es una startup de FoodTech que revoluciona la industria del delivery. Co
 
 ## 👥 Equipo — Grupo S2601
 
-| Rol                           | Responsable    |
-| ----------------------------- | -------------- |
-| **Project Manager**           | Jonathan Zappa |
-| **Data Analyst**              | Angela Micaela |
-| **Backend Developer**         | Sigrid         |
-| **Frontend Developer**        | Ornella        |
-| **Diseñador Gráfico**         | Micaela Ayelén |
-| **Diseñador UX/UI**           | Agostina       |
-| **Especialista de Marketing** | Lautaro        |
-| **Tester QA Manual**          | Elizabeth      |
+### Rol & Responsable
+
+**Project Manager:** Jonathan
+
+**Backend Developer:** Sigrid
+
+**Frontend Developer:** Ornella
+
+**Diseñador Gráfico:** Micaela Ayelén
+
+**Diseñador UX/UI:** Agostina  
+
+**Especialista de Marketing:** Milagros  
+
+**Data Analyst:** Miguel  
+
+**Data Analyst:** Ángela Micaela
+
+**Tester QA Manual:** Elizabeth  
+
+**Tester QA Manual:** Mayra  
 
 ---
 
