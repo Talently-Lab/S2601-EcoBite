@@ -3,6 +3,7 @@ import { AiOutlineDelete, AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 import type { CartProduct } from '../../types/types';
 import { useCart } from '../../context/CartContext';
 import { Button } from '../core/Button';
+import { formatCount } from '../../utils/kpiFormatters';
 
 type QuantitySelectorProps = { product: CartProduct; disabled?: boolean };
 
@@ -33,7 +34,7 @@ function QuantityCounter({ product, quantity, disabled }: QuantitySelectorProps 
                 {isLastItem ? <AiOutlineDelete aria-hidden="true" /> : <AiOutlineMinus aria-hidden="true" />}
             </Button>
             <label className="sr-only" htmlFor={quantityId}>Cantidad actual</label>
-            <output id={quantityId}>{quantity}</output>
+            <output id={quantityId}>{formatCount(quantity)}</output>
             <Button type="button" variant="icon" disabled={disabled || !Number.isSafeInteger(quantity + 1)}
                 onClick={() => setQuantity(product.id, product.restaurantId, quantity + 1)}
                 aria-label={`Aumentar cantidad de ${product.name}`}>

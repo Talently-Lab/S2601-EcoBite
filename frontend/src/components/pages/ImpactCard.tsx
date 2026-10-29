@@ -1,5 +1,5 @@
 import { Link } from 'react-router';
-import { kgFormatter } from '../../utils/kpiFormatters';
+import { formatCount, formatGrams } from '../../utils/kpiFormatters';
 
 type ImpactCardProps =
     | { variant: 'home'; co2SavedG: number }
@@ -13,7 +13,7 @@ export function ImpactCard(props: ImpactCardProps) {
             <div className="card card--dark impact-card-main">
                 {isHome && <p className="impact-card-eyebrow">Tu impacto hasta hoy</p>}
                 <span className="svg-icon" aria-hidden="true" />
-                <p className="impact-value">{kgFormatter.format(props.co2SavedG / 1000)} kg</p>
+                <p className="impact-value">{formatGrams(props.co2SavedG)}</p>
                 <p className="impact-card-caption">
                     de CO₂ evitados{!isHome ? ' en total' : ''}
                 </p>
@@ -30,7 +30,7 @@ export function ImpactCard(props: ImpactCardProps) {
             {!isHome && (
                 <div className="card impact-card-orders">
                     <span className="svg-icon" aria-hidden="true" />
-                    <p>{props.impactedOrders} pedidos con impacto</p>
+                    <p>{formatCount(props.impactedOrders)} pedidos con impacto</p>
                 </div>
             )}
         </section>

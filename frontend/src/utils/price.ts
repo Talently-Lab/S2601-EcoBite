@@ -1,6 +1,7 @@
 import type { CartItem } from '../types/types';
+import { LOCALE } from '../constants/constants';
 
-const priceFormatter = new Intl.NumberFormat('es-AR', {
+const priceFormatter = new Intl.NumberFormat(LOCALE, {
     style: 'currency', currency: 'ARS', maximumFractionDigits: 0,
 });
 

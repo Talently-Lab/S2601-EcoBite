@@ -6,7 +6,7 @@ import { LuChevronDown, LuMapPin } from 'react-icons/lu';
 import { LuArrowRight } from 'react-icons/lu';
 import { useCart } from '../context/CartContext';
 import { useUser } from '../context/UserContext';
-import { COMUNAS } from '../constants/comunas';
+import { COMUNAS } from '../constants/constants';
 import { ImpactCard } from '../components/pages/ImpactCard';
 import { impactMock } from '../mocks/impact';
 import { getUserNamePresentation } from '../utils/userName';

@@ -2,7 +2,7 @@ import { useRef, useState, type ReactNode } from 'react';
 import type { CartItem, CartProduct, ConfirmedOrder } from '../types/types';
 import { CartContext } from './CartContext';
 import { createOrder, OrderError } from '../services/orderService';
-import { isValidComuna } from '../constants/comunas';
+import { COMUNAS } from '../constants/constants';
 import { getSubtotalCents, getTotalCents } from '../utils/price';
 
 export type CartProviderProps = { children: ReactNode; userId: string };
@@ -11,6 +11,10 @@ const UNCERTAIN_PURCHASE_MESSAGE = 'No pudimos confirmar el resultado de la comp
 
 function comunaStorageKey(userId: string): string {
     return `ecobite:lastChosenComuna:${userId}`;
+}
+
+function isValidComuna(comuna: number): boolean {
+    return COMUNAS.includes(comuna);
 }
 
 function savedComuna(userId: string): number | null {

@@ -1,8 +1,10 @@
-const orderDateFormatter = new Intl.DateTimeFormat('es-AR', {
+import { LOCALE } from '../constants/constants';
+
+const orderDateFormatter = new Intl.DateTimeFormat(LOCALE, {
     day: 'numeric', month: 'long', timeZone: 'UTC',
 });
 
-const orderTimestampFormatter = new Intl.DateTimeFormat('es-AR', {
+const orderTimestampFormatter = new Intl.DateTimeFormat(LOCALE, {
     day: '2-digit', month: '2-digit', year: 'numeric',
 });
 

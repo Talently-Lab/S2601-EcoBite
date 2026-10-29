@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { useCountUp } from 'react-countup';
 import { useDashboardStats } from '../../hooks/useDashboardStats';
 import type { DashboardStats } from '../../services/dashboardService';
-import { countFormatter, kgFormatter, type KpiCardConfig, type KpiCardProps } from '../../utils/kpiFormatters';
+import { formatCount, formatGrams, type KpiCardConfig, type KpiCardProps } from '../../utils/kpiFormatters';
 import { formatPrice } from '../../utils/price';
 
 const COUNT_DURATION_SECONDS = 2.5;
@@ -12,18 +12,16 @@ const KPI_CARD_CLASSES = {
 } as const;
 
 function getKpiCards(stats: DashboardStats): KpiCardConfig[] {
-    const co2SavedKg = stats.co2SavedG / 1000;
-
     return [
         {
-            label: 'CO₂ ahorrado', value: co2SavedKg, format: kgFormatter.format,
-            decimals: 1, suffix: ' kg', icon: <span className="svg-icon" aria-hidden="true" />, tone: 'impact',
+            label: 'CO₂ ahorrado', value: stats.co2SavedG, format: formatGrams,
+            icon: <span className="svg-icon" aria-hidden="true" />, tone: 'impact',
         },
         {
             label: 'Total recaudado', value: stats.totalRevenue, format: formatPrice,
         },
         {
-            label: 'Pedidos completados', value: stats.completedOrders, format: countFormatter.format,
+            label: 'Pedidos completados', value: stats.completedOrders, format: formatCount,
         },
     ];
 }
@@ -35,7 +33,7 @@ function AnimatedValue({ value, format, decimals = 0 }: Pick<KpiCardConfig, 'val
     return <span ref={countRef} />;
 }
 
-function KpiCard({ label, value, format, decimals = 0, suffix = '', icon, tone = 'default', reducedMotion }: KpiCardProps) {
+function KpiCard({ label, value, format, decimals = 0, icon, tone = 'default', reducedMotion }: KpiCardProps) {
     return (
         <article className={KPI_CARD_CLASSES[tone]}>
             <h2>{icon}{label}</h2>
@@ -44,9 +42,8 @@ function KpiCard({ label, value, format, decimals = 0, suffix = '', icon, tone =
                     {reducedMotion ? format(value) : (
                         <AnimatedValue value={value} decimals={decimals} format={format} />
                     )}
-                    {suffix}
                 </span>
-                <span className="sr-only">{format(value)}{suffix}</span>
+                <span className="sr-only">{format(value)}</span>
             </p>
         </article>
     );
@@ -58,12 +55,12 @@ export function KpiSection() {
     return (
         <section className="admin-kpis stack" aria-label="Indicadores principales" aria-busy={state.status === 'loading'}>
             {state.status === 'loading' && (
-                <div className="card card--panel admin-kpi-feedback" role="status" aria-label="Cargando indicadores">
+                <div className="card card--panel admin-feedback admin-kpi-feedback" role="status" aria-label="Cargando indicadores">
                     <span className="loading-spinner" aria-hidden="true" />
                 </div>
             )}
             {state.status === 'error' && (
-                <div className="card card--panel admin-kpi-feedback" role="alert">No pudimos cargar los indicadores.</div>
+                <div className="card card--panel admin-feedback admin-kpi-feedback" role="alert">No pudimos cargar los indicadores.</div>
             )}
             {state.status === 'ready' && getKpiCards(state.stats).map((card) => (
                 <KpiCard key={card.label} {...card} reducedMotion={reducedMotion} />
