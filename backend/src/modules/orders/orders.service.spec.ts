@@ -122,7 +122,7 @@ describe('OrdersService - user impact', () => {
     jest.resetAllMocks();
   });
 
-  it('calcula el CO2 total ahorrado del usuario', async () => {
+  it('calcula el CO2 total ahorrado solo en pedidos en bicicleta', async () => {
     prisma.order.aggregate.mockResolvedValue({
       _sum: { co2SavedG: 450 },
     });
@@ -132,7 +132,10 @@ describe('OrdersService - user impact', () => {
 
     expect(result.totalCo2SavedG).toBe(450);
     expect(prisma.order.aggregate).toHaveBeenCalledWith({
-      where: { userId },
+      where: {
+        userId,
+        deliveryMethod: 'BIKE',
+      },
       _sum: { co2SavedG: true },
     });
   });

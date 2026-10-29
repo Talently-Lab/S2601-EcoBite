@@ -135,7 +135,10 @@ export class OrdersService {
   async getUserImpact(userId: string) {
     const [co2Total, ordersWithImpact] = await Promise.all([
       this.prisma.order.aggregate({
-        where: { userId },
+        where: {
+          userId,
+          deliveryMethod: DeliveryMethod.BIKE,
+        },
         _sum: { co2SavedG: true },
       }),
       this.prisma.order.count({
