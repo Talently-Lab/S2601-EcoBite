@@ -13,23 +13,6 @@
 }
 
 body,
-.admin-sidebar,
-.admin-kpi-card,
-.header-account-details,
-.impact-card,
-.impact-card-main,
-.impact-card-orders {
-    min-inline-size: 0;
-}
-
-.header-account-name,
-.admin-account-email,
-.admin-logout-error,
-.admin-orders-table td {
-    overflow-wrap: anywhere;
-}
-
-body,
 .input-error,
 .login-error {
     display: flex;
@@ -49,16 +32,6 @@ body,
     & p {
         font-size: var(--font-size-sm);
     }
-}
-
-.page-heading--dashboard p {
-    color: var(--color-forest);
-}
-
-.impact-value {
-    color: var(--color-accent);
-    font-size: var(--font-size-heading);
-    font-weight: 800;
 }
 
 .input-hint,
@@ -92,8 +65,7 @@ html {
 	scroll-padding-block-end: var(--space-2);
 }
 
-.sr-only,
-.admin-orders-table thead {
+.sr-only {
     position: absolute;
     inline-size: 1px;
     block-size: 1px;
@@ -119,6 +91,7 @@ html {
 body {
 	align-items: center;
 	flex-direction: column;
+	min-inline-size: 0;
 	background: var(--color-background);
 	color: var(--color-text);
 	font-family: var(--font-family);
@@ -166,17 +139,5 @@ body {
 
     &:is(a) {
         min-block-size: var(--touch-target);
-    }
-}
-
-@media (min-width: 64rem) {
-    .page-heading--dashboard {
-        & h1 {
-            font-size: var(--font-size-heading);
-        }
-
-        & p {
-            font-size: var(--font-size-md);
-        }
     }
 }
