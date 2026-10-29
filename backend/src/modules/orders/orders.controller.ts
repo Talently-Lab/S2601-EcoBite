@@ -1,4 +1,12 @@
-import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpCode,
+  HttpStatus,
+  Post,
+} from '@nestjs/common';
+
 import {
   ApiBody,
   ApiOperation,
@@ -15,6 +23,22 @@ import { OrdersService } from './orders.service';
 @Controller('orders')
 export class OrdersController {
   constructor(private readonly ordersService: OrdersService) {}
+
+  @Get('me/impact')
+  @ApiOperation({
+    summary: 'Get authenticated user impact indicators',
+  })
+  @ApiResponse({
+    status: 200,
+    description: 'User impact indicators retrieved successfully',
+  })
+  @ApiResponse({
+    status: 401,
+    description: 'Authentication required',
+  })
+  getUserImpact(@CurrentUser() user: Express.User) {
+    return this.ordersService.getUserImpact(user.userId);
+  }
 
   @Post()
   @HttpCode(HttpStatus.CREATED)
