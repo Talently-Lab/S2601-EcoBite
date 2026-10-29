@@ -10,12 +10,24 @@ import { COMUNAS } from '../constants/constants';
 import { ImpactCard } from '../components/pages/ImpactCard';
 import { impactMock } from '../mocks/impact';
 import { getUserNamePresentation } from '../utils/userName';
+import { Link } from 'react-router';
+import { RestaurantCard } from '../components/pages/RestaurantCard';
+import { StatusMessage } from '../components/shared/StatusMessage';
+import { useRestaurants } from '../hooks/useRestaurants';
+
+const FEATURED_MESSAGES = {
+    loadingTarget: 'restaurantes',
+    error: 'No se pudieron cargar los restaurantes.',
+    empty: 'No hay restaurantes disponibles.',
+};
 
 export function Home() {
     const { deliveryComuna, setDeliveryComuna } = useCart();
     const { user } = useUser();
     const { firstName } = getUserNamePresentation(user?.name);
     const selectorId = useId();
+    const { restaurants, status } = useRestaurants();
+    const featuredRestaurants = restaurants.slice(0, 8);
 
     return (
         <div className="page home-page">
@@ -44,6 +56,20 @@ export function Home() {
                 </div>
                 <ImpactCard variant="home" co2SavedG={impactMock.co2SavedG} />
             </div>
+            <section className="home-featured" aria-labelledby="home-featured-title">
+                <div className="home-featured-heading">
+                    <h2 id="home-featured-title">Destacados</h2>
+                    <Link className="home-link home-featured-all" to="/restaurants">Ver todos</Link>
+                </div>
+                <StatusMessage status={status} isEmpty={restaurants.length === 0} messages={FEATURED_MESSAGES} />
+                {status === 'ready' && featuredRestaurants.length > 0 && (
+                    <div className="home-featured-list">
+                        {featuredRestaurants.map((restaurant) => (
+                            <RestaurantCard key={restaurant.id} restaurant={restaurant} />
+                        ))}
+                    </div>
+                )}
+            </section>
             <Button to="/restaurants" className="home-catalog-link">
                 <span>Ver catálogo de restaurantes</span>
                 <LuArrowRight aria-hidden="true" />
