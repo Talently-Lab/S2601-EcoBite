@@ -1,6 +1,7 @@
 type StatusMessageProps = {
     status: 'loading' | 'error' | 'ready';
     isEmpty: boolean;
+    showLoading?: boolean;
     messages: {
         loadingTarget: string;
         error: string;
@@ -14,7 +15,7 @@ const MESSAGE_ROLES = {
     empty: undefined,
 } as const;
 
-export function StatusMessage({ status, isEmpty, messages }: StatusMessageProps) {
+export function StatusMessage({ status, isEmpty, messages, showLoading = false }: StatusMessageProps) {
     const messageKey = status === 'ready' ? (isEmpty ? 'empty' : null) : status;
     const messageText = {
         loading: `Cargando ${messages.loadingTarget}...`,
@@ -22,5 +23,6 @@ export function StatusMessage({ status, isEmpty, messages }: StatusMessageProps)
         empty: messages.empty,
     };
 
-    return messageKey ? <p role={MESSAGE_ROLES[messageKey]}>{messageText[messageKey]}</p> : null;
+    return messageKey ? <p role={MESSAGE_ROLES[messageKey]}
+        className={status === 'loading' && !showLoading ? 'sr-only' : undefined}>{messageText[messageKey]}</p> : null;
 }

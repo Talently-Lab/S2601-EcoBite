@@ -5,7 +5,6 @@ import { ProductCard } from '../components/pages/ProductCard';
 import { Price } from '../components/core/Price';
 import { GreenBadge } from '../components/shared/GreenBadge';
 import { useCart } from '../context/CartContext';
-import { Link } from 'react-router';
 import { FiInfo } from 'react-icons/fi';
 import emptyCartIllustration from '../assets/icons/empty-cart.svg';
 import { centsToPrice } from '../utils/price';
@@ -23,7 +22,7 @@ export function Cart() {
             <>
                 <div className="cart-restaurant-heading">
                     <h2>{items[0].restaurantName}</h2>
-                    <Link to={`/restaurants/${encodeURIComponent(items[0].restaurantId)}`}>Agregar más</Link>
+                    <Button variant="link" to={`/restaurants/${encodeURIComponent(items[0].restaurantId)}`}>Agregar más</Button>
                 </div>
                 <section className="cart-products" aria-label={`Productos de ${items[0].restaurantName}`}>
                     {items.map((item) => (
@@ -51,7 +50,7 @@ export function Cart() {
                     </div>
                     <div className="state-actions">
                         <Button to="/restaurants">Explorar restaurantes</Button>
-                        <Link className="home-link" to="/">Volver a inicio</Link>
+                        <Button variant="link" to="/">Volver a inicio</Button>
                     </div>
                 </section>
             )}

@@ -6,8 +6,9 @@ type RestaurantsResponse = {
     data: Restaurant[];
 };
 
-export const getRestaurants = async (): Promise<Restaurant[]> => {
-    const response = await fetch(`${apiUrl}/restaurants`);
+export const getRestaurants = async (comuna: number | null): Promise<Restaurant[]> => {
+    const query = comuna === null ? '' : `?comuna=${comuna}`;
+    const response = await fetch(`${apiUrl}/restaurants${query}`);
 
     if (!response.ok) {
         throw new Error(`No se pudieron cargar los restaurantes (${response.status}).`);

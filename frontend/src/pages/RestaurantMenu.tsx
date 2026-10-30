@@ -7,6 +7,7 @@ import { useCart } from '../context/CartContext';
 import { useRestaurants } from '../hooks/useRestaurants';
 import type { CartProduct, Restaurant } from '../types/types';
 import { priceToCents } from '../utils/price';
+
 function menuProducts(restaurant: Restaurant): CartProduct[] {
     return restaurant.products.flatMap((product) => {
         const unitPriceCents = priceToCents(product.price);
@@ -35,7 +36,7 @@ function PlanetCareCard({ restaurant }: { restaurant: Restaurant }) {
     return (
         <aside className="restaurant-menu-planet-card" aria-labelledby="planet-care-title">
             <h2 id="planet-care-title">Cómo cuidamos el planeta</h2>
-            <p>Usamos envases biodegradables y entregamos en bici. Así cada pedido genera menos residuos.</p>
+            <p>Usamos envases compostables y entregamos en bici. Así cada pedido genera menos residuos.</p>
         </aside>
     );
 }
@@ -75,7 +76,7 @@ export function RestaurantMenu() {
                     </section>
                 </div>
             ) : (
-                <StatusMessage status={status} isEmpty messages={MENU_MESSAGES} />
+                <StatusMessage status={status} isEmpty messages={MENU_MESSAGES} showLoading />
             )}
         </div>
     );

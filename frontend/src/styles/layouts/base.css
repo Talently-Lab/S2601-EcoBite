@@ -96,17 +96,6 @@ html {
 	scroll-padding-block-end: var(--space-2);
 }
 
-.home-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-block-size: var(--touch-target);
-    color: inherit;
-    font-weight: 600;
-    text-decoration: underline;
-    text-underline-offset: 0.15em;
-}
-
 body {
 	align-items: center;
 	flex-direction: column;

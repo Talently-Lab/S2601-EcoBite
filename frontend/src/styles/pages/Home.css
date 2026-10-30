@@ -1,5 +1,6 @@
 .addresses,
-.addresses-trigger {
+.addresses-trigger,
+.home-featured-heading {
     display: flex;
     align-items: center;
 }
@@ -24,6 +25,37 @@
 
 .home-greeting {
     gap: var(--space-0-5);
+}
+
+.home-featured {
+    container-type: inline-size;
+    min-inline-size: 0;
+    margin-block-start: var(--space-4);
+}
+
+.home-featured-heading {
+    justify-content: space-between;
+    gap: var(--space-2);
+    margin-block-end: var(--space-2);
+}
+
+.home-featured-heading h2 {
+    font-size: var(--font-size-lg);
+}
+
+.home-featured-list {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(9rem, 44%);
+    gap: var(--space-2);
+    min-block-size: calc(max(9rem, 44cqi) * 9 / 16 + var(--space-5) + var(--space-4) + var(--space-1-5));
+    overflow-x: auto;
+    padding-block-end: var(--space-1);
+    scroll-snap-type: inline proximity;
+}
+
+.home-featured-list .restaurant-card {
+    scroll-snap-align: start;
 }
 
 .addresses {
@@ -99,5 +131,12 @@
         align-items: start;
         gap: var(--space-3);
         margin-block-start: var(--space-3);
+    }
+
+    .home-featured-list {
+        grid-auto-flow: row;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-rows: repeat(2, 1fr);
+        overflow: visible;
     }
 }
