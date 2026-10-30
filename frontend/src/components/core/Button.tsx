@@ -1,7 +1,7 @@
 import { Link, type LinkProps } from 'react-router';
 
 type ButtonProps = {
-    variant?: 'primary' | 'icon';
+    variant?: 'primary' | 'icon' | 'link';
     className?: string;
 } & (
     | (React.ButtonHTMLAttributes<HTMLButtonElement> & { to?: undefined })

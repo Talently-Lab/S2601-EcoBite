@@ -19,6 +19,7 @@ function FallbackImage({ src, alt }: ImageWithFallbackProps) {
         <img
             src={usePlaceholder ? imagePlaceholder : imageSrc}
             alt={alt}
+            loading="lazy"
             data-fallback={usePlaceholder}
             onError={() => setFailed(true)}
         />

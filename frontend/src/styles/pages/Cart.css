@@ -20,11 +20,6 @@
     gap: var(--space-1);
 }
 
-.cart-restaurant-heading a:hover,
-.cart-restaurant-heading a:focus-visible {
-    text-decoration: underline;
-}
-
 .cart-page:not(.cart-page--empty) {
     display: flex;
     flex-direction: column;
@@ -42,12 +37,6 @@
     min-inline-size: 0;
     font-size: var(--font-size-lg);
     overflow-wrap: anywhere;
-}
-
-.cart-restaurant-heading a {
-    flex: none;
-    color: var(--color-text);
-    font-size: var(--font-size-md);
 }
 
 .cart-products {

@@ -4,10 +4,18 @@ import { GreenBadge } from '../shared/GreenBadge';
 import type { Restaurant } from '../../types/types';
 
 type Tag = { icon: React.ReactNode; text: string };
-type TaggableRestaurant = Pick<Restaurant, 'packagingType' | 'availableDeliveryMethod'>;
+type RestaurantTagsProps = {
+    restaurant?: Restaurant;
+    variant?: 'catalog' | 'menu';
+};
+
+const loadingTags: Tag[] = [
+    { icon: null, text: 'Envases compostables' },
+    { icon: null, text: 'Entrega en bici' },
+];
 
 const packagingTags: Record<Restaurant['packagingType'], Tag[]> = {
-    BIODEGRADABLE: [{ icon: <TbLeaf aria-hidden="true" />, text: 'Envases biodegradables' }],
+    BIODEGRADABLE: [{ icon: <TbLeaf aria-hidden="true" />, text: 'Envases compostables' }],
     RECYCLABLE: [{ icon: <TbLeaf aria-hidden="true" />, text: 'Envases reciclables' }],
     NON_RECYCLABLE: [],
 };
@@ -18,11 +26,9 @@ const deliveryTags: Record<Restaurant['availableDeliveryMethod'], Tag[]> = {
     CAR: [],
 };
 
-export function RestaurantTags({ restaurant, variant = 'catalog' }: {
-    restaurant: TaggableRestaurant;
-    variant?: 'catalog' | 'menu';
-}) {
-    const tags = [
+export function RestaurantTags({ restaurant, variant = 'catalog' }: RestaurantTagsProps) {
+    const loading = !restaurant;
+    const tags = loading ? loadingTags : [
         ...packagingTags[restaurant.packagingType],
         ...deliveryTags[restaurant.availableDeliveryMethod],
     ];

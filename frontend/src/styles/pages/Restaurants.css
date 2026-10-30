@@ -2,6 +2,12 @@
     grid-column: 1 / -1;
 }
 
+.restaurant-card--loading .item-header--vertical img,
+.restaurant-card--loading .item-header--vertical h3,
+.restaurant-card--loading .green-badge {
+    background: var(--color-surface-muted);
+}
+
 .restaurant-page {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
@@ -26,7 +32,7 @@
     display: block;
     inline-size: 100%;
     block-size: auto;
-    aspect-ratio: 16 / 7;
+    aspect-ratio: 16 / 9;
     padding: 0;
     object-fit: cover;
 }
@@ -48,8 +54,29 @@
         row-gap: var(--space-3);
     }
 
-    .restaurant-card .item-header--vertical img {
-        aspect-ratio: 5 / 2;
+    .restaurant-card:not(.restaurant-card--loading) .item-header--vertical img {
         background: #f2f2f6;
+    }
+}
+
+.restaurant-card--loading {
+    pointer-events: none;
+
+    & .item-header--vertical img {
+        border-radius: var(--radius-md);
+    }
+
+    & .item-header--vertical h3 {
+        inline-size: 70%;
+        border-radius: var(--radius-pill);
+        color: transparent;
+    }
+
+    & .green-badge {
+        color: transparent;
+    }
+
+    & .green-badge-icon {
+        display: none;
     }
 }

@@ -1,5 +1,4 @@
 import { useEffect, useId, useRef } from 'react';
-import { Link } from 'react-router';
 import { useCart } from '../../context/CartContext';
 import { Price } from '../core/Price';
 import { Button } from '../core/Button';
@@ -64,7 +63,7 @@ export function ConfirmationModal() {
                 </dl>
                 <div className="state-actions">
                     <Button to="/impact" autoFocus onClick={closeConfirmationModal}>Ver tu impacto</Button>
-                    <Link className="home-link" to="/" onClick={closeConfirmationModal}>Volver a inicio</Link>
+                    <Button variant="link" to="/" onClick={closeConfirmationModal}>Volver a inicio</Button>
                 </div>
             </div>
         </dialog>
