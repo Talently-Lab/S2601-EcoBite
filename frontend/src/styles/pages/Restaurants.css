@@ -1,4 +1,7 @@
-.restaurant-page > .page-title, .restaurant-page > p {
+.restaurant-page > .page-header,
+.restaurant-page > .breadcrumbs,
+.restaurant-page > h1,
+.restaurant-page > p {
     grid-column: 1 / -1;
 }
 
@@ -16,47 +19,29 @@
 
 .restaurant-card {
     min-inline-size: 0;
-}
 
-.restaurant-card > a {
-    color: inherit;
+    & > a {
+        color: inherit;
+    }
+
+    & .item-header--vertical img {
+        display: block;
+        inline-size: 100%;
+        block-size: auto;
+        aspect-ratio: 16 / 9;
+        padding: 0;
+        object-fit: cover;
+
+        &[data-fallback='true'] {
+            object-fit: contain;
+        }
+    }
 }
 
 .restaurant-tags {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-0-5);
-}
-
-.restaurant-card .item-header--vertical img {
-    display: block;
-    inline-size: 100%;
-    block-size: auto;
-    aspect-ratio: 16 / 9;
-    padding: 0;
-    object-fit: cover;
-}
-
-.restaurant-card .item-header--vertical img[data-fallback='true'] {
-    object-fit: contain;
-}
-
-@media (min-width: 40rem) {
-    .restaurant-page {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-@media (min-width: 48rem) {
-    .restaurant-page {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        column-gap: var(--space-2);
-        row-gap: var(--space-3);
-    }
-
-    .restaurant-card:not(.restaurant-card--loading) .item-header--vertical img {
-        background: #f2f2f6;
-    }
 }
 
 .restaurant-card--loading {
@@ -78,5 +63,23 @@
 
     & .green-badge-icon {
         display: none;
+    }
+}
+
+@media (min-width: 40rem) {
+    .restaurant-page {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 48rem) {
+    .restaurant-page {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        column-gap: var(--space-2);
+        row-gap: var(--space-3);
+    }
+
+    .restaurant-card:not(.restaurant-card--loading) .item-header--vertical img {
+        background: #f2f2f6;
     }
 }

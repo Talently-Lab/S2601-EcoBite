@@ -23,10 +23,6 @@
     margin-block-start: var(--space-2);
 }
 
-.home-greeting {
-    gap: var(--space-0-5);
-}
-
 .home-featured {
     container-type: inline-size;
     min-inline-size: 0;
@@ -39,10 +35,6 @@
     margin-block-end: var(--space-2);
 }
 
-.home-featured-heading h2 {
-    font-size: var(--font-size-lg);
-}
-
 .home-featured-list {
     display: grid;
     grid-auto-flow: column;
@@ -52,35 +44,35 @@
     overflow-x: auto;
     padding-block-end: var(--space-1);
     scroll-snap-type: inline proximity;
-}
 
-.home-featured-list .restaurant-card {
-    scroll-snap-align: start;
+    & .restaurant-card {
+        scroll-snap-align: start;
+    }
 }
 
 .addresses {
     inline-size: fit-content;
     margin-block-end: var(--space-3);
+
+    &:has(.addresses-popover:popover-open) .addresses-chevron {
+        transform: rotate(180deg);
+    }
 }
 
 .addresses-trigger {
     min-block-size: var(--touch-target);
     gap: var(--space-1-5);
     padding: 0;
-    font-size: var(--font-size-md);
-}
+    font-size: var(--font-size-body-sm);
 
-.addresses-trigger svg {
-    inline-size: var(--space-3);
-    block-size: var(--space-3);
+    & svg {
+        inline-size: var(--space-3);
+        block-size: var(--space-3);
+    }
 }
 
 .addresses-chevron {
     transition: transform var(--transition-control);
-}
-
-.addresses:has(.addresses-popover:popover-open) .addresses-chevron {
-    transform: rotate(180deg);
 }
 
 .addresses-popover {
@@ -99,24 +91,23 @@
     border-radius: var(--radius-sm);
     background: var(--color-surface);
     box-shadow: var(--shadow-card);
-}
 
-.addresses-popover:popover-open {
-    display: grid;
+    &:popover-open {
+        display: grid;
+    }
 }
 
 .addresses-option {
     min-block-size: var(--touch-target);
     padding: var(--space-1) var(--space-2);
     border-radius: var(--radius-sm);
-    font-size: var(--font-size-md);
     text-align: start;
-}
 
-.addresses-option[aria-pressed='true'] {
-    background: var(--color-surface-muted);
-    color: var(--color-primary);
-    font-weight: 600;
+    &[aria-pressed='true'] {
+        background: var(--color-surface-muted);
+        color: var(--color-primary);
+        font-weight: var(--font-weight-semibold);
+    }
 }
 
 @media (hover: hover) {

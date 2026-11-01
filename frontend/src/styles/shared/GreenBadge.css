@@ -5,19 +5,6 @@
     gap: var(--space-1-5);
 }
 
-.green-badge--tag .green-badge-content {
-    gap: var(--space-0-5);
-}
-
-.green-badge--descriptive .green-badge-content {
-    align-items: flex-start;
-    gap: var(--space-1);
-}
-
-.green-badge--descriptive .green-badge-icon {
-    flex: none;
-}
-
 .green-badge-icon svg, .green-badge--descriptive {
     display: block;
 }
@@ -31,8 +18,8 @@
     margin: var(--space-1-5) 0;
     background: var(--color-secondary);
     color: var(--color-primary);
-    font-size: var(--font-size-md);
-    font-weight: 700;
+    font-size: var(--font-size-body-lg);
+    font-weight: var(--font-weight-bold);
 }
 
 .green-badge-icon svg {
@@ -41,13 +28,17 @@
 }
 
 .green-badge--tag {
-    font-size: var(--font-size-xs);
     width: fit-content;
     min-height: 18px;
     height: 18px;
     margin: 0;
     padding: calc(var(--space-0-5) / 2) calc(var(--space-1-5) / 2);
-    line-height: 1.2;
+    line-height: var(--line-height-tight);
+    font-size: var(--font-size-body-xs);
+
+    & .green-badge-content {
+        gap: var(--space-0-5);
+    }
 
     & svg {
         width: 10px;
@@ -61,10 +52,18 @@
     border-radius: var(--radius-sm);
     color: var(--color-text);
     font-weight: 400;
+
+    & .green-badge-content {
+        align-items: flex-start;
+        gap: var(--space-1);
+    }
+
+    & .green-badge-icon {
+        flex: none;
+    }
 }
 
 .green-badge-description {
     margin-block-start: var(--space-1);
-    font-size: var(--font-size-sm);
-    line-height: 1.25;
+    font-size: var(--font-size-body-sm);
 }

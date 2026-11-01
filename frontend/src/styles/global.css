@@ -1,11 +1,13 @@
 @import './layouts/base.css';
+@import './shared/Graphics.css';
+@import './shared/SectionHeader.css';
 @import './core/Button.css';
 @import './core/Spinner.css';
 @import './core/PageHeader.css';
 @import './forms/Input.css';
 @import './shared/ItemHeader.css';
-@import './layouts/Navbar.css';
 @import './layouts/Header.css';
+@import './layouts/Breadcrumbs.css';
 @import './layouts/AdminLayout.css';
 @import './pages/AdminSidebar.css';
 @import './layouts/Footer.css';
@@ -27,13 +29,6 @@
 @import './pages/RestaurantMenu.css';
 @import './shared/GreenBadge.css';
 @import './pages/ProfileItem.css';
-@font-face {
-    font-family: 'BricolageGrotesque';
-    src: url('../assets/fonts/Bricolage_Grotesque/BricolageGrotesque-Variable.ttf') format('truetype');
-    font-weight: 200 800;
-    font-stretch: 75% 100%;
-    font-display: swap;
-}
 
 :root {
     --color-primary: #0e2926;
@@ -52,13 +47,21 @@
     --color-surface-muted: #d9e4dc;
     --color-page-background: color-mix(in srgb, var(--color-accent) 12%, var(--color-background));
     --font-family: 'BricolageGrotesque', sans-serif;
-    --font-size-xs: 0.625rem;
-    --font-size-sm: 0.75rem;
-    --font-size-md: 1rem;
-    --font-size-lg: 1.125rem;
-    --font-size-heading: 2.25rem;
+    --font-size-body-xs: 10px;
+    --font-size-body-sm: 12px;
+    --font-size-body-md: 14px;
+    --font-size-body-lg: 16px;
+    --font-size-headline-xs: 20px;
+    --font-size-headline-sm: 24px;
+    --font-size-headline-md: 28px;
+    --font-size-headline-lg: 36px;
+    --font-size-headline-xl: 48px;
+    --font-weight-medium: 500;
     --font-weight-semibold: 600;
+    --font-weight-bold: 700;
     --line-height-tight: 1.2;
+    --line-height-body: 1.25;
+    --line-height-relaxed: 1.3;
     --space-0-5: 4px;
     --space-1: 8px;
     --space-1-5: 12px;
@@ -77,15 +80,10 @@
     --touch-target: 2.75rem;
     --page-gutter: calc(var(--space-2) + var(--space-0-5));
     --content-width: 75rem;
-    --navbar-height: 5rem;
     --header-height: 4rem;
     --shadow-navigation: 0 -1px 0 var(--color-border);
     --shadow-card: 0 var(--space-0-5) var(--space-2) color-mix(in srgb, var(--color-primary) 10%, transparent);
     --transition-control: 160ms ease;
-}
-
-@media (prefers-reduced-motion: reduce) {
-    :root { --transition-control: 0ms; }
 }
 
 *,
@@ -93,4 +91,19 @@
 *::after {
     box-sizing: border-box;
     margin: 0;
+}
+
+html {
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-block-end: var(--space-2);
+}
+
+button,
+select {
+    text-transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    :root { --transition-control: 0ms; }
 }

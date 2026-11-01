@@ -1,3 +1,18 @@
+.impact-card .impact-value,
+.impact-card-link span {
+    line-height: 1;
+}
+
+.impact-card-link span,
+.impact-card-orders {
+    font-size: var(--font-size-headline-xs);
+}
+
+.impact-card-eyebrow,
+.impact-card-caption {
+    font-weight: var(--font-weight-semibold);
+}
+
 .impact-card,
 .impact-card-main,
 .impact-card-orders {
@@ -9,33 +24,11 @@
     padding: var(--space-3);
 }
 
-.impact-card-eyebrow,
-.impact-card-explanation {
-    font-size: var(--font-size-sm);
-}
-
-.impact-card-caption,
-.impact-card-link span,
-.impact-card-orders {
-    font-size: var(--font-size-lg);
-}
-
-.impact-card-eyebrow,
-.impact-card--detail .impact-card-caption,
-.impact-card-orders {
-    font-weight: var(--font-weight-semibold);
-}
-
 .impact-card-link,
 .impact-card-orders {
     align-items: center;
     background: var(--color-accent);
     color: var(--color-primary);
-}
-
-.impact-card--detail .impact-card-caption {
-    margin-block-start: var(--space-1);
-    color: var(--color-accent);
 }
 
 .impact-card-main {
@@ -63,12 +56,8 @@
 
 .impact-value {
     color: var(--color-accent);
-    font-size: var(--font-size-heading);
+    font-size: var(--font-size-headline-xl);
     font-weight: 800;
-}
-
-.impact-card .impact-value {
-    line-height: 1.1;
 }
 
 .impact-card-link {
@@ -85,14 +74,15 @@
     &:hover {
         background: var(--color-secondary);
     }
-
-    & span {
-        line-height: 1;
-    }
 }
 
 .impact-card--detail {
     display: grid;
+
+    & .impact-card-caption {
+        margin-block-start: var(--space-1);
+        color: var(--color-accent);
+    }
 
     & .impact-card-main {
         min-block-size: calc(var(--space-5) * 2 + var(--space-3));
@@ -101,13 +91,16 @@
 
 .impact-card-explanation {
     margin-block-start: var(--space-2);
-    line-height: 1.35;
+    line-height: var(--line-height-relaxed);
+    font-size: var(--font-size-body-md);
 }
 
 .impact-card-orders {
     gap: var(--space-1);
     margin-block-start: calc(-1 * var(--space-2));
     padding-block-end: var(--space-1);
+    line-height: var(--line-height-tight);
+    font-weight: var(--font-weight-medium);
 
     & > .svg-icon {
         inline-size: 2rem;

@@ -1,0 +1,32 @@
+.breadcrumbs {
+    display: none;
+    color: var(--color-text);
+    font-size: var(--font-size-body-sm);
+
+    & ol {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-0-5);
+        padding: 0;
+        list-style: none;
+    }
+
+    & li:not(:first-child)::before {
+        margin-inline-end: var(--space-0-5);
+        content: '/';
+    }
+
+    & a {
+        color: inherit;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+@media (width >= 48rem) {
+    .breadcrumbs {
+        display: block;
+    }
+}

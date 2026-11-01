@@ -1,3 +1,19 @@
+.admin-kpi-value,
+.admin-kpi-card--impact .impact-value {
+    line-height: var(--line-height-tight);
+}
+
+.admin-kpi-value {
+    font-size: var(--font-size-headline-md);
+    font-weight: var(--font-weight-bold);
+}
+
+.admin-recent-orders > h2,
+.admin-kpi-card .admin-kpi-label,
+.admin-orders-table th {
+    font-weight: var(--font-weight-semibold);
+}
+
 .admin-recent-orders,
 .admin-orders-table {
     background: var(--color-table);
@@ -8,20 +24,6 @@
     justify-content: center;
     color: var(--color-forest);
     text-align: center;
-}
-
-.page-heading--dashboard p {
-    color: var(--color-forest);
-}
-
-.admin-kpi-value {
-    font-size: calc(var(--font-size-lg) + var(--font-size-sm));
-    font-weight: 700;
-    line-height: var(--line-height-tight);
-}
-
-.admin-recent-orders h2 {
-    font-size: var(--font-size-md);
 }
 
 .admin-dashboard {
@@ -37,27 +39,21 @@
     padding: var(--space-2);
     border-color: var(--color-muted);
 
-    & h2 {
+    & .admin-kpi-label {
         display: flex;
         align-items: center;
         gap: var(--space-0-5);
-        font-size: var(--font-size-sm);
-        font-weight: var(--font-weight-semibold);
+        font-size: clamp(var(--font-size-body-sm), 1.5625vw, var(--font-size-body-lg));
     }
 }
-
 .admin-kpi-card--impact {
     min-block-size: 12rem;
     border-color: var(--color-primary);
 
-    & h2 > .svg-icon {
+    & .admin-kpi-label > .svg-icon {
         flex: none;
         inline-size: var(--space-2);
         mask-image: url('../../assets/icons/leaves.svg');
-    }
-
-    & .impact-value {
-        line-height: var(--line-height-tight);
     }
 }
 
@@ -69,24 +65,29 @@
 .admin-recent-orders {
     min-block-size: 16rem;
     border: 0;
-}
 
-.admin-recent-orders .admin-feedback {
-    flex: 1;
-    padding: var(--space-2);
-    border-radius: var(--radius-sm);
+    & > h2 {
+        font-size: var(--font-size-body-lg);
+        line-height: var(--line-height-body);
+    }
+
+    & .admin-feedback {
+        flex: 1;
+        padding: var(--space-2);
+        border-radius: var(--radius-sm);
+    }
 }
 
 .admin-orders-table {
     border-collapse: collapse;
-}
 
-.admin-orders-table th {
-    font-weight: var(--font-weight-semibold);
-}
+    & td {
+        overflow-wrap: anywhere;
+    }
 
-.admin-orders-table tbody td:last-child .green-badge {
-    margin-inline-start: auto;
+    & tbody td:last-child .green-badge {
+        margin-inline-start: auto;
+    }
 }
 
 @media (width < 48rem) {
@@ -102,6 +103,15 @@
     }
 
     .admin-orders-table {
+        & td:nth-child(1),
+        & td:nth-child(3) {
+            font-weight: var(--font-weight-semibold);
+        }
+
+        & td:nth-child(2) {
+            font-size: var(--font-size-body-sm);
+        }
+
         & tbody tr {
             display: grid;
             grid-template-columns: minmax(0, 1fr) auto;
@@ -121,18 +131,15 @@
 
         & td:nth-child(1) {
             grid-area: restaurant;
-            font-weight: var(--font-weight-semibold);
         }
 
         & td:nth-child(2) {
             grid-area: date;
             color: var(--color-forest);
-            font-size: var(--font-size-sm);
         }
 
         & td:nth-child(3) {
             grid-area: total;
-            font-weight: var(--font-weight-semibold);
             text-align: end;
         }
 
@@ -155,23 +162,9 @@
 }
 
 @media (width >= 64rem) {
-    .page-heading--dashboard {
-        & h1 {
-            font-size: var(--font-size-heading);
-        }
-
-        & p {
-            font-size: var(--font-size-md);
-        }
-    }
-
     .admin-kpi-card--impact {
         grid-column: auto;
         padding: var(--space-3-5);
-    }
-
-    .admin-kpi-card h2 {
-        font-size: var(--font-size-md);
     }
 
     .admin-kpis {

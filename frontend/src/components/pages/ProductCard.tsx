@@ -9,31 +9,26 @@ type ProductCardProps =
     | { variant?: 'menu'; product: CartProduct; disabled?: boolean }
     | { variant: 'cart'; product: CartItem; disabled?: boolean };
 
-const VARIANT_CONFIG = {
-    menu: { showDescription: true, selectorInImage: true },
-    cart: { showDescription: false, selectorInImage: false },
-} as const;
-
 export function ProductCard(props: ProductCardProps) {
     const { product, disabled = false } = props;
     const variant = props.variant ?? 'menu';
-    const config = VARIANT_CONFIG[variant];
+    const selectorInImage = variant === 'menu';
     const price = centsToPrice(getSubtotalCents(product.unitPriceCents, 'quantity' in product ? product.quantity : 1));
 
     return (
         <article className={`product-card product-card--${variant}`}>
             <div className="product-details">
-                <ItemHeader title={product.name} description={config.showDescription ? product.description : undefined} />
+                <ItemHeader title={product.name} />
                 <span>
-                    {!config.showDescription && <span className="sr-only">Subtotal: </span>}
+                    {!selectorInImage && <span className="sr-only">Subtotal: </span>}
                     <Price price={price} />
                 </span>
             </div>
             <div className="product-card-image">
                 <img src={platePlaceholder} alt="" />
-                {config.selectorInImage && <QuantitySelector product={product} disabled={disabled} />}
+                {selectorInImage && <QuantitySelector product={product} disabled={disabled} />}
             </div>
-            {!config.selectorInImage && <QuantitySelector product={product} disabled={disabled} />}
+            {!selectorInImage && <QuantitySelector product={product} disabled={disabled} />}
         </article>
     );
 }

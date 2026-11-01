@@ -15,12 +15,6 @@
     position: absolute;
 }
 
-.restaurant-menu-planet-card h2,
-.restaurant-menu-planet-card p,
-.restaurant-menu-notice {
-    font-size: var(--font-size-md);
-}
-
 .restaurant-menu-page {
     max-inline-size: 44rem;
     margin-inline: auto;
@@ -29,39 +23,34 @@
 .restaurant-menu-hero--with-image {
     position: relative;
     margin-inline: calc(-1 * var(--page-gutter));
-}
 
-.restaurant-menu-hero--with-image > img {
-    display: block;
-    inline-size: 100%;
-    aspect-ratio: 2 / 1;
-    max-block-size: 20rem;
-    object-fit: cover;
-}
+    & > img {
+        display: block;
+        inline-size: 100%;
+        aspect-ratio: 2 / 1;
+        max-block-size: 20rem;
+        object-fit: cover;
+    }
 
-.restaurant-menu-hero--with-image::after {
-    inset-block-start: 0;
-    inset-inline: 0;
-    block-size: 60%;
-    background: linear-gradient(to bottom, rgb(255 255 255 / 85%), transparent);
-    content: '';
-    pointer-events: none;
-}
+    &::after {
+        inset-block-start: 0;
+        inset-inline: 0;
+        block-size: 60%;
+        background: linear-gradient(to bottom, rgb(255 255 255 / 85%), transparent);
+        content: '';
+        pointer-events: none;
+    }
 
-.restaurant-menu-hero--with-image .page-header {
-    z-index: 1;
-    inset-block-start: var(--space-1);
-    inset-inline-start: var(--page-gutter);
+    & .page-header {
+        z-index: 1;
+        inset-block-start: var(--space-1);
+        inset-inline-start: var(--page-gutter);
+    }
 }
 
 .restaurant-menu-content {
     gap: var(--space-3);
     padding-block: var(--space-2) var(--space-4);
-}
-
-.restaurant-menu-heading h1 {
-    font-size: calc(var(--font-size-md) + var(--font-size-xs));
-    line-height: 1.15;
 }
 
 .restaurant-tags--menu .green-badge--tag {
@@ -74,10 +63,14 @@
     border-radius: var(--radius-md);
     background: var(--color-accent);
     box-shadow: var(--shadow-card);
+
+    & p {
+        line-height: var(--line-height-relaxed);
+    }
 }
 
-.restaurant-menu-planet-card p {
-    line-height: 1.35;
+.restaurant-menu-planet-card-title {
+    font-weight: var(--font-weight-semibold);
 }
 
 .restaurant-menu-notice {
@@ -85,26 +78,22 @@
     border-radius: var(--radius-sm);
     background: var(--color-surface);
     color: var(--color-forest);
-}
 
-.restaurant-menu-notice a {
-    color: var(--color-primary);
-    font-weight: 700;
-    text-decoration: underline;
+    & a {
+        color: var(--color-primary);
+        text-decoration: underline;
+        font-weight: var(--font-weight-bold);
+    }
 }
 
 .restaurant-menu-products {
     gap: var(--space-2);
     margin-block-start: var(--space-3);
-}
 
-.restaurant-menu-products h2 {
-    font-size: var(--font-size-lg);
-}
-
-.restaurant-menu-products .product-card {
-    padding-block: var(--space-2);
-    border-block-end: 1px solid var(--color-border);
+    & .product-card {
+        padding-block: var(--space-2);
+        border-block-end: 1px solid var(--color-border);
+    }
 }
 
 main:has(.restaurant-menu-hero--with-image) {

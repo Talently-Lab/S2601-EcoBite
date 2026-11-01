@@ -1,8 +1,10 @@
 import { Link, useParams } from 'react-router';
 import { PageHeader } from '../components/core/PageHeader';
+import { Breadcrumbs } from '../components/layouts/Breadcrumbs';
 import { ProductCard } from '../components/pages/ProductCard';
 import { RestaurantTags } from '../components/pages/RestaurantTags';
 import { StatusMessage } from '../components/shared/StatusMessage';
+import { SectionHeader } from '../components/shared/SectionHeader';
 import { useCart } from '../context/CartContext';
 import { useRestaurants } from '../hooks/useRestaurants';
 import type { CartProduct, Restaurant } from '../types/types';
@@ -28,14 +30,12 @@ const MENU_MESSAGES = {
     empty: 'No encontramos ese restaurante.',
 };
 
-const NO_PRODUCTS_MESSAGE = 'No hay platos disponibles en este restaurante.';
-
 function PlanetCareCard({ restaurant }: { restaurant: Restaurant }) {
     if (restaurant.availableDeliveryMethod !== 'BIKE' || restaurant.packagingType !== 'BIODEGRADABLE') return null;
 
     return (
         <aside className="restaurant-menu-planet-card" aria-labelledby="planet-care-title">
-            <h2 id="planet-care-title">Cómo cuidamos el planeta</h2>
+            <p id="planet-care-title" className="restaurant-menu-planet-card-title">Cómo cuidamos el planeta</p>
             <p>Usamos envases compostables y entregamos en bici. Así cada pedido genera menos residuos.</p>
         </aside>
     );
@@ -51,16 +51,17 @@ export function RestaurantMenu() {
 
     return (
         <div className="page restaurant-menu-page">
+            {restaurant && <Breadcrumbs currentPage={restaurant.name} />}
             <div className={`restaurant-menu-hero${restaurant ? ' restaurant-menu-hero--with-image' : ''}`}>
                 {restaurant && <img src={new URL(`../assets/images/${restaurant.foodCategory}.webp`, import.meta.url).href} alt="" />}
                 <PageHeader backTo="/restaurants" backLabel="Volver a restaurantes" />
             </div>
             {restaurant ? (
                 <div className="restaurant-menu-content">
-                    <header className="restaurant-menu-heading">
-                        <h1>{restaurant.name}</h1>
+                    <div className="restaurant-menu-heading">
+                        <SectionHeader variant="h1" title={restaurant.name} />
                         <RestaurantTags restaurant={restaurant} variant="menu" />
-                    </header>
+                    </div>
                     <PlanetCareCard restaurant={restaurant} />
                     {cartBelongsToAnotherRestaurant && (
                         <p className="restaurant-menu-notice" role="status">
@@ -72,7 +73,6 @@ export function RestaurantMenu() {
                         {products.map((product) => (
                             <ProductCard key={product.id} product={product} disabled={cartBelongsToAnotherRestaurant} />
                         ))}
-                        {!products.length && <p>{NO_PRODUCTS_MESSAGE}</p>}
                     </section>
                 </div>
             ) : (

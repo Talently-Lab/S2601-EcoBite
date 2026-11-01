@@ -24,7 +24,7 @@
     }
 
     & .price {
-        font-size: var(--font-size-lg);
+        font-size: var(--font-size-headline-xs);
     }
 }
 
@@ -37,19 +37,6 @@
         grid-column: 1;
         align-content: space-between;
         gap: var(--space-2);
-    }
-
-    & .item-header h3 {
-        font-weight: 500;
-    }
-
-    & .item-header p {
-        color: var(--color-primary);
-        font-size: var(--font-size-sm);
-    }
-
-    & .price {
-        font-weight: 600;
     }
 
     & .product-card-image {
@@ -70,6 +57,10 @@
         & .quantity-selector--counter {
             background: var(--color-background);
         }
+    }
+
+    & .price {
+        font-weight: var(--font-weight-semibold);
     }
 }
 
@@ -93,18 +84,13 @@
         gap: var(--space-0-5);
     }
 
-    & .item-header h3 {
-        font-size: var(--font-size-sm);
-        font-weight: 400;
-    }
-
-    & .price {
-        font-weight: 500;
-    }
-
     & > .quantity-selector {
         grid-column: 3;
         grid-row: 1;
+    }
+
+    & .price {
+        font-weight: var(--font-weight-medium);
     }
 }
 

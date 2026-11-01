@@ -19,6 +19,16 @@
     color: var(--color-text);
     cursor: pointer;
     padding: 0;
+
+    & > .button--icon {
+        inline-size: var(--touch-target);
+        min-block-size: var(--touch-target);
+        padding: 0;
+    }
+
+    &:hover {
+        background: var(--color-surface);
+    }
 }
 
 .profile-item-icon {
@@ -26,12 +36,3 @@
     color: var(--color-primary);
 }
 
-.profile-item > .button--icon {
-    inline-size: var(--touch-target);
-    min-block-size: var(--touch-target);
-    padding: 0;
-}
-
-.profile-item:hover {
-    background: var(--color-surface);
-}

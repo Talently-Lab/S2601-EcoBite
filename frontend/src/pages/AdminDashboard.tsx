@@ -1,13 +1,11 @@
 import { KpiSection } from '../components/pages/KpiSection';
 import { RecentOrders, ImpactRanking } from '../components/pages/AdminTables';
+import { SectionHeader } from '../components/shared/SectionHeader';
 
 export function AdminDashboard() {
     return (
         <div className="admin-dashboard stack">
-            <header className="page-heading page-heading--dashboard">
-                <h1>Dashboard</h1>
-                <p>Impacto y ventas de toda la plataforma</p>
-            </header>
+            <SectionHeader variant="h1" title="Dashboard" subtitle="Impacto y ventas de toda la plataforma" />
 
             <KpiSection />
 

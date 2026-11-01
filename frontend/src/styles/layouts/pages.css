@@ -1,3 +1,8 @@
+.stack {
+    display: grid;
+    gap: var(--space-2);
+}
+
 .cart-page--empty,
 .checkout-page {
     max-inline-size: 28rem;
@@ -46,21 +51,35 @@ main:has(.cart-page:not(.cart-page--empty)) {
 .state-actions {
     display: grid;
     gap: var(--space-1);
-}
 
-.state-actions > .button--link {
-    font-weight: 600;
-    text-decoration: underline;
-    text-underline-offset: 0.15em;
+    & > .button--link {
+        text-decoration: underline;
+        text-underline-offset: 0.15em;
+        font-weight: var(--font-weight-semibold);
+    }
 }
 
 .site-header + main {
     min-block-size: calc(100dvh - var(--header-height));
 }
 
-.page-title {
-    margin-block-end: var(--space-3);
-    font-size: var(--font-size-lg);
+@media (width >= 64rem) {
+    .site-header + main {
+        min-block-size: calc(100dvh - var(--space-5));
+    }
+}
+
+@media (width < 48rem) {
+    .cart-page > h1,
+    .checkout-page > h1,
+    .restaurant-page > h1 {
+        position: absolute;
+        inline-size: 1px;
+        block-size: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+    }
 }
 
 @media (min-width: 48rem) {

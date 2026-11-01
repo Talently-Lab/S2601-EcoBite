@@ -4,6 +4,7 @@ import { PageHeader } from '../components/core/PageHeader';
 import { ProductCard } from '../components/pages/ProductCard';
 import { Price } from '../components/core/Price';
 import { GreenBadge } from '../components/shared/GreenBadge';
+import { SectionHeader } from '../components/shared/SectionHeader';
 import { useCart } from '../context/CartContext';
 import { FiInfo } from 'react-icons/fi';
 import emptyCartIllustration from '../assets/icons/empty-cart.svg';
@@ -13,15 +14,19 @@ export function Cart() {
 
     const { items, totalCents } = useCart();
     const emptyTitleId = useId();
+    const restaurant = items[0];
+    const backLabel = restaurant ? `Volver a ${restaurant.restaurantName}` : 'Volver a restaurantes';
 
     return (
         <div className={`page cart-page${items.length ? '' : ' cart-page--empty'}`}>
-            <PageHeader title={items.length ? 'Tu carrito' : undefined}
-                backTo="/restaurants" backLabel="Volver a restaurantes" />
+            <PageHeader title="Tu carrito"
+                backTo={restaurant ? `/restaurants/${encodeURIComponent(restaurant.restaurantId)}` : '/restaurants'}
+                backLabel={backLabel} desktopBackText={backLabel} />
             {items.length ? (
             <>
+                <h1>Tu carrito</h1>
                 <div className="cart-restaurant-heading">
-                    <h2>{items[0].restaurantName}</h2>
+                    <SectionHeader variant="h2" title={items[0].restaurantName} />
                     <Button variant="link" to={`/restaurants/${encodeURIComponent(items[0].restaurantId)}`}>Agregar más</Button>
                 </div>
                 <section className="cart-products" aria-label={`Productos de ${items[0].restaurantName}`}>

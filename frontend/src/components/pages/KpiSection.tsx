@@ -36,7 +36,7 @@ function AnimatedValue({ value, format, decimals = 0 }: Pick<KpiCardConfig, 'val
 function KpiCard({ label, value, format, decimals = 0, icon, tone = 'default', reducedMotion }: KpiCardProps) {
     return (
         <article className={KPI_CARD_CLASSES[tone]}>
-            <h2>{icon}{label}</h2>
+            <p className="admin-kpi-label">{icon}{label}</p>
             <p className={tone === 'impact' ? 'impact-value' : 'admin-kpi-value'}>
                 <span aria-hidden="true">
                     {reducedMotion ? format(value) : (

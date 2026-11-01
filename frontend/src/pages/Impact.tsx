@@ -1,6 +1,8 @@
 import { LuImage } from 'react-icons/lu';
 import { ImpactCard } from '../components/pages/ImpactCard';
 import { PageHeader } from '../components/core/PageHeader';
+import { Breadcrumbs } from '../components/layouts/Breadcrumbs';
+import { SectionHeader } from '../components/shared/SectionHeader';
 import { impactMock } from '../mocks/impact';
 import { formatOrderDate } from '../utils/dates';
 import { formatPrice } from '../utils/price';
@@ -9,11 +11,9 @@ import { formatGrams } from '../utils/kpiFormatters';
 export function Impact() {
     return (
         <div className="page impact-page stack">
-            <PageHeader backTo="/" backLabel="Volver al inicio" />
-            <header className="impact-page-heading page-heading">
-                <h1>Tu impacto</h1>
-                <p>Desde que empezaste a pedir</p>
-            </header>
+            <Breadcrumbs currentPage="Tu impacto" />
+            <PageHeader backTo="/" backLabel="Volver al inicio" mobileOnly />
+            <SectionHeader variant="h2" title="Tu impacto" subtitle="Desde que empezaste a pedir" />
             <ImpactCard variant="detail" co2SavedG={impactMock.co2SavedG} impactedOrders={impactMock.impactedOrders} />
             <section className="impact-orders stack" aria-labelledby="impact-orders-title">
                 <h2 id="impact-orders-title">Tus pedidos</h2>
