@@ -1,10 +1,13 @@
 import { HiOutlineKey } from "react-icons/hi";
 import { GrLocation } from "react-icons/gr";
 import { VscShare } from "react-icons/vsc";
-import { TbMail, TbReceipt2, TbCreditCard } from "react-icons/tb";
+import { TbReceipt2, TbCreditCard } from "react-icons/tb";
 import { ImageWithFallback } from '../components/shared/ImageWithFallback';
 import { ProfileItem } from '../components/pages/ProfileItem';
 import { ItemHeader } from "../components/shared/ItemHeader";
+import { SectionHeader } from '../components/shared/SectionHeader';
+import { PageHeader } from '../components/core/PageHeader';
+import { Breadcrumbs } from '../components/layouts/Breadcrumbs';
 import { useUser } from '../context/UserContext';
 import { getUserNamePresentation } from '../utils/userName';
 
@@ -13,7 +16,6 @@ export function Profile() {
     const { displayName } = getUserNamePresentation(user?.name);
 
     const profileItems = [
-        { icon: <TbMail />, label: user?.email ?? '', },
         { icon: <HiOutlineKey />, label: 'Text', },
         { icon: <TbReceipt2 />, label: 'Text', },
         { icon: <GrLocation />, label: 'Text', },
@@ -23,9 +25,11 @@ export function Profile() {
 
     return (
         <div className="profile-page">
+            <Breadcrumbs currentPage="Perfil" />
+            <PageHeader backTo="/" backLabel="Volver al inicio" mobileOnly />
             <div className="profile-photo">
                 <ImageWithFallback alt='profile-photo' />
-                <h2>{displayName}</h2>
+                <SectionHeader variant="h1" title={displayName} subtitle={user?.email} />
             </div>
             <ItemHeader title='Tu cuenta' />
             {profileItems.map((item, index) =>

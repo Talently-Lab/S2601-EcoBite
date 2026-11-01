@@ -11,6 +11,7 @@ import { impactMock } from '../mocks/impact';
 import { getUserNamePresentation } from '../utils/userName';
 import { RestaurantCard } from '../components/pages/RestaurantCard';
 import { StatusMessage } from '../components/shared/StatusMessage';
+import { SectionHeader } from '../components/shared/SectionHeader';
 import { useRestaurants } from '../hooks/useRestaurants';
 
 export function Home() {
@@ -43,10 +44,7 @@ export function Home() {
             </div>
             <Input placeholder="Buscar restaurante..." type="text" variant="search-bar" name="search-bar" icon={<IoSearch />} />
             <div className="home-intro stack">
-                <div className="home-greeting stack page-heading">
-                    <h1>Hola, {firstName}</h1>
-                    <p>¿Qué pedimos hoy?</p>
-                </div>
+                <SectionHeader variant="h1" title={`Hola, ${firstName}`} subtitle="¿Qué pedimos hoy?" />
                 <ImpactCard variant="home" co2SavedG={impactMock.co2SavedG} />
             </div>
             <section className="home-featured" aria-labelledby="home-featured-title">

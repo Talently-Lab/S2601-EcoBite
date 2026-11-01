@@ -10,7 +10,7 @@ type TableState<T> = { status: 'loading' | 'error' } | { status: 'ready'; items:
 
 type AdminTableProps<T> = {
     id: string;
-    title: ReactNode;
+    title: string;
     className: string;
     tableClassName: string;
     fetcher: () => Promise<T[]>;

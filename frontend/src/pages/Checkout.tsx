@@ -5,6 +5,7 @@ import { Button } from '../components/core/Button';
 import { PageHeader } from '../components/core/PageHeader';
 import { Input } from '../components/forms/Input';
 import { FormError } from '../components/forms/FormError';
+import { SectionHeader } from '../components/shared/SectionHeader';
 import { useCart } from '../context/CartContext';
 import { centsToPrice } from '../utils/price';
 
@@ -37,16 +38,12 @@ function CheckoutSummary({ titleId, restaurantName, productCount, totalCents }: 
     return (
         <section className="checkout-summary surface-card" aria-labelledby={titleId}>
             <div className="checkout-summary-heading">
-                <h2 id={titleId}>{restaurantName}</h2>
+                <h3 id={titleId}>{restaurantName}</h3>
                 <span className="checkout-product-count">
                     {productCount} {productCount === 1 ? 'producto' : 'productos'}
                 </span>
             </div>
             <div className="checkout-breakdown">
-                <div className="checkout-product-total">
-                    <span>Producto</span>
-                    <Price price={total} />
-                </div>
                 <div className="checkout-total">
                     <span>Total</span>
                     <Price price={total} />
@@ -90,16 +87,18 @@ export function Checkout() {
 
     return (
         <div className="page checkout-page">
-            <PageHeader title="Confirmá tu pedido" backTo="/cart" backLabel="Volver al carrito" />
+            <PageHeader title="Confirmá tu pedido" backTo="/cart" backLabel="Volver al carrito"
+                desktopBackText="Volver al carrito" />
+            <h1>Confirmá tu pedido</h1>
 
             <section className="checkout-address" aria-labelledby={deliveryTitleId}>
-                <h2 id={deliveryTitleId}>Dirección de entrega</h2>
-                <Input label="Comuna de entrega" value={deliveryComuna === null ? 'Elegí una comuna' : `Comuna ${deliveryComuna}`} readOnly />
+                <SectionHeader variant="h2" title="Dirección de entrega" titleId={deliveryTitleId} />
+                <Input label="Envío a" value={deliveryComuna === null ? 'Elegí una comuna' : `Comuna ${deliveryComuna}`} readOnly />
                 {deliveryComuna === null && <Link className="checkout-choose-comuna" to="/">Elegir comuna en inicio</Link>}
             </section>
 
             <fieldset className="checkout-payment" disabled={isSubmitting}>
-                <legend>Método de pago</legend>
+                <SectionHeader variant="h2" title="Método de pago"/>
                 <PaymentOption name={`${checkoutId}-payment`} value="card" label="Tarjeta" defaultChecked />
                 <PaymentOption name={`${checkoutId}-payment`} value="cash" label="Efectivo" />
             </fieldset>

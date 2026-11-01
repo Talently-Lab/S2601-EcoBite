@@ -1,9 +1,14 @@
-.site-footer-content, .site-footer-sections, .site-footer-links {
+.site-footer-content,
+.site-footer-nav,
+.site-footer-legal {
     display: grid;
 }
 
-.site-footer-heading {
-    color: var(--color-secondary);
+.site-footer-nav,
+.site-footer-legal {
+    align-content: start;
+    gap: var(--space-1);
+    font-size: var(--font-size-body-sm);
 }
 
 .site-footer {
@@ -13,66 +18,49 @@
 }
 
 .site-footer-content {
-    gap: 4.5rem;
+    gap: var(--space-3);
     max-inline-size: var(--content-width);
     margin-inline: auto;
-    padding: calc(var(--space-2) * 2) var(--page-gutter);
+    padding: var(--space-4) var(--page-gutter) var(--space-3);
+}
+
+.site-footer-brand .brand-logo {
+    inline-size: 7rem;
+    block-size: var(--space-3);
 }
 
 .site-footer-tagline {
     color: var(--color-accent);
-    font-size: 0.875rem;
+    font-size: var(--font-size-body-md);
 }
 
-.site-footer-sections {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-3);
-}
-
-.site-footer-heading {
-    margin-block-end: calc(var(--space-3) / 2);
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-}
-
-.site-footer-links {
-    gap: calc(var(--space-3) / 2);
-    padding: 0;
-    list-style: none;
-}
-
-.site-footer-link {
+.site-footer-nav a {
     color: inherit;
-    font-size: 0.875rem;
-    line-height: 1.4;
-    text-underline-offset: 0.2em;
-    overflow-wrap: anywhere;
 }
 
-.site-footer-link:focus-visible {
-    outline-color: var(--color-accent);
-    text-decoration: underline;
-}
-
-.site-footer-copyright {
-    padding-block-start: calc(var(--space-3) / 2);
-    border-block-start: 1px solid var(--color-muted);
-    font-size: 0.625rem;
-}
-
-.site-footer-link:hover {
+.site-footer-nav a:hover,
+.site-footer-nav a:focus-visible {
     color: var(--color-accent);
     text-decoration: underline;
 }
 
-@media (min-width: 48rem) {
+.site-footer-copyright {
+    margin-block-start: var(--space-1);
+    padding-block-start: var(--space-3);
+    border-block-start: 1px solid var(--color-muted);
+    font-size: var(--font-size-body-xs);
+}
+
+@media (width >= 48rem) {
     .site-footer-content {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        padding-block-start: var(--space-4);
+        grid-template-columns: 2fr 1fr 1fr;
+        column-gap: var(--space-4);
+        row-gap: var(--space-5);
+        padding-block-start: var(--space-5);
     }
 
     .site-footer-copyright {
         grid-column: 1 / -1;
+        margin-block-start: 0;
     }
 }

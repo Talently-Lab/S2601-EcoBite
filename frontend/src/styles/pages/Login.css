@@ -1,3 +1,26 @@
+.login-terms,
+.login-links,
+.login-error {
+    line-height: var(--line-height-relaxed);
+}
+
+.login-terms,
+.login-links {
+    font-size: var(--font-size-body-sm);
+}
+
+.login-error {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-1-5);
+    color: var(--color-error);
+
+    & svg {
+        flex-shrink: 0;
+        margin-block-start: var(--space-0-5);
+    }
+}
+
 main:has(.login-page), .login-password-toggle {
     padding: 0;
 }
@@ -55,20 +78,19 @@ main:has(.login-page) {
     gap: var(--space-3-5);
 }
 
-.login-intro h1 {
-    font-size: var(--font-size-heading);
-    font-weight: 700;
-    line-height: 1.05;
-}
+.login-intro {
+    & h1 {
+        line-height: 1;
 
-.login-intro h1 span {
-    color: var(--color-accent);
-}
+        & span {
+            color: var(--color-accent);
+        }
+    }
 
-.login-intro p {
-    max-inline-size: 34ch;
-    font-size: var(--font-size-lg);
-    line-height: 1.25;
+    & p {
+        max-inline-size: 34ch;
+        line-height: var(--line-height-tight);
+    }
 }
 
 .login-content {
@@ -90,12 +112,12 @@ main:has(.login-page) {
 .login-terms {
     gap: var(--space-1-5);
     align-items: center;
-}
 
-.login-terms input {
-    inline-size: 1rem;
-    block-size: 1rem;
-    accent-color: var(--color-primary);
+    & input {
+        inline-size: 1rem;
+        block-size: 1rem;
+        accent-color: var(--color-primary);
+    }
 }
 
 .login-text-link[aria-disabled='true'], .login-text-link:disabled {
@@ -107,8 +129,9 @@ main:has(.login-page) {
 }
 
 .login-submit {
+    min-block-size: var(--control-height-lg);
     border-radius: var(--radius-md);
-    font-weight: 500;
+    font-weight: var(--font-weight-medium);
 }
 
 .login-form:has(.login-terms) .login-submit {

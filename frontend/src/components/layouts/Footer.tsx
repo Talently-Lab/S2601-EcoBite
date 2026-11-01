@@ -1,19 +1,5 @@
-const footerSections = [
-    {
-        title: 'Ayuda',
-        links: [
-            { label: 'Cómo calculamos el impacto', href: '' },
-            { label: 'Contacto', href: '' },
-        ],
-    },
-    {
-        title: 'Legales',
-        links: [
-            { label: 'Términos y condiciones', href: '' },
-            { label: 'Política de privacidad', href: '' },
-        ],
-    },
-];
+import { Link } from 'react-router';
+import { navLinks } from '../../constants/constants';
 
 export function Footer() {
     return (
@@ -23,26 +9,13 @@ export function Footer() {
                     <span className="brand-logo" role="img" aria-label="EcoBite" />
                     <p className="site-footer-tagline">Pedí rico. Elegí mejor.</p>
                 </div>
-
-                <div className="site-footer-sections">
-                    {footerSections.map((section) => (
-                        <nav key={section.title} className="site-footer-section" aria-label={section.title}>
-                            <h2 className="site-footer-heading">{section.title}</h2>
-                            <ul className="site-footer-links">
-                                {section.links.map((link) => (
-                                    <li key={link.label}>
-                                        <a className="site-footer-link" href={link.href} onClick={(event) => {
-                                            if (!link.href) event.preventDefault();
-                                        }}>
-                                            {link.label}
-                                        </a>
-                                    </li>
-                                ))}
-                            </ul>
-                        </nav>
-                    ))}
+                <nav className="site-footer-nav" aria-label="Navegación del pie de página">
+                    {navLinks.map(({ to, label }) => <Link key={to} to={to}>{label}</Link>)}
+                </nav>
+                <div className="site-footer-legal">
+                    <span>Términos y condiciones</span>
+                    <span>Política de privacidad</span>
                 </div>
-
                 <p className="site-footer-copyright">© {new Date().getFullYear()} EcoBite</p>
             </div>
         </footer>

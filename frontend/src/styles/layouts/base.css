@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'BricolageGrotesque';
+    src: url('../../assets/fonts/Bricolage_Grotesque/BricolageGrotesque-Variable.ttf') format('truetype');
+    font-weight: 200 800;
+    font-stretch: 75% 100%;
+    font-display: swap;
+}
+
 table {
     inline-size: 100%;
 }
@@ -9,11 +17,6 @@ td {
 
 thead th:last-child {
     text-align: end;
-}
-
-.admin-orders-table td,
-.admin-ranking-table tbody td:nth-child(2) {
-    overflow-wrap: anywhere;
 }
 
 .sr-only,
@@ -29,82 +32,41 @@ thead {
     border: 0;
 }
 
-.svg-icon,
-.brand-logo {
-    display: inline-block;
-    background-color: currentColor;
-    mask-position: center;
-    mask-repeat: no-repeat;
-    mask-size: contain;
+h1 {
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-tight);
+    letter-spacing: -0.02em;
 }
 
-.svg-icon {
-    aspect-ratio: 64 / 38;
-    color: var(--color-accent);
+h2 {
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-tight);
 }
 
-body,
-.input-error,
-.login-error {
-    display: flex;
+h3,
+h4 {
+    line-height: var(--line-height-body);
 }
 
-.stack {
-    display: grid;
-    gap: var(--space-2);
+h3 {
+    font-size: var(--font-size-headline-xs);
+    font-weight: var(--font-weight-semibold);
 }
 
-.page-heading {
-    & h1 {
-        font-size: var(--font-size-lg);
-        line-height: var(--line-height-tight);
-    }
-
-    & p {
-        font-size: var(--font-size-sm);
-    }
-}
-
-.input-hint,
-.login-terms,
-.login-links {
-    font-size: var(--font-size-sm);
-    line-height: 1.35;
-}
-
-.input--login,
-.login-submit {
-    min-block-size: var(--control-height-lg);
-}
-
-.input-error,
-.login-error {
-    align-items: flex-start;
-    gap: var(--space-1-5);
-    color: var(--color-error);
-    line-height: 1.3;
-}
-
-.input-error svg,
-.login-error svg {
-    flex-shrink: 0;
-    margin-block-start: var(--space-0-5);
-}
-
-html {
-	color-scheme: light;
-	scroll-padding-block-end: var(--space-2);
+h4 {
+    font-weight: 400;
 }
 
 body {
+	display: flex;
 	align-items: center;
 	flex-direction: column;
 	min-inline-size: 0;
 	background: var(--color-background);
 	color: var(--color-text);
 	font-family: var(--font-family);
-	font-size: var(--font-size-md);
-	line-height: 1.5;
+	font-size: var(--font-size-body-lg);
+	line-height: var(--line-height-body);
 }
 
 :where(button, input, select, textarea) {
@@ -139,18 +101,11 @@ body {
 	width: 100%;
 }
 
-.brand-logo {
-    inline-size: 5.4375rem;
-    block-size: 1.125rem;
-    color: var(--color-secondary);
-    mask-image: url('../../assets/icons/logo.svg');
-
-    &:is(a) {
-        min-block-size: var(--touch-target);
-    }
-}
-
 @media (width >= 48rem) {
+    h1 {
+        font-weight: var(--font-weight-bold);
+    }
+
     thead {
         position: static;
         inline-size: auto;
