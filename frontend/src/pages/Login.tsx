@@ -106,21 +106,21 @@ export function Login() {
                             error={fieldErrors.password}
                             hint={isSignUp ? `Mínimo ${MIN_PASSWORD_LENGTH} caracteres` : undefined}
                             icon={
-                                <Button type="button" variant="icon" className="login-password-toggle"
+                                <Button type="button" variant="icon"
                                     aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
                                     aria-pressed={showPassword} disabled={isSubmitting}
                                     onClick={() => setShowPassword((visible) => !visible)}>
                                     {showPassword ? <IoEyeOffOutline aria-hidden="true" /> : <IoEyeOutline aria-hidden="true" />}
                                 </Button>
                             } />
-                        {generalError && <FormError id="login-error" className="login-error">{generalError}</FormError>}
+                        {generalError && <FormError id="login-error">{generalError}</FormError>}
 
                         {isSignUp && (
                             <div className="login-terms">
                                 <Input type="checkbox" id="terms" name="terms" required disabled={isSubmitting} />
                                 <label htmlFor="terms">
-                                    Acepto los <a className="login-text-link" role="link" aria-disabled="true">Términos y Condiciones</a> y la{' '}
-                                    <a className="login-text-link" role="link" aria-disabled="true">Política de Privacidad</a>.
+                                    Acepto los <a className="login-text-link">Términos y Condiciones</a> y la{' '}
+                                    <a className="login-text-link">Política de Privacidad</a>.
                                 </label>
                             </div>
                         )}

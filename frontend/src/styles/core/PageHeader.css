@@ -1,26 +1,13 @@
-.page-header,
-.page-header > a {
-    align-items: center;
-}
-
 .page-header {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    min-block-size: var(--touch-target);
+    min-height: var(--touch-target);
 
     & > a {
-        display: inline-flex;
-        justify-content: center;
-        min-inline-size: var(--touch-target);
-        min-block-size: var(--touch-target);
         gap: var(--space-1);
-        flex-shrink: 0;
         color: var(--color-primary);
-
-        & svg {
-            inline-size: var(--space-3);
-            block-size: var(--space-3);
-        }
+        font-weight: 400;
 
         & span {
             display: none;
@@ -29,17 +16,12 @@
 }
 
 @media (width >= 48rem) {
-    .page-header--mobile-only {
+    .page-header--mobile-only,
+    .page-header > h4 {
         display: none;
     }
 
-    .page-header {
-        & > a span {
-            display: inline;
-        }
-
-        & > h4 {
-            display: none;
-        }
+    .page-header > a span {
+        display: inline;
     }
 }

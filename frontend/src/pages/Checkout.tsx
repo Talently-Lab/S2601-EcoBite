@@ -98,6 +98,7 @@ export function Checkout() {
             </section>
 
             <fieldset className="checkout-payment" disabled={isSubmitting}>
+                <legend className="sr-only">Método de pago</legend>
                 <SectionHeader variant="h2" title="Método de pago"/>
                 <PaymentOption name={`${checkoutId}-payment`} value="card" label="Tarjeta" defaultChecked />
                 <PaymentOption name={`${checkoutId}-payment`} value="cash" label="Efectivo" />
@@ -106,7 +107,7 @@ export function Checkout() {
             <CheckoutSummary titleId={summaryTitleId} restaurantName={items[0].restaurantName}
                 productCount={totalQuantity} totalCents={totalCents} />
 
-            {purchaseError && <FormError id={`${checkoutId}-error`} className="input-error">{purchaseError.message}</FormError>}
+            {purchaseError && <FormError id={`${checkoutId}-error`}>{purchaseError.message}</FormError>}
             <ConfirmOrderAction isSubmitting={isSubmitting} disabled={deliveryComuna === null}
                 onConfirm={() => void confirmPurchase()} />
         </div>

@@ -1,28 +1,11 @@
-.login-terms,
-.login-links,
-.login-error {
+.login-terms, .login-links {
     line-height: var(--line-height-relaxed);
-}
-
-.login-terms,
-.login-links {
     font-size: var(--font-size-body-sm);
 }
 
-.login-error {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--space-1-5);
-    color: var(--color-error);
-
-    & svg {
-        flex-shrink: 0;
-        margin-block-start: var(--space-0-5);
-    }
-}
-
-main:has(.login-page), .login-password-toggle {
+main:has(.login-page) {
     padding: 0;
+    max-width: none;
 }
 
 .login-page, .login-terms {
@@ -41,11 +24,11 @@ main:has(.login-page), .login-password-toggle {
     margin-block-start: var(--space-2);
 }
 
-.login-terms .login-text-link, .login-error-action {
+.login-error-action {
     color: inherit;
 }
 
-.login-password-toggle, .login-text-link {
+.login-text-link:not(.login-terms .login-text-link) {
     color: var(--color-focus);
 }
 
@@ -53,13 +36,9 @@ main:has(.login-page), .login-password-toggle {
     text-decoration: underline;
 }
 
-main:has(.login-page) {
-    max-inline-size: none;
-}
-
 .login-page {
     flex-direction: column;
-    min-block-size: 100dvh;
+    min-height: 100dvh;
     background: var(--color-surface);
 }
 
@@ -69,8 +48,8 @@ main:has(.login-page) {
     color: var(--color-surface);
 
     & .brand-logo {
-        inline-size: 7rem;
-        block-size: 1.5rem;
+        width: 7rem;
+        height: 1.5rem;
     }
 }
 
@@ -78,19 +57,17 @@ main:has(.login-page) {
     gap: var(--space-3-5);
 }
 
-.login-intro {
-    & h1 {
-        line-height: 1;
+.login-intro h1 {
+    line-height: 1;
 
-        & span {
-            color: var(--color-accent);
-        }
+    & span {
+        color: var(--color-accent);
     }
+}
 
-    & p {
-        max-inline-size: 34ch;
-        line-height: var(--line-height-tight);
-    }
+.login-intro p {
+    max-width: 34ch;
+    line-height: var(--line-height-tight);
 }
 
 .login-content {
@@ -99,14 +76,9 @@ main:has(.login-page) {
 }
 
 .login-panel {
-    inline-size: 100%;
-    max-inline-size: 26rem;
+    width: 100%;
+    max-width: 26rem;
     margin-inline: auto;
-}
-
-.login-password-toggle {
-    inline-size: var(--touch-target);
-    min-block-size: var(--touch-target);
 }
 
 .login-terms {
@@ -114,14 +86,10 @@ main:has(.login-page) {
     align-items: center;
 
     & input {
-        inline-size: 1rem;
-        block-size: 1rem;
+        width: 1rem;
+        height: 1rem;
         accent-color: var(--color-primary);
     }
-}
-
-.login-text-link[aria-disabled='true'], .login-text-link:disabled {
-    cursor: default;
 }
 
 .login-error-action {
@@ -129,7 +97,7 @@ main:has(.login-page) {
 }
 
 .login-submit {
-    min-block-size: var(--control-height-lg);
+    min-height: var(--control-height-lg);
     border-radius: var(--radius-md);
     font-weight: var(--font-weight-medium);
 }

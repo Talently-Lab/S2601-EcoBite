@@ -1,5 +1,5 @@
-import { Link } from 'react-router';
 import { LuArrowLeft } from 'react-icons/lu';
+import { Button } from './Button';
 
 type PageHeaderProps = {
     title?: string;
@@ -12,10 +12,10 @@ type PageHeaderProps = {
 export function PageHeader({ title, backTo, backLabel, desktopBackText, mobileOnly = false }: PageHeaderProps) {
     return (
         <header className={`page-header${mobileOnly ? ' page-header--mobile-only' : ''}`}>
-            <Link to={backTo} aria-label={backLabel}>
+            <Button variant="icon" to={backTo} aria-label={backLabel}>
                 <LuArrowLeft aria-hidden="true" />
                 {desktopBackText ? <span>{desktopBackText}</span> : null}
-            </Link>
+            </Button>
             {title ? <h4>{title}</h4> : null}
         </header>
     );
