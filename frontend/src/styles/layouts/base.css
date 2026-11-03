@@ -6,8 +6,25 @@
     font-display: swap;
 }
 
-table {
-    inline-size: 100%;
+body, input {
+    min-width: 0;
+}
+
+h3, h4, body {
+    line-height: var(--line-height-body);
+}
+
+h1, h3, .avatar {
+    font-weight: var(--font-weight-semibold);
+}
+
+.sr-only, thead, :where(button) {
+    padding: 0;
+    border: 0;
+}
+
+input:disabled, .avatar {
+    background: var(--color-surface);
 }
 
 th,
@@ -19,38 +36,30 @@ thead th:last-child {
     text-align: end;
 }
 
-.sr-only,
-thead {
+.sr-only, thead {
     position: absolute;
-    inline-size: 1px;
-    block-size: 1px;
-    padding: 0;
+    width: 1px;
+    height: 1px;
     margin: -1px;
     overflow: hidden;
     clip-path: inset(50%);
     white-space: nowrap;
-    border: 0;
+}
+
+h1, h2 {
+    line-height: var(--line-height-tight);
 }
 
 h1 {
-    font-weight: var(--font-weight-semibold);
-    line-height: var(--line-height-tight);
     letter-spacing: -0.02em;
 }
 
 h2 {
     font-weight: var(--font-weight-medium);
-    line-height: var(--line-height-tight);
-}
-
-h3,
-h4 {
-    line-height: var(--line-height-body);
 }
 
 h3 {
     font-size: var(--font-size-headline-xs);
-    font-weight: var(--font-weight-semibold);
 }
 
 h4 {
@@ -61,21 +70,21 @@ body {
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	min-inline-size: 0;
 	background: var(--color-background);
 	color: var(--color-text);
 	font-family: var(--font-family);
 	font-size: var(--font-size-body-lg);
-	line-height: var(--line-height-body);
 }
 
 :where(button, input, select, textarea) {
 	font: inherit;
 }
 
+input::placeholder {
+    color: var(--input-placeholder-color, var(--color-muted));
+}
+
 :where(button) {
-    padding: 0;
-    border: 0;
     background: transparent;
     cursor: pointer;
 }
@@ -97,9 +106,21 @@ body {
 	cursor: not-allowed;
 }
 
-#root {
-	width: 100%;
+input:disabled {
+    color: var(--color-muted);
 }
+
+.avatar {
+    display: grid;
+    flex: none;
+    place-items: center;
+    width: var(--avatar-size, var(--touch-target));
+    height: var(--avatar-size, var(--touch-target));
+    border-radius: var(--radius-pill);
+    color: var(--color-forest);
+    font-size: var(--avatar-font-size, var(--font-size-body-sm));
+}
+
 
 @media (width >= 48rem) {
     h1 {
@@ -108,8 +129,8 @@ body {
 
     thead {
         position: static;
-        inline-size: auto;
-        block-size: auto;
+        width: auto;
+        height: auto;
         margin: 0;
         overflow: visible;
         clip-path: none;

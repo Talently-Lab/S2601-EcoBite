@@ -5,8 +5,10 @@
 @import './core/Spinner.css';
 @import './core/PageHeader.css';
 @import './forms/Input.css';
+@import './forms/SearchBar.css';
 @import './shared/ItemHeader.css';
 @import './layouts/Header.css';
+@import './shared/ComunaSelector.css';
 @import './layouts/Breadcrumbs.css';
 @import './layouts/AdminLayout.css';
 @import './pages/AdminSidebar.css';
@@ -28,7 +30,6 @@
 @import './pages/Restaurants.css';
 @import './pages/RestaurantMenu.css';
 @import './shared/GreenBadge.css';
-@import './pages/ProfileItem.css';
 
 :root {
     --color-primary: #0e2926;
@@ -52,7 +53,6 @@
     --font-size-body-md: 14px;
     --font-size-body-lg: 16px;
     --font-size-headline-xs: 20px;
-    --font-size-headline-sm: 24px;
     --font-size-headline-md: 28px;
     --font-size-headline-lg: 36px;
     --font-size-headline-xl: 48px;
@@ -81,9 +81,12 @@
     --page-gutter: calc(var(--space-2) + var(--space-0-5));
     --content-width: 75rem;
     --header-height: 4rem;
-    --shadow-navigation: 0 -1px 0 var(--color-border);
     --shadow-card: 0 var(--space-0-5) var(--space-2) color-mix(in srgb, var(--color-primary) 10%, transparent);
     --transition-control: 160ms ease;
+}
+
+#root, table {
+	width: 100%;
 }
 
 *,
@@ -102,6 +105,41 @@ html {
 button,
 select {
     text-transform: none;
+}
+
+.filter-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: var(--space-3);
+    padding-inline: var(--space-1-5);
+    border-radius: var(--radius-pill);
+    background: var(--color-surface);
+    color: var(--color-primary);
+    font-size: var(--font-size-body-sm);
+    white-space: nowrap;
+
+    &[aria-current='true'] {
+        background: var(--color-primary);
+        color: var(--color-background);
+    }
+
+    &:hover:not([aria-current='true']) {
+        background: var(--color-secondary);
+    }
+}
+
+.form-error {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-1-5);
+    color: var(--color-error);
+    line-height: var(--line-height-relaxed);
+
+    & svg {
+        flex-shrink: 0;
+        margin-block-start: var(--space-0-5);
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {

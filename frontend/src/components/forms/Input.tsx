@@ -2,8 +2,8 @@ import { useId } from 'react';
 import { FormError } from './FormError';
 
 interface InputProps
-    extends React.InputHTMLAttributes<HTMLInputElement> {
-    variant?: "text" | "login" | "search-bar" | "search-icon";
+    extends React.ComponentProps<'input'> {
+    variant?: "text" | "login" | "search";
     icon?: React.ReactNode;
     label?: React.ReactNode;
     error?: React.ReactNode;
@@ -34,7 +34,7 @@ export function Input({
                 {icon && <span className="input-icon">{icon}</span>}
             </div>
             {hint && <p id={`${inputId}-hint`} className="input-hint">{hint}</p>}
-            {error && <FormError id={`${inputId}-error`} className="input-error">{error}</FormError>}
+            {error && <FormError id={`${inputId}-error`}>{error}</FormError>}
         </div>
     );
 }

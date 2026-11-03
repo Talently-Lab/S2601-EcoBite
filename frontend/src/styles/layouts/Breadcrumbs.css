@@ -6,13 +6,12 @@
     & ol {
         display: flex;
         flex-wrap: wrap;
-        gap: var(--space-0-5);
         padding: 0;
         list-style: none;
     }
 
     & li:not(:first-child)::before {
-        margin-inline-end: var(--space-0-5);
+        margin-inline: var(--space-1);
         content: '/';
     }
 

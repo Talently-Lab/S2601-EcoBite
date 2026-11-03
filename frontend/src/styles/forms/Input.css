@@ -1,76 +1,42 @@
-.input-hint,
-.input-error {
-    line-height: var(--line-height-relaxed);
+.input-field, .input-wrapper {
+    min-width: 0;
 }
 
-.input-hint {
-    font-size: var(--font-size-body-sm);
-}
-
-.input-label {
-    font-weight: var(--font-weight-semibold);
-}
-
-.input-error {
-    align-items: flex-start;
-    gap: var(--space-1-5);
-    color: var(--color-error);
-
-    & svg {
-        flex-shrink: 0;
-        margin-block-start: var(--space-0-5);
-    }
-}
-
-input::placeholder,
-input:disabled {
-	color: var(--color-muted);
-}
-
-input:where(:not([type='checkbox']):not([type='radio'])), input:disabled {
-	background: var(--color-surface);
-}
-
-input[aria-invalid='true'], .input--login[aria-invalid='true'] {
-	border-color: var(--color-error);
-}
-
-.input-field, .input-wrapper, .input-icon {
-	min-inline-size: 0;
-}
-
-.input-wrapper, .input-icon, .input-error {
-	display: flex;
-}
 .input-wrapper, .input-icon {
     align-items: center;
+    display: flex;
 }
 
-.input-icon, .input--login::placeholder, .input-hint {
-	color: var(--color-focus);
+.input-icon, .input-hint {
+    color: var(--color-focus);
 }
 
 input:where(:not([type='checkbox']):not([type='radio'])) {
-	inline-size: 100%;
-	padding: var(--space-1-5) var(--space-2);
-	border: 1px solid var(--color-border);
-	border-radius: var(--radius-md);
-	color: var(--color-text);
-	transition: border-color var(--transition-control);
-	margin: var(--space-0-5) 0;
+    --input-border-color: var(--color-border);
+    --input-border-width: 1px;
+
+    width: 100%;
+    margin: var(--input-margin, 0);
+    padding: var(--space-1-5) var(--space-2);
+    border: var(--input-border-width) solid var(--input-border-color);
+    border-radius: var(--input-radius, var(--radius-md));
+    background: var(--input-background, var(--color-surface));
+    color: var(--color-text);
+    transition: border-color var(--transition-control);
 }
 
-input::placeholder {
-	opacity: 0.6;
+input[aria-invalid='true'] {
+    --input-border-color: var(--color-error);
+    --input-outline-color: var(--color-error);
 }
 
 .input-field {
-	display: grid;
-	gap: var(--space-1);
+    display: grid;
+    gap: var(--space-1);
 }
 
 .input-wrapper {
-	position: relative;
+    position: relative;
 
     &:has(.input-icon) input {
         padding-inline-end: calc(var(--touch-target) + var(--space-1-5));
@@ -78,31 +44,57 @@ input::placeholder {
 }
 
 .input-icon {
-	position: absolute;
-	inset-block: 0;
-	inset-inline-end: var(--space-0-5);
-	justify-content: center;
-	inline-size: var(--touch-target);
+    position: absolute;
+    inset-block: 0;
+    inset-inline-end: var(--space-0-5);
+    justify-content: center;
+    width: var(--touch-target);
+
+    & > .button--icon {
+        color: inherit;
+    }
+}
+
+.input-hint {
+    font-size: var(--font-size-body-sm);
+    line-height: var(--line-height-relaxed);
+}
+
+.input-label {
+    font-weight: var(--font-weight-semibold);
+}
+
+.input--text {
+    --input-margin: var(--space-0-5) 0;
+}
+
+.input--text::placeholder {
+    opacity: 0.6;
 }
 
 .input--login {
-    min-block-size: var(--control-height-lg);
-	margin: 0;
-	border-color: var(--color-muted);
-	border-radius: var(--radius-sm);
-	background: var(--color-background);
+    --input-border-color: var(--color-muted);
+    --input-background: var(--color-background);
+    --input-radius: var(--radius-sm);
+    --input-placeholder-color: var(--color-focus);
+    --input-outline-color: var(--color-focus);
 
-    &::placeholder {
-        opacity: 1;
-    }
+    min-height: var(--control-height-lg);
 
-    &:where(:focus) {
-        border-color: var(--color-focus);
-        outline: 1px solid var(--color-focus);
+    &:focus {
+        outline: 1px solid var(--input-outline-color);
         outline-offset: 0;
     }
+}
 
-    &[aria-invalid='true'] {
-        outline-color: var(--color-error);
-    }
+.input--search {
+    --input-placeholder-color: var(--color-forest);
+    --input-border-width: 0;
+    --input-radius: 0;
+    --input-background: transparent;
+
+    padding: var(--space-1);
+    color: var(--color-primary);
+    font-size: var(--font-size-body-md);
+    outline: 0;
 }

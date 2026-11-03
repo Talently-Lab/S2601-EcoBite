@@ -1,11 +1,18 @@
 .loading-spinner {
-    inline-size: 1.25em;
-    block-size: 1.25em;
+    width: 1.25em;
+    height: 1.25em;
     flex-shrink: 0;
     border: 2px solid currentColor;
     border-block-start-color: transparent;
     border-radius: 50%;
     animation: loading-spinner-spin 800ms linear infinite;
+}
+
+.loading-feedback {
+    display: grid;
+    place-items: center;
+    min-height: var(--space-5);
+    color: var(--color-primary);
 }
 
 @keyframes loading-spinner-spin {
