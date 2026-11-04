@@ -29,7 +29,7 @@ main:has(.login-page) {
 }
 
 .login-text-link:not(.login-terms .login-text-link) {
-    color: var(--color-focus);
+    color: var(--color-forest);
 }
 
 .login-text-link, .login-error-action {

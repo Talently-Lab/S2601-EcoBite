@@ -103,9 +103,9 @@ main:has(.checkout-page) {
     min-block-size: calc(var(--control-height) + var(--space-1-5));
     gap: var(--space-1);
     padding: var(--space-1-5) var(--space-2);
-    border: 1px solid var(--color-muted);
+    border: 1px solid var(--color-surface-muted);
     background: var(--color-surface);
-    color: var(--color-muted);
+    color: var(--color-forest);
     cursor: pointer;
 
     & + & {
@@ -120,7 +120,7 @@ main:has(.checkout-page) {
     & input {
         inline-size: var(--space-3);
         block-size: var(--space-3);
-        accent-color: var(--color-muted);
+        accent-color: var(--color-forest);
     }
 }
 
@@ -142,7 +142,7 @@ main:has(.checkout-page) {
 .checkout-breakdown {
     gap: var(--space-1);
     padding-block-start: var(--space-2);
-    border-block-start: 1px solid var(--color-border);
+    border-block-start: 1px solid var(--color-surface-muted);
 }
 
 .checkout-confirm {

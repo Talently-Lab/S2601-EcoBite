@@ -27,7 +27,7 @@
 
     &:disabled {
         background: var(--color-surface);
-        color: var(--color-muted);
+        color: var(--color-forest);
     }
 }
 

@@ -8,11 +8,11 @@
 }
 
 .input-icon, .input-hint {
-    color: var(--color-focus);
+    color: var(--color-forest);
 }
 
 input:where(:not([type='checkbox']):not([type='radio'])) {
-    --input-border-color: var(--color-border);
+    --input-border-color: var(--color-surface-muted);
     --input-border-width: 1px;
 
     width: 100%;
@@ -73,22 +73,19 @@ input[aria-invalid='true'] {
 }
 
 .input--login {
-    --input-border-color: var(--color-muted);
+    --input-border-color: var(--color-forest);
     --input-background: var(--color-background);
     --input-radius: var(--radius-sm);
-    --input-placeholder-color: var(--color-focus);
-    --input-outline-color: var(--color-focus);
 
     min-height: var(--control-height-lg);
 
     &:focus {
-        outline: 1px solid var(--input-outline-color);
+        outline: 1px solid var(--input-outline-color, var(--color-forest));
         outline-offset: 0;
     }
 }
 
 .input--search {
-    --input-placeholder-color: var(--color-forest);
     --input-border-width: 0;
     --input-radius: 0;
     --input-background: transparent;

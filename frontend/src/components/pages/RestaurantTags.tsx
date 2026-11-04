@@ -5,14 +5,9 @@ import type { Restaurant } from '../../types/types';
 
 type Tag = { icon: React.ReactNode; text: string };
 type RestaurantTagsProps = {
-    restaurant?: Restaurant;
+    restaurant: Restaurant;
     variant?: 'catalog' | 'menu';
 };
-
-const loadingTags: Tag[] = [
-    { icon: null, text: 'Envases compostables' },
-    { icon: null, text: 'Entrega en bici' },
-];
 
 const packagingTags: Record<Restaurant['packagingType'], Tag[]> = {
     BIODEGRADABLE: [{ icon: <TbLeaf aria-hidden="true" />, text: 'Envases compostables' }],
@@ -27,8 +22,7 @@ const deliveryTags: Record<Restaurant['availableDeliveryMethod'], Tag[]> = {
 };
 
 export function RestaurantTags({ restaurant, variant = 'catalog' }: RestaurantTagsProps) {
-    const loading = !restaurant;
-    const tags = loading ? loadingTags : [
+    const tags = [
         ...packagingTags[restaurant.packagingType],
         ...deliveryTags[restaurant.availableDeliveryMethod],
     ];
