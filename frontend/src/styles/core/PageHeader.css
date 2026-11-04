@@ -5,23 +5,21 @@
     min-height: var(--touch-target);
 
     & > a {
-        gap: var(--space-1);
-        color: var(--color-primary);
-        font-weight: 400;
+        font-weight: var(--font-weight-regular);
 
         & span {
             display: none;
         }
     }
-}
 
-@media (width >= 48rem) {
-    .page-header--mobile-only,
-    .page-header > h4 {
-        display: none;
-    }
+    @media (width >= 48rem) {
+        & > a span {
+            display: inline;
+        }
 
-    .page-header > a span {
-        display: inline;
+        &.page-header--mobile-only,
+        & > h4 {
+            display: none;
+        }
     }
 }

@@ -5,8 +5,7 @@
 
 .cart-page--empty,
 .checkout-page {
-    max-inline-size: 28rem;
-    margin-inline: auto;
+    --page-max-width: 28rem;
 }
 
 main {
@@ -20,6 +19,11 @@ main {
 
 .page {
     min-inline-size: 0;
+}
+
+.page:not(.login-page) {
+    max-inline-size: var(--page-max-width, var(--content-width));
+    margin-inline: auto;
 }
 
 .impact-page {
@@ -66,7 +70,7 @@ main:has(.cart-page:not(.cart-page--empty)) {
 }
 
 @media (width < 48rem) {
-    .cart-page > h1,
+    .cart-page > .section-header,
     .checkout-page > h1,
     .restaurant-page > h1 {
         position: absolute;

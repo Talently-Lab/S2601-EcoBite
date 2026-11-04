@@ -1,4 +1,3 @@
-import { useId } from 'react';
 import { Button } from '../components/core/Button';
 import { PageHeader } from '../components/core/PageHeader';
 import { ProductCard } from '../components/pages/ProductCard';
@@ -11,55 +10,51 @@ import emptyCartIllustration from '../assets/icons/empty-cart.svg';
 import { centsToPrice } from '../utils/price';
 
 export function Cart() {
-
     const { items, totalCents } = useCart();
-    const emptyTitleId = useId();
     const restaurant = items[0];
+    const restaurantTo = restaurant
+        ? `/restaurants/${encodeURIComponent(restaurant.restaurantId)}`
+        : '/restaurants';
     const backLabel = restaurant ? `Volver a ${restaurant.restaurantName}` : 'Volver a restaurantes';
 
     return (
-        <div className={`page cart-page${items.length ? '' : ' cart-page--empty'}`}>
-            <PageHeader title="Tu carrito"
-                backTo={restaurant ? `/restaurants/${encodeURIComponent(restaurant.restaurantId)}` : '/restaurants'}
-                backLabel={backLabel} desktopBackText={backLabel} />
-            {items.length ? (
-            <>
-                <h1>Tu carrito</h1>
-                <div className="cart-restaurant-heading">
-                    <SectionHeader variant="h2" title={items[0].restaurantName} />
-                    <Button variant="link" to={`/restaurants/${encodeURIComponent(items[0].restaurantId)}`}>Agregar más</Button>
-                </div>
-                <section className="cart-products" aria-label={`Productos de ${items[0].restaurantName}`}>
-                    {items.map((item) => (
-                        <ProductCard key={item.id} variant="cart" product={item} />
-                    ))}
-                </section>
-                <div className="cart-bottom">
-                    <GreenBadge icon={<FiInfo aria-hidden="true" />} text="Con este pedido evitás" amount="200g de CO2"
-                        description="Calculamos este impacto según la distancia y el transporte de envío."
-                        variant="descriptive" />
-                    <div className="cart-summary" aria-live="polite">
-                        <span>Total</span>
-                        <Price price={centsToPrice(totalCents)} />
+        <div className={`page cart-page${restaurant ? '' : ' cart-page--empty'}`}>
+            <PageHeader title="Tu carrito" backTo={restaurantTo} backLabel={backLabel} />
+            {restaurant ? (
+                <>
+                    <SectionHeader variant="h1" title="Tu carrito" />
+                    <div className="cart-restaurant-heading">
+                        <SectionHeader variant="h2" title={restaurant.restaurantName} />
+                        <Button variant="link" to={restaurantTo}>Agregar más</Button>
                     </div>
-                    <Button to="/checkout">Ir a pagar</Button>
-                </div>
-            </>
+                    <section className="cart-products" aria-label={`Productos de ${restaurant.restaurantName}`}>
+                        {items.map((item) => <ProductCard key={item.id} variant="cart" product={item} />)}
+                    </section>
+                    <div className="cart-bottom">
+                        <GreenBadge icon={<FiInfo aria-hidden="true" />} text="Con tu pedido en bici evitás emisiones de CO2. Lo verás al confirmar." />
+                        <div className="cart-summary" aria-live="polite">
+                            <span>Total</span><Price price={centsToPrice(totalCents)} />
+                        </div>
+                        <Button to="/checkout">Ir a pagar</Button>
+                    </div>
+                </>
             ) : (
-                <section className="empty-cart surface-card" aria-labelledby={emptyTitleId}>
-                    <img className="empty-cart-illustration" src={emptyCartIllustration} alt="" />
-                    <h1 id={emptyTitleId}>Tu carrito está vacío</h1>
-                    <div className="empty-cart-message">
-                        <p>¿Qué pedimos hoy?<br />Hay restaurantes friendly cerca tuyo.</p>
-                        <p><strong>Cada pedido suma</strong></p>
-                    </div>
-                    <div className="state-actions">
-                        <Button to="/restaurants">Explorar restaurantes</Button>
-                        <Button variant="link" to="/">Volver a inicio</Button>
-                    </div>
-                </section>
+                <>
+                    <section className="empty-cart surface-card" aria-labelledby="empty-cart-title">
+                        <img className="empty-cart-illustration" src={emptyCartIllustration} alt="" />
+                        <h1 id="empty-cart-title">Tu carrito está vacío</h1>
+                        <div className="empty-cart-message">
+                            <p>¿Qué pedimos hoy?<br />Hay restaurantes friendly cerca tuyo.</p>
+                            <p><strong>Cada pedido suma</strong></p>
+                        </div>
+                        <div className="state-actions">
+                            <Button to="/restaurants">Explorar restaurantes</Button>
+                            <Button variant="link" to="/">Volver a inicio</Button>
+                        </div>
+                    </section>
+                    <Button type="button" disabled>Ir a pagar</Button>
+                </>
             )}
-            {!items.length ? <Button type="button" disabled>Ir a pagar</Button> : null}
         </div>
     );
 }

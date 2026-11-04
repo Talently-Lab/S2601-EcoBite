@@ -2,7 +2,6 @@
     position: absolute;
 }
 
-.impact-card-feedback .button .impact-value,
 .impact-card--detail .impact-card-caption {
     color: var(--color-accent);
 }
@@ -58,10 +57,6 @@
         width: 4rem;
         mask-image: url('../../assets/icons/leaves.svg');
     }
-}
-
-.impact-card-feedback .button:hover {
-    color: var(--color-primary);
 }
 
 .impact-card--home .impact-card-main {

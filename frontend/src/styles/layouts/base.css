@@ -63,7 +63,18 @@ h3 {
 }
 
 h4 {
-    font-weight: 400;
+    font-weight: var(--font-weight-regular);
+}
+
+.section-header {
+    display: grid;
+    gap: var(--space-0-5);
+    min-inline-size: 0;
+    overflow-wrap: anywhere;
+
+    & p {
+        color: var(--section-header-subtitle-color, var(--color-forest));
+    }
 }
 
 body {

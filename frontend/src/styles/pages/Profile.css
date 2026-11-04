@@ -1,17 +1,77 @@
-.profile-photo {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
+.profile-page .profile-actions,
+.profile-page .profile-actions > .button--icon {
+    display: grid;
+}
 
-    & img {
-        block-size: 5rem;
-        border-radius: var(--radius-md);
-        background: var(--color-surface);
-        object-fit: cover;
+.profile-page .profile-identity,
+.profile-page .profile-actions > .button--icon {
+    gap: var(--space-3);
+}
+
+.profile-page {
+    --page-max-width: 36rem;
+
+    & .profile-identity {
+        --section-header-subtitle-color: var(--color-text);
+        display: flex;
+        align-items: center;
+        margin-block: var(--space-4);
+    }
+
+    & .avatar {
+        --avatar-size: var(--space-5);
+        --avatar-font-size: var(--font-size-headline-md);
+    }
+
+    & .profile-actions {
+        gap: var(--space-2);
+
+        & > h2 {
+            font-size: var(--font-size-headline-xs);
+            font-weight: var(--font-weight-semibold);
+            line-height: var(--line-height-tight);
+
+            @media (width >= 48rem) {
+                display: none;
+            }
+        }
+
+        & > .button--icon {
+            grid-template-columns: var(--space-3) minmax(0, 1fr) var(--space-3);
+            justify-items: start;
+            min-height: var(--space-5);
+            padding: var(--space-1) 0;
+            border-block-end: 1px solid var(--color-forest);
+            border-radius: 0;
+            color: var(--color-text);
+            font-weight: var(--font-weight-regular);
+            text-align: start;
+
+            & svg:last-child {
+                justify-self: end;
+                width: var(--space-2);
+                height: var(--space-2);
+            }
+
+            &:hover {
+                background: var(--color-surface);
+            }
+        }
+
+        & > .button--text {
+            justify-self: start;
+            margin-block-start: var(--space-3);
+        }
     }
 }
 
-.profile-page .item-header {
-    margin: calc(var(--space-2) * 2) 0 calc(var(--space-3) / 2) 0;
-}
+@media (width < 48rem) {
+    body:has(.profile-page) .site-header,
+    body:has(.profile-page) .site-footer {
+        display: none;
+    }
 
+    main:has(.profile-page) {
+        min-height: 100dvh;
+    }
+}

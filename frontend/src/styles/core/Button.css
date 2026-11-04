@@ -1,10 +1,10 @@
 .button--icon svg,
-.profile-page .profile-actions > button svg {
+.button--text svg {
     width: var(--space-3);
     height: var(--space-3);
 }
 
-.button--icon,.button--text {
+.button--icon {
     color: var(--color-primary);
 
     &:hover:not(:disabled) {
@@ -62,13 +62,26 @@
     }
 }
 
+.button--text {
+    gap: var(--space-3);
+    padding: 0;
+    color: var(--color-error);
+    font-weight: var(--font-weight-medium);
+    text-align: start;
+
+    &:hover:not(:disabled, .admin-sidebar *) {
+        background: transparent;
+        text-decoration: underline;
+    }
+}
+
 .button--link {
     border: 0;
     border-radius: 0;
     color: var(--color-text);
     white-space: nowrap;
     font-size: var(--font-size-body-md);
-    font-weight: 400;
+    font-weight: var(--font-weight-regular);
 
     &:hover,
     &:focus-visible {

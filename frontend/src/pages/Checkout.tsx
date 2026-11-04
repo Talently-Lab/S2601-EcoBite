@@ -87,8 +87,7 @@ export function Checkout() {
 
     return (
         <div className="page checkout-page">
-            <PageHeader title="Confirmá tu pedido" backTo="/cart" backLabel="Volver al carrito"
-                desktopBackText="Volver al carrito" />
+            <PageHeader title="Confirmá tu pedido" backTo="/cart" backLabel="Volver al carrito" />
             <h1>Confirmá tu pedido</h1>
 
             <section className="checkout-address" aria-labelledby={deliveryTitleId}>

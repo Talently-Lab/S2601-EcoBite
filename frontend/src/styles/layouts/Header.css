@@ -75,10 +75,6 @@
     background: var(--color-background);
 }
 
-.header-menu-link, .header-logout {
-    text-align: start;
-}
-
 .site-header-cart-count, .header-account-caption {
     font-size: var(--font-size-body-sm);
 }
@@ -112,7 +108,7 @@
     gap: var(--space-1);
     white-space: nowrap;
     font-size: var(--font-size-body-md);
-    font-weight: 400;
+    font-weight: var(--font-weight-regular);
 }
 
 .site-header-cart {
@@ -166,6 +162,11 @@ body:has(.header-drawer[open]) {
     flex: 1;
     gap: var(--space-3-5);
     padding: var(--space-2) var(--space-4) max(var(--space-1), env(safe-area-inset-bottom));
+
+    & > .button--text {
+        justify-content: flex-start;
+        margin-block-start: auto;
+    }
 }
 
 .header-account {
@@ -181,18 +182,6 @@ body:has(.header-drawer[open]) {
 
 .header-account-name {
     overflow-wrap: anywhere;
-}
-
-.header-logout {
-    justify-content: flex-start;
-    margin-block-start: auto;
-    padding-inline: 0;
-    color: var(--color-error);
-    font-weight: var(--font-weight-medium);
-
-    &:hover:enabled {
-        background: var(--color-surface);
-    }
 }
 
 .header-account:hover, .header-menu-link[href]:hover {
