@@ -41,6 +41,8 @@
     background: var(--color-primary);
     color: var(--color-surface);
     width: 100%;
+    min-height: 3.5rem;
+    border-radius: var(--radius-md);
 
     &:has(svg) {
         justify-content: space-between;

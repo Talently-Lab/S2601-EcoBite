@@ -10,6 +10,7 @@ import { Impact } from './pages/Impact';
 import { Profile } from './pages/Profile';
 import { Home } from './pages/Home';
 import { CartProvider } from './context/CartProvider';
+import { ImpactProvider } from './context/ImpactProvider';
 import { Checkout } from './pages/Checkout';
 import { ConfirmationModal } from './components/pages/ConfirmationModal';
 import { AdminDashboard } from './pages/AdminDashboard';
@@ -25,7 +26,9 @@ const getHomePath = (user) => user ? HOME_BY_ROLE[user.role] : '/login';
 
 export default function App() {
 	const { user, isLoading } = useUser();
-	if (isLoading) return <main role="status">Cargando sesión...</main>;
+	if (isLoading) return <main className="loading-feedback" role="status" aria-label="Cargando sesión">
+		<span className="loading-spinner" aria-hidden="true" />
+	</main>;
 
 	return (
 			<Routes>
@@ -41,13 +44,15 @@ export default function App() {
 				<Route element={
 					user?.role === 'CLIENT'
 						? <CartProvider key={user.id} userId={user.id}>
-                                <Header />
-                                <main tabIndex={-1}>
-                                    <Outlet />
-                                </main>
-                                <Footer />
-                                <ConfirmationModal />
-                            </CartProvider>
+							<ImpactProvider>
+								<Header />
+								<main tabIndex={-1}>
+									<Outlet />
+								</main>
+								<Footer />
+								<ConfirmationModal />
+							</ImpactProvider>
+						</CartProvider>
 						: <Navigate to={getHomePath(user)} replace />
 				}>
 					<Route path="/" element={<Home />} />

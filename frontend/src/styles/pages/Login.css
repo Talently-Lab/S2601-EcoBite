@@ -96,12 +96,6 @@ main:has(.login-page) {
     display: block;
 }
 
-.login-submit {
-    min-height: var(--control-height-lg);
-    border-radius: var(--radius-md);
-    font-weight: var(--font-weight-medium);
-}
-
 .login-form:has(.login-terms) .login-submit {
     margin-block-start: 0;
 }

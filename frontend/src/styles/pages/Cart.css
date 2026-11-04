@@ -44,10 +44,6 @@
     padding-block-start: var(--space-3);
     padding-block-end: clamp(0px, 7vh, calc(var(--space-3) + var(--space-3-5)));
 
-    & > .button {
-        border-radius: var(--radius-md);
-    }
-
     & > .green-badge {
         margin: 0;
         padding: var(--space-2);

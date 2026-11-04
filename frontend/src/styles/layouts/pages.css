@@ -9,18 +9,6 @@
     margin-inline: auto;
 }
 
-.state-actions .button--primary,
-.cart-page--empty > .button,
-.checkout-confirm {
-    border-radius: var(--radius-md);
-}
-
-.empty-cart .button--primary,
-.cart-page--empty > .button,
-.checkout-confirm {
-    min-block-size: var(--control-height-lg);
-}
-
 main {
     inline-size: 100%;
     max-inline-size: var(--content-width);
@@ -32,6 +20,14 @@ main {
 
 .page {
     min-inline-size: 0;
+}
+
+.impact-page {
+    padding-block-end: var(--space-4);
+
+    & > .page-header {
+        margin-block-end: calc(-1 * var(--space-2));
+    }
 }
 
 main:has(.cart-page--empty, .checkout-page) {
