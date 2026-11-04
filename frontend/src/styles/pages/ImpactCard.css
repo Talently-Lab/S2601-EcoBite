@@ -1,32 +1,45 @@
-.impact-card .impact-value,
-.impact-card-link span {
+.impact-card-main > .svg-icon, .impact-card-link {
+    position: absolute;
+}
+
+.impact-card-feedback .button .impact-value,
+.impact-card--detail .impact-card-caption {
+    color: var(--color-accent);
+}
+
+.impact-card-link, .impact-card-orders, .impact-card-feedback {
+    align-items: center;
+}
+
+.impact-card-link, .impact-card-feedback {
+    justify-content: center;
+}
+
+.impact-card-feedback, .impact-card-orders {
+    gap: var(--space-1);
+}
+
+.impact-card .impact-value, .impact-card-link span {
     line-height: 1;
 }
 
-.impact-card-link span,
-.impact-card-orders {
+.impact-card-link span, .impact-card-orders {
     font-size: var(--font-size-headline-xs);
 }
 
-.impact-card-eyebrow,
-.impact-card-caption {
+.impact-card-eyebrow, .impact-card-caption {
     font-weight: var(--font-weight-semibold);
 }
 
-.impact-card,
-.impact-card-main,
-.impact-card-orders {
-    min-inline-size: 0;
+.impact-card, .impact-card-main, .impact-card-orders {
+    min-width: 0;
 }
 
-.impact-card-main,
-.impact-card-orders {
+.impact-card-main, .impact-card-orders {
     padding: var(--space-3);
 }
 
-.impact-card-link,
-.impact-card-orders {
-    align-items: center;
+.impact-card-link, .impact-card-orders {
     background: var(--color-accent);
     color: var(--color-primary);
 }
@@ -35,39 +48,37 @@
     position: relative;
     z-index: 1;
     flex-direction: column;
-    min-block-size: calc(var(--space-5) * 2 + var(--space-1-5));
+    min-height: calc(var(--space-5) * 2 + var(--space-1-5));
     overflow: hidden;
     box-shadow: var(--shadow-card);
 
     & > .svg-icon {
-        position: absolute;
         inset-block-start: var(--space-3);
         inset-inline-end: var(--space-3);
-        inline-size: 4rem;
+        width: 4rem;
         mask-image: url('../../assets/icons/leaves.svg');
     }
 }
 
-.impact-card--home {
-    & .impact-card-main {
-        padding-inline-end: calc(var(--space-5) + var(--space-3));
-    }
+.impact-card-feedback .button:hover {
+    color: var(--color-primary);
+}
+
+.impact-card--home .impact-card-main {
+    padding-inline-end: calc(var(--space-5) + var(--space-3));
 }
 
 .impact-value {
-    color: var(--color-accent);
     font-size: var(--font-size-headline-xl);
     font-weight: 800;
 }
 
 .impact-card-link {
     display: flex;
-    position: absolute;
-    inset-block-end: var(--space-2);
-    inset-inline-end: var(--space-2);
-    justify-content: center;
-    inline-size: var(--touch-target);
-    block-size: var(--touch-target);
+    bottom: var(--space-2);
+    right: var(--space-2);
+    width: var(--touch-target);
+    height: var(--touch-target);
     border-radius: var(--radius-sm);
     transition: background-color var(--transition-control);
 
@@ -81,11 +92,10 @@
 
     & .impact-card-caption {
         margin-block-start: var(--space-1);
-        color: var(--color-accent);
     }
 
     & .impact-card-main {
-        min-block-size: calc(var(--space-5) * 2 + var(--space-3));
+        min-height: calc(var(--space-5) * 2 + var(--space-3));
     }
 }
 
@@ -96,15 +106,14 @@
 }
 
 .impact-card-orders {
-    gap: var(--space-1);
     margin-block-start: calc(-1 * var(--space-2));
     padding-block-end: var(--space-1);
     line-height: var(--line-height-tight);
     font-weight: var(--font-weight-medium);
 
     & > .svg-icon {
-        inline-size: 2rem;
-        block-size: 2.0625rem;
+        width: 2rem;
+        height: 2.0625rem;
         color: var(--color-forest);
         mask-image: url('../../assets/icons/impact-deliveries.svg');
     }
@@ -121,7 +130,7 @@
         gap: var(--space-2);
 
         & .impact-card-main {
-            min-block-size: calc(var(--space-6) + var(--space-5) + var(--space-3-5));
+            min-height: calc(var(--space-6) + var(--space-5) + var(--space-3-5));
         }
     }
 
@@ -130,41 +139,39 @@
         justify-content: center;
         align-items: flex-start;
         align-self: end;
-        min-block-size: calc(var(--space-5) * 2 + var(--space-3));
+        min-height: calc(var(--space-5) * 2 + var(--space-3));
         margin-block-start: 0;
     }
 }
 
 @media (width >= 64rem) {
-    .impact-card--home {
-        & .impact-card-main > .svg-icon,
-        & .impact-card-link {
-            position: static;
-            grid-row: 1 / 4;
-            align-self: center;
-        }
+    .impact-card--home .impact-card-main > .svg-icon,
+    .impact-card--home .impact-card-link {
+        position: static;
+        grid-row: 1 / 4;
+        align-self: center;
+    }
 
-        & .impact-card-main {
-            display: grid;
-            grid-template-columns: auto minmax(0, 1fr) auto;
-            grid-template-rows: repeat(3, auto);
-            align-content: center;
-            column-gap: var(--space-4);
-            padding: var(--space-4);
-        }
+    .impact-card--home .impact-card-main {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        grid-template-rows: repeat(3, auto);
+        align-content: center;
+        column-gap: var(--space-4);
+        padding: var(--space-4);
+    }
 
-        & .impact-card-main > .svg-icon {
-            grid-column: 1;
-        }
+    .impact-card--home .impact-card-main > .svg-icon {
+        grid-column: 1;
+    }
 
-        & .impact-card-eyebrow,
-        & .impact-value,
-        & .impact-card-caption {
-            grid-column: 2;
-        }
+    .impact-card--home .impact-card-eyebrow,
+    .impact-card--home .impact-value,
+    .impact-card--home .impact-card-caption {
+        grid-column: 2;
+    }
 
-        & .impact-card-link {
-            grid-column: 3;
-        }
+    .impact-card--home .impact-card-link {
+        grid-column: 3;
     }
 }

@@ -1,19 +1,34 @@
 import { Link } from 'react-router';
+import { Button } from '../core/Button';
+import { useImpact } from '../../context/ImpactContext';
 import { formatCount, formatGrams } from '../../utils/kpiFormatters';
 
-type ImpactCardProps =
-    | { variant: 'home'; co2SavedG: number }
-    | { variant: 'detail'; co2SavedG: number; impactedOrders: number };
+type ImpactCardProps = { variant: 'home' | 'detail' };
 
-export function ImpactCard(props: ImpactCardProps) {
-    const isHome = props.variant === 'home';
+export function ImpactCard({ variant }: ImpactCardProps) {
+    const { summary, status, refresh } = useImpact();
+
+    if (status !== 'ready' || !summary) {
+        const loading = status === 'loading';
+        return <section className="card card--dark impact-card-main impact-card-feedback"
+            role={loading ? 'status' : undefined} aria-label={loading ? 'Cargando impacto' : 'Tu impacto'}>
+            {loading
+                ? <span className="loading-spinner" aria-hidden="true" />
+                : <>
+                    <p role="alert">No pudimos cargar tu impacto.</p>
+                    <Button variant="text" onClick={() => void refresh()}>Reintentar</Button>
+                </>}
+        </section>;
+    }
+
+    const isHome = variant === 'home';
 
     return (
-        <section className={`impact-card impact-card--${props.variant}`} aria-label="Tu impacto">
+        <section className={`impact-card impact-card--${variant}`} aria-label="Tu impacto">
             <div className="card card--dark impact-card-main">
                 {isHome && <p className="impact-card-eyebrow">Tu impacto hasta hoy</p>}
                 <span className="svg-icon" aria-hidden="true" />
-                <p className="impact-value">{formatGrams(props.co2SavedG)}</p>
+                <p className="impact-value">{formatGrams(summary.totalCo2SavedG)}</p>
                 <p className="impact-card-caption">
                     de CO₂ evitados{!isHome ? ' en total' : ''}
                 </p>
@@ -30,7 +45,7 @@ export function ImpactCard(props: ImpactCardProps) {
             {!isHome && (
                 <div className="card impact-card-orders">
                     <span className="svg-icon" aria-hidden="true" />
-                    <p>{formatCount(props.impactedOrders)} pedidos con impacto</p>
+                    <p>{formatCount(summary.ordersWithImpact)} pedidos con impacto</p>
                 </div>
             )}
         </section>
