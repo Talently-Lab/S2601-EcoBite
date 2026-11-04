@@ -1,4 +1,7 @@
+import type { ReactNode } from 'react';
 import { Link, type LinkProps } from 'react-router';
+import { useUser } from '../../context/UserContext';
+import { useLogout } from '../../hooks/useLogout';
 
 type ButtonProps = {
     variant?: 'primary' | 'icon' | 'link' | 'text';
@@ -16,4 +19,21 @@ export function Button({ variant = 'primary', className = '', ...props }: Button
     }
 
     return <button type="button" {...props} className={classes} />;
+}
+
+type LogoutButtonProps = {
+    icon?: ReactNode;
+    errorClassName?: string;
+};
+
+export function LogoutButton({ icon, errorClassName }: LogoutButtonProps) {
+    const { logout } = useUser();
+    const { isLoggingOut, logoutError, handleLogout } = useLogout(logout);
+
+    return <>
+        <Button variant="text" disabled={isLoggingOut} onClick={handleLogout}>
+            {icon}{isLoggingOut ? 'Cerrando sesión...' : 'Cerrar sesión'}
+        </Button>
+        {logoutError && <p role="alert" className={errorClassName}>{logoutError}</p>}
+    </>;
 }

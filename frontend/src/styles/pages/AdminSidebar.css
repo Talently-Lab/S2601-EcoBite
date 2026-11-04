@@ -27,13 +27,19 @@
     background: var(--color-primary);
     color: var(--color-background);
 
-    & .admin-logout {
-        padding: 0;
+    & .button--text {
         border: 0;
-        background: transparent;
         color: inherit;
         font-size: clamp(var(--font-size-body-sm), 1.5625vw, var(--font-size-body-lg));
-        font-weight: var(--font-weight-medium);
+
+        &:disabled {
+            cursor: wait;
+            opacity: 0.6;
+        }
+
+        &:hover:enabled {
+            background: var(--color-accent);
+        }
     }
 }
 
@@ -54,19 +60,14 @@
     text-align: end;
 }
 
-.admin-logout:disabled {
-    cursor: wait;
-    opacity: 0.6;
-}
-
 .admin-logout-error {
     color: var(--color-accent);
 }
 
 @media (width >= 64rem) {
     .admin-account-email,
-    .admin-sidebar .admin-logout {
-        font-weight: var(--font-weight-bold);
+    .admin-sidebar .button--text {
+        font-weight: var(--font-weight-semibold);
     }
 
     .admin-nav,
@@ -92,13 +93,19 @@
         block-size: 100dvh;
         padding: var(--space-3) var(--space-1-5) calc(var(--space-4) + var(--space-3));
 
-        & .admin-logout {
+        & .button--text {
             inline-size: 100%;
             min-block-size: var(--space-4);
             margin-block-start: var(--space-1);
             padding: 0 var(--space-2);
             border: 2px solid var(--color-forest);
             border-radius: var(--radius-sm);
+            font-size: var(--font-size-body-md);
+
+            &:hover:enabled {
+                background: var(--color-secondary);
+                color: var(--color-primary);
+            }
         }
     }
 
@@ -129,17 +136,12 @@
         padding: var(--space-2) var(--space-1-5) 0;
         border-block-start: 1px solid var(--color-forest);
         text-align: start;
-        font-stretch: 85%;
-        line-height: var(--line-height-relaxed);
+        font-size: var(--font-size-body-md);
+        line-height: var(--line-height-body);
     }
 
     .admin-account-details {
         display: block;
-    }
-
-    .admin-logout:hover:enabled {
-        background: var(--color-secondary);
-        color: var(--color-primary);
     }
 
     .admin-logout-error {

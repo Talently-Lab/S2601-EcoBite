@@ -1,7 +1,6 @@
 import { Link, useLocation } from 'react-router';
-import { Button } from '../core/Button';
+import { LogoutButton } from '../core/Button';
 import { useUser } from '../../context/UserContext';
-import { useLogout } from '../../hooks/useLogout';
 import { ADMIN_DASHBOARD_PATH } from '../../config/admin';
 
 const navLinks = [
@@ -11,9 +10,8 @@ const navLinks = [
 ];
 
 export function AdminSidebar() {
-    const { user, logout } = useUser();
+    const { user } = useUser();
     const { pathname, hash } = useLocation();
-    const { isLoggingOut, logoutError, handleLogout } = useLogout(logout);
 
     return (
         <aside className="admin-sidebar" aria-label="Panel de administración">
@@ -31,10 +29,7 @@ export function AdminSidebar() {
                     <p>Sesión de administrador</p>
                     {user && <p className="admin-account-email">{user.email}</p>}
                 </div>
-                <Button type="button" variant="icon" className="admin-logout" disabled={isLoggingOut} onClick={handleLogout}>
-                    {isLoggingOut ? 'Cerrando sesión...' : 'Cerrar sesión'}
-                </Button>
-                {logoutError && <p role="alert" className="admin-logout-error">{logoutError}</p>}
+                <LogoutButton errorClassName="admin-logout-error" />
             </div>
         </aside>
     );

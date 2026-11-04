@@ -1,15 +1,20 @@
-.cart-page,
+.cart-page--empty,
 .empty-cart,
-.empty-cart-message {
+.empty-cart-message,
+.cart-products {
     display: grid;
 }
 
+.cart-page:not(.cart-page--empty),
 .cart-restaurant-heading,
-.cart-bottom {
+.cart-bottom,
+.cart-summary {
     display: flex;
 }
 
-.cart-page,
+.cart-page:not(.cart-page--empty),
+.cart-restaurant-heading,
+.cart-bottom,
 .empty-cart {
     gap: var(--space-2);
 }
@@ -21,7 +26,6 @@
 }
 
 .cart-page:not(.cart-page--empty) {
-    display: flex;
     flex-direction: column;
     min-block-size: calc(100dvh - var(--header-height) - var(--space-1) - var(--space-3));
 }
@@ -29,17 +33,11 @@
 .cart-restaurant-heading {
     align-items: baseline;
     justify-content: space-between;
-    gap: var(--space-2);
     margin-block: var(--space-2) var(--space-3);
-}
-
-.cart-products {
-    display: grid;
 }
 
 .cart-bottom {
     flex-direction: column;
-    gap: var(--space-2);
     margin-block-start: auto;
     padding-block-start: var(--space-3);
     padding-block-end: clamp(0px, 7vh, calc(var(--space-3) + var(--space-3-5)));
@@ -52,7 +50,6 @@
 }
 
 .cart-summary {
-    display: flex;
     align-items: center;
     justify-content: space-between;
     padding-inline: var(--space-1);

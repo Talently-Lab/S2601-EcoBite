@@ -1,6 +1,5 @@
 @import './layouts/base.css';
 @import './shared/Graphics.css';
-@import './shared/SectionHeader.css';
 @import './core/Button.css';
 @import './core/Spinner.css';
 @import './core/PageHeader.css';
@@ -52,6 +51,7 @@
     --font-size-headline-md: 28px;
     --font-size-headline-lg: 36px;
     --font-size-headline-xl: 48px;
+    --font-weight-regular: 400;
     --font-weight-medium: 500;
     --font-weight-semibold: 600;
     --font-weight-bold: 700;

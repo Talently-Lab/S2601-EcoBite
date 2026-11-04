@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { AuthError } from '../services/authService';
 
-export function useLogout(logout: () => Promise<void>, onSuccess?: () => void) {
+export function useLogout(logout: () => Promise<void>) {
     const [isLoggingOut, setIsLoggingOut] = useState(false);
     const [logoutError, setLogoutError] = useState('');
 
@@ -11,7 +11,6 @@ export function useLogout(logout: () => Promise<void>, onSuccess?: () => void) {
         setLogoutError('');
         try {
             await logout();
-            onSuccess?.();
         } catch (cause) {
             setLogoutError(cause instanceof AuthError ? cause.message : 'No pudimos cerrar tu sesión. Probá de nuevo.');
         } finally {

@@ -3,7 +3,6 @@ import { createContext, useContext } from 'react';
 export type ImpactContextValue = {
     summary: { totalCo2SavedG: number; ordersWithImpact: number } | null;
     status: 'loading' | 'error' | 'ready';
-    refresh: () => Promise<void>;
 };
 
 export const ImpactContext = createContext<ImpactContextValue | null>(null);

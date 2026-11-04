@@ -20,11 +20,6 @@ export function ImpactProvider({ children }: { children: ReactNode }) {
         });
     }, []);
 
-    const refresh = useCallback(async () => {
-        setStatus('loading');
-        await loadImpact();
-    }, [loadImpact]);
-
     useEffect(() => {
         void loadImpact();
         const currentRevision = revision;
@@ -35,6 +30,6 @@ export function ImpactProvider({ children }: { children: ReactNode }) {
         if (createdOrder) void loadImpact();
     }, [createdOrder, loadImpact]);
 
-    const value = useMemo(() => ({ summary, status, refresh }), [summary, status, refresh]);
+    const value = useMemo(() => ({ summary, status }), [summary, status]);
     return <ImpactContext value={value}>{children}</ImpactContext>;
 }

@@ -2,11 +2,10 @@ import { useRef, useState, type MouseEvent, type ReactNode } from 'react';
 import { Link, useLocation } from 'react-router';
 import type { IconType } from 'react-icons';
 import { LuLeaf, LuMenu, LuShoppingCart, LuX } from 'react-icons/lu';
-import { Button } from '../core/Button';
+import { Button, LogoutButton } from '../core/Button';
 import { Navbar } from './Navbar';
 import { useCart } from '../../context/CartContext';
 import { useUser } from '../../context/UserContext';
-import { useLogout } from '../../hooks/useLogout';
 import { getUserNamePresentation } from '../../utils/userName';
 import { ComunaSelector } from '../shared/ComunaSelector';
 import { SearchBar } from '../forms/SearchBar';
@@ -33,7 +32,7 @@ function HeaderItem({ to, label, icon: Icon, className, ariaLabel, badge }: Head
 }
 
 export function Header() {
-    const { user, logout } = useUser();
+    const { user } = useUser();
     const { pathname } = useLocation();
     const { displayName, initials } = getUserNamePresentation(user?.name);
     const { totalQuantity } = useCart();
@@ -44,7 +43,6 @@ export function Header() {
         menuRef.current?.close();
     }
 
-    const { isLoggingOut, logoutError, handleLogout } = useLogout(logout, closeMenu);
     const cartCount = totalQuantity;
     const filledCart = cartCount > 0;
     const cartLabel = filledCart
@@ -106,9 +104,7 @@ export function Header() {
 
                         <Navbar onNavigate={closeMenu} />
 
-                        {logoutError && <p role="alert">{logoutError}</p>}
-                        <Button type="button" variant="text" className="header-logout" disabled={isLoggingOut}
-                            onClick={handleLogout}>{isLoggingOut ? 'Cerrando sesión...' : 'Cerrar sesión'}</Button>
+                        <LogoutButton />
                     </div>
                 </div>
             </dialog>

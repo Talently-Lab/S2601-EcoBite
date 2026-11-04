@@ -1,12 +1,11 @@
 import { Link } from 'react-router';
-import { Button } from '../core/Button';
 import { useImpact } from '../../context/ImpactContext';
 import { formatCount, formatGrams } from '../../utils/kpiFormatters';
 
 type ImpactCardProps = { variant: 'home' | 'detail' };
 
 export function ImpactCard({ variant }: ImpactCardProps) {
-    const { summary, status, refresh } = useImpact();
+    const { summary, status } = useImpact();
 
     if (status !== 'ready' || !summary) {
         const loading = status === 'loading';
@@ -14,10 +13,7 @@ export function ImpactCard({ variant }: ImpactCardProps) {
             role={loading ? 'status' : undefined} aria-label={loading ? 'Cargando impacto' : 'Tu impacto'}>
             {loading
                 ? <span className="loading-spinner" aria-hidden="true" />
-                : <>
-                    <p role="alert">No pudimos cargar tu impacto.</p>
-                    <Button variant="text" onClick={() => void refresh()}>Reintentar</Button>
-                </>}
+                : <p role="alert">No pudimos cargar tu impacto.</p>}
         </section>;
     }
 

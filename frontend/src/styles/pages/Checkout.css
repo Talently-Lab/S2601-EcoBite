@@ -82,7 +82,7 @@ main:has(.checkout-page) {
 
 .checkout-address {
     & .input-label {
-        font-weight: 400;
+        font-weight: var(--font-weight-regular);
     }
 
     & input {
