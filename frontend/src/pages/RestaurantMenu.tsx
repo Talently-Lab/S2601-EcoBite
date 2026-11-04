@@ -3,6 +3,8 @@ import { PageHeader } from '../components/core/PageHeader';
 import { Breadcrumbs } from '../components/layouts/Breadcrumbs';
 import { ProductCard } from '../components/pages/ProductCard';
 import { RestaurantTags } from '../components/pages/RestaurantTags';
+import { ImageWithFallback } from '../components/shared/ImageWithFallback';
+import { getRestaurantImage } from '../constants/constants';
 import { StatusMessage } from '../components/shared/StatusMessage';
 import { SectionHeader } from '../components/shared/SectionHeader';
 import { useCart } from '../context/CartContext';
@@ -35,7 +37,7 @@ function PlanetCareCard({ restaurant }: { restaurant: Restaurant }) {
 
     return (
         <aside className="restaurant-menu-planet-card" aria-labelledby="planet-care-title">
-            <p id="planet-care-title" className="restaurant-menu-planet-card-title">Cómo cuidamos el planeta</p>
+            <h2 id="planet-care-title">Cómo cuidamos el planeta</h2>
             <p>Usamos envases compostables y entregamos en bici. Así cada pedido genera menos residuos.</p>
         </aside>
     );
@@ -51,10 +53,10 @@ export function RestaurantMenu() {
 
     return (
         <div className="page restaurant-menu-page">
-            {restaurant && <Breadcrumbs currentPage={restaurant.name} />}
+            {restaurant && <Breadcrumbs currentPage={restaurant.name} parentPage="Restaurantes" parentTo="/restaurants" />}
             <div className={`restaurant-menu-hero${restaurant ? ' restaurant-menu-hero--with-image' : ''}`}>
-                {restaurant && <img src={new URL(`../assets/images/${restaurant.foodCategory}.webp`, import.meta.url).href} alt="" />}
-                <PageHeader backTo="/restaurants" backLabel="Volver a restaurantes" />
+                {restaurant && <ImageWithFallback src={getRestaurantImage(restaurant.foodCategory)} alt="" />}
+                <PageHeader backTo="/restaurants" backLabel="Volver a restaurantes" mobileOnly={Boolean(restaurant)} />
             </div>
             {restaurant ? (
                 <div className="restaurant-menu-content">

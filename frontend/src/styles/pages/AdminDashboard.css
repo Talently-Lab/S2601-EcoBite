@@ -37,7 +37,6 @@
     min-inline-size: 0;
     gap: var(--space-1);
     padding: var(--space-2);
-    border-color: var(--color-muted);
 
     & .admin-kpi-label {
         display: flex;
@@ -119,7 +118,7 @@
             align-items: center;
             gap: var(--space-0-5) var(--space-1);
             padding: var(--space-1-5) var(--space-2);
-            border: 1px solid var(--color-border);
+            border: 1px solid var(--color-surface-muted);
             border-radius: var(--radius-sm);
             background: var(--color-table);
         }

@@ -5,13 +5,12 @@ type ItemHeaderProps = {
     image?: string;
     imageAlt?: string;
     variant?: 'horizontal' | 'vertical';
-    loading?: boolean;
 };
 
-export function ItemHeader({ title, image, imageAlt = title, variant = 'horizontal', loading = false }: ItemHeaderProps) {
+export function ItemHeader({ title, image, imageAlt = title, variant = 'horizontal' }: ItemHeaderProps) {
     return (
         <div className={`item-header item-header--${variant}`}>
-            {loading ? <img alt="" /> : image !== undefined && (
+            {image !== undefined && (
                 <ImageWithFallback src={image} alt={imageAlt} />
             )}
 

@@ -16,7 +16,6 @@ export function Home() {
     const { firstName } = getUserNamePresentation(user?.name);
     const { restaurants, status } = useRestaurants();
     const featuredRestaurants = restaurants.slice(0, 8);
-    const isLoading = status === 'loading';
 
     return (
         <div className="page home-page">
@@ -31,12 +30,9 @@ export function Home() {
                     <h3 id="home-featured-title">Destacados</h3>
                     <Button variant="link" to="/restaurants">Ver todos</Button>
                 </div>
-                {!isLoading && <StatusMessage status={status} isEmpty={restaurants.length === 0}
-                    messages={RESTAURANTS_MESSAGES} />}
-                {isLoading && <div className="loading-feedback" role="status" aria-label="Cargando restaurantes">
-                    <span className="loading-spinner" aria-hidden="true" />
-                </div>}
-                {!isLoading && featuredRestaurants.length > 0 && (
+                <StatusMessage status={status} isEmpty={restaurants.length === 0}
+                    messages={RESTAURANTS_MESSAGES} />
+                {status !== 'loading' && featuredRestaurants.length > 0 && (
                     <div className="home-featured-list">
                         {featuredRestaurants.map((restaurant) => (
                             <RestaurantCard key={restaurant.id} restaurant={restaurant} />
