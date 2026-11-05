@@ -21,6 +21,10 @@ import {
   messageFromHttpExceptionBody,
 } from './http-exception.filter.helpers';
 import { Prisma } from '@prisma/client';
+import {
+  diagnosticRequestId,
+  temporaryOrdersDiagnostic,
+} from './orders-diagnostic';
 
 const diagnosticErrorClasses = {
   PrismaClientKnownRequestError: Prisma.PrismaClientKnownRequestError,
@@ -143,6 +147,8 @@ export class HttpExceptionFilter implements ExceptionFilter {
       const prismaCode = diagnosticPrismaCode(exception);
       const stack = diagnosticStack(exception);
       const location = stack[0];
+      const temporary = temporaryOrdersDiagnostic(exception);
+      const requestId = diagnosticRequestId(request.id);
       this.logger.error(
         {
           errorType: classifyDiagnosticError(exception),
@@ -152,6 +158,12 @@ export class HttpExceptionFilter implements ExceptionFilter {
           ...(prismaCode ? { prismaCode } : {}),
           ...(location ? { location } : {}),
           ...(stack.length ? { stack } : {}),
+          ...(temporary
+            ? {
+                ...temporary,
+                ...(requestId !== undefined ? { requestId } : {}),
+              }
+            : {}),
         },
         'Unhandled HTTP exception',
       );

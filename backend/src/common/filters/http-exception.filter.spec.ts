@@ -38,7 +38,7 @@ describe('HttpExceptionFilter', () => {
 
   function createHost(opts: {
     res: { status: jest.Mock; json: jest.Mock };
-    req: { url: string; path: string; method: string };
+    req: { url: string; path: string; method: string; id?: number | string };
   }): ArgumentsHost {
     const { res, req } = opts;
     return {
@@ -62,6 +62,45 @@ describe('HttpExceptionFilter', () => {
   function mockReq(url = '/api/orders', method = 'POST') {
     return { url, path: url.split('?')[0], method };
   }
+
+  it('temporarily preserves a technical message and a dependency frame without changing the response', () => {
+    const enabled = process.env.ORDERS_DIAGNOSTICS_ENABLED;
+    const until = process.env.ORDERS_DIAGNOSTICS_UNTIL;
+    process.env.ORDERS_DIAGNOSTICS_ENABLED = 'true';
+    process.env.ORDERS_DIAGNOSTICS_UNTIL = new Date(
+      Date.now() + 60_000,
+    ).toISOString();
+    try {
+      const error = new Error('Connection terminated unexpectedly');
+      error.stack = `Error: Connection terminated unexpectedly\n    at query (${resolve(__dirname, '../../../node_modules/pg-pool/index.js')}:45:9)`;
+      const res = mockRes();
+      filter.catch(error, createHost({ res, req: { ...mockReq(), id: 57 } }));
+      expect(logger.error).toHaveBeenCalledWith(
+        expect.objectContaining({
+          requestId: 57,
+          errorName: 'Error',
+          message: 'Connection terminated unexpectedly',
+          stack: [
+            { file: 'node_modules/pg-pool/index.js', line: 45, column: 9 },
+          ],
+        }),
+        'Unhandled HTTP exception',
+      );
+      expect(res.json).toHaveBeenCalledWith(
+        expect.objectContaining({
+          statusCode: 500,
+          message: 'Internal server error',
+          code: ErrorCode.INTERNAL_ERROR.code,
+        }),
+      );
+      expect(res.json.mock.calls[0][0]).not.toHaveProperty('stack');
+    } finally {
+      if (enabled === undefined) delete process.env.ORDERS_DIAGNOSTICS_ENABLED;
+      else process.env.ORDERS_DIAGNOSTICS_ENABLED = enabled;
+      if (until === undefined) delete process.env.ORDERS_DIAGNOSTICS_UNTIL;
+      else process.env.ORDERS_DIAGNOSTICS_UNTIL = until;
+    }
+  });
 
   it.each([
     ['DATABASE_URL is not set', 'DATABASE_URL is not set'],
@@ -511,7 +550,13 @@ class DiagnosticController {
 }
 
 describe('HttpExceptionFilter with Nest and Pino', () => {
-  it('writes a sanitized diagnostic through the real HTTP pipeline without database access', async () => {
+  it.each([false, true])('sanitizes JSON (%s)', async (extended) => {
+    const enabled = process.env.ORDERS_DIAGNOSTICS_ENABLED;
+    const until = process.env.ORDERS_DIAGNOSTICS_UNTIL;
+    process.env.ORDERS_DIAGNOSTICS_ENABLED = String(extended);
+    process.env.ORDERS_DIAGNOSTICS_UNTIL = new Date(
+      Date.now() + 60_000,
+    ).toISOString();
     const stream = new PassThrough();
     let output = '';
     stream.on('data', (chunk: Buffer) => {
@@ -532,7 +577,9 @@ describe('HttpExceptionFilter with Nest and Pino', () => {
       throw new Error('Expected Pino HTTP options');
     }
     const error = new Prisma.PrismaClientKnownRequestError(
-      'secret-message postgresql://secret-connection SELECT secret-sql',
+      extended
+        ? 'Connection terminated unexpectedly\npassword=secret-password'
+        : 'secret-message postgresql://secret-connection SELECT secret-sql',
       {
         code: 'P2022',
         clientVersion: 'test',
@@ -541,6 +588,12 @@ describe('HttpExceptionFilter with Nest and Pino', () => {
     );
     error.name = 'secret-name';
     error.stack = `Error: secret-stack\n    at query (${resolve(__dirname, '../../modules/orders/orders.service.ts')}:100:12)`;
+    if (extended) {
+      error.stack += `\n    at query (${resolve(__dirname, '../../../node_modules/pg-pool/index.js')}:45:9)`;
+      Object.defineProperty(error, 'cause', {
+        value: new Error('Socket closed password=secret-cause'),
+      });
+    }
     const failure = {
       run: jest.fn(() => {
         throw error;
@@ -593,13 +646,34 @@ describe('HttpExceptionFilter with Nest and Pino', () => {
         pid: expect.any(Number),
         hostname: expect.any(String),
         req: { id: expect.any(Number), method: 'POST', path: '/api/orders' },
-        message: 'Unexpected error (details omitted)',
+        message: extended
+          ? 'Connection terminated unexpectedly [SENSITIVE DETAILS REDACTED]'
+          : 'Unexpected error (details omitted)',
         method: 'POST',
         path: '/api/orders',
         errorType: 'PrismaClientKnownRequestError',
         prismaCode: 'P2022',
         location: { file: 'src/modules/orders/orders.service.ts', line: 100 },
-        stack: [{ file: 'src/modules/orders/orders.service.ts', line: 100 }],
+        stack: extended
+          ? [
+              {
+                file: 'src/modules/orders/orders.service.ts',
+                line: 100,
+                column: 12,
+              },
+              { file: 'node_modules/pg-pool/index.js', line: 45, column: 9 },
+            ]
+          : [{ file: 'src/modules/orders/orders.service.ts', line: 100 }],
+        ...(extended
+          ? {
+              errorName: 'PrismaClientKnownRequestError',
+              requestId: expect.any(Number),
+              cause: expect.objectContaining({
+                errorName: 'Error',
+                message: 'Socket closed [SENSITIVE DETAILS REDACTED]',
+              }),
+            }
+          : {}),
         msg: 'Unhandled HTTP exception',
       });
       const accessLogs = records.filter(
@@ -624,14 +698,25 @@ describe('HttpExceptionFilter with Nest and Pino', () => {
         );
       }
       expect(output).not.toContain('secret-');
-      expect(JSON.stringify(diagnostics)).not.toContain(
-        resolve(__dirname, '../../..'),
-      );
       expect(output).not.toContain('postgresql://');
+      const diagnosticOutput = JSON.stringify(diagnostics);
+      expect(diagnosticOutput).not.toContain('secret-');
+      expect(diagnosticOutput).not.toContain(
+        JSON.stringify(resolve(__dirname, '../../..')).slice(1, -1),
+      );
+      expect(diagnosticOutput).not.toContain('postgresql://');
       expect(failure.run).toHaveBeenCalledTimes(2);
+      if (extended)
+        expect(diagnostics[0].requestId).toBe(
+          (diagnostics[0].req as { id: number }).id,
+        );
     } finally {
       await app.close();
       stream.destroy();
+      if (enabled === undefined) delete process.env.ORDERS_DIAGNOSTICS_ENABLED;
+      else process.env.ORDERS_DIAGNOSTICS_ENABLED = enabled;
+      if (until === undefined) delete process.env.ORDERS_DIAGNOSTICS_UNTIL;
+      else process.env.ORDERS_DIAGNOSTICS_UNTIL = until;
     }
   });
 });
