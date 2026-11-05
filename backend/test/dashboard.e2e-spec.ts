@@ -16,6 +16,7 @@ import { HttpExceptionFilter } from '../src/common/filters/http-exception.filter
 import { ResponseInterceptor } from '../src/common/interceptors/response.interceptor';
 import { PrismaService } from '../src/prisma/prisma.service';
 import { DashboardController } from '../src/modules/dashboard/dashboard.controller';
+import type { PinoLogger } from 'nestjs-pino';
 
 describe('Dashboard (e2e)', () => {
   let app: INestApplication<App>;
@@ -71,7 +72,11 @@ describe('Dashboard (e2e)', () => {
     }).compile();
 
     app = moduleFixture.createNestApplication();
-    app.useGlobalFilters(new HttpExceptionFilter());
+    const logger = {
+      error: jest.fn(),
+    } as unknown as PinoLogger;
+
+    app.useGlobalFilters(new HttpExceptionFilter(logger));
     app.useGlobalInterceptors(new ResponseInterceptor());
     await app.init();
   });
