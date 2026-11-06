@@ -23,7 +23,7 @@ export function ImpactCard({ variant }: ImpactCardProps) {
         <section className={`impact-card impact-card--${variant}`} aria-label="Tu impacto">
             <div className="card card--dark impact-card-main">
                 {isHome && <p className="impact-card-eyebrow">Tu impacto hasta hoy</p>}
-                <span className="svg-icon" aria-hidden="true" />
+                <span className="svg-icon svg-icon--leaves" aria-hidden="true" />
                 <p className="impact-value">{formatGrams(summary.totalCo2SavedG)}</p>
                 <p className="impact-card-caption">
                     de CO₂ evitados{!isHome ? ' en total' : ''}

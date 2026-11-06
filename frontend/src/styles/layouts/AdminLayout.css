@@ -29,6 +29,12 @@
     padding: var(--space-3) var(--space-2) var(--space-4);
 }
 
+@media (width < 48rem) {
+    .admin-main {
+        padding-inline: var(--space-3);
+    }
+}
+
 /* Keep this breakpoint in sync with AdminSidebar.css. */
 @media (min-width: 64rem) {
     .admin-shell {

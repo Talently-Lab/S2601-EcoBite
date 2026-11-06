@@ -55,7 +55,6 @@
         inset-block-start: var(--space-3);
         inset-inline-end: var(--space-3);
         width: 4rem;
-        mask-image: url('../../assets/icons/leaves.svg');
     }
 }
 

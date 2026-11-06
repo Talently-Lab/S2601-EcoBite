@@ -1,22 +1,16 @@
-.admin-kpi-value,
-.admin-kpi-card--impact .impact-value {
-    line-height: var(--line-height-tight);
+.admin-dashboard {
+    gap: var(--space-3);
+    max-inline-size: var(--content-width);
+    margin-inline: auto;
 }
 
-.admin-kpi-value {
-    font-size: var(--font-size-headline-md);
-    font-weight: var(--font-weight-bold);
-}
-
-.admin-recent-orders > h2,
-.admin-kpi-card .admin-kpi-label,
-.admin-orders-table th {
-    font-weight: var(--font-weight-semibold);
-}
-
-.admin-recent-orders,
-.admin-orders-table {
-    background: var(--color-table);
+.admin-kpis {
+    gap: var(--space-3);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    & > .admin-feedback {
+        grid-column: 1 / -1;
+        min-block-size: 12rem;
+    }
 }
 
 .admin-feedback {
@@ -26,50 +20,67 @@
     text-align: center;
 }
 
-.admin-dashboard {
-    gap: var(--space-3);
-    max-inline-size: var(--content-width);
-    margin-inline: auto;
-}
-
 .admin-kpi-card {
-    min-block-size: 9rem;
+    --kpi-small-label-color: var(--color-forest);
+    --kpi-small-value-size: var(--font-size-headline-md);
     min-inline-size: 0;
-    gap: var(--space-1);
-    padding: var(--space-2);
-
+    min-block-size: 8rem;
+    border-color: var(--color-forest);
+    border-radius: var(--radius-lg);
+    &:not(.admin-kpi-card--compact) {
+        padding: var(--space-3);
+    }
     & .admin-kpi-label {
         display: flex;
         align-items: center;
         gap: var(--space-0-5);
-        font-size: clamp(var(--font-size-body-sm), 1.5625vw, var(--font-size-body-lg));
+        color: var(--kpi-label-color, inherit);
+        font-size: var(--kpi-label-size, var(--font-size-body-lg));
+        font-weight: var(--font-weight-semibold);
     }
-}
-.admin-kpi-card--impact {
-    min-block-size: 12rem;
-    border-color: var(--color-primary);
-
-    & .admin-kpi-label > .svg-icon {
-        flex: none;
-        inline-size: var(--space-2);
-        mask-image: url('../../assets/icons/leaves.svg');
+    & .admin-kpi-value {
+        color: var(--kpi-value-color, inherit);
+        font-size: var(--kpi-value-size, var(--font-size-headline-lg));
+        font-weight: var(--font-weight-bold);
+        line-height: var(--line-height-tight);
     }
-}
-
-.admin-kpi-feedback {
-    grid-column: 1 / -1;
-    min-block-size: 12rem;
+    & .admin-kpi-detail {
+        margin-block-start: var(--kpi-detail-margin, auto);
+        padding-block-start: var(--space-1-5);
+        border-block-start: 1px solid var(--color-forest);
+        color: var(--kpi-detail-color, var(--color-forest));
+        font-size: var(--font-size-body-sm);
+    }
+    &.admin-kpi-card--impact {
+        --kpi-value-color: var(--color-accent);
+        --kpi-detail-color: var(--color-background);
+        --kpi-detail-margin: var(--space-1);
+        min-block-size: 12rem;
+        justify-content: center;
+        border-color: var(--color-primary);
+        @media (width < 64rem) {
+            grid-column: 1 / -1;
+        }
+        & .admin-kpi-label > .svg-icon {
+            flex: none;
+            inline-size: var(--space-2);
+        }
+    }
+    &.admin-kpi-card--compact {
+        --kpi-label-color: var(--kpi-small-label-color);
+        --kpi-value-size: var(--kpi-small-value-size);
+        align-items: center;
+        min-block-size: 7rem;
+        gap: var(--space-1);
+        & .admin-kpi-value {
+            white-space: nowrap;
+        }
+    }
 }
 
 .admin-recent-orders {
-    min-block-size: 16rem;
-    border: 0;
-
-    & > h2 {
-        font-size: var(--font-size-body-lg);
-        line-height: var(--line-height-body);
-    }
-
+    flex-direction: column;
+    gap: var(--space-2);
     & .admin-feedback {
         flex: 1;
         padding: var(--space-2);
@@ -79,94 +90,99 @@
 
 .admin-orders-table {
     border-collapse: collapse;
-
+    & th {
+        font-weight: var(--font-weight-semibold);
+    }
     & td {
         overflow-wrap: anywhere;
     }
-
     & tbody td:last-child .green-badge {
         margin-inline-start: auto;
     }
 }
 
 @media (width < 48rem) {
-    .admin-orders-table tbody {
-        display: grid;
-        gap: var(--space-1);
+    .admin-kpis {
+        grid-template-columns: minmax(0, 1fr);
     }
 
-    .admin-recent-orders {
-        min-block-size: 0;
-        padding: 0;
-        background: transparent;
+    .admin-kpi-card:not(:has(.admin-kpi-detail)) {
+        --kpi-label-size: var(--font-size-body-sm);
+        --kpi-label-color: var(--kpi-small-label-color);
+        --kpi-value-size: var(--kpi-small-value-size);
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        min-block-size: var(--space-5);
+    }
+
+    .admin-kpi-card.admin-kpi-card--compact {
+        padding: var(--space-3);
     }
 
     .admin-orders-table {
-        & td:nth-child(1),
-        & td:nth-child(3) {
+        & tbody {
+            display: grid;
+            gap: var(--space-1);
+            & tr {
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) auto;
+                grid-template-areas: 'restaurant status' 'date total';
+                align-items: center;
+                gap: var(--space-0-5) var(--space-1);
+                padding: var(--space-1-5) var(--space-2);
+                border: 1px solid var(--color-surface-muted);
+                border-radius: var(--radius-sm);
+                background: var(--color-table);
+            }
+        }
+        & td:nth-child(odd) {
             font-weight: var(--font-weight-semibold);
         }
-
-        & td:nth-child(2) {
-            font-size: var(--font-size-body-sm);
-        }
-
-        & tbody tr {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) auto;
-            grid-template-areas: 'restaurant status' 'date total';
-            align-items: center;
-            gap: var(--space-0-5) var(--space-1);
-            padding: var(--space-1-5) var(--space-2);
-            border: 1px solid var(--color-surface-muted);
-            border-radius: var(--radius-sm);
-            background: var(--color-table);
-        }
-
-        & td {
-            padding: 0;
-            border: 0;
-        }
-
         & td:nth-child(1) {
             grid-area: restaurant;
         }
-
         & td:nth-child(2) {
             grid-area: date;
             color: var(--color-forest);
+            font-size: var(--font-size-body-sm);
         }
-
         & td:nth-child(3) {
             grid-area: total;
             text-align: end;
         }
-
         & td:nth-child(4) {
             grid-area: status;
-            justify-self: end;
         }
     }
 }
 
 @media (width >= 48rem) {
-    .admin-kpis {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        align-items: start;
+    .admin-kpi-card.admin-kpi-card--compact {
+        --kpi-label-size: var(--font-size-body-md);
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
     }
 
-    .admin-kpi-card--impact {
-        grid-column: 1 / -1;
+    .admin-recent-orders {
+        min-block-size: 16rem;
+        padding: var(--space-2);
+        background: var(--color-table);
     }
 }
 
 @media (width >= 64rem) {
-    .admin-kpi-card--impact {
-        grid-column: auto;
+    .admin-kpis {
+        gap: var(--space-2);
+        grid-template-columns: 1.1fr 1fr 1fr;
+    }
+
+    .admin-kpi-card.admin-kpi-card--impact {
+        grid-row: span 2;
         padding: var(--space-3-5);
     }
 
-    .admin-kpis {
-        grid-template-columns: 1.1fr 1fr 1fr;
+    .admin-recent-orders {
+        padding: var(--space-3);
     }
 }

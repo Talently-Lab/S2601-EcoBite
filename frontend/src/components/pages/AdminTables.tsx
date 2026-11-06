@@ -1,6 +1,7 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import { LuCheck } from 'react-icons/lu';
 import { GreenBadge } from '../shared/GreenBadge';
+import { SectionHeader } from '../shared/SectionHeader';
 import { getRecentOrders, getImpactRanking } from '../../services/dashboardService';
 import { formatOrderTimestamp } from '../../utils/dates';
 import { formatPrice } from '../../utils/price';
@@ -36,7 +37,7 @@ function AdminTable<T>({ id, title, className, tableClassName, fetcher,
 
     return (
         <section id={id} className={className} aria-labelledby={titleId} aria-busy={state.status === 'loading'}>
-            <h2 id={titleId}>{title}</h2>
+            <SectionHeader variant="h2" title={title} titleId={titleId} />
             {state.status === 'loading' && (
                 <div className={feedbackClass} role="status" aria-label="Cargando datos">
                     <span className="loading-spinner" aria-hidden="true" />
@@ -66,7 +67,7 @@ export function RecentOrders() {
         <AdminTable
             id="recent-orders"
             title="Últimos 5 pedidos"
-            className="card card--panel admin-recent-orders"
+            className="card admin-recent-orders"
             tableClassName="admin-orders-table"
             fetcher={getRecentOrders}
             headers={['Restaurante', 'Fecha', 'Total', 'Estado']}

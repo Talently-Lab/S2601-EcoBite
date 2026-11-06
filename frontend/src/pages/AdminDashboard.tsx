@@ -5,7 +5,7 @@ import { SectionHeader } from '../components/shared/SectionHeader';
 export function AdminDashboard() {
     return (
         <div className="admin-dashboard stack">
-            <SectionHeader variant="h1" title="Dashboard" subtitle="Impacto y ventas de toda la plataforma" />
+            <SectionHeader variant="h2" title="Dashboard" subtitle="Impacto y ventas de toda la plataforma" />
 
             <KpiSection />
 
