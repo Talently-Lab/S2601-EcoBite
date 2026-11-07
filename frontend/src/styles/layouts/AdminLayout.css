@@ -1,7 +1,6 @@
 .admin-shell {
     position: relative;
     min-block-size: 100dvh;
-    background: var(--color-surface);
 }
 
 .admin-skip-link {

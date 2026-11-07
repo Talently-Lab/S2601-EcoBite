@@ -20,7 +20,6 @@ input:where(:not([type='checkbox']):not([type='radio'])) {
     padding: var(--space-1-5) var(--space-2);
     border: var(--input-border-width) solid var(--input-border-color);
     border-radius: var(--input-radius, var(--radius-md));
-    background: var(--input-background, var(--color-surface));
     color: var(--color-text);
     transition: border-color var(--transition-control);
 }
@@ -74,7 +73,6 @@ input[aria-invalid='true'] {
 
 .input--login {
     --input-border-color: var(--color-forest);
-    --input-background: var(--color-background);
     --input-radius: var(--radius-sm);
 
     min-height: var(--control-height-lg);
@@ -88,7 +86,6 @@ input[aria-invalid='true'] {
 .input--search {
     --input-border-width: 0;
     --input-radius: 0;
-    --input-background: transparent;
 
     padding: var(--space-1);
     color: var(--color-primary);

@@ -16,7 +16,7 @@ main:has(.login-page) {
     display: grid;
 }
 
-.login-panel, .login-form, .login-hero--signup {
+.login-hero, .login-panel, .login-form {
     gap: var(--space-3);
 }
 
@@ -51,10 +51,6 @@ main:has(.login-page) {
         width: 7rem;
         height: 1.5rem;
     }
-}
-
-.login-hero--login {
-    gap: var(--space-3-5);
 }
 
 .login-intro h1 {
@@ -124,5 +120,11 @@ main:has(.login-page) {
     .login-content {
         align-items: center;
         padding: var(--space-4);
+    }
+}
+
+@media (width >= 64rem) {
+    .login-intro h1 {
+        font-size: 64px;
     }
 }
