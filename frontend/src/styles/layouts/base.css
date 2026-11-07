@@ -23,10 +23,6 @@ h1, h3, .avatar {
     border: 0;
 }
 
-input:disabled, .avatar {
-    background: var(--color-surface);
-}
-
 th,
 td {
     text-align: start;
@@ -87,6 +83,10 @@ body {
 	font-size: var(--font-size-body-lg);
 }
 
+input:not(.checkout-address-input) {
+    background: var(--color-table);
+}
+
 :where(button, input, select, textarea) {
 	font: inherit;
 }
@@ -128,6 +128,7 @@ input:disabled {
     width: var(--avatar-size, var(--touch-target));
     height: var(--avatar-size, var(--touch-target));
     border-radius: var(--radius-pill);
+    background: var(--color-surface);
     color: var(--color-forest);
     font-size: var(--avatar-font-size, var(--font-size-body-sm));
 }

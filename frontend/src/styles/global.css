@@ -41,7 +41,6 @@
     --color-forest: #3a6851;
     --color-lime: #94d22d;
     --color-surface-muted: #d9e4dc;
-    --color-page-background: color-mix(in srgb, var(--color-accent) 12%, var(--color-background));
     --font-family: 'BricolageGrotesque', sans-serif;
     --font-size-body-xs: 10px;
     --font-size-body-sm: 12px;
@@ -140,4 +139,8 @@ select {
 
 @media (prefers-reduced-motion: reduce) {
     :root { --transition-control: 0ms; }
+}
+
+@media (width >= 64rem) {
+    :root { --header-height: var(--space-5); }
 }

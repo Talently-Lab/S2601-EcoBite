@@ -7,7 +7,7 @@
     padding-inline: var(--space-1);
     border: 1px solid var(--color-forest);
     border-radius: var(--radius-pill);
-    background: var(--color-background);
+    background: var(--color-table);
     color: var(--color-primary);
 
     & .input-field {

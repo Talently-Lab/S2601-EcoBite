@@ -6,7 +6,7 @@ export function LoginHeader({ variant }: LoginHeaderProps) {
     const isSignUp = variant === 'signup';
 
     return (
-        <header className={`login-hero login-hero--${variant}`.trimEnd()}>
+        <header className="login-hero">
             <span className="brand-logo" role="img" aria-label="EcoBite" />
             <div className="login-intro">
                 <h1 id="login-title">

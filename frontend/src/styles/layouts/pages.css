@@ -3,8 +3,7 @@
     gap: var(--space-2);
 }
 
-.cart-page--empty,
-.checkout-page {
+.cart-page--empty {
     --page-max-width: 28rem;
 }
 
@@ -34,9 +33,8 @@ main {
     }
 }
 
-main:has(.cart-page--empty, .checkout-page) {
+main:has(.cart-page--empty) {
     padding: var(--space-1) var(--space-3) var(--space-3);
-    background: var(--color-page-background);
 }
 
 main:has(.cart-page:not(.cart-page--empty)) {
@@ -63,15 +61,9 @@ main:has(.cart-page:not(.cart-page--empty)) {
     min-block-size: calc(100dvh - var(--header-height));
 }
 
-@media (width >= 64rem) {
-    .site-header + main {
-        min-block-size: calc(100dvh - var(--space-5));
-    }
-}
-
 @media (width < 48rem) {
     .cart-page > .section-header,
-    .checkout-page > h1,
+    .checkout-heading > h1,
     .restaurant-page > h1 {
         position: absolute;
         inline-size: 1px;
@@ -79,11 +71,5 @@ main:has(.cart-page:not(.cart-page--empty)) {
         overflow: hidden;
         clip-path: inset(50%);
         white-space: nowrap;
-    }
-}
-
-@media (min-width: 48rem) {
-    :root {
-        --page-gutter: var(--space-3-5);
     }
 }

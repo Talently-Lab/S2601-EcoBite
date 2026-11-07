@@ -2,7 +2,7 @@
     position: absolute;
 }
 
-.impact-card--detail .impact-card-caption {
+.impact-card--detail .impact-card-caption, .impact-value {
     color: var(--color-accent);
 }
 
@@ -140,33 +140,35 @@
 }
 
 @media (width >= 64rem) {
-    .impact-card--home .impact-card-main > .svg-icon,
-    .impact-card--home .impact-card-link {
-        position: static;
-        grid-row: 1 / 4;
-        align-self: center;
-    }
+    .impact-card--home {
+        & .impact-card-main > .svg-icon,
+        & .impact-card-link {
+            position: static;
+            grid-row: 1 / 4;
+            align-self: center;
+        }
 
-    .impact-card--home .impact-card-main {
-        display: grid;
-        grid-template-columns: auto minmax(0, 1fr) auto;
-        grid-template-rows: repeat(3, auto);
-        align-content: center;
-        column-gap: var(--space-4);
-        padding: var(--space-4);
-    }
+        & .impact-card-main {
+            display: grid;
+            grid-template-columns: auto minmax(0, 1fr) auto;
+            grid-template-rows: repeat(3, auto);
+            align-content: center;
+            column-gap: var(--space-4);
+            padding: var(--space-4);
 
-    .impact-card--home .impact-card-main > .svg-icon {
-        grid-column: 1;
-    }
+            & > .svg-icon {
+                grid-column: 1;
+            }
+        }
 
-    .impact-card--home .impact-card-eyebrow,
-    .impact-card--home .impact-value,
-    .impact-card--home .impact-card-caption {
-        grid-column: 2;
-    }
+        & .impact-card-eyebrow,
+        & .impact-value,
+        & .impact-card-caption {
+            grid-column: 2;
+        }
 
-    .impact-card--home .impact-card-link {
-        grid-column: 3;
+        & .impact-card-link {
+            grid-column: 3;
+        }
     }
 }

@@ -205,7 +205,6 @@ body:has(.header-drawer[open]) {
         display: grid;
         grid-template-columns: auto auto minmax(12rem, 1fr) auto;
         gap: var(--space-4);
-        min-height: var(--space-5);
 
         & > .brand-logo {
             width: 8rem;
