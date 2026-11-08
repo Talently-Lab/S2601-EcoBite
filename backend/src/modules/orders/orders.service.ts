@@ -3,7 +3,12 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { DeliveryMethod, Prisma, ProductType } from '@prisma/client';
+import {
+  DeliveryMethod,
+  OrderStatus,
+  Prisma,
+  ProductType,
+} from '@prisma/client';
 
 import { PrismaService } from '../../prisma/prisma.service';
 import { CreateOrderDto } from './dto/create-order.dto';
@@ -133,7 +138,7 @@ export class OrdersService {
   }
 
   async getUserImpact(userId: string) {
-    const [co2Total, ordersWithImpact] = await Promise.all([
+    const [co2Total, ordersWithImpact, sustainableImpact] = await Promise.all([
       this.prisma.order.aggregate({
         where: {
           userId,
@@ -147,11 +152,27 @@ export class OrdersService {
           co2SavedG: { gt: 0 },
         },
       }),
+      this.prisma.order.aggregate({
+        where: {
+          userId,
+          orderStatus: OrderStatus.COMPLETED,
+          deliveryMethod: DeliveryMethod.BIKE,
+        },
+        _sum: { co2SavedG: true },
+        _count: { _all: true },
+      }),
     ]);
+
+    const sustainableOrdersCount = sustainableImpact._count._all;
 
     return {
       totalCo2SavedG: co2Total._sum.co2SavedG ?? 0,
       ordersWithImpact,
+      avgCo2SavedG:
+        sustainableOrdersCount === 0
+          ? 0
+          : (sustainableImpact._sum.co2SavedG ?? 0) / sustainableOrdersCount,
+      sustainableOrdersCount,
     };
   }
 }
