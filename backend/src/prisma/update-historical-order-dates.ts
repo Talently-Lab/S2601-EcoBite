@@ -106,11 +106,234 @@ export type HistoricalDatePlanEntry =
     ordered_at_proposed: string;
   };
 
-export async function dryRunHistoricalOrderDates(
-  pool: HistoricalDatesReadPool,
+export function classifyHistoricalDateState(
+  plan: HistoricalDatePlanEntry[],
+  rows: unknown[],
+): 'original' | 'applied' | 'neutral' {
+  const byId = new Map(plan.map((entry) => [entry.dataset_order_id, entry]));
+  if (
+    plan.length !== HISTORICAL_ORDER_COUNT ||
+    byId.size !== HISTORICAL_ORDER_COUNT ||
+    rows.length !== HISTORICAL_ORDER_COUNT
+  ) {
+    throw new Error('Unexpected historical order count');
+  }
+  const seen = new Set<string>();
+  let original = false;
+  let applied = false;
+  for (const row of rows) {
+    if (
+      !isRecord(row) ||
+      row.source !== 'DATASET' ||
+      !isLiteralString(row.dataset_order_id) ||
+      seen.has(row.dataset_order_id)
+    ) {
+      throw new Error('Invalid historical order identity or source');
+    }
+    const entry = byId.get(row.dataset_order_id);
+    if (
+      !entry ||
+      typeof row.order_id !== 'string' ||
+      row.order_id.toLowerCase() !== entry.order_id.toLowerCase() ||
+      !isUtcTimestamp(row.ordered_at_original)
+    ) {
+      throw new Error('Historical order does not match the plan');
+    }
+    seen.add(row.dataset_order_id);
+    if (
+      row.ordered_at_original !== entry.ordered_at_original &&
+      row.ordered_at_original !== entry.ordered_at_proposed
+    ) {
+      throw new Error('Unexpected historical date');
+    }
+    if (entry.ordered_at_original !== entry.ordered_at_proposed) {
+      original ||= row.ordered_at_original === entry.ordered_at_original;
+      applied ||= row.ordered_at_original === entry.ordered_at_proposed;
+    }
+  }
+  if (original && applied) {
+    throw new Error('Partial historical date update');
+  }
+  return original ? 'original' : applied ? 'applied' : 'neutral';
+}
+
+export interface HistoricalDatesWriteClient extends HistoricalDatesReadClient {
+  query(
+    sql: string,
+    values?: unknown[],
+  ): Promise<{ rows: unknown[]; rowCount?: number | null }>;
+}
+
+export interface HistoricalDatesWritePool {
+  connect(): Promise<HistoricalDatesWriteClient>;
+}
+
+export function buildHistoricalDatePlan(
   dates: HistoricalOrderDate[],
   backup: HistoricalDatesBackup,
-): Promise<HistoricalDatePlanEntry[]> {
+): HistoricalDatePlanEntry[] {
+  const validated = parseHistoricalDatesBackup(JSON.stringify(backup));
+  const byId = matchingHistoricalInputs(dates, validated);
+  return dates.map((row) => ({
+    ...byId.get(row.datasetOrderId)!,
+    ordered_at_proposed: argentinaMidnightUtc(row.date),
+  }));
+}
+
+export function applyHistoricalOrderDates(
+  pool: HistoricalDatesWritePool,
+  dates: HistoricalOrderDate[],
+  backup: HistoricalDatesBackup,
+) {
+  return changeHistoricalOrderDates(pool, dates, backup, 'apply');
+}
+
+export function restoreHistoricalOrderDates(
+  pool: HistoricalDatesWritePool,
+  dates: HistoricalOrderDate[],
+  backup: HistoricalDatesBackup,
+) {
+  return changeHistoricalOrderDates(pool, dates, backup, 'restore');
+}
+
+export class HistoricalDatesOutcomeError extends Error {
+  constructor(
+    public readonly outcome: 'unknown' | 'committed',
+    cause: unknown,
+  ) {
+    super(
+      outcome === 'unknown'
+        ? 'Commit outcome unknown; inspect state before retrying'
+        : 'Transaction committed; connection cleanup failed',
+      { cause },
+    );
+    this.name = 'HistoricalDatesOutcomeError';
+  }
+}
+
+async function changeHistoricalOrderDates(
+  pool: HistoricalDatesWritePool,
+  dates: HistoricalOrderDate[],
+  backup: HistoricalDatesBackup,
+  mode: 'apply' | 'restore',
+): Promise<{ changed: number }> {
+  const plan = buildHistoricalDatePlan(dates, backup);
+  const client = await pool.connect();
+  let begun = false;
+  let discard = false;
+  let releaseFailure: { error: unknown } | undefined;
+  let changed = 0;
+  let committing = false;
+  try {
+    await client.query('BEGIN ISOLATION LEVEL REPEATABLE READ READ WRITE');
+    begun = true;
+    await client.query("SET LOCAL lock_timeout = '3s'");
+    await client.query("SET LOCAL statement_timeout = '15s'");
+    await client.query("SET LOCAL idle_in_transaction_session_timeout = '15s'");
+    const readOrders = (lock: boolean) =>
+      client.query(`
+      SELECT o.order_id::text, o.dataset_order_id, o.source,
+        to_char(o.ordered_at AT TIME ZONE 'UTC',
+          'YYYY-MM-DD"T"HH24:MI:SS.US"Z"') AS ordered_at_original,
+        (to_jsonb(o) - 'ordered_at')::text AS unchanged
+      FROM orders AS o WHERE o.source = 'DATASET'
+      ORDER BY o.order_id ${lock ? 'FOR NO KEY UPDATE OF o' : ''}
+    `);
+    const readItems = () =>
+      client.query(`
+      SELECT row_to_json(i)::text AS snapshot FROM order_items AS i
+      JOIN orders AS o ON o.order_id = i.order_id
+      WHERE o.source = 'DATASET' ORDER BY i.order_item_id
+    `);
+    const before = (await readOrders(true)).rows;
+    const state = classifyHistoricalDateState(plan, before);
+    const targetState = mode === 'apply' ? 'applied' : 'original';
+    if (state !== targetState && state !== 'neutral') {
+      const otherFields = before.map((row) => {
+        if (!isRecord(row) || typeof row.unchanged !== 'string') {
+          throw new Error('Missing order snapshot');
+        }
+        return row.unchanged;
+      });
+      const itemsBefore = (await readItems()).rows;
+      const changes = plan
+        .filter((row) => row.ordered_at_original !== row.ordered_at_proposed)
+        .map((row) => ({
+          order_id: row.order_id,
+          dataset_order_id: row.dataset_order_id,
+          expected:
+            mode === 'apply'
+              ? row.ordered_at_original
+              : row.ordered_at_proposed,
+          target:
+            mode === 'apply'
+              ? row.ordered_at_proposed
+              : row.ordered_at_original,
+        }));
+      const result = await client.query(
+        `
+        UPDATE orders AS o SET ordered_at = p.target
+        FROM jsonb_to_recordset($1::jsonb) AS p(
+          order_id uuid, dataset_order_id text, expected timestamptz, target timestamptz
+        ) WHERE o.order_id = p.order_id
+          AND o.dataset_order_id = p.dataset_order_id AND o.source = 'DATASET'
+          AND o.ordered_at = p.expected AND o.ordered_at IS DISTINCT FROM p.target
+      `,
+        [JSON.stringify(changes)],
+      );
+      if (result.rowCount !== changes.length) {
+        throw new Error('Unexpected updated order count');
+      }
+      const after = (await readOrders(false)).rows;
+      const otherFieldsAfter = after.map((row) =>
+        isRecord(row) ? row.unchanged : null,
+      );
+      if (
+        classifyHistoricalDateState(plan, after) !== targetState ||
+        JSON.stringify(otherFieldsAfter) !== JSON.stringify(otherFields)
+      ) {
+        throw new Error('Historical order verification failed');
+      }
+      if (
+        JSON.stringify((await readItems()).rows) !== JSON.stringify(itemsBefore)
+      ) {
+        throw new Error('Historical order items changed');
+      }
+      changed = result.rowCount;
+    }
+    committing = true;
+    await client.query('COMMIT');
+  } catch (error) {
+    if (committing) discard = true;
+    if (begun) {
+      try {
+        await client.query('ROLLBACK');
+      } catch {
+        discard = true;
+      }
+    } else {
+      discard = true;
+    }
+    throw committing
+      ? new HistoricalDatesOutcomeError('unknown', error)
+      : error;
+  } finally {
+    try {
+      client.release(discard || undefined);
+    } catch (error) {
+      releaseFailure = { error };
+    }
+  }
+  if (releaseFailure) {
+    throw new HistoricalDatesOutcomeError('committed', releaseFailure.error);
+  }
+  return { changed };
+}
+
+function matchingHistoricalInputs(
+  dates: HistoricalOrderDate[],
+  backup: HistoricalDatesBackup,
+) {
   const datesById = new Map(dates.map((row) => [row.datasetOrderId, row]));
   const backupById = new Map(
     backup.records.map((row) => [row.dataset_order_id, row]),
@@ -124,6 +347,15 @@ export async function dryRunHistoricalOrderDates(
   ) {
     throw new Error('CSV and backup identities do not match');
   }
+  return backupById;
+}
+
+export async function dryRunHistoricalOrderDates(
+  pool: HistoricalDatesReadPool,
+  dates: HistoricalOrderDate[],
+  backup: HistoricalDatesBackup,
+): Promise<HistoricalDatePlanEntry[]> {
+  const backupById = matchingHistoricalInputs(dates, backup);
 
   const client = await pool.connect();
   let transactionStarted = false;

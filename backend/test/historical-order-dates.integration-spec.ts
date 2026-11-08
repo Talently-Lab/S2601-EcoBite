@@ -1,11 +1,14 @@
 import pg from 'pg';
 import {
+  applyHistoricalOrderDates,
   dryRunHistoricalOrderDates,
   parseHistoricalDatesBackup,
   parseHistoricalDatesCsv,
+  restoreHistoricalOrderDates,
   validateHistoricalDatesTarget,
   type HistoricalDatesBackup,
   type HistoricalDatesReadPool,
+  type HistoricalDatesWritePool,
   type HistoricalOrderDate,
 } from '../src/prisma/update-historical-order-dates';
 
@@ -134,6 +137,15 @@ describe('historical dates dry-run (isolated local PostgreSQL)', () => {
       ) VALUES ('ffffffff-ffff-4fff-8fff-ffffffffffff', 'fixture-app', 'APP',
         '10000000-0000-4000-8000-000000000000', '2026-09-01T12:00:00.654321Z',
         999.99, 2.50, 'CAR', 'RECYCLABLE', 'PENDING', 0, 0)`);
+      await client.query(`CREATE TEMP TABLE order_items (
+        order_item_id uuid PRIMARY KEY,
+        order_id uuid NOT NULL REFERENCES pg_temp.orders(order_id),
+        product_id uuid NOT NULL, quantity integer NOT NULL,
+        unit_price numeric(10,2) NOT NULL, subtotal numeric(10,2) NOT NULL
+      ) ON COMMIT PRESERVE ROWS`);
+      await client.query(`INSERT INTO pg_temp.order_items
+        SELECT order_id, order_id, '20000000-0000-4000-8000-000000000000'::uuid,
+          2, 123.45, 246.90 FROM pg_temp.orders`);
       await client.query("SET TIME ZONE 'Pacific/Auckland'");
       releaseClient(client);
     } catch (error) {
@@ -238,20 +250,24 @@ describe('historical dates dry-run (isolated local PostgreSQL)', () => {
     return { adapter, counts, statements, states };
   }
 
-  async function snapshot() {
+  async function snapshot(state: 'original' | 'applied' = 'original') {
     const result = await pool!.query<{
       dataset_order_id: string;
       ordered_at_utc: string;
       snapshot: string;
+      unchanged: string;
     }>(`SELECT o.dataset_order_id,
       to_char(o.ordered_at AT TIME ZONE 'UTC',
         'YYYY-MM-DD"T"HH24:MI:SS.US"Z"') AS ordered_at_utc,
-      row_to_json(o)::text AS snapshot
+      row_to_json(o)::text AS snapshot,
+      (to_jsonb(o) - 'ordered_at')::text AS unchanged
       FROM pg_temp.orders AS o ORDER BY order_id`);
     const expectedDates = new Map(
-      backup.records.map((record) => [
+      backup.records.map((record, index) => [
         record.dataset_order_id,
-        record.ordered_at_original,
+        state === 'original'
+          ? record.ordered_at_original
+          : proposedDates[index % proposedDates.length],
       ]),
     );
     expectedDates.set('fixture-app', '2026-09-01T12:00:00.654321Z');
@@ -359,4 +375,92 @@ describe('historical dates dry-run (isolated local PostgreSQL)', () => {
         expect(await snapshot()).toEqual(before);
       }),
   );
+
+  function writePool(failVerification = false): HistoricalDatesWritePool {
+    let updated = false;
+    return {
+      async connect() {
+        const client = await acquireClient();
+        return {
+          async query(sql: string, values?: unknown[]) {
+            if (
+              /\b(INSERT|DELETE|MERGE|TRUNCATE|CREATE|DROP|ALTER|COPY)\b/i.test(
+                sql,
+              ) ||
+              /\bpublic\./i.test(sql)
+            ) {
+              throw new Error('Unexpected write or permanent table access');
+            }
+            if (sql.trim().startsWith('UPDATE')) {
+              expect(sql).toMatch(
+                /UPDATE orders AS o SET ordered_at = p.target/,
+              );
+              updated = true;
+            } else if (
+              updated &&
+              failVerification &&
+              sql.includes('FROM orders')
+            ) {
+              throw new Error('Injected post-update verification failure');
+            }
+            return client.query<Record<string, unknown>>(sql, values);
+          },
+          release(discard?: boolean) {
+            releaseClient(client, discard);
+          },
+        };
+      },
+    };
+  }
+
+  async function itemSnapshot() {
+    return (
+      await pool!.query<{
+        snapshot: string;
+      }>(`SELECT row_to_json(i)::text AS snapshot
+      FROM pg_temp.order_items AS i ORDER BY order_item_id`)
+    ).rows;
+  }
+
+  it('applies and restores exactly, is repeatable and preserves APP, attributes and related items', () =>
+    recordFailure(async () => {
+      const before = await snapshot();
+      const itemsBefore = await itemSnapshot();
+      expect(itemsBefore).toHaveLength(1001);
+      await expect(
+        applyHistoricalOrderDates(writePool(), dates, backup),
+      ).resolves.toEqual({ changed: 1000 });
+      const applied = await snapshot('applied');
+      expect(applied.map((row) => row.unchanged)).toEqual(
+        before.map((row) => row.unchanged),
+      );
+      expect(
+        applied.find((row) => row.dataset_order_id === 'fixture-app'),
+      ).toEqual(before.find((row) => row.dataset_order_id === 'fixture-app'));
+      expect(await itemSnapshot()).toEqual(itemsBefore);
+      await expect(
+        applyHistoricalOrderDates(writePool(), dates, backup),
+      ).resolves.toEqual({ changed: 0 });
+      await expect(
+        restoreHistoricalOrderDates(writePool(), dates, backup),
+      ).resolves.toEqual({ changed: 1000 });
+      expect(await snapshot()).toEqual(before);
+      expect(await itemSnapshot()).toEqual(itemsBefore);
+      await expect(
+        restoreHistoricalOrderDates(writePool(), dates, backup),
+      ).resolves.toEqual({ changed: 0 });
+      await expectReleased();
+    }));
+
+  it('rolls back a real update when post-update verification fails', () =>
+    recordFailure(async () => {
+      const before = await snapshot();
+      const itemsBefore = await itemSnapshot();
+      await expect(
+        applyHistoricalOrderDates(writePool(true), dates, backup),
+      ).rejects.toThrow('Injected post-update verification failure');
+      expect(await snapshot()).toEqual(before);
+      expect(await itemSnapshot()).toEqual(itemsBefore);
+      await expectReleased();
+    }));
 });

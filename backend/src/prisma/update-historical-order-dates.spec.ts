@@ -53,6 +53,325 @@ function transactionFixture() {
   return { pool, client, dates, backup };
 }
 
+describe('historical date state classification', () => {
+  it('classifies original, applied and neutral states and rejects mixed or unexpected rows', () => {
+    const classify = historicalDatesModule.classifyHistoricalDateState;
+    const plan = backupFixture().records.map((record) => ({
+      ...record,
+      ordered_at_proposed: '2026-06-01T03:00:00.000000Z',
+    }));
+    const rows = plan.map((record) => ({ ...record, source: 'DATASET' }));
+    expect(classify(plan, rows)).toBe('original');
+    const applied = rows.map((row) => ({
+      ...row,
+      ordered_at_original: row.ordered_at_proposed,
+    }));
+    expect(classify(plan, applied)).toBe('applied');
+    expect(() => classify(plan, [applied[0], ...rows.slice(1)])).toThrow();
+    const neutral = plan.map((row) => ({
+      ...row,
+      ordered_at_original: row.ordered_at_proposed,
+    }));
+    expect(classify(neutral, applied)).toBe('neutral');
+    for (const invalid of [
+      rows.slice(1),
+      [...rows, rows[0]],
+      [rows[0], ...rows.slice(0, -1)],
+      [{ ...rows[0], source: 'APP' }, ...rows.slice(1)],
+      [{ ...rows[0], order_id: rows[1].order_id }, ...rows.slice(1)],
+      [
+        { ...rows[0], ordered_at_original: '2026-06-01T00:00:00.123457Z' },
+        ...rows.slice(1),
+      ],
+    ]) {
+      expect(() => classify(plan, invalid)).toThrow();
+    }
+  });
+});
+
+describe('historical date writes', () => {
+  function fixture(applied = false) {
+    const backup = parseHistoricalDatesBackup(JSON.stringify(backupFixture()));
+    const dates = backup.records.map((row) => ({
+      datasetOrderId: row.dataset_order_id,
+      date: '1/6/2026',
+    }));
+    let rows = backup.records.map((row) => ({
+      ...row,
+      source: 'DATASET',
+      unchanged: JSON.stringify({ total: '1234.56', id: row.order_id }),
+      ordered_at_original: applied
+        ? '2026-06-01T03:00:00.000000Z'
+        : row.ordered_at_original,
+    }));
+    const items = [{ snapshot: '{"quantity":2,"unit_price":12.34}' }];
+    const client = {
+      query: jest.fn((sql: string, values?: unknown[]) => {
+        if (sql.trim().startsWith('UPDATE')) {
+          const changes = JSON.parse(values![0] as string) as {
+            order_id: string;
+            expected: string;
+            target: string;
+          }[];
+          let rowCount = 0;
+          rows = rows.map((row) => {
+            const change = changes.find(
+              (entry) => entry.order_id === row.order_id,
+            );
+            if (change && row.ordered_at_original === change.expected) {
+              rowCount++;
+              return { ...row, ordered_at_original: change.target };
+            }
+            return row;
+          });
+          return Promise.resolve({ rows: [], rowCount });
+        }
+        return Promise.resolve({
+          rows: sql.includes('FROM order_items')
+            ? items
+            : sql.includes('FROM orders')
+              ? structuredClone(rows)
+              : [],
+        });
+      }),
+      release: jest.fn<void, [boolean?]>(),
+    };
+    return {
+      backup,
+      dates,
+      client,
+      pool: { connect: jest.fn().mockResolvedValue(client) },
+      rows,
+      items,
+    };
+  }
+
+  function operation(mode: 'apply' | 'restore') {
+    return mode === 'apply'
+      ? historicalDatesModule.applyHistoricalOrderDates
+      : historicalDatesModule.restoreHistoricalOrderDates;
+  }
+
+  it('apply locks and updates only ordered_at with parameters, verifies and commits on one client', async () => {
+    const f = fixture();
+    await expect(
+      operation('apply')(f.pool, f.dates, f.backup),
+    ).resolves.toEqual({
+      changed: 1000,
+    });
+    expect(f.pool.connect).toHaveBeenCalledTimes(1);
+    expect(f.client.query.mock.calls[0][0]).toBe(
+      'BEGIN ISOLATION LEVEL REPEATABLE READ READ WRITE',
+    );
+    expect(
+      f.client.query.mock.calls.some(([sql]) =>
+        sql.includes('FOR NO KEY UPDATE'),
+      ),
+    ).toBe(true);
+    const updates = f.client.query.mock.calls.filter(([sql]) =>
+      sql.trim().startsWith('UPDATE'),
+    );
+    expect(updates).toHaveLength(1);
+    expect(updates[0][0]).toMatch(/SET\s+ordered_at\s*=/);
+    expect(updates[0][0]).toContain('$1::jsonb');
+    expect(updates[0][0]).not.toContain(f.backup.records[0].order_id);
+    expect(updates[0][0]).toContain("source = 'DATASET'");
+    expect(f.client.query.mock.calls.at(-1)![0]).toBe('COMMIT');
+    expect(f.client.release).toHaveBeenCalledTimes(1);
+  });
+
+  it.each(['apply', 'restore'] as const)(
+    '%s is a no-op in its complete target state',
+    async (mode) => {
+      const f = fixture(mode === 'apply');
+      await expect(operation(mode)(f.pool, f.dates, f.backup)).resolves.toEqual(
+        { changed: 0 },
+      );
+      expect(
+        f.client.query.mock.calls.some(([sql]) =>
+          sql.trim().startsWith('UPDATE'),
+        ),
+      ).toBe(false);
+      expect(f.client.release).toHaveBeenCalledTimes(1);
+    },
+  );
+
+  it('restore passes the original six-decimal strings unchanged to PostgreSQL', async () => {
+    const f = fixture(true);
+    await expect(
+      operation('restore')(f.pool, f.dates, f.backup),
+    ).resolves.toEqual({
+      changed: 1000,
+    });
+    const update = f.client.query.mock.calls.find(([sql]) =>
+      sql.trim().startsWith('UPDATE'),
+    )!;
+    expect(JSON.parse(update[1]![0] as string)[0]).toEqual({
+      order_id: f.backup.records[0].order_id,
+      dataset_order_id: f.backup.records[0].dataset_order_id,
+      expected: '2026-06-01T03:00:00.000000Z',
+      target: '2026-06-01T00:00:00.123456Z',
+    });
+  });
+
+  it.each(['partial', 'APP', 'UUID', 'microsecond'] as const)(
+    'rejects %s before any update and rolls back',
+    async (kind) => {
+      const f = fixture();
+      if (kind === 'partial') {
+        f.rows[0].ordered_at_original = '2026-06-01T03:00:00.000000Z';
+      }
+      if (kind === 'APP') f.rows[0].source = 'APP';
+      if (kind === 'UUID') f.rows[0].order_id = f.rows[1].order_id;
+      if (kind === 'microsecond') {
+        f.rows[0].ordered_at_original = '2026-06-01T00:00:00.123457Z';
+      }
+      await expect(
+        operation('apply')(f.pool, f.dates, f.backup),
+      ).rejects.toThrow();
+      expect(
+        f.client.query.mock.calls.some(([sql]) =>
+          sql.trim().startsWith('UPDATE'),
+        ),
+      ).toBe(false);
+      expect(f.client.query.mock.calls.at(-1)![0]).toBe('ROLLBACK');
+      expect(f.client.release).toHaveBeenCalledTimes(1);
+    },
+  );
+
+  it('marks a failed COMMIT as unknown and discards the connection without hiding its cause', async () => {
+    const f = fixture();
+    const original = new Error('connection lost');
+    const query = f.client.query.getMockImplementation()!;
+    f.client.query.mockImplementation((sql, values) =>
+      sql === 'COMMIT' ? Promise.reject(original) : query(sql, values),
+    );
+    await expect(
+      operation('apply')(f.pool, f.dates, f.backup),
+    ).rejects.toMatchObject({ outcome: 'unknown', cause: original });
+    expect(f.client.release).toHaveBeenCalledWith(true);
+  });
+
+  it('reports successful commit when release subsequently fails', async () => {
+    const f = fixture();
+    f.client.release.mockImplementation(() => {
+      throw new Error('release failed');
+    });
+    await expect(
+      operation('apply')(f.pool, f.dates, f.backup),
+    ).rejects.toMatchObject({ outcome: 'committed' });
+    expect(f.client.query.mock.calls.at(-1)![0]).toBe('COMMIT');
+  });
+
+  const failureKinds = [
+    'count',
+    'date',
+    'attributes',
+    'items',
+    'update',
+    'timeout',
+  ] as const;
+  it.each(failureKinds)('rolls back on %s', async (kind) => {
+    const f = fixture();
+    const query = f.client.query.getMockImplementation()!;
+    let updated = false;
+    f.client.query.mockImplementation(async (sql, values) => {
+      if (
+        (kind === 'update' && sql.trim().startsWith('UPDATE')) ||
+        (kind === 'timeout' && sql.includes('FOR NO KEY UPDATE'))
+      ) {
+        throw new Error('injected failure');
+      }
+      const result = await query(sql, values);
+      if (sql.trim().startsWith('UPDATE')) {
+        updated = true;
+        if (kind === 'count') return { ...result, rowCount: 999 };
+      }
+      if (
+        updated &&
+        sql.includes('FROM orders') &&
+        !sql.trim().startsWith('UPDATE')
+      ) {
+        const rows = result.rows as typeof f.rows;
+        if (kind === 'date') {
+          rows[0].ordered_at_original = f.backup.records[0].ordered_at_original;
+        }
+        if (kind === 'attributes') rows[0].unchanged = 'changed';
+      }
+      if (updated && kind === 'items' && sql.includes('FROM order_items')) {
+        return { rows: [{ snapshot: 'changed' }] };
+      }
+      return result;
+    });
+    await expect(
+      operation('apply')(f.pool, f.dates, f.backup),
+    ).rejects.toThrow();
+    expect(f.client.query.mock.calls.at(-1)![0]).toBe('ROLLBACK');
+    expect(f.client.query.mock.calls.some(([sql]) => sql === 'COMMIT')).toBe(
+      false,
+    );
+    expect(f.client.release).toHaveBeenCalledTimes(1);
+  });
+
+  it('preserves an update error when rollback and release also fail', async () => {
+    const f = fixture();
+    const original = new Error('update failed');
+    const query = f.client.query.getMockImplementation()!;
+    f.client.query.mockImplementation((sql, values) => {
+      if (sql.trim().startsWith('UPDATE')) return Promise.reject(original);
+      if (sql === 'ROLLBACK') {
+        return Promise.reject(new Error('rollback failed'));
+      }
+      return query(sql, values);
+    });
+    f.client.release.mockImplementation(() => {
+      throw new Error('release failed');
+    });
+    await expect(operation('apply')(f.pool, f.dates, f.backup)).rejects.toBe(
+      original,
+    );
+    expect(f.client.release).toHaveBeenCalledWith(true);
+  });
+
+  it('skips neutral rows and counts only real changes', async () => {
+    const f = fixture();
+    f.backup.records[0].ordered_at_original = '2026-06-01T03:00:00.000000Z';
+    f.rows[0].ordered_at_original = f.backup.records[0].ordered_at_original;
+    await expect(
+      operation('apply')(f.pool, f.dates, f.backup),
+    ).resolves.toEqual({ changed: 999 });
+  });
+
+  it('does not write when all rows are neutral', async () => {
+    const f = fixture(true);
+    for (const row of f.backup.records) {
+      row.ordered_at_original = '2026-06-01T03:00:00.000000Z';
+    }
+    await expect(
+      operation('apply')(f.pool, f.dates, f.backup),
+    ).resolves.toEqual({ changed: 0 });
+    expect(
+      f.client.query.mock.calls.some(([sql]) =>
+        sql.trim().startsWith('UPDATE'),
+      ),
+    ).toBe(false);
+  });
+
+  it('validates backup and exact input identities before acquiring a connection', async () => {
+    const f = fixture();
+    f.dates[0].datasetOrderId = 'unknown';
+    await expect(operation('apply')(f.pool, f.dates, f.backup)).rejects.toThrow(
+      'CSV and backup identities do not match',
+    );
+    expect(f.pool.connect).not.toHaveBeenCalled();
+    f.backup.records[0].ordered_at_original = '2026-06-01T00:00:00.123Z';
+    await expect(
+      operation('restore')(f.pool, f.dates, f.backup),
+    ).rejects.toThrow('Invalid backup record');
+    expect(f.pool.connect).not.toHaveBeenCalled();
+  });
+});
+
 describe('historical order date validation', () => {
   describe('dry-run transaccional', () => {
     it('conserva el error original y descarta la conexión si falla ROLLBACK', async () => {
