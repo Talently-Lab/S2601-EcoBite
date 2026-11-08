@@ -1,20 +1,32 @@
-.profile-page .profile-actions,
-.profile-page .profile-actions > .button--icon {
-    display: grid;
-}
-
-.profile-page .profile-identity,
-.profile-page .profile-actions > .button--icon {
-    gap: var(--space-3);
-}
-
 .profile-page {
     --page-max-width: 36rem;
+
+    & .profile-layout,
+    & .profile-actions,
+    & .profile-actions > .button--icon {
+        display: grid;
+    }
+
+    & .profile-card {
+        display: contents;
+
+        & > .button--text {
+            order: 2;
+            justify-self: start;
+            margin-block-start: var(--space-4);
+        }
+
+        & > .form-error {
+            order: 3;
+            margin-block-start: var(--space-2);
+        }
+    }
 
     & .profile-identity {
         --section-header-subtitle-color: var(--color-text);
         display: flex;
         align-items: center;
+        gap: var(--space-3);
         margin-block: var(--space-4);
     }
 
@@ -24,10 +36,13 @@
     }
 
     & .profile-actions {
+        order: 1;
         gap: var(--space-2);
 
         & > h2 {
             font-size: var(--font-size-headline-xs);
+            font-weight: var(--font-weight-semibold);
+            line-height: var(--line-height-tight);
 
             @media (width >= 48rem) {
                 display: none;
@@ -38,7 +53,9 @@
             grid-template-columns: var(--space-3) minmax(0, 1fr) var(--space-3);
             justify-items: start;
             min-height: var(--space-5);
+            gap: var(--space-3);
             padding: var(--space-1) 0;
+            border: 0;
             border-block-end: 1px solid var(--color-forest);
             border-radius: 0;
             color: var(--color-text);
@@ -55,21 +72,83 @@
                 background: var(--color-surface);
             }
         }
+    }
 
-        & > .button--text {
-            justify-self: start;
-            margin-block-start: var(--space-3);
-        }
+    & .profile-impact-description {
+        display: none;
     }
 }
 
-@media (width < 48rem) {
-    body:has(.profile-page) .site-header,
-    body:has(.profile-page) .site-footer {
-        display: none;
-    }
+@media (width >= 48rem) {
+    .profile-page {
+        --page-max-width: var(--content-width);
+        padding-inline: var(--space-4);
 
-    main:has(.profile-page) {
-        min-height: 100dvh;
+        & .profile-card > .button--text svg,
+        & .profile-actions > .button--icon svg,
+        & .profile-actions > h2 {
+            display: none;
+        }
+
+        & .profile-layout {
+            grid-template-columns: minmax(0, 19fr) minmax(0, 23fr);
+            align-items: start;
+            gap: var(--space-3-5);
+            max-inline-size: 44rem;
+            margin-block-start: var(--space-3);
+        }
+
+        & .profile-card {
+            display: grid;
+            gap: var(--space-3);
+            padding: var(--space-3-5);
+            border-radius: var(--radius-lg);
+            background: var(--color-accent);
+
+            & > .button--text {
+                min-height: 0;
+                margin-block-start: 0;
+            }
+        }
+
+        & .profile-identity {
+            display: grid;
+            justify-items: start;
+            gap: var(--space-2);
+            margin-block: 0;
+
+            & h1 {
+                font-size: var(--font-size-headline-md);
+            }
+
+            & p {
+                font-size: var(--font-size-body-md);
+            }
+        }
+
+        & .avatar {
+            --avatar-size: calc(var(--space-5) - var(--space-1-5));
+            background: var(--color-secondary);
+            border: 1px solid var(--color-forest);
+        }
+
+        & .profile-actions > .button--icon {
+            grid-template-columns: minmax(0, 1fr);
+            gap: var(--space-1-5);
+            padding: calc(var(--space-2) + var(--space-0-5)) var(--space-3);
+            border-block-end: 0;
+            border-radius: var(--radius-lg);
+            background: var(--color-surface-muted);
+        }
+
+        & .profile-impact-copy {
+            display: grid;
+            gap: var(--space-1-5);
+            font-size: var(--font-size-body-md);
+        }
+
+        & .profile-impact-description {
+            display: block;
+        }
     }
 }
