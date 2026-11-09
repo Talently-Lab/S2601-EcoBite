@@ -13,7 +13,7 @@ const FEEDBACK = {
 } as const;
 
 function getKpiCards(stats: DashboardStats): KpiCardConfig[] {
-    const periodStats = stats.last30Days ?? stats;
+    const periodStats = stats.comparison?.current ?? stats;
 
     return [
         {
@@ -25,7 +25,7 @@ function getKpiCards(stats: DashboardStats): KpiCardConfig[] {
         {
             label: 'Total recaudado', value: periodStats.totalRevenue,
             format: formatPrice,
-            detail: <>Ticket promedio: <strong>—</strong></>,
+            detail: <>Ticket promedio: <strong>{stats.comparison ? formatPrice(stats.comparison.current.averageTicket) : '—'}</strong></>,
         },
         {
             label: 'Pedidos completados', value: periodStats.completedOrders,
@@ -33,11 +33,11 @@ function getKpiCards(stats: DashboardStats): KpiCardConfig[] {
         },
         {
             variant: 'compact', label: 'CO₂ ahorrado por pedido sustentable',
-            value: stats.last30Days?.averageCo2SavedPerBikeOrderG ?? null,
+            value: stats.comparison?.current.avgCo2SavedG ?? null,
             format: formatGrams,
         },
         {
-            variant: 'compact', label: 'Usuarios registrados', value: stats.registeredClients ?? null,
+            variant: 'compact', label: 'Usuarios registrados', value: stats.registeredUsers ?? null,
             format: formatCount,
         },
     ];

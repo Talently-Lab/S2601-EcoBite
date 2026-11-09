@@ -2,15 +2,21 @@ import { ApiError, request } from './apiClient';
 import { isRecord } from '../utils/isRecord';
 import { centsToPrice, priceToCents } from '../utils/price';
 
-export type HistoricalDashboardStats = {
+type HistoricalDashboardStats = {
     completedOrders: number;
     totalRevenue: number;
     co2SavedG: number;
 };
 
+type DashboardPeriodStats = HistoricalDashboardStats & {
+    averageTicket: number;
+    avgCo2SavedG: number;
+    registeredUsers: number;
+};
+
 export type DashboardStats = HistoricalDashboardStats & {
-    last30Days?: HistoricalDashboardStats & { averageCo2SavedPerBikeOrderG?: number };
-    registeredClients?: number;
+    comparison?: { current: DashboardPeriodStats };
+    registeredUsers?: number;
 };
 
 export type RecentOrder = {
@@ -19,7 +25,7 @@ export type RecentOrder = {
     totalAmount: number;
 };
 
-export type ImpactRankingEntry = {
+type ImpactRankingEntry = {
     restaurant: string;
     co2SavedG: number;
 };
@@ -29,6 +35,7 @@ const RECENT_ORDERS_PATH = '/dashboard/recent-orders';
 const IMPACT_RANKING_PATH = '/dashboard/impact-ranking';
 
 type StatsValuesResponse = Omit<HistoricalDashboardStats, 'totalRevenue'> & { totalRevenue: string };
+type PeriodStatsResponse = Omit<DashboardPeriodStats, 'totalRevenue'> & { totalRevenue: string };
 type RecentOrderResponse = Omit<RecentOrder, 'totalAmount'> & { totalAmount: string };
 type FieldValidators<T> = { [K in keyof T]: (value: unknown) => value is T[K] };
 
@@ -66,6 +73,13 @@ const statsValidators: FieldValidators<StatsValuesResponse> = {
     co2SavedG: isSafeInteger,
 };
 
+const periodStatsValidators: FieldValidators<PeriodStatsResponse> = {
+    ...statsValidators,
+    averageTicket: isFiniteNumber,
+    avgCo2SavedG: isFiniteNumber,
+    registeredUsers: isSafeInteger,
+};
+
 function normalizePrice(value: string, path: string): number {
     const cents = priceToCents(value);
     if (cents === null) throw invalidResponse(path);
@@ -79,39 +93,29 @@ function parseRecentOrders(data: unknown): RecentOrder[] {
         if (!hasValidFields(order, recentOrderValidators)) throw invalidResponse(RECENT_ORDERS_PATH);
 
         return {
-            orderedAt: order.orderedAt,
+            ...order,
             restaurant: order.restaurant.trim(),
             totalAmount: normalizePrice(order.totalAmount, RECENT_ORDERS_PATH),
         };
     });
 }
 
-function normalizeStatsValues(data: StatsValuesResponse): HistoricalDashboardStats {
-    return {
-        completedOrders: data.completedOrders,
-        totalRevenue: normalizePrice(data.totalRevenue, STATS_PATH),
-        co2SavedG: data.co2SavedG,
-    };
-}
-
-function normalizeLast30Days(data: StatsValuesResponse & { averageCo2SavedPerBikeOrderG?: unknown }) {
-    return {
-        ...normalizeStatsValues(data),
-        ...(isFiniteNumber(data.averageCo2SavedPerBikeOrderG)
-            ? { averageCo2SavedPerBikeOrderG: data.averageCo2SavedPerBikeOrderG } : {}),
-    };
-}
-
 function parseDashboardStats(data: unknown): DashboardStats {
     if (!hasValidFields(data, statsValidators)) throw invalidResponse(STATS_PATH);
-    const response: StatsValuesResponse & { last30Days?: unknown; registeredClients?: unknown } = data;
+    const response: StatsValuesResponse & { comparison?: unknown; registeredUsers?: unknown } = data;
+    const { comparison, registeredUsers, ...stats } = response;
+    const current = comparison === undefined ? undefined
+        : isRecord(comparison) && hasValidFields(comparison.current, periodStatsValidators)
+            ? comparison.current : null;
+    if (current === null || (registeredUsers !== undefined && !isSafeInteger(registeredUsers))) {
+        throw invalidResponse(STATS_PATH);
+    }
 
     return {
-        ...normalizeStatsValues(response),
-        ...(hasValidFields(response.last30Days, statsValidators)
-            ? { last30Days: normalizeLast30Days(response.last30Days) } : {}),
-        ...(isSafeInteger(response.registeredClients)
-            ? { registeredClients: response.registeredClients } : {}),
+        ...stats,
+        totalRevenue: normalizePrice(stats.totalRevenue, STATS_PATH),
+        ...(current && { comparison: { current: { ...current, totalRevenue: normalizePrice(current.totalRevenue, STATS_PATH) } } }),
+        ...(isSafeInteger(registeredUsers) && { registeredUsers }),
     };
 }
 
@@ -119,6 +123,5 @@ export const getDashboardStats = async (): Promise<DashboardStats> => parseDashb
 
 export const getRecentOrders = async (): Promise<RecentOrder[]> => parseRecentOrders(await request(RECENT_ORDERS_PATH));
 
-export async function getImpactRanking(): Promise<ImpactRankingEntry[]> {
-    return request(IMPACT_RANKING_PATH) as Promise<ImpactRankingEntry[]>;
-}
+export const getImpactRanking = async (): Promise<ImpactRankingEntry[]> =>
+    request(IMPACT_RANKING_PATH) as Promise<ImpactRankingEntry[]>;
