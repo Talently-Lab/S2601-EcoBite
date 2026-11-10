@@ -52,9 +52,12 @@ describe('Orders impact (e2e)', () => {
       role: 'USER',
     });
 
-    prismaMock.order.aggregate.mockResolvedValue({
-      _sum: { co2SavedG: 489 },
-    });
+    prismaMock.order.aggregate
+      .mockResolvedValueOnce({ _sum: { co2SavedG: 489 } })
+      .mockResolvedValueOnce({
+        _sum: { co2SavedG: 100 },
+        _count: { _all: 3 },
+      });
 
     prismaMock.order.count.mockResolvedValue(3);
   });
@@ -67,11 +70,11 @@ describe('Orders impact (e2e)', () => {
     await request(app.getHttpServer()).get('/orders/me/impact').expect(401);
   });
 
-  it('devuelve el impacto del usuario solo con CO2 de bicicleta', async () => {
+  async function accessToken() {
     const jwtService = app.get(JwtService);
     const auth = app.get<ConfigType<typeof authConfig>>(authConfig.KEY);
 
-    const token = await jwtService.signAsync(
+    return jwtService.signAsync(
       {
         sub: userId,
         email: 'maria@example.com',
@@ -83,20 +86,28 @@ describe('Orders impact (e2e)', () => {
         expiresIn: '15m',
       },
     );
+  }
+
+  it('devuelve los cuatro indicadores del usuario autenticado sin aceptar otro userId', async () => {
+    const token = await accessToken();
 
     const response = await request(app.getHttpServer())
-      .get('/orders/me/impact')
+      .get('/orders/me/impact?userId=another-user')
       .set('Authorization', `Bearer ${token}`)
       .expect(200);
 
     const body = response.body as ApiEnvelope<{
       totalCo2SavedG: number;
       ordersWithImpact: number;
+      avgCo2SavedG: number;
+      sustainableOrdersCount: number;
     }>;
 
     expect(body.data).toEqual({
       totalCo2SavedG: 489,
       ordersWithImpact: 3,
+      avgCo2SavedG: 100 / 3,
+      sustainableOrdersCount: 3,
     });
 
     expect(prismaMock.order.aggregate).toHaveBeenCalledWith({
@@ -115,5 +126,47 @@ describe('Orders impact (e2e)', () => {
         co2SavedG: { gt: 0 },
       },
     });
+    expect(prismaMock.order.aggregate).toHaveBeenNthCalledWith(2, {
+      where: { userId, orderStatus: 'COMPLETED', deliveryMethod: 'BIKE' },
+      _sum: { co2SavedG: true },
+      _count: { _all: true },
+    });
+    expect(prismaMock.order.aggregate).toHaveBeenCalledTimes(2);
+    expect(prismaMock.order.count).toHaveBeenCalledTimes(1);
   });
+
+  it.each([
+    { sum: null, count: 0 },
+    { sum: 0, count: 2 },
+  ])(
+    'devuelve promedio cero con suma $sum y denominador $count',
+    async ({ sum, count }) => {
+      prismaMock.order.aggregate
+        .mockReset()
+        .mockResolvedValueOnce({ _sum: { co2SavedG: 489 } })
+        .mockResolvedValueOnce({
+          _sum: { co2SavedG: sum },
+          _count: { _all: count },
+        });
+      const token = await accessToken();
+
+      const response = await request(app.getHttpServer())
+        .get('/orders/me/impact')
+        .set('Authorization', `Bearer ${token}`)
+        .expect(200);
+
+      const body = response.body as ApiEnvelope<{
+        totalCo2SavedG: number;
+        ordersWithImpact: number;
+        avgCo2SavedG: number;
+        sustainableOrdersCount: number;
+      }>;
+      expect(body.data).toEqual({
+        totalCo2SavedG: 489,
+        ordersWithImpact: 3,
+        avgCo2SavedG: 0,
+        sustainableOrdersCount: count,
+      });
+    },
+  );
 });
