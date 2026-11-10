@@ -159,10 +159,12 @@ export class DashboardService {
     return restaurants
       .map((restaurant) => ({
         restaurant: restaurant.name,
-        co2SavedG: restaurant.orders.reduce(
-          (total, order) => total + order.co2SavedG,
-          0,
-        ),
+        co2SavedG: restaurant.orders
+          .reduce(
+            (total, order) => total.plus(order.co2SavedG),
+            new Prisma.Decimal(0),
+          )
+          .toNumber(),
       }))
       .sort((a, b) => b.co2SavedG - a.co2SavedG);
   }
@@ -200,11 +202,13 @@ export class DashboardService {
       },
     });
 
-    const co2SavedG = result._sum.co2SavedG ?? 0;
+    const co2SavedG = new Prisma.Decimal(result._sum.co2SavedG ?? 0);
     return {
-      co2SavedG,
+      co2SavedG: co2SavedG.toNumber(),
       avgCo2SavedG:
-        result._count._all === 0 ? 0 : co2SavedG / result._count._all,
+        result._count._all === 0
+          ? 0
+          : co2SavedG.div(result._count._all).toNumber(),
     };
   }
 }

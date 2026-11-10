@@ -1,4 +1,5 @@
 import 'dotenv/config';
+import { calculateHistoricalOrderCo2 } from './historical-order-co2';
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -148,7 +149,7 @@ function validateDataset(rows: DatasetOrderRow[]): void {
       throw new Error(`Distancia fuera de rango en el pedido "${orderId}".`);
     }
 
-    parseCo2SavedG(row.co2_ahorrado_kg, orderId);
+    parseCo2SavedG(row, orderId);
     mapDeliveryMethod(row.tipo_transporte);
     mapPackagingType(row.tipo_envase);
 
@@ -207,18 +208,16 @@ function parseOrderDate(value: string, orderId: string): Date {
   return date;
 }
 
-function parseCo2SavedG(value: string, orderId: string): number {
-  const co2Kg = parseNonNegativeDecimal(value, 'co2_ahorrado_kg', orderId);
-
-  const co2Grams = co2Kg
-    .mul(1000)
-    .toDecimalPlaces(0, Prisma.Decimal.ROUND_HALF_UP);
-
-  if (co2Grams.gt(2147483647) || !Number.isSafeInteger(co2Grams.toNumber())) {
-    throw new Error(`CO₂ fuera de rango en el pedido "${orderId}".`);
+function parseCo2SavedG(row: DatasetOrderRow, orderId: string): number {
+  const method = mapDeliveryMethod(row.tipo_transporte);
+  if (method !== DeliveryMethod.BIKE) {
+    parseNonNegativeDecimal(row.co2_ahorrado_kg, 'co2_ahorrado_kg', orderId);
   }
-
-  return co2Grams.toNumber();
+  return calculateHistoricalOrderCo2(
+    method,
+    row.distancia_km,
+    row.co2_ahorrado_kg,
+  );
 }
 
 async function buildRestaurantIdMap(
@@ -286,7 +285,7 @@ function prepareHistoricalOrders(
       deliveryMethod: mapDeliveryMethod(row.tipo_transporte),
       packagingType: mapPackagingType(row.tipo_envase),
       orderStatus: OrderStatus.COMPLETED,
-      co2SavedG: parseCo2SavedG(row.co2_ahorrado_kg, orderId),
+      co2SavedG: parseCo2SavedG(row, orderId),
 
       // El dataset no proporciona la cantidad de envases evitados.
       // Se utiliza 0 como valor técnico, no como una medición real.

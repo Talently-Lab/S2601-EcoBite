@@ -11,6 +11,7 @@ import {
 } from '@prisma/client';
 
 import { PrismaService } from '../../prisma/prisma.service';
+import { calculateAppCo2 } from '../../common/order-co2';
 import { CreateOrderDto } from './dto/create-order.dto';
 
 @Injectable()
@@ -88,21 +89,12 @@ export class OrdersService {
       new Prisma.Decimal(0),
     );
 
-    const emissionsByMethod: Record<DeliveryMethod, number> = {
-      BIKE: 0,
-      MOTORCYCLE: 72,
-      CAR: 216,
-    };
+    const co2SavedG = calculateAppCo2(
+      restaurant.availableDeliveryMethod,
+      distanceKm.toString(),
+    );
 
-    const emissionPerKm = emissionsByMethod[restaurant.availableDeliveryMethod];
-
-    const co2SavedG = new Prisma.Decimal('46.58')
-      .minus(emissionPerKm)
-      .mul(distanceKm)
-      .toDecimalPlaces(0, Prisma.Decimal.ROUND_HALF_UP)
-      .toNumber();
-
-    return this.prisma.order.create({
+    const order = await this.prisma.order.create({
       data: {
         userId,
         restaurantId: restaurant.id,
@@ -135,6 +127,7 @@ export class OrdersService {
         },
       },
     });
+    return order;
   }
 
   async getUserImpact(userId: string) {
@@ -166,12 +159,16 @@ export class OrdersService {
     const sustainableOrdersCount = sustainableImpact._count._all;
 
     return {
-      totalCo2SavedG: co2Total._sum.co2SavedG ?? 0,
+      totalCo2SavedG: new Prisma.Decimal(
+        co2Total._sum.co2SavedG ?? 0,
+      ).toNumber(),
       ordersWithImpact,
       avgCo2SavedG:
         sustainableOrdersCount === 0
           ? 0
-          : (sustainableImpact._sum.co2SavedG ?? 0) / sustainableOrdersCount,
+          : new Prisma.Decimal(sustainableImpact._sum.co2SavedG ?? 0)
+              .div(sustainableOrdersCount)
+              .toNumber(),
       sustainableOrdersCount,
     };
   }

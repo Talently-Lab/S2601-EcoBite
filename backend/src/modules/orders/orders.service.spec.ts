@@ -55,7 +55,10 @@ describe('OrdersService - comuna distances', () => {
       distanceKm: new Prisma.Decimal('3.47'),
     });
     prisma.product.findMany.mockResolvedValue([product]);
-    prisma.order.create.mockResolvedValue({ id: 'order-1' });
+    prisma.order.create.mockResolvedValue({
+      id: 'order-1',
+      co2SavedG: 162,
+    });
   });
 
   it('obtiene la distancia de la matriz de comunas', async () => {
@@ -76,8 +79,39 @@ describe('OrdersService - comuna distances', () => {
 
     const call = prisma.order.create.mock.calls[0][0];
     expect(call.data.deliveryComuna).toBe(13);
-    expect(call.data.distanceKm.toString()).toBe('3.47');
+    expect(String(call.data.distanceKm)).toBe('3.47');
     expect(call.data.co2SavedG).toBe(162);
+  });
+
+  it.each([
+    ['BIKE', 162],
+    ['MOTORCYCLE', -88],
+    ['CAR', -588],
+  ])(
+    'stores final integer %s emissions and returns a JSON number',
+    async (method, expected) => {
+      prisma.restaurant.findUnique.mockResolvedValue({
+        ...restaurant,
+        availableDeliveryMethod: method,
+      });
+      prisma.order.create.mockResolvedValue({
+        id: 'order-1',
+        co2SavedG: expected,
+      });
+      const result = await service.create(userId, dto);
+      expect(prisma.order.create.mock.calls[0][0].data.co2SavedG).toBe(
+        expected,
+      );
+      expect(JSON.parse(JSON.stringify(result)).co2SavedG).toBe(expected);
+    },
+  );
+
+  it('rejects negative distance before creating an order', async () => {
+    prisma.comunaDistance.findUnique.mockResolvedValue({
+      distanceKm: new Prisma.Decimal('-1'),
+    });
+    await expect(service.create(userId, dto)).rejects.toThrow();
+    expect(prisma.order.create).not.toHaveBeenCalled();
   });
 
   it('rechaza restaurantes sin comuna configurada', async () => {
