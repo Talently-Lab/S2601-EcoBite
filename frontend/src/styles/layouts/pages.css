@@ -1,28 +1,31 @@
-.stack {
-    display: grid;
-    gap: var(--space-2);
+main {
+    inline-size: 100%;
+    max-inline-size: var(--content-width);
+    min-block-size: calc(100dvh - var(--main-header-offset, 0px));
+    margin-inline: auto;
+}
+
+.page {
+    --page-inline-padding: var(--page-gutter);
+
+    min-inline-size: 0;
+    padding: var(--space-3) var(--page-inline-padding);
+}
+
+.page:not(.login-page) {
+    max-inline-size: calc(var(--page-max-width, var(--content-width)) + var(--page-inline-padding) + var(--page-inline-padding));
+    margin-inline: auto;
 }
 
 .cart-page--empty {
     --page-max-width: 28rem;
+    --page-inline-padding: var(--space-3);
+
+    padding-block: var(--space-1) var(--space-3);
 }
 
-main {
-    inline-size: 100%;
-    max-inline-size: var(--content-width);
-    min-block-size: 100vh;
-    min-block-size: 100dvh;
-    margin-inline: auto;
-    padding: var(--space-3) var(--page-gutter);
-}
-
-.page {
-    min-inline-size: 0;
-}
-
-.page:not(.login-page) {
-    max-inline-size: var(--page-max-width, var(--content-width));
-    margin-inline: auto;
+.cart-page:not(.cart-page--empty) {
+    padding-block-start: var(--space-1);
 }
 
 .impact-page {
@@ -33,43 +36,13 @@ main {
     }
 }
 
-main:has(.cart-page--empty) {
-    padding: var(--space-1) var(--space-3) var(--space-3);
-}
-
-main:has(.cart-page:not(.cart-page--empty)) {
-    padding-block-start: var(--space-1);
-}
-
-.surface-card {
-    background: var(--color-background);
-    box-shadow: var(--shadow-card);
-}
-
-.state-actions {
-    display: grid;
-    gap: var(--space-1);
-
-    & > .button--link {
-        text-decoration: underline;
-        text-underline-offset: 0.15em;
-        font-weight: var(--font-weight-semibold);
-    }
-}
-
 .site-header + main {
-    min-block-size: calc(100dvh - var(--header-height));
+    --main-header-offset: var(--header-height);
 }
 
-@media (width < 48rem) {
-    .cart-page > .section-header,
-    .checkout-heading > h1,
-    .restaurant-page > h1 {
-        position: absolute;
-        inline-size: 1px;
-        block-size: 1px;
-        overflow: hidden;
-        clip-path: inset(50%);
-        white-space: nowrap;
-    }
+.site-header + main > .page:has(> .loading-feedback:only-child) {
+    display: grid;
+    place-items: center;
+    min-block-size: calc(100dvh - var(--header-height));
+    padding-block: 0;
 }

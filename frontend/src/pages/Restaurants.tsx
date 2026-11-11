@@ -5,6 +5,7 @@ import { FilterChip } from '../components/core/FilterChip';
 import { PageHeader } from '../components/core/PageHeader';
 import { Breadcrumbs } from '../components/layouts/Breadcrumbs';
 import { StatusMessage } from '../components/shared/StatusMessage';
+import { SectionHeader } from '../components/shared/SectionHeader';
 import { useRestaurants } from '../hooks/useRestaurants';
 import { FOOD_CATEGORY_LABELS, RESTAURANTS_MESSAGES } from '../constants/constants';
 import type { Restaurant } from '../types/types';
@@ -45,7 +46,7 @@ export function Restaurants() {
                 <PageHeader backTo="/" backLabel="Volver al inicio" mobileOnly />
                 <SearchBar variant="icon" />
             </div>
-            <h1>Restaurantes</h1>
+            <SectionHeader variant="h1" title="Restaurantes" className="sr-only" />
             <nav className="restaurant-filters" aria-label="Filtrar restaurantes por categoría">
                 <FilterChip to={categoryHref('')} selected={category === ''}>Todos</FilterChip>
                 {Object.entries(FOOD_CATEGORY_LABELS).map(([value, label]) => (
