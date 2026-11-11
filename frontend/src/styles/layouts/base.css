@@ -20,6 +20,9 @@ h1, h2, h3, .avatar {
 
 .sr-only, thead, :where(button) {
     padding: 0;
+}
+
+thead, :where(button) {
     border: 0;
 }
 
@@ -36,7 +39,6 @@ thead th:last-child {
     position: absolute;
     width: 1px;
     height: 1px;
-    margin: -1px;
     overflow: hidden;
     clip-path: inset(50%);
     white-space: nowrap;
@@ -135,11 +137,11 @@ input:disabled {
         font-weight: var(--font-weight-bold);
     }
 
-    thead {
+    thead,
+    :is(.cart-page, .checkout-heading, .restaurant-page, .cart-bottom) > .section-header.sr-only {
         position: static;
         width: auto;
         height: auto;
-        margin: 0;
         overflow: visible;
         clip-path: none;
         white-space: normal;
@@ -153,5 +155,10 @@ input:disabled {
 
     thead th {
         color: var(--color-forest);
+    }
+
+    .cart-bottom > .section-header.sr-only {
+        margin-block-end: var(--space-1-5);
+        padding-inline: var(--space-1);
     }
 }

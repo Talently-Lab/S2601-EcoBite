@@ -1,42 +1,14 @@
-import { useEffect, useState } from 'react';
-import { getRestaurants } from '../services/restaurantService';
-import type { Restaurant } from '../types/types';
+import { useEffect, useSyncExternalStore } from 'react';
 import { useCart } from '../context/CartContext';
+import { getRestaurantsSnapshot, loadRestaurants, subscribeRestaurants } from '../services/restaurantService';
 
-type RestaurantsStatus = 'loading' | 'error' | 'ready';
-type RestaurantsResult = {
-    comuna: number | null;
-    restaurants: Restaurant[];
-    status: Exclude<RestaurantsStatus, 'loading'>;
-};
-type UseRestaurantsResult = { restaurants: Restaurant[]; status: RestaurantsStatus };
-
-export function useRestaurants(): UseRestaurantsResult {
+export function useRestaurants() {
     const { deliveryComuna } = useCart();
-    const [result, setResult] = useState<RestaurantsResult | null>(null);
+    const result = useSyncExternalStore(subscribeRestaurants, () => getRestaurantsSnapshot(deliveryComuna));
 
     useEffect(() => {
-        let active = true;
-
-        getRestaurants(deliveryComuna)
-            .then((data) => {
-                if (active) {
-                    setResult({ comuna: deliveryComuna, restaurants: data, status: 'ready' });
-                }
-            })
-            .catch((err: unknown) => {
-                if (active) {
-                    console.error(err);
-                    setResult({ comuna: deliveryComuna, restaurants: [], status: 'error' });
-                }
-            });
-
-        return () => {
-            active = false;
-        };
+        loadRestaurants(deliveryComuna);
     }, [deliveryComuna]);
 
-    return result?.comuna === deliveryComuna
-        ? { restaurants: result.restaurants, status: result.status }
-        : { restaurants: result?.restaurants ?? [], status: 'loading' };
+    return result;
 }

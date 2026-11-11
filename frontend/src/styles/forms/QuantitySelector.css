@@ -3,6 +3,10 @@
     padding: var(--space-1);
 }
 
+.quantity-selector {
+    font-weight: var(--font-weight-semibold);
+}
+
 .quantity-selector--counter {
     display: flex;
     align-items: center;
@@ -12,6 +16,7 @@
     border-radius: var(--radius-sm);
     color: var(--color-primary);
     overflow: hidden;
+    background: var(--color-table);
 
     & .button {
         border-radius: 0;
@@ -21,7 +26,6 @@
         min-width: 1.5rem;
         padding-inline: var(--space-0-5);
         text-align: center;
-        font-size: var(--font-size-body-lg);
     }
 
     & svg {
@@ -35,7 +39,6 @@
     border-radius: 50%;
     background: var(--color-primary);
     color: var(--color-lime);
-    font-size: var(--font-size-headline-xs);
 
     &:hover:enabled {
         background: var(--color-forest);

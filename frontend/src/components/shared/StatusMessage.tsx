@@ -1,3 +1,5 @@
+import { Link } from 'react-router';
+
 type StatusMessageProps = {
     status: 'loading' | 'error' | 'ready';
     isEmpty: boolean;
@@ -18,4 +20,10 @@ export function StatusMessage({ status, isEmpty, messages, showLoading = false, 
         </div>;
     if (status === 'error') return <p role="alert">{messages.error}</p>;
     return isEmpty ? <p>{emptyMessage ?? messages.empty}</p> : null;
+}
+
+export function OtherRestaurantNotice() {
+    return <p className="restaurant-menu-notice" role="status">
+        Tu carrito tiene platos de otro restaurante. <Link to="/cart">Vaciá el carrito</Link> para elegir acá.
+    </p>;
 }

@@ -1,4 +1,4 @@
-import { apiUrl } from '../config/api';
+import { fetchApi } from '../config/api';
 import { isRecord } from '../utils/isRecord';
 
 const REQUEST_TIMEOUT_MS = 15_000;
@@ -37,24 +37,16 @@ export async function request(path: string, options: RequestOptions = {}): Promi
     const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
 
     try {
-        const response = await fetch(`${apiUrl}${path}`, {
+        const { response, body, bodyError, success, data } = await fetchApi(path, {
             ...options,
             credentials: 'include',
             signal: controller.signal,
         });
-        let bodyError: unknown;
-        let body: unknown = null;
-        try {
-            body = await response.json();
-        } catch (cause) {
-            if (!(cause instanceof SyntaxError)) throw cause;
-            bodyError = cause;
-        }
         if (!response.ok) throw new ApiError({ kind: 'http', path, status: response.status, body }, { cause: bodyError });
-        if (!isRecord(body) || body.success !== true || !('data' in body)) {
+        if (!success) {
             throw new ApiError({ kind: 'invalid-response', path, status: response.status }, { cause: bodyError });
         }
-        return body.data;
+        return data;
     } catch (cause) {
         if (cause instanceof ApiError) throw cause;
         throw new ApiError({ kind: controller.signal.aborted ? 'timeout' : 'network', path }, { cause });

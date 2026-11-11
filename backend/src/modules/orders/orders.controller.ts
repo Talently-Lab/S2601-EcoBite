@@ -17,6 +17,7 @@ import {
 
 import { CurrentUser } from '../auth/decorators/current-user.decorator';
 import { CreateOrderDto } from './dto/create-order.dto';
+import { UserImpactResponseDto } from './dto/user-impact-response.dto';
 import { OrdersService } from './orders.service';
 
 @ApiTags('orders')
@@ -31,12 +32,15 @@ export class OrdersController {
   @ApiResponse({
     status: 200,
     description: 'User impact indicators retrieved successfully',
+    type: UserImpactResponseDto,
   })
   @ApiResponse({
     status: 401,
     description: 'Authentication required',
   })
-  getUserImpact(@CurrentUser() user: Express.User) {
+  getUserImpact(
+    @CurrentUser() user: Express.User,
+  ): Promise<UserImpactResponseDto> {
     return this.ordersService.getUserImpact(user.userId);
   }
 

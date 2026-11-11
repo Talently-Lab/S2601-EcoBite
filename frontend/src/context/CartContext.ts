@@ -14,7 +14,9 @@ export type CartContextValue = {
     createdOrder: ConfirmedOrder | null;
     confirmPurchase: () => Promise<void>;
     closeConfirmationModal: () => void;
-    addToCart: (product: CartProduct) => void;
+    addToCart: (product: CartProduct, quantity?: number) => void;
+    canAdd: (product: CartProduct, quantity: number) => boolean;
+    hasOtherRestaurant: (restaurantId: string) => boolean;
     removeFromCart: (productId: string, restaurantId: string) => void;
     setQuantity: (productId: string, restaurantId: string, quantity: number) => void;
 };

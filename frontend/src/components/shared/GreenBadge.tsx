@@ -1,6 +1,6 @@
 type GreenBagdeProps = {
     icon: React.ReactNode,
-    text: string,
+    text: string | React.ReactNode,
     amount?: string,
     description?: string,
     variant?: "descriptive" | "tag";

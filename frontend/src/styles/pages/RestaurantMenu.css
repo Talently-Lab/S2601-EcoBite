@@ -7,8 +7,21 @@
     gap: var(--space-1);
 }
 
-.restaurant-menu-page > .breadcrumbs {
-    margin-block-end: var(--space-3);
+.page:has(> .restaurant-menu-hero) {
+    & > .breadcrumbs {
+        margin-block-end: var(--space-3);
+    }
+
+    @media (width >= 48rem) {
+        padding-block-start: var(--space-3-5);
+        padding-inline: calc(var(--page-gutter) + var(--space-3));
+    }
+
+    @media (width < 48rem) {
+        &:has(> .restaurant-menu-hero--with-image) {
+            padding-block-start: 0;
+        }
+    }
 }
 
 .restaurant-menu-hero--with-image {
@@ -63,14 +76,6 @@
     .restaurant-menu-content > :is(.restaurant-menu-notice, .restaurant-menu-products),
     .restaurant-menu-products > h2 {
         grid-column: 1 / -1;
-    }
-
-    main:has(.restaurant-menu-page) {
-        padding-block-start: var(--space-3-5);
-    }
-
-    .restaurant-menu-page {
-        padding-inline: var(--space-3);
     }
 
     .restaurant-menu-hero--with-image {
@@ -132,9 +137,5 @@
             inset-block-start: var(--space-1);
             inset-inline-start: var(--page-gutter);
         }
-    }
-
-    main:has(.restaurant-menu-hero--with-image) {
-        padding-block-start: 0;
     }
 }

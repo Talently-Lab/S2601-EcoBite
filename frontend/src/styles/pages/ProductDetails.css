@@ -1,0 +1,121 @@
+.product-details-layout,
+.product-details-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-details-page {
+    padding: 0;
+
+    & .breadcrumbs {
+        margin-block-end: var(--space-4);
+    }
+
+    & .green-badge {
+        inline-size: 100%;
+        margin: var(--space-1) 0 var(--space-4) 0;
+    }
+}
+
+.product-details-visual {
+    display: grid;
+    position: relative;
+    place-items: center;
+    aspect-ratio: 6 / 5;
+    background: var(--color-surface-muted);
+    color: var(--color-text);
+
+    & > img {
+        inline-size: var(--control-height);
+        block-size: var(--control-height);
+    }
+
+    & .page-header {
+        position: absolute;
+        inset-block-start: var(--space-1);
+        inset-inline-start: var(--page-gutter);
+
+        & .button {
+            border-radius: var(--radius-pill);
+            background: var(--color-surface);
+        }
+    }
+}
+
+.product-details-info {
+    align-items: flex-start;
+    gap: var(--space-1);
+    min-inline-size: 0;
+    padding: var(--space-2) var(--page-gutter) var(--space-3);
+
+    & h2 {
+        font-weight: var(--font-weight-semibold);
+    }
+}
+
+.product-details-restaurant {
+    font-size: var(--font-size-body-sm);
+}
+
+.product-details-price {
+    margin-block: var(--space-1);
+}
+
+.product-details-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    inline-size: 100%;
+    margin-block-start: var(--space-3);
+
+    & .quantity-selector {
+        flex: none;
+        min-block-size: var(--control-height);
+
+        & .button:disabled {
+            background: transparent;
+        }
+    }
+
+    & > .button--primary {
+        flex: 1;
+        justify-content: space-between;
+        min-block-size: var(--control-height-lg);
+        padding-inline: var(--space-2);
+        border-radius: var(--radius-sm);
+    }
+}
+
+@media (width >= 48rem) {
+    .product-details-page {
+        padding: var(--space-4) var(--space-5) calc(var(--space-6) + var(--space-5));
+    }
+
+    .product-details-visual {
+        block-size: calc(var(--space-6) * 4);
+        aspect-ratio: auto;
+        border-radius: var(--radius-md);
+    }
+
+    .product-details-info {
+        padding: var(--space-3) 0;
+    }
+
+    .product-details-restaurant {
+        order: -1;
+        font-size: var(--font-size-body-md);
+    }
+}
+
+@media (width >= 64rem) {
+    .product-details-layout {
+        display: grid;
+        grid-template-columns: minmax(0, calc(50% - var(--space-3) - var(--space-0-5))) minmax(0, 1fr);
+        gap: var(--space-5);
+    }
+
+    .product-details-info {
+        inline-size: fit-content;
+    }
+}
