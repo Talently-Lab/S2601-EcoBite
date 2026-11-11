@@ -27,6 +27,7 @@
 @import './pages/ConfirmationModal.css';
 @import './pages/Restaurants.css';
 @import './pages/RestaurantMenu.css';
+@import './pages/ProductDetails.css';
 @import './shared/GreenBadge.css';
 
 :root {
@@ -74,7 +75,7 @@
     --control-height-lg: 3.25rem;
     --touch-target: 2.75rem;
     --page-gutter: calc(var(--space-2) + var(--space-0-5));
-    --content-width: 75rem;
+    --content-width: 90rem;
     --header-height: 4rem;
     --shadow-card: 0 var(--space-0-5) var(--space-2) color-mix(in srgb, var(--color-primary) 10%, transparent);
     --transition-control: 160ms ease;
@@ -100,6 +101,11 @@ html {
 button,
 select {
     text-transform: none;
+}
+
+:where(.stack),
+.state-actions {
+    display: grid;
 }
 
 .filter-chip {
@@ -134,6 +140,25 @@ select {
     & svg {
         flex-shrink: 0;
         margin-block-start: var(--space-0-5);
+    }
+}
+
+:where(.stack) {
+    gap: var(--space-2);
+}
+
+.surface-card {
+    background: var(--color-background);
+    box-shadow: var(--shadow-card);
+}
+
+.state-actions {
+    gap: var(--space-1);
+
+    & > .button--link {
+        text-decoration: underline;
+        text-underline-offset: 0.15em;
+        font-weight: var(--font-weight-semibold);
     }
 }
 

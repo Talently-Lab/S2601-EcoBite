@@ -5,6 +5,7 @@ import { Footer } from './components/layouts/Footer';
 import { Login } from './pages/Login';
 import { Restaurants } from './pages/Restaurants';
 import { RestaurantMenu } from './pages/RestaurantMenu';
+import { ProductDetails } from './pages/ProductDetails';
 import { Cart } from './pages/Cart';
 import { Impact } from './pages/Impact';
 import { Profile } from './pages/Profile';
@@ -58,6 +59,7 @@ export default function App() {
 					<Route path="/" element={<Home />} />
 					<Route path="/restaurants" element={<Restaurants />} />
 					<Route path="/restaurants/:id" element={<RestaurantMenu />} />
+					<Route path="/restaurants/:id/products/:productId" element={<ProductDetails />} />
 					<Route path="/cart" element={<Cart />} />
 					<Route path="/checkout" element={<Checkout />} />
 					<Route path="/impact" element={<Impact />} />

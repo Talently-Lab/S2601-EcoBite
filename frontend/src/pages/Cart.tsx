@@ -22,20 +22,25 @@ export function Cart() {
             <PageHeader title="Tu carrito" backTo={restaurantTo} backLabel={backLabel} />
             {restaurant ? (
                 <>
-                    <SectionHeader variant="h1" title="Tu carrito" />
-                    <div className="cart-restaurant-heading">
-                        <SectionHeader variant="h2" title={restaurant.restaurantName} />
-                        <Button variant="link" to={restaurantTo}>Agregar más</Button>
-                    </div>
-                    <section className="cart-products" aria-label={`Productos de ${restaurant.restaurantName}`}>
-                        {items.map((item) => <ProductCard key={item.id} variant="cart" product={item} />)}
-                    </section>
-                    <div className="cart-bottom">
-                        <GreenBadge icon={<FiInfo aria-hidden="true" />} text="Con tu pedido en bici evitás emisiones de CO2. Lo verás al confirmar." />
-                        <div className="cart-summary" aria-live="polite">
-                            <span>Total</span><Price price={centsToPrice(totalCents)} />
+                    <SectionHeader variant="h1" title="Tu carrito" className="sr-only" />
+                    <div className="cart-content">
+                        <div className="cart-items">
+                            <div className="cart-restaurant-heading">
+                                <SectionHeader variant="h2" title={restaurant.restaurantName} />
+                                <Button variant="link" to={restaurantTo}>Agregar más</Button>
+                            </div>
+                            <section className="cart-products" aria-label={`Productos de ${restaurant.restaurantName}`}>
+                                {items.map((item) => <ProductCard key={item.id} variant="cart" product={item} />)}
+                            </section>
                         </div>
-                        <Button to="/checkout">Ir a pagar</Button>
+                        <aside className="cart-bottom surface-card" aria-labelledby="cart-summary-title">
+                            <SectionHeader variant="h2" title="Resumen" titleId="cart-summary-title" className="sr-only" />
+                            <GreenBadge icon={<FiInfo aria-hidden="true" />} text={<><strong>Con tu pedido en bici evitás emisiones de CO2.</strong> Lo verás al confirmar.</>}/>
+                            <div className="cart-summary" aria-live="polite">
+                                <span>Total</span><Price price={centsToPrice(totalCents)} />
+                            </div>
+                            <Button to="/checkout">Ir a pagar</Button>
+                        </aside>
                     </div>
                 </>
             ) : (

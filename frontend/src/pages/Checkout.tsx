@@ -79,7 +79,7 @@ export function Checkout() {
         <div className="page checkout-page">
             <div className="checkout-heading">
                 <PageHeader title="Confirmá tu pedido" backTo="/cart" backLabel="Volver al carrito" />
-                <h1>Confirmá tu pedido</h1>
+                <SectionHeader variant="h1" title="Confirmá tu pedido" className="sr-only" />
             </div>
 
             <div className="checkout-layout">

@@ -63,13 +63,13 @@ export function CartProvider({ children, userId }: CartProviderProps) {
         });
     }
 
-    function addToCart(product: CartProduct) {
-        if (!validProduct(product)) return;
+    function addToCart(product: CartProduct, quantity = 1) {
+        if (!canAdd(product, quantity)) return;
         updateItems((current) => {
             if (current.length && current[0].restaurantId !== product.restaurantId) return current;
             return current.some((item) => item.id === product.id)
-                ? current.map((item) => item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item)
-                : [...current, { ...product, quantity: 1 }];
+                ? current.map((item) => item.id === product.id ? { ...item, quantity: item.quantity + quantity } : item)
+                : [...current, { ...product, quantity }];
         });
     }
 
@@ -116,12 +116,19 @@ export function CartProvider({ children, userId }: CartProviderProps) {
     const totalQuantity = items.reduce((total, item) => total + item.quantity, 0);
     const totalCents = getTotalCents(items);
 
+    const hasOtherRestaurant = (restaurantId: string) => items.length > 0 && items[0].restaurantId !== restaurantId;
+    const canAdd = (product: CartProduct, quantity: number) => validProduct(product)
+        && Number.isSafeInteger(quantity) && quantity >= 1
+        && !hasOtherRestaurant(product.restaurantId) && !isSubmitting
+        && Number.isSafeInteger(totalCents + getSubtotalCents(product.unitPriceCents, quantity))
+        && Number.isSafeInteger((items.find((item) => item.id === product.id)?.quantity ?? 0) + quantity);
+
     return (
         <CartContext value={{
             items, restaurantId: items[0]?.restaurantId ?? null, totalQuantity, totalCents,
             deliveryComuna, setDeliveryComuna,
             isSubmitting, purchaseError, createdOrder, confirmPurchase, closeConfirmationModal,
-            addToCart, removeFromCart, setQuantity,
+            addToCart, canAdd, hasOtherRestaurant, removeFromCart, setQuantity,
         }}>
             {children}
         </CartContext>
