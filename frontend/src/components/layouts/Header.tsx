@@ -72,10 +72,10 @@ export function Header() {
                     <HeaderItem to="/cart" icon={LuShoppingCart} label="Carrito"
                         className="site-header-cart" ariaLabel={cartLabel}
                         badge={filledCart ? <span className="site-header-cart-count" aria-hidden="true">{cartCount}</span> : null} />
-                    <Button variant="icon" to="/profile" aria-label={`Perfil de ${displayName}`}
+                    <Link to="/profile" className="header-profile" aria-label={`Perfil de ${displayName}`}
                         aria-current={pathname === '/profile' ? 'page' : undefined}>
                         <span className="avatar" aria-hidden="true">{initials}</span>
-                    </Button>
+                    </Link>
                 </nav>
                 <Button type="button" variant="icon"
                     aria-label="Abrir menú" aria-controls="site-menu" aria-expanded={menuOpen}

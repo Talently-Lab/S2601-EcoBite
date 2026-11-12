@@ -5,7 +5,7 @@
 .addresses {
     display: flex;
     align-items: center;
-    margin-block-end: var(--space-3);
+    margin-block-end: var(--space-1);
 
     .site-header-bar > & {
         display: none;

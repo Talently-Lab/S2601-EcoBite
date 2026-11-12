@@ -81,6 +81,10 @@ body {
 	font-size: var(--font-size-body-lg);
 }
 
+.login-page, .admin-main {
+    background: var(--color-surface);
+}
+
 input:not(.checkout-address-input) {
     background: var(--color-table);
 }
@@ -128,7 +132,7 @@ input:disabled {
     border-radius: var(--radius-pill);
     background: var(--color-surface);
     color: var(--color-forest);
-    font-size: var(--avatar-font-size, var(--font-size-body-sm));
+    font-size: var(--avatar-font-size, var(--font-size-body-lg));
 }
 
 

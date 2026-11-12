@@ -9,7 +9,7 @@ main {
     --page-inline-padding: var(--page-gutter);
 
     min-inline-size: 0;
-    padding: var(--space-3) var(--page-inline-padding);
+    padding: var(--space-1) var(--page-inline-padding);
 }
 
 .page:not(.login-page) {

@@ -61,11 +61,6 @@
     }
 }
 
-.cart-bottom.surface-card {
-    background: transparent;
-    box-shadow: none;
-}
-
 .cart-summary {
     align-items: center;
     justify-content: space-between;
@@ -157,19 +152,12 @@
         margin-block-start: 0;
         padding: var(--space-3);
         padding-block-start: var(--space-3-5);
-        border: thin solid var(--color-forest);
-        border-radius: var(--radius-md);
 
         & > .button {
             min-inline-size: 0;
             min-block-size: var(--control-height-lg);
             border-radius: var(--radius-md);
         }
-    }
-
-    .cart-bottom.surface-card {
-        background: var(--color-table);
-        box-shadow: var(--shadow-card);
     }
 
     .cart-summary {

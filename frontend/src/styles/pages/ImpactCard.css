@@ -22,8 +22,8 @@
     line-height: 1;
 }
 
-.impact-card-link span, .impact-card-orders {
-    font-size: var(--font-size-headline-xs);
+.impact-card-link span {
+    font-size: var(--font-size-headline-md);
 }
 
 .impact-card-eyebrow, .impact-card-caption {
@@ -47,6 +47,7 @@
     position: relative;
     z-index: 1;
     flex-direction: column;
+    gap: var(--space-1);
     min-height: calc(var(--space-5) * 2 + var(--space-1-5));
     overflow: hidden;
     box-shadow: var(--shadow-card);
@@ -58,13 +59,13 @@
     }
 }
 
-.impact-card--home .impact-card-main {
-    padding-inline-end: calc(var(--space-5) + var(--space-3));
-}
-
 .impact-value {
     font-size: var(--font-size-headline-xl);
     font-weight: 800;
+}
+
+.impact-card-caption {
+    font-size: clamp(var(--font-size-body-lg), 2.6vw, 24px);
 }
 
 .impact-card-link {
@@ -96,14 +97,16 @@
 .impact-card-explanation {
     margin-block-start: var(--space-2);
     line-height: var(--line-height-relaxed);
-    font-size: var(--font-size-body-md);
+    font-size: clamp(var(--font-size-body-md), 1.9vw, var(--font-size-headline-xs));
+    font-weight: 200;
 }
 
 .impact-card-orders {
     margin-block-start: calc(-1 * var(--space-2));
-    padding-block-end: var(--space-1);
-    line-height: var(--line-height-tight);
+    padding: var(--space-3-5) 0 var(--space-2) var(--space-3);
+    font-size: clamp(var(--font-size-headline-xs), 2.25vw, 24px);
     font-weight: var(--font-weight-medium);
+    gap: var(--space-2);
 
     & > .svg-icon {
         width: 2rem;
@@ -111,6 +114,10 @@
         color: var(--color-forest);
         mask-image: url('../../assets/icons/impact-deliveries.svg');
     }
+}
+
+.impact-card--home {
+    margin-block-start: var(--space-1);
 }
 
 @media (width >= 48rem) {
@@ -122,10 +129,6 @@
     .impact-card--detail {
         grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
         gap: var(--space-2);
-
-        & .impact-card-main {
-            min-height: calc(var(--space-6) + var(--space-5) + var(--space-3-5));
-        }
     }
 
     .impact-card-orders {
@@ -139,6 +142,11 @@
 }
 
 @media (width >= 64rem) {
+    .impact-card-orders > .svg-icon {
+        width: 3.5rem;
+        height: 3.5625rem;
+    }
+
     .impact-card--home {
         & .impact-card-main > .svg-icon,
         & .impact-card-link {

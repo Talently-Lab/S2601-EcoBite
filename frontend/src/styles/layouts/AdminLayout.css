@@ -38,7 +38,7 @@
 @media (min-width: 64rem) {
     .admin-shell {
         display: grid;
-        grid-template-columns: 14rem minmax(0, 1fr);
+        grid-template-columns: 260px minmax(0, 1fr);
     }
 
     .admin-main {

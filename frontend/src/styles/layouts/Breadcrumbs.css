@@ -2,6 +2,7 @@
     display: none;
     color: var(--color-text);
     font-size: var(--font-size-body-sm);
+    margin: var(--space-3) 0;
 
     & ol {
         display: flex;

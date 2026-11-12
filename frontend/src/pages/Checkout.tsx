@@ -105,7 +105,7 @@ export function Checkout() {
                     </fieldset>
                 </div>
 
-                <div className="checkout-review">
+                <div className="checkout-review surface-card">
                     <CheckoutSummary titleId={summaryTitleId} restaurantName={items[0].restaurantName}
                         productCount={totalQuantity} totalPrice={totalPrice} />
                     {purchaseError && <FormError id={`${checkoutId}-error`}>{purchaseError.message}</FormError>}

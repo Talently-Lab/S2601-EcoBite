@@ -148,8 +148,13 @@ select {
 }
 
 .surface-card {
-    background: var(--color-background);
+    background: var(--color-table);
     box-shadow: var(--shadow-card);
+    border-radius: var(--radius-md);
+
+    &:not(.empty-cart) {
+        border: thin solid var(--color-forest);
+    }
 }
 
 .state-actions {
@@ -168,4 +173,12 @@ select {
 
 @media (width >= 64rem) {
     :root { --header-height: var(--space-5); }
+}
+
+@media (width < 64rem) {
+    .surface-card:not(.empty-cart) {
+        background: transparent;
+        box-shadow: none;
+        border: none;
+    }
 }

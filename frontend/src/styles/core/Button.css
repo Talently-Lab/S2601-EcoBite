@@ -42,7 +42,6 @@
     color: var(--color-surface);
     width: 100%;
     min-height: 3.5rem;
-    min-width: 300px;
     border-radius: var(--radius-md);
 
     &:has(svg) {

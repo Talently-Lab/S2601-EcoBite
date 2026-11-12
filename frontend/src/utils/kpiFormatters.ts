@@ -23,6 +23,6 @@ export const formatCount = createFormatter();
 const gramFormatter = createFormatter({ maximumFractionDigits: 0 });
 const kilogramFormatter = createFormatter({ minimumFractionDigits: 1, maximumFractionDigits: 1 });
 
-export const formatGrams = (grams: number): string => Math.round(grams) < GRAMS_PER_KG
+export const formatGrams = (grams: number): string => grams < GRAMS_PER_KG
     ? `${gramFormatter(grams)}g`
     : `${kilogramFormatter(grams / GRAMS_PER_KG)} kg`;

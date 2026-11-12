@@ -34,18 +34,13 @@
         position: absolute;
         inset-block-start: var(--space-1);
         inset-inline-start: var(--page-gutter);
-
-        & .button {
-            border-radius: var(--radius-pill);
-            background: var(--color-surface);
-        }
     }
 }
 
 .product-details-info {
     align-items: flex-start;
     gap: var(--space-1);
-    min-inline-size: 0;
+    max-inline-size: 430px;
     padding: var(--space-2) var(--page-gutter) var(--space-3);
 
     & h2 {
