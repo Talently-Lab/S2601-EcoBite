@@ -2,68 +2,76 @@ import { useRef } from 'react';
 import { useCountUp } from 'react-countup';
 import { useDashboardStats } from '../../hooks/useDashboardStats';
 import type { DashboardStats } from '../../services/dashboardService';
-import { formatCount, formatGrams, type KpiCardConfig, type KpiCardProps } from '../../utils/kpiFormatters';
+import { formatCount, formatGrams, type KpiCardConfig } from '../../utils/kpiFormatters';
 import { formatPrice } from '../../utils/price';
 
 const COUNT_DURATION_SECONDS = 2.5;
-const KPI_CARD_CLASSES = {
-    default: 'card card--panel admin-kpi-card',
-    impact: 'card card--panel card--dark admin-kpi-card admin-kpi-card--impact',
+const VARIANT_CLASS = { impact: 'admin-kpi-card--impact card--dark', compact: 'admin-kpi-card--compact' };
+const FEEDBACK = {
+    loading: { role: 'status', label: 'Cargando indicadores', content: <span className="loading-spinner" aria-hidden="true" /> },
+    error: { role: 'alert', label: undefined, content: 'No pudimos cargar los indicadores.' },
 } as const;
 
 function getKpiCards(stats: DashboardStats): KpiCardConfig[] {
+    const periodStats = stats.comparison?.current ?? stats;
+
     return [
         {
-            label: 'CO₂ ahorrado', value: stats.co2SavedG, format: formatGrams,
-            icon: <span className="svg-icon" aria-hidden="true" />, tone: 'impact',
+            variant: 'impact', label: 'CO₂ ahorrado', value: periodStats.co2SavedG,
+            format: formatGrams,
+            icon: <span className="svg-icon svg-icon--leaves" aria-hidden="true" />,
+            detail: <>Acumulado desde el lanzamiento: <strong>{formatGrams(stats.co2SavedG)}</strong></>,
         },
         {
-            label: 'Total recaudado', value: stats.totalRevenue, format: formatPrice,
+            label: 'Total recaudado', value: periodStats.totalRevenue,
+            format: formatPrice,
+            detail: <>Ticket promedio: <strong>{stats.comparison ? formatPrice(stats.comparison.current.averageTicket) : '—'}</strong></>,
         },
         {
-            label: 'Pedidos completados', value: stats.completedOrders, format: formatCount,
+            label: 'Pedidos completados', value: periodStats.completedOrders,
+            format: formatCount,
+        },
+        {
+            variant: 'compact', label: 'CO₂ ahorrado por pedido sustentable',
+            value: stats.comparison?.current.avgCo2SavedG ?? null,
+            format: formatGrams,
+        },
+        {
+            variant: 'compact', label: 'Usuarios registrados', value: stats.registeredUsers ?? null,
+            format: formatCount,
         },
     ];
 }
 
-function AnimatedValue({ value, format, decimals = 0 }: Pick<KpiCardConfig, 'value' | 'format' | 'decimals'>) {
+function AnimatedValue({ value, format }: Pick<KpiCardConfig, 'format'> & { value: number }) {
     const countRef = useRef<HTMLSpanElement>(null!);
-    useCountUp({ ref: countRef, end: value, duration: COUNT_DURATION_SECONDS, decimals, formattingFn: format });
+    useCountUp({ ref: countRef, end: value, duration: COUNT_DURATION_SECONDS, formattingFn: format });
 
-    return <span ref={countRef} />;
-}
-
-function KpiCard({ label, value, format, decimals = 0, icon, tone = 'default', reducedMotion }: KpiCardProps) {
-    return (
-        <article className={KPI_CARD_CLASSES[tone]}>
-            <p className="admin-kpi-label">{icon}{label}</p>
-            <p className={tone === 'impact' ? 'impact-value' : 'admin-kpi-value'}>
-                <span aria-hidden="true">
-                    {reducedMotion ? format(value) : (
-                        <AnimatedValue value={value} decimals={decimals} format={format} />
-                    )}
-                </span>
-                <span className="sr-only">{format(value)}</span>
-            </p>
-        </article>
-    );
+    return <>
+        <span aria-hidden="true" ref={countRef} />
+        <span className="sr-only">{format(value)}</span>
+    </>;
 }
 
 export function KpiSection() {
     const { state, reducedMotion } = useDashboardStats();
+    const feedback = state.status === 'ready' ? null : FEEDBACK[state.status];
 
     return (
         <section className="admin-kpis stack" aria-label="Indicadores principales" aria-busy={state.status === 'loading'}>
-            {state.status === 'loading' && (
-                <div className="card card--panel admin-feedback admin-kpi-feedback" role="status" aria-label="Cargando indicadores">
-                    <span className="loading-spinner" aria-hidden="true" />
-                </div>
-            )}
-            {state.status === 'error' && (
-                <div className="card card--panel admin-feedback admin-kpi-feedback" role="alert">No pudimos cargar los indicadores.</div>
-            )}
-            {state.status === 'ready' && getKpiCards(state.stats).map((card) => (
-                <KpiCard key={card.label} {...card} reducedMotion={reducedMotion} />
+            {feedback && <div className="card card--panel admin-feedback" role={feedback.role} aria-label={feedback.label}>
+                {feedback.content}
+            </div>}
+            {state.status === 'ready' && getKpiCards(state.stats).map(({ variant, label, value, format, icon, detail }) => (
+                <article key={label} className={`card card--panel admin-kpi-card${variant ? ` ${VARIANT_CLASS[variant]}` : ''}`}>
+                    <p className="admin-kpi-label">{icon}{label}</p>
+                    <p className="admin-kpi-value">
+                        {value === null ? <span aria-label="Dato no disponible">—</span>
+                            : reducedMotion ? <span>{format(value)}</span>
+                                : <AnimatedValue value={value} format={format} />}
+                    </p>
+                    {detail && <p className="admin-kpi-detail">{detail}</p>}
+                </article>
             ))}
         </section>
     );

@@ -42,6 +42,11 @@
         & > h2 {
             font-size: var(--font-size-headline-xs);
             font-weight: var(--font-weight-semibold);
+            line-height: var(--line-height-tight);
+
+            @media (width >= 48rem) {
+                display: none;
+            }
         }
 
         & > .button--icon {

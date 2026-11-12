@@ -17,8 +17,12 @@
     flex-direction: column;
 }
 
-.site-header, .header-account, .header-drawer::backdrop {
+.site-header, .header-drawer-top, .header-account, .header-drawer::backdrop {
     background: var(--color-primary);
+}
+
+.header-profile .avatar, .header-account .avatar {
+    transition: background-color var(--transition-control);
 }
 
 .header-menu-link[aria-current='page'], .site-header-cart-count {
@@ -35,7 +39,7 @@
     --header-glyph-size: var(--space-3);
 
     & .header-drawer-top {
-        --header-icon-color: var(--color-primary);
+        --header-icon-color: var(--color-background);
     }
 
     & :not(.search-bar) > .button--icon:has(> svg) {
@@ -111,6 +115,17 @@
     font-weight: var(--font-weight-regular);
 }
 
+.header-profile {
+    display: grid;
+    place-items: center;
+    min-width: var(--touch-target);
+    min-height: var(--touch-target);
+
+    &:hover .avatar {
+        background: var(--color-accent);
+    }
+}
+
 .site-header-cart {
     position: relative;
     --header-glyph-size: var(--space-3-5);
@@ -161,7 +176,7 @@ body:has(.header-drawer[open]) {
 .header-drawer-body {
     flex: 1;
     gap: var(--space-3-5);
-    padding: var(--space-2) var(--space-4) max(var(--space-1), env(safe-area-inset-bottom));
+    padding: 0 var(--space-4) max(var(--space-1), env(safe-area-inset-bottom));
 
     & > .button--text {
         justify-content: flex-start;
@@ -171,8 +186,13 @@ body:has(.header-drawer[open]) {
 
 .header-account {
     gap: var(--space-1-5);
-    padding: var(--space-2) var(--space-3);
-    border-radius: var(--radius-md);
+    margin-inline: calc(-1 * var(--space-4));
+    padding: var(--space-3) var(--space-3-5) var(--space-3-5);
+    border-end-start-radius: var(--space-3-5);
+
+    &:hover .avatar {
+        background: var(--color-secondary);
+    }
 }
 
 .header-account-details {
@@ -184,8 +204,8 @@ body:has(.header-drawer[open]) {
     overflow-wrap: anywhere;
 }
 
-.header-account:hover, .header-menu-link[href]:hover {
-    background: var(--color-secondary);
+.header-menu-link[href]:hover {
+    background: var(--color-surface-muted);
 }
 
 @media (width < 64rem) {
@@ -220,7 +240,7 @@ body:has(.header-drawer[open]) {
         justify-content: flex-end;
         gap: var(--space-2);
 
-        & > a[aria-current='page'] {
+        & > a[aria-current='page']:not(.header-profile) {
             text-decoration: underline;
             text-underline-offset: var(--space-0-5);
         }

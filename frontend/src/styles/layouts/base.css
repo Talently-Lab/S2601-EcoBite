@@ -14,7 +14,7 @@ h3, h4, body {
     line-height: var(--line-height-body);
 }
 
-h1, h3, .avatar {
+h1, h2, h3, .avatar {
     font-weight: var(--font-weight-semibold);
 }
 
@@ -52,10 +52,6 @@ h1 {
     letter-spacing: -0.02em;
 }
 
-h2 {
-    font-weight: var(--font-weight-medium);
-}
-
 h3 {
     font-size: var(--font-size-headline-xs);
 }
@@ -83,6 +79,10 @@ body {
 	color: var(--color-text);
 	font-family: var(--font-family);
 	font-size: var(--font-size-body-lg);
+}
+
+.login-page, .admin-main {
+    background: var(--color-surface);
 }
 
 input:not(.checkout-address-input) {
@@ -132,7 +132,7 @@ input:disabled {
     border-radius: var(--radius-pill);
     background: var(--color-surface);
     color: var(--color-forest);
-    font-size: var(--avatar-font-size, var(--font-size-body-sm));
+    font-size: var(--avatar-font-size, var(--font-size-body-lg));
 }
 
 

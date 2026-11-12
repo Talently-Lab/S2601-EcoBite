@@ -118,10 +118,6 @@
 .checkout-review {
     align-content: start;
     padding: var(--space-3);
-    border: 1px solid var(--color-surface-muted);
-    border-radius: var(--radius-md);
-    background: var(--color-table);
-    box-shadow: var(--shadow-card);
 }
 
 .checkout-summary {
@@ -198,11 +194,6 @@
         min-block-size: calc(var(--control-height) + var(--space-1-5));
         padding: var(--space-1-5) var(--space-2);
         font-size: var(--font-size-headline-xs);
-    }
-
-    .checkout-review {
-        border-radius: 0;
-        box-shadow: none;
     }
 
     .checkout-summary {

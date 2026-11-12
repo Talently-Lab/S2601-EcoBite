@@ -7,23 +7,6 @@
     gap: var(--space-1);
 }
 
-.page:has(> .restaurant-menu-hero) {
-    & > .breadcrumbs {
-        margin-block-end: var(--space-3);
-    }
-
-    @media (width >= 48rem) {
-        padding-block-start: var(--space-3-5);
-        padding-inline: calc(var(--page-gutter) + var(--space-3));
-    }
-
-    @media (width < 48rem) {
-        &:has(> .restaurant-menu-hero--with-image) {
-            padding-block-start: 0;
-        }
-    }
-}
-
 .restaurant-menu-hero--with-image {
     position: relative;
 
@@ -51,7 +34,6 @@
 
     & h2 {
         font-size: inherit;
-        font-weight: var(--font-weight-semibold);
     }
 }
 
@@ -71,6 +53,15 @@
 .restaurant-menu-products {
     gap: var(--space-2);
     margin-block-start: var(--space-3);
+}
+
+.page:has(> .restaurant-menu-hero) {
+
+    @media (width < 48rem) {
+        &:has(> .restaurant-menu-hero--with-image) {
+            padding-block-start: 0;
+        }
+    }
 }
 
 @media (width >= 48rem) {

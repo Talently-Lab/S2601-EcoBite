@@ -5,15 +5,13 @@ import { LOCALE } from '../constants/constants';
 export type KpiState = { status: 'loading' } | { status: 'error' } | { status: 'ready'; stats: DashboardStats };
 
 export type KpiCardConfig = {
+    variant?: 'impact' | 'compact';
     label: string;
-    value: number;
+    value: number | null;
     format: (value: number) => string;
-    decimals?: number;
     icon?: ReactNode;
-    tone?: 'impact' | 'default';
+    detail?: ReactNode;
 };
-
-export type KpiCardProps = KpiCardConfig & { reducedMotion: boolean };
 
 const GRAMS_PER_KG = 1000;
 
@@ -22,9 +20,9 @@ function createFormatter(options?: Intl.NumberFormatOptions): (value: number) =>
 }
 
 export const formatCount = createFormatter();
-const formatGramsNumber = createFormatter({ maximumFractionDigits: 0 });
-const formatKilogramsNumber = createFormatter({ minimumFractionDigits: 1, maximumFractionDigits: 1 });
+const gramFormatter = createFormatter({ maximumFractionDigits: 0 });
+const kilogramFormatter = createFormatter({ minimumFractionDigits: 1, maximumFractionDigits: 1 });
 
 export const formatGrams = (grams: number): string => grams < GRAMS_PER_KG
-    ? `${formatGramsNumber(grams)} g`
-    : `${formatKilogramsNumber(grams / GRAMS_PER_KG)} kg`;
+    ? `${gramFormatter(grams)}g`
+    : `${kilogramFormatter(grams / GRAMS_PER_KG)} kg`;

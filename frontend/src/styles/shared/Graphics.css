@@ -10,6 +10,10 @@
 .svg-icon {
     aspect-ratio: 64 / 38;
     color: var(--color-accent);
+
+    &.svg-icon--leaves {
+        mask-image: url('../../assets/icons/leaves.svg');
+    }
 }
 
 .brand-logo {
