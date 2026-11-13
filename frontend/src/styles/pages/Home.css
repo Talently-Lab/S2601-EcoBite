@@ -14,8 +14,7 @@
 }
 
 .home-page > .button--primary {
-    display: flex;
-    margin: 0 auto var(--space-3) auto;
+    margin-block-end: var(--space-3);
 }
 
 .home-featured-list {

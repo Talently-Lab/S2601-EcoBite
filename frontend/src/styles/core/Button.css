@@ -38,11 +38,16 @@
 }
 
 .button--primary {
+    display: flex;
     background: var(--color-primary);
     color: var(--color-surface);
     width: 100%;
     min-height: 3.5rem;
     border-radius: var(--radius-md);
+
+    &:not(.product-details-actions > *) {
+        margin-inline: auto;
+    }
 
     &:not(.login-submit) {
         max-inline-size: 21.375rem;
