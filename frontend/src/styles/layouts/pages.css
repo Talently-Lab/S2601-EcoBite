@@ -34,6 +34,10 @@ main {
     & > .page-header {
         margin-block-end: calc(-1 * var(--space-2));
     }
+
+    & > .impact-card {
+        margin-top: var(--space-3);
+    }
 }
 
 .site-header + main {

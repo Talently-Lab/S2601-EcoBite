@@ -111,6 +111,6 @@
     }
 
     .product-details-info {
-        inline-size: fit-content;
+        inline-size: 100%;
     }
 }

@@ -180,7 +180,6 @@ body:has(.header-drawer[open]) {
 
     & > .button--text {
         justify-content: flex-start;
-        margin-block-start: auto;
     }
 }
 
