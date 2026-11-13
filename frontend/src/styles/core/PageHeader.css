@@ -7,6 +7,14 @@
     & > a {
         font-weight: var(--font-weight-regular);
 
+        & svg {
+            transition: background-color var(--transition-control);
+        }
+
+        &:hover svg {
+            background: var(--color-accent);
+        }
+
         & span {
             display: none;
         }

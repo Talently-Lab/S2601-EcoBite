@@ -50,3 +50,12 @@ main {
     min-block-size: calc(100dvh - var(--header-height));
     padding-block: 0;
 }
+
+@media (width >= 64rem) {
+    .cart-page:not(.cart-page--empty),
+    .checkout-page {
+        --page-inline-padding: var(--space-5);
+
+        padding-block-start: var(--space-4);
+    }
+}

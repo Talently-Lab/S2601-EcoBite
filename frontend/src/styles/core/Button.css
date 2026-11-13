@@ -1,13 +1,7 @@
-.button--icon svg,
-.button--text svg {
-    width: var(--space-3);
-    height: var(--space-3);
-}
-
 .button--icon {
     color: var(--color-primary);
 
-    &:hover:not(:disabled) {
+    &:hover:not(:disabled, .page-header > *) {
         background: var(--color-accent);
     }
 }

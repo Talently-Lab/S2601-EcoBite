@@ -7,6 +7,19 @@
     mask-size: contain;
 }
 
+.button--icon svg,
+.button--text svg {
+    width: var(--space-3);
+    height: var(--space-3);
+}
+
+:where(.page-header, .site-header :not(.search-bar)) > .button--icon > svg {
+    width: var(--touch-target);
+    height: var(--touch-target);
+    padding: calc((var(--touch-target) - var(--space-3)) / 2);
+    border-radius: var(--radius-sm);
+}
+
 .svg-icon {
     aspect-ratio: 64 / 38;
     color: var(--color-accent);

@@ -104,10 +104,7 @@
 
 @media (width >= 64rem) {
     .cart-page:not(.cart-page--empty) {
-        --page-inline-padding: var(--space-5);
-
         gap: 0;
-        padding-block-start: var(--space-4);
     }
 
     .cart-page > .section-header {

@@ -36,7 +36,6 @@
 
 .site-header {
     --header-icon-color: var(--color-accent);
-    --header-glyph-size: var(--space-3);
 
     & .header-drawer-top {
         --header-icon-color: var(--color-background);
@@ -44,10 +43,6 @@
 
     & :not(.search-bar) > .button--icon:has(> svg) {
         & > svg {
-            width: var(--touch-target);
-            height: var(--touch-target);
-            padding: calc((var(--touch-target) - var(--header-glyph-size)) / 2);
-            border-radius: var(--radius-sm);
             color: var(--header-icon-color);
             transition: fill var(--transition-control), color var(--transition-control);
         }
@@ -128,7 +123,10 @@
 
 .site-header-cart {
     position: relative;
-    --header-glyph-size: var(--space-3-5);
+
+    & > svg {
+        padding: calc((var(--touch-target) - var(--space-3-5)) / 2);
+    }
 }
 
 .site-header-cart-count {
