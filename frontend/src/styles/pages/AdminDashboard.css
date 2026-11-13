@@ -1,22 +1,59 @@
-.admin-dashboard {
+.admin-dashboard,.admin-kpis {
     gap: var(--space-3);
+}
+
+.admin-kpis > .admin-feedback,
+.admin-kpi-card.admin-kpi-card--impact {
+    grid-column: 1 / -1;
+    min-block-size: var(--admin-kpi-tall-min-block-size);
+}
+
+.admin-feedback,
+.admin-kpi-card .admin-kpi-label,
+.admin-kpi-card .admin-kpi-change,
+.admin-kpi-card.admin-kpi-card--compact {
+    align-items: center;
+}
+
+.admin-feedback,
+.admin-kpi-card.admin-kpi-card--impact {
+    justify-content: center;
+}
+
+.admin-kpi-card .admin-kpi-label,
+.admin-kpi-card .admin-kpi-change {
+    gap: var(--space-0-5);
+}
+
+.admin-feedback,
+.admin-kpi-card .admin-kpi-detail,
+.admin-kpi-card.admin-kpi-card--compact .admin-kpi-label {
+    color: var(--color-forest);
+}
+
+.admin-kpi-card .admin-kpi-change,
+.admin-kpi-card .admin-kpi-detail,
+.admin-kpi-card.admin-kpi-card--compact .admin-kpi-label {
+    font-size: var(--font-size-body-md);
+}
+
+.admin-kpi-card .admin-kpi-label,
+.admin-kpi-card .admin-kpi-change,
+.admin-orders-table th {
+    font-weight: var(--font-weight-semibold);
+}
+
+.admin-dashboard {
     max-inline-size: 68.75rem;
     margin-inline: auto;
 }
 
 .admin-kpis {
-    gap: var(--space-3);
+    --admin-kpi-tall-min-block-size: 12rem;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    & > .admin-feedback {
-        grid-column: 1 / -1;
-        min-block-size: 12rem;
-    }
 }
 
 .admin-feedback {
-    align-items: center;
-    justify-content: center;
-    color: var(--color-forest);
     text-align: center;
 }
 
@@ -32,10 +69,7 @@
 
     & .admin-kpi-label {
         display: flex;
-        align-items: center;
-        gap: var(--space-0-5);
         font-size: var(--font-size-body-lg);
-        font-weight: var(--font-weight-semibold);
     }
 
     & .admin-kpi-value {
@@ -44,17 +78,24 @@
         line-height: var(--line-height-tight);
     }
 
+    & .admin-kpi-change {
+        display: inline-flex;
+        align-self: flex-start;
+        max-inline-size: 100%;
+        padding: var(--space-1) var(--space-1-5);
+        border-radius: var(--radius-pill);
+        background: var(--color-accent);
+        color: var(--color-primary);
+        line-height: var(--line-height-body);
+    }
+
     & .admin-kpi-detail {
         margin-block-start: auto;
         padding-block-start: var(--space-1-5);
         border-block-start: 1px solid var(--color-forest);
-        color: var(--color-forest);
-        font-size: var(--font-size-body-md);
     }
 
     &.admin-kpi-card--impact {
-        min-block-size: 12rem;
-        justify-content: center;
         border-color: var(--color-primary);
 
         & .admin-kpi-label > .svg-icon {
@@ -74,14 +115,10 @@
     }
 
     &.admin-kpi-card--compact {
-        align-items: center;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
         min-block-size: 7rem;
         gap: var(--space-1);
-
-        & .admin-kpi-label {
-            color: var(--color-forest);
-            font-size: var(--font-size-body-md);
-        }
 
         & .admin-kpi-value {
             font-size: var(--font-size-headline-md);
@@ -102,9 +139,6 @@
 
 .admin-orders-table {
     border-collapse: collapse;
-    & th {
-        font-weight: var(--font-weight-semibold);
-    }
     & td {
         overflow-wrap: anywhere;
     }
@@ -113,38 +147,25 @@
     }
 }
 
-@media (width < 64rem) {
-    .admin-kpi-card.admin-kpi-card--impact {
-        grid-column: 1 / -1;
-    }
-}
-
 @media (width < 48rem) {
+    .admin-orders-table tbody,
+    .admin-orders-table tbody tr {
+        display: grid;
+    }
+
     .admin-kpis {
         grid-template-columns: minmax(0, 1fr);
     }
 
-    .admin-kpi-card:not(:has(.admin-kpi-detail)) {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        min-block-size: var(--space-5);
-
-        & .admin-kpi-label {
-            color: var(--color-forest);
-        }
-    }
-
     .admin-kpi-card.admin-kpi-card--compact {
+        min-block-size: var(--space-5);
         padding: var(--space-3);
     }
 
     .admin-orders-table {
         & tbody {
-            display: grid;
             gap: var(--space-1);
             & tr {
-                display: grid;
                 grid-template-columns: minmax(0, 1fr) auto;
                 grid-template-areas: 'restaurant status' 'date total';
                 align-items: center;
@@ -177,11 +198,6 @@
 }
 
 @media (width >= 48rem) {
-    .admin-kpi-card.admin-kpi-card--compact {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) auto;
-    }
-
     .admin-recent-orders {
         min-block-size: 16rem;
         padding: var(--space-2);
@@ -190,21 +206,23 @@
 }
 
 @media (width >= 64rem) {
+    .admin-kpi-card.admin-kpi-card--compact,
+    .admin-recent-orders {
+        padding: var(--space-3);
+    }
+
     .admin-kpis {
         gap: var(--space-2);
         grid-template-columns: 1.1fr 1fr 1fr;
     }
 
     .admin-kpi-card.admin-kpi-card--impact {
+        grid-column: auto;
         grid-row: span 2;
         padding: calc(var(--space-3) * 2);
     }
 
     .admin-kpi-card.admin-kpi-card--compact {
         min-block-size: calc(var(--space-5) + var(--space-3));
-    }
-
-    .admin-recent-orders {
-        padding: var(--space-3);
     }
 }

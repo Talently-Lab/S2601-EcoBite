@@ -1,6 +1,7 @@
 import { useEffect, useState, useSyncExternalStore } from 'react';
-import type { KpiState } from '../utils/kpiFormatters';
-import { getDashboardStats } from '../services/dashboardService';
+import { getDashboardStats, type DashboardStats } from '../services/dashboardService';
+
+type KpiState = { status: 'loading' } | { status: 'error' } | { status: 'ready'; stats: DashboardStats };
 
 const MAX_ATTEMPTS = 5;
 const RETRY_DELAY_MS = 500;
@@ -22,11 +23,9 @@ export function useDashboardStats() {
 
     useEffect(() => {
         let active = true;
-        let attempts = 0;
         let retryTimer: number | undefined;
 
-        async function loadStats() {
-            const attempt = ++attempts;
+        async function loadStats(attempt = 1) {
             try {
                 const stats = await getDashboardStats();
                 if (active) setState({ status: 'ready', stats });
@@ -37,8 +36,7 @@ export function useDashboardStats() {
                     return;
                 }
                 retryTimer = window.setTimeout(() => {
-                    retryTimer = undefined;
-                    void loadStats();
+                    void loadStats(attempt + 1);
                 }, attempt * RETRY_DELAY_MS);
             }
         }
@@ -46,7 +44,7 @@ export function useDashboardStats() {
         void loadStats();
         return () => {
             active = false;
-            if (retryTimer !== undefined) window.clearTimeout(retryTimer);
+            window.clearTimeout(retryTimer);
         };
     }, []);
 

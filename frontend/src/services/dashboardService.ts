@@ -11,11 +11,16 @@ type HistoricalDashboardStats = {
 type DashboardPeriodStats = HistoricalDashboardStats & {
     averageTicket: number;
     avgCo2SavedG: number;
-    registeredUsers: number;
+};
+
+type DashboardKpiChange = {
+    completedOrders: number | null;
+    totalRevenue: number | null;
+    co2SavedG: number | null;
 };
 
 export type DashboardStats = HistoricalDashboardStats & {
-    comparison?: { current: DashboardPeriodStats };
+    comparison?: { current: DashboardPeriodStats; percentageChange: DashboardKpiChange };
     registeredUsers?: number;
 };
 
@@ -34,9 +39,10 @@ const STATS_PATH = '/dashboard/stats';
 const RECENT_ORDERS_PATH = '/dashboard/recent-orders';
 const IMPACT_RANKING_PATH = '/dashboard/impact-ranking';
 
-type StatsValuesResponse = Omit<HistoricalDashboardStats, 'totalRevenue'> & { totalRevenue: string };
-type PeriodStatsResponse = Omit<DashboardPeriodStats, 'totalRevenue'> & { totalRevenue: string };
-type RecentOrderResponse = Omit<RecentOrder, 'totalAmount'> & { totalAmount: string };
+type WithStringPrice<T, K extends keyof T> = Omit<T, K> & Record<K, string>;
+type StatsValuesResponse = WithStringPrice<HistoricalDashboardStats, 'totalRevenue'>;
+type PeriodStatsResponse = WithStringPrice<DashboardPeriodStats, 'totalRevenue'>;
+type RecentOrderResponse = WithStringPrice<RecentOrder, 'totalAmount'>;
 type FieldValidators<T> = { [K in keyof T]: (value: unknown) => value is T[K] };
 
 function invalidResponse(path: string): ApiError {
@@ -67,6 +73,11 @@ const recentOrderValidators: FieldValidators<RecentOrderResponse> = {
     totalAmount: isString,
 };
 
+const impactRankingValidators: FieldValidators<ImpactRankingEntry> = {
+    restaurant: isString,
+    co2SavedG: isSafeInteger,
+};
+
 const statsValidators: FieldValidators<StatsValuesResponse> = {
     completedOrders: isSafeInteger,
     totalRevenue: isString,
@@ -77,7 +88,15 @@ const periodStatsValidators: FieldValidators<PeriodStatsResponse> = {
     ...statsValidators,
     averageTicket: isFiniteNumber,
     avgCo2SavedG: isFiniteNumber,
-    registeredUsers: isSafeInteger,
+};
+
+const isPercentageChange = (value: unknown): value is number | null =>
+    value === null || isFiniteNumber(value);
+
+const percentageChangeValidators: FieldValidators<DashboardKpiChange> = {
+    completedOrders: isPercentageChange,
+    totalRevenue: isPercentageChange,
+    co2SavedG: isPercentageChange,
 };
 
 function normalizePrice(value: string, path: string): number {
@@ -86,12 +105,15 @@ function normalizePrice(value: string, path: string): number {
     return centsToPrice(cents);
 }
 
+function parseList<T extends object>(data: unknown, path: string, validators: FieldValidators<T>): T[] {
+    if (!Array.isArray(data) || !data.every((item: unknown) => hasValidFields(item, validators))) {
+        throw invalidResponse(path);
+    }
+    return data;
+}
+
 function parseRecentOrders(data: unknown): RecentOrder[] {
-    if (!Array.isArray(data)) throw invalidResponse(RECENT_ORDERS_PATH);
-
-    return data.map((order: unknown) => {
-        if (!hasValidFields(order, recentOrderValidators)) throw invalidResponse(RECENT_ORDERS_PATH);
-
+    return parseList(data, RECENT_ORDERS_PATH, recentOrderValidators).map((order) => {
         return {
             ...order,
             restaurant: order.restaurant.trim(),
@@ -100,22 +122,32 @@ function parseRecentOrders(data: unknown): RecentOrder[] {
     });
 }
 
+function parseComparison(value: unknown): DashboardStats['comparison'] {
+    if (value === undefined) return undefined;
+    if (!isRecord(value)
+        || !hasValidFields(value.current, periodStatsValidators)
+        || !hasValidFields(value.percentageChange, percentageChangeValidators)) {
+        throw invalidResponse(STATS_PATH);
+    }
+
+    return {
+        current: { ...value.current, totalRevenue: normalizePrice(value.current.totalRevenue, STATS_PATH) },
+        percentageChange: value.percentageChange,
+    };
+}
+
 function parseDashboardStats(data: unknown): DashboardStats {
     if (!hasValidFields(data, statsValidators)) throw invalidResponse(STATS_PATH);
-    const response: StatsValuesResponse & { comparison?: unknown; registeredUsers?: unknown } = data;
-    const { comparison, registeredUsers, ...stats } = response;
-    const current = comparison === undefined ? undefined
-        : isRecord(comparison) && hasValidFields(comparison.current, periodStatsValidators)
-            ? comparison.current : null;
-    if (current === null || (registeredUsers !== undefined && !isSafeInteger(registeredUsers))) {
+    const { comparison, registeredUsers, ...stats }: StatsValuesResponse & { comparison?: unknown; registeredUsers?: unknown } = data;
+    if (registeredUsers !== undefined && !isSafeInteger(registeredUsers)) {
         throw invalidResponse(STATS_PATH);
     }
 
     return {
         ...stats,
         totalRevenue: normalizePrice(stats.totalRevenue, STATS_PATH),
-        ...(current && { comparison: { current: { ...current, totalRevenue: normalizePrice(current.totalRevenue, STATS_PATH) } } }),
-        ...(isSafeInteger(registeredUsers) && { registeredUsers }),
+        comparison: parseComparison(comparison),
+        registeredUsers,
     };
 }
 
@@ -124,4 +156,4 @@ export const getDashboardStats = async (): Promise<DashboardStats> => parseDashb
 export const getRecentOrders = async (): Promise<RecentOrder[]> => parseRecentOrders(await request(RECENT_ORDERS_PATH));
 
 export const getImpactRanking = async (): Promise<ImpactRankingEntry[]> =>
-    request(IMPACT_RANKING_PATH) as Promise<ImpactRankingEntry[]>;
+    parseList(await request(IMPACT_RANKING_PATH), IMPACT_RANKING_PATH, impactRankingValidators);

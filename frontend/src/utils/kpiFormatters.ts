@@ -1,17 +1,4 @@
-import type { ReactNode } from 'react';
-import type { DashboardStats } from '../services/dashboardService';
 import { LOCALE } from '../constants/constants';
-
-export type KpiState = { status: 'loading' } | { status: 'error' } | { status: 'ready'; stats: DashboardStats };
-
-export type KpiCardConfig = {
-    variant?: 'impact' | 'compact';
-    label: string;
-    value: number | null;
-    format: (value: number) => string;
-    icon?: ReactNode;
-    detail?: ReactNode;
-};
 
 const GRAMS_PER_KG = 1000;
 
