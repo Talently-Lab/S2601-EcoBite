@@ -32,7 +32,7 @@ export function Footer() {
 
                 <FooterSection title="Contacto" className="site-footer-contact">
                     <address>
-                        <a href="mailto:Contacto@ecobite.com">Contacto@ecobite.com</a>
+                        <span>Contacto@ecobite.com</span>
                         <span>Av. Libertador 6800, piso 13, CABA</span>
                     </address>
                 </FooterSection>
