@@ -44,6 +44,10 @@
     min-height: 3.5rem;
     border-radius: var(--radius-md);
 
+    &:not(.login-submit) {
+        max-inline-size: 21.375rem;
+    }
+
     &:has(svg) {
         justify-content: space-between;
     }
