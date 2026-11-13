@@ -42,10 +42,6 @@
     min-inline-size: 0;
 }
 
-.checkout-page {
-    --page-max-width: var(--content-width);
-}
-
 .checkout-layout {
     grid-template-columns: minmax(0, 2fr) minmax(18rem, 1fr);
     align-items: start;

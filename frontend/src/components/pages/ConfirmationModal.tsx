@@ -6,9 +6,9 @@ import confirmationIllustration from '../../assets/icons/confirmation.svg';
 import { formatGrams } from '../../utils/kpiFormatters';
 
 const deliveryMessages = {
-    BIKE: 'Te lo llevan en bici.',
-    MOTORCYCLE: 'Te lo llevan en moto.',
-    CAR: 'Te lo llevan en auto.',
+    BIKE: 'bici.',
+    MOTORCYCLE: 'moto.',
+    CAR: 'auto.',
 };
 
 export function ConfirmationModal() {
@@ -47,14 +47,16 @@ export function ConfirmationModal() {
                     <h2 id={titleId}>¡Pedido confirmado!</h2>
                     <p id={descriptionId}>
                         {createdOrder.restaurantName} ya está preparando tu pedido.
-                        {createdOrder.deliveryMethod && <><br />{deliveryMessages[createdOrder.deliveryMethod]}</>}
+                        {createdOrder.deliveryMethod && <><br />{`Te lo llevan en ${deliveryMessages[createdOrder.deliveryMethod]}`}</>}
                     </p>
                 </div>
                 <div className="confirmation-modal-impact">
                     <p className="confirmation-modal-impact-heading">Tu impacto en este pedido</p>
                     <p className="confirmation-modal-impact-value">
-                        <span>{createdOrder.co2SavedG >= 0 ? 'Evitaste' : 'Balance de CO₂'}</span>
-                        <strong>{formatGrams(createdOrder.co2SavedG)} de CO₂</strong>
+                        {createdOrder.co2SavedG >= 0 ? <>
+                            <span>Evitaste</span>
+                            <strong>{formatGrams(createdOrder.co2SavedG)} de CO₂</strong>
+                        </> : <span>Este pedido no tiene impacto positivo</span>}
                     </p>
                 </div>
                 <dl className="confirmation-modal-details">
