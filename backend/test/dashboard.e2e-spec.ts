@@ -164,9 +164,11 @@ describe('Dashboard (e2e)', () => {
         .mockResolvedValueOnce(3)
         .mockResolvedValueOnce(0);
       prisma.user.count
-        .mockResolvedValueOnce(5)
-        .mockResolvedValueOnce(2)
-        .mockResolvedValueOnce(0);
+        .mockResolvedValueOnce(5) // Acumulado general
+        .mockResolvedValueOnce(2) // Altas período actual
+        .mockResolvedValueOnce(0) // Altas período anterior
+        .mockResolvedValueOnce(5) // Total actual
+        .mockResolvedValueOnce(0); // Total histórico
 
       const response = await request(app.getHttpServer())
         .get('/dashboard/stats')
