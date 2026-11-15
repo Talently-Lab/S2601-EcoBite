@@ -33,6 +33,43 @@ describe('DashboardService', () => {
   describe('getStats', () => {
     afterEach(() => jest.useRealTimers());
 
+    it('calcula la variación de usuarios con totales acumulados D084', async () => {
+      const now = new Date('2026-11-15T14:00:00.000Z');
+      jest.useFakeTimers().setSystemTime(now);
+
+      prisma.user.count
+        .mockResolvedValueOnce(33) // Total general
+        .mockResolvedValueOnce(24) // Altas período actual
+        .mockResolvedValueOnce(9) // Altas período anterior
+        .mockResolvedValueOnce(33) // Total hasta ahora
+        .mockResolvedValueOnce(9); // Total histórico
+
+      const result = await service.getStats();
+
+      expect(result.comparison.current.registeredUsers).toBe(24);
+      expect(result.comparison.previous.registeredUsers).toBe(9);
+      expect(result.comparison.percentageChange.registeredUsers).toBeCloseTo(
+        266.6666666667,
+        8,
+      );
+
+      expect(prisma.user.count).toHaveBeenCalledWith({
+        where: {
+          role: 'CLIENT',
+          registeredAt: { lte: now },
+        },
+      });
+
+      expect(prisma.user.count).toHaveBeenCalledWith({
+        where: {
+          role: 'CLIENT',
+          registeredAt: {
+            lt: new Date('2026-10-17T03:00:00.000Z'),
+          },
+        },
+      });
+    });
+
     it.each([
       [20, 10, 100],
       [5, 10, -50],
@@ -49,6 +86,8 @@ describe('DashboardService', () => {
           .mockResolvedValueOnce(previous);
         prisma.user.count
           .mockResolvedValueOnce(88)
+          .mockResolvedValueOnce(current)
+          .mockResolvedValueOnce(previous)
           .mockResolvedValueOnce(current)
           .mockResolvedValueOnce(previous);
         for (const amount of [999, current, previous]) {
@@ -152,8 +191,23 @@ describe('DashboardService', () => {
             _avg: { totalAmount: true },
           });
         }
+        expect(prisma.user.count).toHaveBeenCalledWith({
+          where: {
+            role: 'CLIENT',
+            registeredAt: { lte: new Date(now) },
+          },
+        });
+
+        expect(prisma.user.count).toHaveBeenCalledWith({
+          where: {
+            role: 'CLIENT',
+            registeredAt: {
+              lt: new Date(`${current}T03:00:00.000Z`),
+            },
+          },
+        });
         expect(prisma.order.count).toHaveBeenCalledTimes(3);
-        expect(prisma.user.count).toHaveBeenCalledTimes(3);
+        expect(prisma.user.count).toHaveBeenCalledTimes(5);
         expect(prisma.order.aggregate).toHaveBeenCalledTimes(6);
       },
     );
