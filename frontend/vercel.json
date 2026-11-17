@@ -1,0 +1,13 @@
+{
+    "$schema": "https://openapi.vercel.sh/vercel.json",
+    "rewrites": [
+        {
+            "source": "/api/:path*",
+            "destination": "https://ecobite-api-test.onrender.com/api/:path*"
+        },
+        {
+            "source": "/((?!api).*)",
+            "destination": "/index.html"
+        }
+    ]
+}
