@@ -111,6 +111,19 @@ Las rutas protegidas requieren autenticación. Algunas operaciones también requ
 
 Por ejemplo, `GET /api/restaurants` requiere autenticación y devuelve `401 Unauthorized` cuando se consulta sin credenciales válidas.
 
+### Endpoints principales
+
+| Método | Endpoint                | Funcionalidad                 |
+| ------ | ----------------------- | ----------------------------- |
+| POST   | `/api/auth/signup`      | Registro de usuarios          |
+| POST   | `/api/auth/login`       | Inicio de sesión              |
+| POST   | `/api/orders`           | Creación de pedidos           |
+| GET    | `/api/restaurants`      | Consulta de restaurantes      |
+| GET    | `/api/orders/me/impact` | Impacto ambiental del usuario |
+| GET    | `/api/dashboard/stats`  | Estadísticas administrativas  |
+
+Estas son las rutas principales del MVP. La documentación completa de endpoints, parámetros, autenticación y respuestas está disponible en Swagger / OpenAPI.
+
 ## Base de datos
 
 El proyecto utiliza **PostgreSQL**, alojado en **Neon**, y **Prisma** como ORM.
@@ -129,6 +142,12 @@ Los datos de restaurantes y pedidos históricos provienen de archivos CSV utiliz
 Los scripts de seed, importación y migración pueden modificar registros persistentes. **No deben ejecutarse sin verificar previamente la base de datos de destino, el impacto de la operación y la autorización correspondiente.**
 
 Las actualizaciones de datos deben preservar los identificadores y las relaciones existentes.
+
+## Indicadores de CO2
+
+**CO₂ ahorrado promedio por pedido:** se calcula dividiendo el CO₂ total ahorrado entre la cantidad de pedidos completados (`COMPLETED`) con entrega en bicicleta (`BIKE`), incluyendo pedidos históricos (`DATASET`) y de la aplicación (`APP`). El resultado se expresa en gramos (`g`).
+
+El CO₂ ahorrado de cada pedido se redondea a gramos enteros al guardarlo en la base de datos. El promedio se calcula utilizando esos valores almacenados, sin redondeos adicionales en el Backend.
 
 ## Autenticación y seguridad
 
@@ -175,21 +194,6 @@ Generar Prisma Client y compilar el backend:
 ```powershell
 npm run build
 ```
-
-### Resultados de la verificación final
-
-| Verificación        | Resultado                                                             |
-| ------------------- | --------------------------------------------------------------------- |
-| Tests unitarios     | 463 aprobados                                                         |
-| Suites de tests     | 25 aprobadas                                                          |
-| TypeScript          | Sin errores                                                           |
-| Build               | Compilación completada sin errores                                    |
-| ESLint              | Dos errores preexistentes identificados                               |
-| Pruebas funcionales | Verificaciones realizadas con Postman y Swagger durante el desarrollo |
-
-Los dos errores pendientes de ESLint corresponden a las conversiones de valores `Decimal` en los scripts `import-comuna-distances.ts` e `import-dishes.ts`. No se modificaron durante el cierre del Sprint 7.
-
-Las pruebas unitarias con mocks verifican el comportamiento de los componentes aislados, pero no reemplazan las pruebas de integración con PostgreSQL ni las verificaciones funcionales sobre un entorno desplegado.
 
 ## Consideraciones finales
 

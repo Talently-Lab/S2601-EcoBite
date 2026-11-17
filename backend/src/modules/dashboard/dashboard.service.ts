@@ -17,12 +17,30 @@ export class DashboardService {
   constructor(private readonly prisma: PrismaService) {}
 
   async getStats() {
-    const periods = getDashboardPeriods(new Date());
+    const now = new Date();
+    const periods = getDashboardPeriods(now);
+
     const [accumulated, current, previous] = await Promise.all([
       this.getMetrics(),
       this.getMetrics(periods.current),
       this.getMetrics(periods.previous),
     ]);
+
+    const [totalClientsNow, totalClients30DaysAgo] = await Promise.all([
+      this.prisma.user.count({
+        where: {
+          role: UserRole.CLIENT,
+          registeredAt: { lte: now },
+        },
+      }),
+      this.prisma.user.count({
+        where: {
+          role: UserRole.CLIENT,
+          registeredAt: { lt: periods.current.gte },
+        },
+      }),
+    ]);
+
     return {
       ...accumulated,
       comparison: {
@@ -51,8 +69,8 @@ export class DashboardService {
             previous.averageTicket,
           ),
           registeredUsers: this.percentageChange(
-            current.registeredUsers,
-            previous.registeredUsers,
+            totalClientsNow,
+            totalClients30DaysAgo,
           ),
           co2SavedG: this.percentageChange(
             current.co2SavedG,

@@ -323,9 +323,6 @@ async function main() {
     );
   }
 
-  console.log(`Restaurants prepared: ${restaurants.length}`);
-  console.log(restaurants.slice(0, 5));
-
   for (const restaurant of restaurants) {
     await prisma.restaurant.upsert({
       where: {
