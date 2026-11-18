@@ -39,6 +39,10 @@ backend/
 
 Los módulos se organizan por funcionalidad y contienen los controllers, services, DTOs y demás recursos necesarios.
 
+## Rama de producción
+
+La rama `chore/backend-deploy` se utiliza como referencia para el despliegue del Backend de EcoBite.
+
 ## Ejecución local
 
 ### 1. Instalar dependencias
